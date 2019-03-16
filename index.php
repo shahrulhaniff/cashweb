@@ -13,8 +13,13 @@ if (empty($_SESSION['user'])) {
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!-- DATATABLE STYLE  -->
-<link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+    <!-- BOOTSTRAP CORE STYLE  -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONT AWESOME STYLE  -->
+    <!-- DATATABLE STYLE  -->
+    <link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+    <!-- CUSTOM STYLE  -->
+    <link href="assets/css/style.css" rel="stylesheet" />
 <style>
 html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
@@ -55,7 +60,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
           <h3><?=$cntuser?></h3>
         </div>
         <div class="w3-clear"></div>
-        <h4>Jumlah Pengguna</h4>
+        <h4>Jumlah Pengguna Aplikasi</h4>
       </div>
     </div>
     <div class="w3-quarter">
@@ -82,36 +87,24 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
   <div class="w3-panel">
     <div class="w3-row-padding" style="margin:0 -16px">
-      
-        <h5>Senarai Sub-Admin mengikut Jenis Jabatan</h5>
-        <table class="w3-table w3-striped w3-white">
-<?php
-$data = mysql_query("SELECT * from kod_jenistransaksi") or die(mysql_error()); 
-while($info = mysql_fetch_array( $data )) { ?>
 
-          <tr>
-            <td><i class="fa fa-user w3-text-blue w3-large"></i></td>
-            <td><?=$info['jenistransaksi']?></td>
-            <td><i><?=$info['id_jenistransaksi']?></i></td>
-			<td><form action="QRLogo.php" method="POST" target="_blank"><input type="hidden" name="id_jenistransaksi" value="<?=$info['id_jenistransaksi']?>"><input type="submit" value="Jana Kod QR"></form></td>
-			<td><form action="QRLogo.php" method="POST" target="_blank"><input type="hidden" name="id_jenistransaksi" value="<?=$info['id_jenistransaksi']?>"><input type="submit" value="Senarai Pengguna"></form></td>
-          </tr>
-<?}?>
-        </table>
-    </div>
+   
+<? include "ui/table.php"; ?>
+  </div>
   </div>
   
-<? include "table.php"; ?>
- 
-<? //include "ui/footer.php"; ?>
-	<!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
+<? include "ui/footer.php"; ?>
+    <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
+    <!-- CORE JQUERY  -->
+    <script src="assets/js/jquery-1.10.2.js"></script>
     <!-- BOOTSTRAP SCRIPTS  -->
     <script src="assets/js/bootstrap.js"></script>
     <!-- DATATABLE SCRIPTS  -->
     <script src="assets/js/dataTables/jquery.dataTables.js"></script>
     <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
-    <!-- CUSTOM SCRIPTS  -->
+      <!-- CUSTOM SCRIPTS  -->
     <script src="assets/js/custom.js"></script>
+	
 <!-- End page content -->
 </div>
 </body>

@@ -10813,7 +10813,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sSearch": "Search 10816:",
+			"sSearch": "Carian:",
 	
 	
 			/**

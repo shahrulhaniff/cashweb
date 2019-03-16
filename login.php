@@ -35,12 +35,12 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
  <form action="login2.php" method="POST">
     <div class="input-group">
       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-      <input id="email" type="text" class="form-control" name="usr" placeholder="Kad Pengenalan" autocomplete="off">
+      <input id="email" type="text" class="form-control" name="usr" value="941013115436" placeholder="Kad Pengenalan" autocomplete="off">
     </div>
     <br>
     <div class="input-group">
       <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-      <input id="password" type="password" class="form-control" name="pwd" placeholder="Kata Laluan" autocomplete="new-password">
+      <input id="password" type="password" class="form-control" name="pwd" value="123" placeholder="Kata Laluan" autocomplete="new-password">
     </div>
     <br>
     <div class="input-group">
