@@ -41,7 +41,7 @@ CREATE TABLE akaun_pengguna (
 INSERT INTO kod_jenispengguna (kod_pengguna, jenis_pengguna, jabatan) VALUES
 ('1', 'user', NULL),
 ('2', 'admin', 'Bendahari'),
-('3', 'sub-admin', 'Masjid');
+('3', 'sub-admin', 'JPP');
 
 INSERT INTO maklumat_pengguna (ic_pengguna, nama, email,no_telefon) VALUES
 ('941013115435', 'Shahrul Haniff', 'shahrul@gmail.com', '0109668468'),
@@ -109,10 +109,10 @@ CREATE TABLE transaksi (
 --
 
 -- INSERT INTO transaksi (jenis_transaksi, tarikh, jumlah, ic_pengguna, daripada, kepada) VALUES ('a2u', '2019-03-21 06:12:16', 17000.55, '941013115435', '941013115436', '941013115435');
-INSERT INTO `kod_jenistransaksi` (`id_jenistransaksi`, `jenistransaksi`) VALUES
-('DRM', 'Derma'),
-('SB', 'Sebut Harga'),
-('YR', 'Yuran');
+INSERT INTO `kod_jenistransaksi` (`id_jenistransaksi`, `jenistransaksi`, `jabatan`) VALUES
+('DRM', 'Derma', 'Masjid'),
+('SB', 'Sebut Harga', 'JPP'),
+('YR', 'Yuran', 'ASRAMA');
 
 INSERT INTO `kod_transaksi` (`id_kodtransaksi`, `kod_pengguna`, `no_sb`, `description`, `tarikhbuka`, `tarikhtutup`, `jam`, `harga`, `id_jenistransaksi`, `kelas`, `keyin_by`, `tarikh_keyin`, `edit_by`, `tarikh_edit`) VALUES
 (1, '3', 'IDSB001', 'Contoh butiran sebut harga', '2019-03-01', '2019-03-30', '00:00:00', 17000.39, 'SB', '1', 'IC Pegawai keyin', '2019-03-06 11:27:27', NULL, NULL),

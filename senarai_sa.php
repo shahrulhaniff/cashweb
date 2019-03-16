@@ -37,13 +37,14 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-dashboard"></i>Utama</b></h5>
+    <h5><a href="index.php"><i class="fa fa-dashboard"></i>Utama</a> / <b><i class="fa fa-laptop"></i>Senarai Sub-Admin</b></h5>
   </header>
 
 
   <div class="w3-panel">
     <div class="w3-row-padding" style="margin:0 -16px">
 <div class="col-md-12">
+
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -55,29 +56,26 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
                                     <thead>
                                         <tr>
                                             <th>Bil</th>
-                                            <th>ID</th>
-                                            <th>Jenis Transaksi</th>
-                                            <th>Kod-QR</th>
+                                            <th>Nama</th>
+                                            <th>Email</th>
+                                            <th>Nombor Telefon</th>
                                             <th>Tindakan</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 <?php // Connects to your Database 
  $id = $_POST['id_jenistransaksi'];
- $data = mysql_query("SELECT * FROM kod_jenistransaksi") 
+ $data = mysql_query("SELECT * FROM akaun_pengguna AP, maklumat_pengguna MP, kod_jenistransaksi KJ, kod_jenispengguna KJP WHERE KJ.id_jenistransaksi ='".$id."' AND KJP.jabatan = KJ.jabatan AND AP.kod_pengguna=KJP.kod_pengguna AND MP.ic_pengguna = AP.ic_pengguna") 
  or die(mysql_error()); ?>
                                         
 										<?php
 										while($info = mysql_fetch_array( $data )) {
 											echo "<tr class='gradeA'>";
 											echo '<td><i class="fa fa-user w3-text-blue w3-large"></i></td>';
-                                            echo "<td>".$info['id_jenistransaksi'] . " </td>";
-                                            echo "<td>".$info['jenistransaksi'] . " </td>";
-?><td>
-<form action="QRLogo.php" method="POST" target="_blank"><input type="hidden" name="id_jenistransaksi" value="<?=$info['id_jenistransaksi']?>"><input type="submit" value="Jana Kod QR"></form>
-<form action="senarai_sa.php" method="POST" target="_blank"><input type="hidden" name="id_jenistransaksi" value="<?=$info['id_jenistransaksi']?>"><input type="submit" value="Senarai Sub-Admin"></form>
-</td><?
-                                            echo "<td>sini abeley buat add, update, delete</td>";
+                                            echo "<td>".$info['nama'] . " </td>";
+                                            echo "<td>".$info['email'] . " </td>";
+                                            echo "<td>".$info['no_telefon'] . " </td>";
+                                            echo "<td>sini abeley buat update, delete</td>";
 											echo "</tr>";
 										}
 										?>
