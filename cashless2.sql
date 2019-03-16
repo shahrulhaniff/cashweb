@@ -61,6 +61,7 @@ INSERT INTO akaun_pengguna (ic_pengguna,kod_pengguna,pwd,status_aktif) VALUES
 CREATE TABLE kod_jenistransaksi (
   id_jenistransaksi varchar(12) NOT NULL,
   jenistransaksi varchar(100) NOT NULL,
+  jabatan varchar(40) NOT NULL,
   PRIMARY KEY (id_jenistransaksi)
   );
 
@@ -110,9 +111,7 @@ CREATE TABLE transaksi (
 -- INSERT INTO transaksi (jenis_transaksi, tarikh, jumlah, ic_pengguna, daripada, kepada) VALUES ('a2u', '2019-03-21 06:12:16', 17000.55, '941013115435', '941013115436', '941013115435');
 INSERT INTO `kod_jenistransaksi` (`id_jenistransaksi`, `jenistransaksi`) VALUES
 ('DRM', 'Derma'),
-('ETC', 'Lain-Lain'),
 ('SB', 'Sebut Harga'),
-('TD', 'Tender'),
 ('YR', 'Yuran');
 
 INSERT INTO `kod_transaksi` (`id_kodtransaksi`, `kod_pengguna`, `no_sb`, `description`, `tarikhbuka`, `tarikhtutup`, `jam`, `harga`, `id_jenistransaksi`, `kelas`, `keyin_by`, `tarikh_keyin`, `edit_by`, `tarikh_edit`) VALUES
