@@ -63,6 +63,16 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
                                         </tr>
                                     </thead>
                                     <tbody>
+									
+									<tr class='gradeA'>
+									<form method="post" action="../controller/department_list_exec.php?act=department_list_add">
+									<td><i class="fa fa-user w3-text-blue w3-large"></i></td>
+									<td><input type="text" class="form-control" name="nama" id="nama" size="20"></td>
+									<td><input type="text" class="form-control" name="email" id="email" size="20"></td>
+									<td><input type="text" class="form-control" name="no_telefon" id="no_telefon" size="20"></td>
+									<td><a><button type="submit" class="btn btn-primary">Tambah</button></a></td>
+									</tr>
+									
 <?php // Connects to your Database 
  $id = $_POST['id_jenistransaksi'];
  $data = mysql_query("SELECT * FROM akaun_pengguna AP, maklumat_pengguna MP, kod_jenistransaksi KJ, kod_jenispengguna KJP WHERE KJ.id_jenistransaksi ='".$id."' AND KJP.jabatan = KJ.jabatan AND AP.kod_pengguna=KJP.kod_pengguna AND MP.ic_pengguna = AP.ic_pengguna") 
@@ -75,7 +85,11 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
                                             echo "<td>".$info['nama'] . " </td>";
                                             echo "<td>".$info['email'] . " </td>";
                                             echo "<td>".$info['no_telefon'] . " </td>";
-                                            echo "<td>sini abeley buat update, delete</td>";
+                                            ?><td>
+										 <a class="edit" title="Edit" data-toggle="tooltip"><button type="button" class="btn btn-info " onClick="updateId('<?php echo $list['id']; ?>')">Kemaskini</button></a>
+										<a href="../controller/department_list_exec.php?act=department_list_status&status=1&id=<?echo $list['id']; ?>"><button type="button" class="btn btn-danger" onclick="return confirm('Anda pasti untuk padam data ini?');">Padam</button></a>
+										 </td>
+										 <?
 											echo "</tr>";
 										}
 										?>

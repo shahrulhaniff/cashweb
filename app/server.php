@@ -3,7 +3,7 @@
    // Define database connection parameters
    $hn      = 'localhost';
    $un      = 'root';
-   $pwd     = '';
+   $pwd     = 'abcde123';
    $db      = 'cashless';
    $cs      = 'utf8';
 
