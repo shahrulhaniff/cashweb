@@ -1,33 +1,6 @@
 
- <?php
-
-// include "../model/pemohon_asrama_functions.php";
-
-	
-	// $nokp_pemohon = $_GET['nokp'];
-	// $nama_penjaga= clean($_POST['nama_penjaga']);
-	// $nokp_penjaga = clean($_POST['nokp_penjaga']);
-
-	
-  
-  
-
-	
-		// echo $result = updatePemohonPenjaga($nokp_pemohon,$nama_penjaga,$nokp_penjaga,$jantina,$bangsa,$alamat,
-					// $notel,$emel,$hubungan,$pekerjaan,$pendapatan,$nama_majikan,$alamat_majikan,$notel_majikan);
-        // if($result){
-			// header("location: ../view/permohonan_asrama_selesai.php");
-			// exit();
-			
-		// }else {
-			// die("Query failed");
-		// }
-
-	
-// ?>
-
 <?php
-    require '../app/server.php';
+    require '../../app/server.php';
  
     $id_jenistransaksi = null;
     if ( !empty($_GET['id_jenistransaksi'])) {
@@ -77,7 +50,7 @@
             $q = $pdo->prepare($sql);
             $q->execute(array($jenistransaksi,$jabatan,$id_jenistransaksi));
             Database::disconnect();
-			echo"<script>alert('Update Success!');document.location.href='index.php';</script>";
+			echo"<script>alert('Update Success!');document.location.href='../index.php';</script>";
             //header("Location: index.php");
         }
 	}

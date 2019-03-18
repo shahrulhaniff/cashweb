@@ -64,7 +64,7 @@
 												</div>
 												
 											 <div class="modal-body">
-												<form method="post" action="jenis_transaksi_kemaskini.php?id_jenistransaksi=<?php echo $info['id_jenistransaksi'];?>" >
+												<form method="post" action="../web/controller/jenis_transaksi_kemaskini_exec.php?id_jenistransaksi=<?php echo $info['id_jenistransaksi'];?>" >
 
 											
 													
