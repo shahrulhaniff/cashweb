@@ -77,7 +77,8 @@
             $q = $pdo->prepare($sql);
             $q->execute(array($jenistransaksi,$jabatan,$id_jenistransaksi));
             Database::disconnect();
-            header("Location: ../index.php");
+			echo"<script>alert('Update Success!');document.location.href='index.php';</script>";
+            //header("Location: index.php");
         }
 	}
     // else {
