@@ -50,7 +50,11 @@
             $q = $pdo->prepare($sql);
             $q->execute(array($jenistransaksi,$jabatan,$id_jenistransaksi));
             Database::disconnect();
+<<<<<<< HEAD:web/controller/jenis_transaksi_kemaskini_exec.php
 			echo"<script>alert('Update Success!');document.location.href='../index.php';</script>";
+=======
+			echo"<script>alert('Update Success!');document.location.href='index.php';</script>";
+>>>>>>> a32df64915327db29511bd0278d96fc427e391e9:web/jenis_transaksi_kemaskini.php
             //header("Location: index.php");
         }
 	}
