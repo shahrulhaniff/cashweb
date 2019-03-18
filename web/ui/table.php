@@ -22,7 +22,7 @@
                                     <tbody>
 									
 									<tr class='gradeA'>
-									<form method="post" action="../controller/department_list_exec.php?act=department_list_add">
+									<form method="post" action="../web/controller/jenis_transaksi_add_exec.php">
 									<td><i class="fa fa-user w3-text-blue w3-large"></i></td>
 									<td><input type="text" class="form-control" name="id_jenistransaksi" id="id_jenistransaksi" size="20" onkeyup=" var start = this.selectionStart;var end = this.selectionEnd; this.value = this.value.toUpperCase();this.setSelectionRange(start, end);"></td>
 									<td><input type="text" class="form-control" name="jenistransaksi" id="jenistransaksi" size="20"></td>
@@ -50,7 +50,7 @@
 											<td>
 										 <!--<a class="edit" title="Edit" data-toggle="tooltip"><button type="button" class="btn btn-info " onClick="updateId('<?php echo $list['id']; ?>')">Kemaskini</button></a>-->
 										 <button class="btn btn-info" data-toggle="modal" data-target="#myModal<?echo $info['id_jenistransaksi'];?>">Kemaskini</button>
-										<a href="../controller/department_list_exec.php?act=department_list_status&status=1&id=<?echo $list['id']; ?>"><button type="button" class="btn btn-danger" onclick="return confirm('Anda pasti untuk padam data ini?');">Padam</button></a>
+										<a href="../web/controller/jenis_transaksi_add_exec.php?id_jenistransaksi=<?echo $info['id_jenistransaksi']; ?>"><button type="button" class="btn btn-danger" onclick="return confirm('Anda pasti untuk padam data ini?');">Padam</button></a>
 										 </td>
 										 
 	<!-- Modal -->

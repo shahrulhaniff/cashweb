@@ -52,7 +52,7 @@
         // validate input
         $valid = true;
         if (empty($jenistransaksi)) {
-            $jenistransaksiError = 'Please enter jenis transaksi';
+            $jenistransaksiError = 'Masukkan jenis transaksi';
             $valid = false;
         }
          
@@ -65,7 +65,7 @@
         // }
          
         if (empty($jabatan)) {
-            $jabatanError = 'Please enter jabatan';
+            $jabatanError = 'Masukkan jabatan';
             $valid = false;
         }
          
