@@ -1,6 +1,6 @@
 <?
 session_start();
-include "../app/server.php";
+include "../server.php";
 
 $usr = $_POST['usr'];
 $pwd = $_POST['pwd'];
