@@ -7,7 +7,7 @@ if (empty($_SESSION['user'])) {
 ?>
 <!DOCTYPE html>
 <html>
-<title>Laman Admin</title>
+<title>Laman Sebut Harga</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -37,7 +37,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-dashboard"></i>Utama</b></h5>
+    <h5><b><i class="fa fa-dashboard"></i>Sebut Harga</b></h5>
   </header>
 <?php /*To calculate participant list*/ $datacount4badge = mysql_query("SELECT count(jenistransaksi) as myCount from kod_jenistransaksi;") or die(mysql_error()); $infobadge = mysql_fetch_array( $datacount4badge ); $countptcp = $infobadge['myCount']; ?>
 
@@ -89,7 +89,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <div class="w3-row-padding" style="margin:0 -16px">
 
    
-<? include "ui/table.php"; ?>
+<? include "ui/table_sebut_harga.php"; ?>
   </div>
   </div>
   

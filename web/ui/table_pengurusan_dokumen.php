@@ -1,10 +1,12 @@
 
 
 <div class="col-md-12">
+				
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
+					
                         <div class="panel-heading">
-                             Senarai Sub-Admin mengikut Jenis Jabatan
+                             Senarai Dokumen 
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
@@ -12,27 +14,19 @@
                                     <thead>
                                         <tr>
                                             <th>Bil</th>
-                                            <th>ID</th>
-                                            <th>Jenis Transaksi</th>
-                                            <th>Jabatan</th>
-                                            <th>Kod-QR</th>
-                                            <th>Tindakan</th>
+                                            <th>Penerima</th>
+                                            <th>Tarikh</th>
+                                            <th>Harga</th>
+                                            <th>Status</th>
+                                            <th>Disahkan Oleh</th>
+											<th>Tindakan</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 									
-									<tr class='gradeA'>
-									<form method="post" action="../web/controller/jenis_transaksi_add_exec.php">
-									<td><i class="fa fa-user w3-text-blue w3-large"></i></td>
-									<td><input type="text" class="form-control" name="id_jenistransaksi" id="id_jenistransaksi" size="20" onkeyup=" var start = this.selectionStart;var end = this.selectionEnd; this.value = this.value.toUpperCase();this.setSelectionRange(start, end);"></td>
-									<td><input type="text" class="form-control" name="jenistransaksi" id="jenistransaksi" size="20"></td>
-									<td><input type="text" class="form-control" name="jabatan" id="jabatan" size="20"></td>
-									<td><!--<input type="text" name="no_telefon" id="no_telefon" size="20">--></td>
-									<td><a><button type="submit" class="btn btn-primary">Tambah</button></a></td>
-									</tr>
 <?php // Connects to your Database 
 
- $data = mysql_query("SELECT * FROM kod_jenistransaksi") 
+ $data = mysql_query("SELECT * FROM transaksi") 
  or die(mysql_error()); ?>
                                         
 										<?php
@@ -40,18 +34,30 @@
 										while($info = mysql_fetch_array( $data )) {
 											echo "<tr class='gradeA'>";
 											echo "<td>".$i." </td>";
-                                            echo "<td>".$info['id_jenistransaksi'] . " </td>";
-                                            echo "<td>".$info['jenistransaksi'] . " </td>";
-                                            echo "<td>".$info['jabatan'] . " </td>";
-?><td>
-<form action="QRLogo.php" method="POST" target="_blank"><input type="hidden" name="id_jenistransaksi" value="<?=$info['id_jenistransaksi']?>"><input type="submit" value="Jana Kod QR"></form>
-<form action="senarai_sa.php?jabatan=<?echo $info['jabatan'];?>" method="POST"><input type="hidden" name="id_jenistransaksi" value="<?=$info['id_jenistransaksi']?>"><input type="submit" value="Senarai Sub-Admin"></form>
-</td><?
-                                            ?>
+
+
+											$data1 = mysql_query("SELECT max(nama) AS nama FROM maklumat_pengguna WHERE ic_pengguna='".$info['doc_acceptby']."' ORDER BY ic_pengguna") 
+											or die(mysql_error());	
+											$info1 = mysql_fetch_array( $data1 );
+                                            echo "<td>".$info1['nama'] . " </td>";
+											
+										   echo "<td>".$info['tarikh'] . " </td>";
+                                            echo "<td>".$info['jumlah'] . " </td>";
+                                            echo "<td>".$info['status_dokumen'] . " </td>";
+
+											
+											$data2 = mysql_query("SELECT max(nama) AS nama FROM maklumat_pengguna WHERE ic_pengguna='".$info['doc_giveby']."' ORDER BY ic_pengguna") 
+											or die(mysql_error());	
+											$info2 = mysql_fetch_array( $data2 );
+                                            echo "<td>".$info2['nama'] . " </td>";
+
+                                            $i++;?>
 											<td>
+											<a class="btn btn-primary" href="read.php?id='.$row['id_kodtransaksi'].'">Info</a>
+                                
 										 <!--<a class="edit" title="Edit" data-toggle="tooltip"><button type="button" class="btn btn-info " onClick="updateId('<?php echo $list['id']; ?>')">Kemaskini</button></a>-->
 										 <button class="btn btn-info" data-toggle="modal" data-target="#myModal<?echo $info['id_jenistransaksi'];?>">Kemaskini</button>
-										<a href="../web/controller/jenis_transaksi_delete_exec.php?id_jenistransaksi=<?echo $info['id_jenistransaksi']; ?>"><button type="button" class="btn btn-danger" onclick="return confirm('Anda pasti untuk padam data ini?');">Padam</button></a>
+										<!--<a href="../web/controller/jenis_transaksi_delete_exec.php?id_jenistransaksi=<?echo $info['id_jenistransaksi']; ?>"><button type="button" class="btn btn-danger" onclick="return confirm('Anda pasti untuk padam data ini?');">Padam</button></a>-->
 										 </td>
 										 
 	<!-- Modal -->

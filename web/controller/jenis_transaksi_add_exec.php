@@ -1,6 +1,6 @@
 <?php
      
-    require '../../app/server.php';
+    require '../../server.php';
  
     if ( !empty($_POST)) {
         // keep track validation errors
@@ -44,7 +44,13 @@
             $sql = "INSERT INTO kod_jenistransaksi (id_jenistransaksi,jenistransaksi,jabatan) values('$id_jenistransaksi','$jenistransaksi','$jabatan')";
             $q = $pdo->prepare($sql);
             $q->execute(array($id_jenistransaksi,$jenistransaksi,$jabatan));
-            Database::disconnect();
+			
+			// $pdo = Database::connect();
+            // $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            // $sql = "INSERT INTO kod_jenispengguna (kod_pengguna,jenis_pengguna,jabatan) values('testing','admin','$jabatan')";
+            // $q = $pdo->prepare($sql);
+            // $q->execute(array($kod_pengguna,$jenis_pengguna,$jabatan));
+            // Database::disconnect();
 			header("location: ../index.php");	
         }
     }

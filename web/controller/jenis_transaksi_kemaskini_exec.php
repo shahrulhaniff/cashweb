@@ -1,6 +1,6 @@
 
 <?php
-    require '../../app/server.php';
+    require '../../server.php';
  
     $id_jenistransaksi = null;
     if ( !empty($_GET['id_jenistransaksi'])) {

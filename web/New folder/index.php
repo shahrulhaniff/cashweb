@@ -38,7 +38,7 @@
 				</thead>
 				<tbody>
 					<?php
-						include 'database.php';
+						include '../../server.php';
 						$pdo = Database::connect();
 						$sql = 'SELECT * FROM kod_transaksi ORDER BY kod_pengguna DESC';
 						foreach ($pdo->query($sql) as $row){

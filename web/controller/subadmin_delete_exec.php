@@ -1,24 +1,32 @@
 <?php
     require '../../server.php';
-    $id_jenistransaksi = 0;
+    $ic_pengguna = 0;
      
-    if ( !empty($_GET['id_jenistransaksi'])) {
-        // $id_jenistransaksi = $_REQUEST['id_jenistransaksi'];
-        $id_jenistransaksi = $_GET['id_jenistransaksi'];
+    if ( !empty($_GET['ic_pengguna'])) {
+        // $ic_pengguna = $_REQUEST['ic_pengguna'];
+        $ic_pengguna = $_GET['ic_pengguna'];
 		
 		// delete data
 		 $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo $sql = "DELETE FROM kod_jenistransaksi  WHERE id_jenistransaksi = '$id_jenistransaksi'";
+        echo $sql = "DELETE FROM akaun_pengguna  WHERE ic_pengguna = '$ic_pengguna'";
         $q = $pdo->prepare($sql);
-        $q->execute(array($id_jenistransaksi));
+        $q->execute(array($ic_pengguna));
+		
+		// delete data
+		 $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        echo $sql = "DELETE FROM maklumat_pengguna  WHERE ic_pengguna = '$ic_pengguna'";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($ic_pengguna));
+		
         Database::disconnect();
-        header("Location: ../index.php");
+        header("Location: ../senarai_sa.php");
     }
      
     if ( !empty($_POST)) {
         // keep track post values
-        $id_jenistransaksi = $_POST['id_jenistransaksi'];
+        $ic_pengguna = $_POST['ic_pengguna'];
          
        // // delete data
 		 // $pdo = Database::connect();
