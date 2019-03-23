@@ -1,5 +1,5 @@
 <?php
-  include "server.php";
+  include "../server.php";
  
   $id = $_GET['id'];
   $data    = array();

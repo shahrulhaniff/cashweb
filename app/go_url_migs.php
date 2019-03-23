@@ -13,7 +13,7 @@ body {
 </style>
 </head><body>
 <?php
-include "server.php";
+include "../server.php";
  
   $cn = $_GET['cn'];
   $ced = $_GET['ced'];

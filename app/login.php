@@ -1,5 +1,5 @@
 <?php
- include "server.php";
+ include "../server.php";
 
    // Retrieve the posted data
    $json    =  file_get_contents('php://input');

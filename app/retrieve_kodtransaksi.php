@@ -1,5 +1,5 @@
 <?php
-  include "server.php";
+  include "../server.php";
  
   //try main get dulu sebab nak post vaue select where xjadi lagi
   $id = $_GET['id'];
