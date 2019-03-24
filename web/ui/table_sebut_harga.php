@@ -110,7 +110,7 @@
 <!---------------------------------------------------------------------------------------->							
 <div class="col-md-12">
 			<div align="right">
-							<button class="btn btn-primary" data-toggle="modal"  data-target="#myModal">Tambah Sub-Admin</button></a> <br>
+							<button class="btn btn-primary" data-toggle="modal"  data-target="#myModal">Tambah Sebut Harga</button></a> <br>
 			</div>
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
@@ -149,7 +149,10 @@
 								<button class="btn btn-info" data-toggle="modal" data-target="#myModal1<?echo $row['id_kodtransaksi'];?>">Kemaskini</button>
 								<?
                                 echo '  ';
-                                echo '<a class="btn btn-danger" href="delete.php?id='.$row['id_kodtransaksi'].'">Padam</a>';
+								?>
+								<a href="../web/controller/sebut_harga_delete_exec.php?id=<? echo $row['id_kodtransaksi']; ?>"><button class="btn btn-danger" type="button" onclick="return confirm('Adakah anda pasti untuk padam rekod ini?');">Padam</button></a>
+								<?
+                                //echo '<a class="btn btn-danger" href="../web/controller/sebut_harga_delete_exec.php?id='.$row['id_kodtransaksi'].'">Padam</a>';
                                 echo '</td>';
 						
 					
@@ -165,15 +168,32 @@
 												</div>
 												
 											 <div class="modal-body">
-												<form method="post" action="../web/controller/subadmin_tambah_exec.php?jabatan=<?echo $jabatan;?>">     
+												<form method="post" action="../web/controller/sebut_harga_kemaskini_exec.php">     
 											 <div class="form-group" align="left">
 												
 												<label><font color="red">** Maklumat Wajib Diisi.</font></label>
 												<br>
 													 
-													 <input type="hidden" name="id_jenistransaksi" id="id_jenistransaksi" class="form-control" value="<? echo $id;?>" readonly />
+													 <input type="hidden" name="id_kodtransaksi" id="id_kodtransaksi" class="form-control" value="<?echo $row['id_kodtransaksi'];?>" readonly />
 												
-												 
+												 <div class="form-group" align="left">
+												<label for="comment">Kod Pengguna</label>
+															<select required class="form-control" name="kod_pengguna" value="" style="width: 270px">
+															
+															<? $kod_pengguna1=$row['kod_pengguna'];
+															$data_pengguna = mysql_query("SELECT * FROM kod_jenispengguna WHERE kod_pengguna='$kod_pengguna1'") or die(mysql_error());
+															while ($row_pengguna = mysql_fetch_assoc( $data_pengguna )){ ?>
+															
+															<option value="<? echo $row_pengguna['kod_pengguna'];?>"><? echo $row_pengguna['kod_pengguna'];?> ( <? echo $row_pengguna['jenis_pengguna'];?> - <? echo $row_pengguna['jabatan'];?> )</option>
+															
+															<? }
+															$datas = mysql_query("SELECT * FROM kod_jenispengguna") or die(mysql_error());
+															while ($rows = mysql_fetch_assoc( $datas )){ ?>
+																<option value="<? echo $rows['kod_pengguna'];?>"><? echo $rows['kod_pengguna'];?> ( <? echo $rows['jenis_pengguna'];?> - <? echo $rows['jabatan'];?> )</option>
+															<?}?>
+															</select>
+												</div>
+															
 												<div class="form-group">
 													<label for="comment">No Sebut Harga</label>
 													<input type="text" class="form-control" name="no_sb" id="no_sb" size="20" value="<? echo $row['no_sb'];?>">
@@ -207,7 +227,17 @@
 												<div class="form-group" align="left">
 												<label for="comment">Jenis Transaksi</label>
 															<select required class="form-control" name="id_jenistransaksi" value="" style="width: 270px">
-															<option value="">--Pilih--</option>
+															
+															<? $id_jenistransaksi1=$row['id_jenistransaksi'];
+															$data_jenistransaksi = mysql_query("SELECT * FROM kod_jenistransaksi WHERE id_jenistransaksi='$id_jenistransaksi1'") or die(mysql_error());
+															while ($row_jenistransaksi = mysql_fetch_assoc( $data_jenistransaksi )){ ?>
+															
+															<option value="<? echo $row_jenistransaksi['id_jenistransaksi'];?>"><? echo $row_jenistransaksi['jenistransaksi'];?> - <? echo $row_jenistransaksi['jabatan'];?></option>
+															<? }
+															$data1 = mysql_query("SELECT * FROM kod_jenistransaksi") or die(mysql_error());
+															while ($row1 = mysql_fetch_assoc( $data1 )){ ?>
+																<option value="<? echo $row1['id_jenistransaksi'];?>"><? echo $row1['jenistransaksi'];?> - <? echo $row1['jabatan'];?></option>
+															<?}?>
 															
 															</select>
 															</div>
@@ -218,13 +248,18 @@
 												</div>		
 															
 												<div class="form-group">
-													<label for="comment">Diisi Oleh</label>
-													<input type="text" class="form-control" name="keyin_by" id="keyin_by" size="20" value="<? echo $row['tarikhbuka'];?>">
+													<label for="comment">Dikemaskini Oleh</label>
+													<? $ic_pengguna=$_SESSION['user'];
+													$data2 = mysql_query("SELECT * FROM maklumat_pengguna WHERE ic_pengguna = '$ic_pengguna'") or die(mysql_error());
+													$row2 = mysql_fetch_array( $data2 );
+													?>
+													<input type="text" class="form-control" name="edit_by" id="edit_by" size="20" value="<? echo $row2['nama'];?>" readonly>
 												</div>		
 														
 												<div class="form-group" align="left">
 													<label>Diisi Pada</label><br>
-													<input name="tarikh_keyin" type="datetime" class="form-control" value="<? echo $row['tarikh_keyin'];?>" required/>
+													<input name="tarikh_edit" type="datetime-local" class="form-control" required/>
+													
 												</div>
 												
 												 <div class="modal-footer">

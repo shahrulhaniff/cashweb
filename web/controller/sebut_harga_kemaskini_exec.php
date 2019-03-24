@@ -2,78 +2,46 @@
 <?php
     require '../../server.php';
  
-    $ic_lama_pengguna = null;
-    if ( !empty($_GET['ic_lama_pengguna'])) {
-        $ic_lama_pengguna = $_REQUEST['ic_lama_pengguna'];
-    }
-     
-    if ( null==$ic_lama_pengguna ) {
-        header("Location: ../index.php");
-    }
-     
-    if ( !empty($_POST)) {
-        // keep track validation errors
-       $id_jenistransaksiError = null;
-        $namaError = null;
-        $ic_penggunaError = null;
-        $emailError = null;
-        $no_telefonError = null;
-       
-         
+    
         // keep track post values
-       $ic_lama_pengguna = $_POST['ic_lama_pengguna'];
-        $nama = $_POST['nama'];
-        $ic_pengguna = $_POST['ic_pengguna'];
-        $email = $_POST['email'];
-        $no_telefon = $_POST['no_telefon'];
-       
+        $id_kodtransaksi = $_POST['id_kodtransaksi'];
+        $kod_pengguna = $_POST['kod_pengguna'];
+        $no_sb = $_POST['no_sb'];
+        $description = $_POST['description'];
+        $tarikhbuka = $_POST['tarikhbuka'];
+        $tarikhtutup = $_POST['tarikhtutup'];
+        $jam = $_POST['jam']; 
+		$harga = $_POST['harga'];
+        $id_jenistransaksi = $_POST['id_jenistransaksi'];
+        $kelas = $_POST['kelas'];
+        $edit_by = $_POST['edit_by'];
+        $tarikh_edit = $_POST['tarikh_edit'];
          
-        // validate input
-        $valid = true;
-        if (empty($nama)) {
-            $namaError = 'Masukkan nama';
-            $valid = false;
-        }
-         
-		 if (empty($ic_pengguna)) {
-            $ic_penggunaError = 'Masukkan kad pengenalan';
-            $valid = false;
-        }
+        
 		
-         if (empty($email)) {
-            $emailError = 'Masukkan alamat emel';
-            $valid = false;
-        } else if ( !filter_var($email,FILTER_VALIDATE_EMAIL) ) {
-            $emailError = 'Masukkan alamat emel yang betul';
-            $valid = false;
-        }
-         
-        if (empty($no_telefon)) {
-            $no_telefonError = 'Masukkan kad pengenalan';
-            $valid = false;
-        }
-         
-        // update data
-        if ($valid) {
-            $pdo = Database::connect();
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "UPDATE maklumat_pengguna  set nama = '$nama', ic_pengguna = '$ic_pengguna', email = '$email', no_telefon = '$no_telefon' WHERE ic_pengguna = '$ic_lama_pengguna'";
-            $q = $pdo->prepare($sql);
-            $q->execute(array($nama,$ic_pengguna,$email,$no_telefon));
+		
+			
+			$sql="UPDATE kod_transaksi  set id_kodtransaksi = '$id_kodtransaksi', kod_pengguna = '$kod_pengguna', no_sb = '$no_sb', 
+					description = '$description',tarikhbuka = '$tarikhbuka', tarikhtutup = '$tarikhtutup', jam = '$jam', harga = '$harga',
+					id_jenistransaksi = '$id_jenistransaksi', kelas = '$kelas', edit_by = '$edit_by', tarikh_edit = '$tarikh_edit' 
+					WHERE id_kodtransaksi = '$id_kodtransaksi'";
+			$result=mysql_query($sql)or die(mysql_error());
 			
 			
-			//jika ic pengguna juga boleh diedit
-			 $pdo = Database::connect();
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "UPDATE akaun_pengguna  set ic_pengguna = '$ic_pengguna' WHERE ic_pengguna = '$ic_lama_pengguna'";
-            $q = $pdo->prepare($sql);
-            $q->execute(array($ic_pengguna));
+			if($result){
+				echo"<script>alert('Kemaskini berjaya!');document.location.href='../sebut_harga.php';</script>";
+				exit();
 			
-            Database::disconnect();
-			echo"<script>alert('Update Success!');document.location.href='../index.php';</script>";
+			}else {
+				 echo ("<script LANGUAGE='JavaScript'>
+					window.alert('KEmaskini sebut harga tidak berjaya.');
+					window.location.href='../sebut_harga.php';
+					</script>");
+			}
+			echo"<script>alert('Kemaskini berjaya!');document.location.href='../sebut_harga.php';</script>";
             //header("Location: index.php");
-        }
-	}
+        
+
     // else {
         // $pdo = Database::connect();
         // $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
