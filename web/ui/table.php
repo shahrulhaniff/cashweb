@@ -24,9 +24,9 @@
 									<tr class='gradeA'>
 									<form method="post" action="../web/controller/jenis_transaksi_add_exec.php">
 									<td><i class="fa fa-user w3-text-blue w3-large"></i></td>
-									<td><input type="text" class="form-control" name="id_jenistransaksi" id="id_jenistransaksi" size="20" onkeyup=" var start = this.selectionStart;var end = this.selectionEnd; this.value = this.value.toUpperCase();this.setSelectionRange(start, end);"></td>
-									<td><input type="text" class="form-control" name="jenistransaksi" id="jenistransaksi" size="20"></td>
-									<td><input type="text" class="form-control" name="jabatan" id="jabatan" size="20"></td>
+									<td><input type="text" class="form-control" name="id_jenistransaksi" id="id_jenistransaksi" size="20" required onkeyup=" var start = this.selectionStart;var end = this.selectionEnd; this.value = this.value.toUpperCase();this.setSelectionRange(start, end);"></td>
+									<td><input type="text" class="form-control" name="jenistransaksi" id="jenistransaksi" size="20" required></td>
+									<td><input type="text" class="form-control" name="jabatan" id="jabatan" size="20" required></td>
 									<td><!--<input type="text" name="no_telefon" id="no_telefon" size="20">--></td>
 									<td><a><button type="submit" class="btn btn-primary">Tambah</button></a></td>
 									</tr>
@@ -45,7 +45,7 @@
                                             echo "<td>".$info['jabatan'] . " </td>";
 ?><td>
 <form action="QRLogo.php" method="POST" target="_blank"><input type="hidden" name="id_jenistransaksi" value="<?=$info['id_jenistransaksi']?>"><input type="submit" value="Jana Kod QR"></form>
-<form action="senarai_sa.php?jabatan=<?echo $info['jabatan'];?>" method="POST"><input type="hidden" name="id_jenistransaksi" value="<?=$info['id_jenistransaksi']?>"><input type="submit" value="Senarai Sub-Admin"></form>
+<form action="senarai_sa.php" method="POST"><input type="hidden" name="id_jenistransaksi" value="<?=$info['id_jenistransaksi']?>"><input type="hidden" name="jabatan" value="<?=$info['jabatan']?>"><input type="submit" value="Senarai Sub-Admin"></form>
 </td><?
                                             ?>
 											<td>

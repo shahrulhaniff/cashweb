@@ -51,7 +51,7 @@
 											$info2 = mysql_fetch_array( $data2 );
                                             echo "<td>".$info2['nama'] . " </td>";
 
-                                            $i++;?>
+                                            ?>
 											<td>
 											<a class="btn btn-primary" href="read.php?id='.$row['id_kodtransaksi'].'">Info</a>
                                 

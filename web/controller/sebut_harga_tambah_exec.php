@@ -1,0 +1,47 @@
+<?php
+     
+    require '../../server.php';
+   // $jabatan = $_GET['jabatan'];
+	
+	
+        
+        // keep track post values
+        $kod_pengguna = $_POST['kod_pengguna'];
+        $no_sb = $_POST['no_sb'];
+        $description = $_POST['description'];
+        $tarikhbuka = $_POST['tarikhbuka'];
+        $tarikhtutup = $_POST['tarikhtutup'];
+        $jam = $_POST['jam']; 
+		$harga = $_POST['harga'];
+        $id_jenistransaksi = $_POST['id_jenistransaksi'];
+        $kelas = $_POST['kelas'];
+        $keyin_by = $_POST['keyin_by'];
+        $tarikh_keyin = $_POST['tarikh_keyin'];
+         
+       
+        // insert data
+   
+		$sql1="SELECT MAX(id_kodtransaksi) AS id_kodtransaksi FROM kod_transaksi";
+			$result1=mysql_query($sql1);
+			$id_kodtransaksi=mysql_fetch_object($result1)->id_kodtransaksi; 
+			$id_kodtransaksi1=$id_kodtransaksi+1;
+			$sql="INSERT INTO kod_transaksi (id_kodtransaksi,kod_pengguna,no_sb,description,tarikhbuka,tarikhtutup,jam,harga,id_jenistransaksi,kelas,keyin_by,tarikh_keyin) 
+					values('$id_kodtransaksi1','$kod_pengguna','$no_sb','$description','$tarikhbuka','$tarikhtutup','$jam','$harga','$id_jenistransaksi','$kelas','$keyin_by','$tarikh_keyin')";
+			$result=mysql_query($sql)or die(mysql_error());
+			
+			
+			if($result){
+				header("location: ../sebut_harga.php");	
+				exit();
+			
+			}else {
+				 echo ("<script LANGUAGE='JavaScript'>
+					window.alert('Tambah sebut harga tidak berjaya.');
+					window.location.href='../sebut_harga.php';
+					</script>");
+			}
+			// Database::disconnect();
+			// header("location: ../senarai_sa.php?jabatan=$jabatan");	
+			
+       
+?>

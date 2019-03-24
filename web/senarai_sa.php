@@ -7,7 +7,7 @@ if (empty($_SESSION['user'])) {
 
 // baru tambah
 $id = $_POST['id_jenistransaksi'];
-$jabatan = $_GET['jabatan'];
+$jabatan = $_POST['jabatan'];
 
 	
 session_regenerate_id();
@@ -50,9 +50,6 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <h5><a href="index.php"><i class="fa fa-dashboard"></i>Utama</a> / <b><i class="fa fa-laptop"></i>Senarai Sub-Admin</b></h5>
   </header>
 
-  <?
-		
-  ?>
 <!-- Modal Add Sub-Admin -->
  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -75,23 +72,23 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 							
 							 
 							<div class="form-group">
-								<label for="comment">Nama</label>
-								<input type="text" class="form-control" name="nama" id="nama" size="20">
+								<label for="comment">Nama<font color="red">**</font></label>
+								<input type="text" class="form-control" name="nama" id="nama" size="20" required>
 							</div> 
 							
 							<div class="form-group">
-								<label for="comment">Nombor Kad Pengenalan</label>
-								<input type="text" class="form-control" name="ic_pengguna" id="ic_pengguna" size="20">
+								<label for="comment">Nombor Kad Pengenalan<font color="red">**</font></label>
+								<input type="text" class="form-control" name="ic_pengguna" id="ic_pengguna" size="20" required>
 							</div> 
 							
 							<div class="form-group">
-								<label for="comment">Emel</label>
-								<input type="text" class="form-control" name="email" id="email" size="20">
+								<label for="comment">Emel<font color="red">**</font></label>
+								<input type="text" class="form-control" name="email" id="email" size="20"required>
 							</div> 
 							
 							<div class="form-group">
-								<label for="comment">Nombor Telefon</label>
-								<input type="text" class="form-control" name="no_telefon" id="no_telefon" size="20">
+								<label for="comment">Nombor Telefon<font color="red">**</font></label>
+								<input type="text" class="form-control" name="no_telefon" id="no_telefon" size="20"required>
 							</div>		
 									
                   
@@ -141,12 +138,19 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 			<?php // Connects to your Database 
 			 
 			 // $data = mysql_query("SELECT * FROM akaun_pengguna AP, maklumat_pengguna MP, kod_jenistransaksi KJ, kod_jenispengguna KJP WHERE KJ.id_jenistransaksi ='".$id."' AND KJP.jabatan = KJ.jabatan AND AP.kod_pengguna=KJP.kod_pengguna AND MP.ic_pengguna = AP.ic_pengguna") 
-			 $data = mysql_query("SELECT * FROM akaun_pengguna AP, maklumat_pengguna MP, kod_jenistransaksi KJ, kod_jenispengguna KJP 
-									WHERE KJ.id_jenistransaksi ='".$id."'
-									AND KJP.jenis_pengguna = 'sub-admin'
-									AND KJP.jabatan = KJ.jabatan
-									AND AP.kod_pengguna=KJP.kod_pengguna 
-									AND MP.ic_pengguna = AP.ic_pengguna") 
+			 // $data = mysql_query("SELECT * FROM akaun_pengguna AP, maklumat_pengguna MP, kod_jenistransaksi KJ, kod_jenispengguna KJP 
+									// WHERE KJ.id_jenistransaksi ='$id'
+									// AND KJP.jenis_pengguna = 'sub-admin'
+									// AND KJP.jabatan = KJ.jabatan
+									// AND AP.kod_pengguna=KJP.kod_pengguna 
+									// AND MP.ic_pengguna = AP.ic_pengguna") 
+			 
+			$data = mysql_query("SELECT * FROM akaun_pengguna AP, maklumat_pengguna MP, kod_jenispengguna KJP 
+								LEFT JOIN  kod_jenistransaksi KJ ON KJP.jabatan=KJ.jabatan
+								WHERE KJP.jenis_pengguna = 'sub-admin'
+								AND KJ.id_jenistransaksi = '$id'
+								AND AP.kod_pengguna=KJP.kod_pengguna 
+								AND MP.ic_pengguna = AP.ic_pengguna") 
 			 
 					
 			 or die(mysql_error()); ?>
@@ -171,7 +175,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 							<div class="modal-content">
 								<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-								<h4 class="modal-title" align="left" id="myModalLabel">Kemaskini</h4>
+								<h4 class="modal-title" align="left" id="myModalLabel">Kemaskini Maklumat Sub-Admin</h4>
 								</div>
 							
 							<div class="modal-body">
@@ -186,8 +190,8 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 										
 										 
 										<div class="form-group">
-											<label for="comment">Nama</label>
-											<input type="text" class="form-control" name="nama" id="nama" size="20" value="<?php echo $info['nama']; ?>">
+											<label for="comment">Nama<font color="red">**</font></label>
+											<input type="text" class="form-control" name="nama" id="nama" size="20" value="<?php echo $info['nama']; ?>" required>
 										</div> 
 										
 										<div class="form-group">
@@ -196,13 +200,13 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 										</div> 
 										
 										<div class="form-group">
-											<label for="comment">Emel</label>
-											<input type="text" class="form-control" name="email" id="email" size="20" value="<?php echo $info['email']; ?>">
+											<label for="comment">Emel<font color="red">**</font></label>
+											<input type="text" class="form-control" name="email" id="email" size="20" value="<?php echo $info['email']; ?>" required>
 										</div> 
 										
 										<div class="form-group">
-											<label for="comment">Nombor Telefon</label>
-											<input type="text" class="form-control" name="no_telefon" id="no_telefon" size="20" value="<?php echo $info['no_telefon']; ?>">
+											<label for="comment">Nombor Telefon<font color="red">**</font></label>
+											<input type="text" class="form-control" name="no_telefon" id="no_telefon" size="20" value="<?php echo $info['no_telefon']; ?>" required>
 										</div>		
 												
 							  
