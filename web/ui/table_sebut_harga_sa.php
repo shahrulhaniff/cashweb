@@ -159,7 +159,7 @@
 								<?
                                 //echo '<a class="btn btn-danger" href="../web/controller/sebut_harga_delete_exec.php?id='.$row['id_kodtransaksi'].'">Padam</a>';
                                 echo '</td>';
-						
+						echo "</tr>";
 					
 					?>
                                         <!-- Modal Kemaskini-->
@@ -226,7 +226,7 @@
 												
 												<div class="form-group">
 													<label for="comment">Harga (RM)</label>
-													<input type="Number" class="form-control" name="harga" id="harga" size="20" value="<? echo $row['harga'];?>">
+													<input type="Number" class="form-control" step="0.01" name="harga" id="harga" size="20" value="<? echo $row['harga'];?>">
 												</div> 
 												
 												<div class="form-group" align="left">

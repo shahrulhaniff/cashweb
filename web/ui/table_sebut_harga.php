@@ -58,14 +58,14 @@
 												
 												<div class="form-group">
 													<label for="comment">Harga (RM)</label>
-													<input type="Number" class="form-control" name="harga" id="harga" size="20">
+													<input type="number" step="0.01" class="form-control" name="harga" id="harga" size="20">
 												</div> 
 												
 												<div class="form-group" align="left">
 												<label for="comment">Jenis Transaksi</label>
 															<select required class="form-control" name="id_jenistransaksi" value="" style="width: 270px">
 																														<? 
-															$data1 = mysql_query("SELECT * FROM kod_jenistransaksi") or die(mysql_error());
+															$data1 = mysql_query("SELECT * FROM kod_jenistransaksi");
 															while ($row1 = mysql_fetch_assoc( $data1 )){ ?>
 																<option value="<? echo $row1['id_jenistransaksi'];?>"><? echo $row1['jenistransaksi'];?> - <? echo $row1['jabatan'];?></option>
 															<?}?>
@@ -187,7 +187,7 @@
 															<option value="<? echo $row_pengguna['kod_pengguna'];?>"><? echo $row_pengguna['kod_pengguna'];?> ( <? echo $row_pengguna['jenis_pengguna'];?> - <? echo $row_pengguna['jabatan'];?> )</option>
 															
 															<? }
-															$datas = mysql_query("SELECT * FROM kod_jenispengguna") or die(mysql_error());
+															$datas = mysql_query("SELECT * FROM kod_jenispengguna WHERE kod_pengguna!='$kod_pengguna1'") or die(mysql_error());
 															while ($rows = mysql_fetch_assoc( $datas )){ ?>
 																<option value="<? echo $rows['kod_pengguna'];?>"><? echo $rows['kod_pengguna'];?> ( <? echo $rows['jenis_pengguna'];?> - <? echo $rows['jabatan'];?> )</option>
 															<?}?>
@@ -221,7 +221,7 @@
 												
 												<div class="form-group">
 													<label for="comment">Harga (RM)</label>
-													<input type="Number" class="form-control" name="harga" id="harga" size="20" value="<? echo $row['harga'];?>">
+													<input type="number" class="form-control" step="0.01" name="harga" id="harga" size="20" value="<? echo $row['harga'];?>">
 												</div> 
 												
 												<div class="form-group" align="left">
@@ -234,7 +234,7 @@
 															
 															<option value="<? echo $row_jenistransaksi['id_jenistransaksi'];?>"><? echo $row_jenistransaksi['jenistransaksi'];?> - <? echo $row_jenistransaksi['jabatan'];?></option>
 															<? }
-															$data1 = mysql_query("SELECT * FROM kod_jenistransaksi") or die(mysql_error());
+															$data1 = mysql_query("SELECT * FROM kod_jenistransaksi WHERE id_jenistransaksi!='$id_jenistransaksi1'") or die(mysql_error());
 															while ($row1 = mysql_fetch_assoc( $data1 )){ ?>
 																<option value="<? echo $row1['id_jenistransaksi'];?>"><? echo $row1['jenistransaksi'];?> - <? echo $row1['jabatan'];?></option>
 															<?}?>

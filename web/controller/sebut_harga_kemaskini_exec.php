@@ -37,12 +37,11 @@
 			
 			}else {
 				 echo ("<script LANGUAGE='JavaScript'>
-					window.alert('KEmaskini sebut harga tidak berjaya.');
+					window.alert('Kemaskini sebut harga tidak berjaya.');
 					window.location.href='../sebut_harga.php';
 					</script>");
 			}
-			echo"<script>alert('Kemaskini berjaya!');document.location.href='../sebut_harga.php';</script>";
-            //header("Location: index.php");
+			
         
 
     // else {
