@@ -1,7 +1,6 @@
-
-
-						<!-- Modal Add Sebut Harga -->
-					 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!--
+							<!-- Modal Add Sebut Harga -->
+	<!--				 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 									<div class="modal-dialog">
 									
 									<div class="modal-content">
@@ -20,7 +19,7 @@
 													 
 													<!-- <input type="hidden" name="id_kodtransaksi" id="id_kodtransaksi" class="form-control" value="<? echo $id;?>" readonly />-->
 												
-												 <div class="form-group" align="left">
+	<!--											 <div class="form-group" align="left">
 												<label for="comment">Kod Pengguna</label>
 															<select required class="form-control" name="kod_pengguna" value="" style="width: 270px">
 															<? 
@@ -86,32 +85,32 @@
 													?>
 													<input type="text" class="form-control" name="keyin_by" id="keyin_by" size="20" value="<? echo $row2['nama'];?>" readonly>
 													<!--<span> : <? echo $row2['nama'];?></span>-->
-												</div>		
+	<!--											</div>		
 														
 												<!--<div class="form-group" align="left">
 													<label>Diisi Pada</label><br>
 													<input name="tarikh_keyin" type="datetime-local" class="form-control" value="<? echo $row['tarikh_keyin'];?>" readonly >
 												</div>
 												-->
-												 <div class="modal-footer">
+	<!--											 <div class="modal-footer">
 													   <button type="submit" class="btn btn-primary" >Simpan</button>
 													   <button type="reset" class="btn btn-info">Tetapan Semula</button>
 												 </div>
 							 
 							 </form>
 									</div><!--modal-body-->
-							
+	<!--						
 									</div>
 							<!-- /.modal-content -->
-							</div><!-- /.modal-dialog -->
-							</div>
+	<!--						</div><!-- /.modal-dialog -->
+	<!--						</div>
 							</div><!-- /.modal -->
-							
+						
 <!---------------------------------------------------------------------------------------->							
 <div class="col-md-12">
-			<div align="right">
+				<!--<div align="right">
 							<button class="btn btn-primary" data-toggle="modal"  data-target="#myModal">Tambah Sebut Harga</button></a> <br>
-			</div>
+			</div>-->
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -131,7 +130,13 @@
                                     </thead>
                                     <tbody>
 									<?php
-						$data = mysql_query("SELECT * FROM kod_transaksi ORDER BY kod_pengguna DESC") 
+									$sql1="SELECT kod_pengguna FROM akaun_pengguna
+											WHERE ic_pengguna='$pengguna'";
+			$result1=mysql_query($sql1);
+			$kod_pengguna=mysql_fetch_object($result1)->kod_pengguna; 
+			
+			
+						$data = mysql_query("SELECT * FROM kod_transaksi WHERE kod_pengguna='$kod_pengguna'") 
 						or die(mysql_error());
 						$i=1;
 						while($row = mysql_fetch_array( $data )) {

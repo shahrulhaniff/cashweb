@@ -12,10 +12,19 @@
       <img src="imgs/nopic.png" class="w3-circle w3-margin-right" style="width:46px">
     </div>
     <div class="w3-col s8 w3-bar">
+	<?if ($_SESSION['USER_TYPE']=='admin') {?>  
       <span>Selamat Datang, <strong>Admin</strong></span><br>
-      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
+	   <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
       <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
       <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
+	  <?}
+	if ($_SESSION['USER_TYPE']=='sub-admin') {?>  
+	<span>Selamat Datang, <strong>Sub Admin</strong></span><br>
+	<a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
+      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
+      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
+	<?}?>
+      
     </div>
   </div>
   <hr>
@@ -23,12 +32,24 @@
     <h5>Dashboard</h5>
   </div>
   <div class="w3-bar-block">
-    <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
+  <?if ($_SESSION['USER_TYPE']=='') {?>
+		<a href="../login.php"></a>
+  <?}
+	if ($_SESSION['USER_TYPE']=='admin') {?>  
+	<a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
     <!--<a href="index.php" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw active"></i>  Utama</a>-->
     <a href="index.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw active"></i>  Utama</a>
     <!--<a href="index.php" data-toggle="pill"class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>  Utama</a>-->
     <a href="sebut_harga.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-folder-open fa-fw"></i> Sebut Harga</a>
     <a href="pengurusan_dokumen.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Pengurusan Dokumen</a>
-    <a href="logout.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-sign-out fa-fw"></i>  Log Keluar</a><br><br>
+  <?}
+	if ($_SESSION['USER_TYPE']=='sub-admin') {?>  
+	<a href="index_sa.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw active"></i>  Utama</a>
+	<a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Yuran</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-folder-open fa-fw"></i> Sebut Harga</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Derma</a>
+	<?}?>  
+	<a href="logout.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-sign-out fa-fw"></i>  Log Keluar</a><br><br>
+  
   </div>
 </nav>

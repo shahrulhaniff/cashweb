@@ -1,13 +1,13 @@
 <?
 session_start();
 include "../server.php";
-
+$pengguna=$_SESSION['user'];
 if (empty($_SESSION['user'])) {
 	header('Location:login.php'); }
 ?>
 <!DOCTYPE html>
 <html>
-<title>Laman Admin</title>
+<title>Laman Sub Admin</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -90,7 +90,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <div class="w3-row-padding" style="margin:0 -16px">
 
    
-<? include "ui/table.php"; ?>
+<? include "ui/table_sebut_harga_sa.php"; ?>
   </div>
   </div>
   

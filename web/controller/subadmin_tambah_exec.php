@@ -82,54 +82,65 @@
             // $q = $pdo->prepare($sql);
             // $q->execute(array($ic_pengguna,$kod_pengguna,$pwd,$status_aktif));
 			
+			//checking exist user
+			$sql = "SELECT COUNT(ic_pengguna) AS countNokp FROM akaun_pengguna WHERE ic_pengguna='$ic_pengguna'";
+			$result=mysql_query($sql);
+			$countNokp=mysql_fetch_object($result) ->countNokp;						 
+						 
+			if($countNokp=='0'){
 			
-			$sql1="SELECT MAX(KJ.jabatan) AS jabatan 
-						FROM kod_jenistransaksi KT 
-						LEFT JOIN kod_jenispengguna KJ ON KT.jabatan = KJ.jabatan 
-						WHERE KJ.jabatan='$jabatan' AND KJ.jenis_pengguna='sub-admin'";
-			$result1=mysql_query($sql1);
-			$jabatan2=mysql_fetch_object($result1)->jabatan; 
-			
-			$sql2="SELECT kod_pengguna FROM kod_jenispengguna
-						WHERE jabatan='$jabatan2' AND jenis_pengguna='sub-admin'";
-			$result2=mysql_query($sql2);
-			$kod_pengguna=mysql_fetch_object($result2)->kod_pengguna; 
-			
-			
-			
-			$sql3="INSERT INTO maklumat_pengguna (ic_pengguna,nama,email,no_telefon) values('$ic_pengguna','$nama','$email','$no_telefon')";
-			$result3=mysql_query($sql3)or die(mysql_error());
-			
-			$sql4 = "INSERT INTO akaun_pengguna (ic_pengguna,kod_pengguna,pwd,status_aktif) values('$ic_pengguna','$kod_pengguna','$ic_pengguna','yes')";
-			$result4=mysql_query($sql4)or die(mysql_error());
+				$sql1="SELECT MAX(KJ.jabatan) AS jabatan 
+							FROM kod_jenistransaksi KT 
+							LEFT JOIN kod_jenispengguna KJ ON KT.jabatan = KJ.jabatan 
+							WHERE KJ.jabatan='$jabatan' AND KJ.jenis_pengguna='sub-admin'";
+				$result1=mysql_query($sql1);
+				$jabatan2=mysql_fetch_object($result1)->jabatan; 
+				
+				$sql2="SELECT kod_pengguna FROM kod_jenispengguna
+							WHERE jabatan='$jabatan2' AND jenis_pengguna='sub-admin'";
+				$result2=mysql_query($sql2);
+				$kod_pengguna=mysql_fetch_object($result2)->kod_pengguna; 
+				
+				
+				
+				$sql3="INSERT INTO maklumat_pengguna (ic_pengguna,nama,email,no_telefon) values('$ic_pengguna','$nama','$email','$no_telefon')";
+				$result3=mysql_query($sql3);
+				
+				$sql4 = "INSERT INTO akaun_pengguna (ic_pengguna,kod_pengguna,pwd,status_aktif) values('$ic_pengguna','$kod_pengguna','$ic_pengguna','yes')";
+				$result4=mysql_query($sql4);
 
-			//send email
-			$mail->setFrom('Username', 'Cashless Web');
-			$mail->addAddress($email);   // Add a recipient
+				//send email
+				$mail->setFrom('Username', 'Cashless Web');
+				$mail->addAddress($email);   // Add a recipient
 
-			$mail->isHTML(true);  // Set email format to HTML
+				$mail->isHTML(true);  // Set email format to HTML
 
-			$bodyContent = '<h1>You now can access Cashless Apps</h1>';
-			$bodyContent .= '<p>This is your access data:</p>
-							<p>Username : '.$ic_pengguna.'</p>
-							<p>Password :'.$ic_pengguna.'</p>
-							<p></p>
-							<p>Your can change password after access Cashless Mobile Apps</p>';
+				$bodyContent = '<h1>You now can access Cashless Apps</h1>';
+				$bodyContent .= '<p>This is your access data:</p>
+								<p>Username : '.$ic_pengguna.'</p>
+								<p>Password :'.$ic_pengguna.'</p>
+								<p></p>
+								<p>Your can change password after access Cashless Mobile Apps</p>';
 
-			$mail->Subject = '';
-			$mail->Body    = $bodyContent;
+				$mail->Subject = '';
+				$mail->Body    = $bodyContent;
 
-			if(!$mail->send()) {
-				echo 'Message could not be sent.';
-				echo 'Mailer Error: ' . $mail->ErrorInfo;
-			} 
-			else {
-				echo 'Message has been sent';
-				echo"<script>alert('Registration Success!!!');document.location.href='../senarai_sa.php?jabatan=$jabatan';</script>";
-			}
-			
+				if(!$mail->send()) {
+					echo 'Message could not be sent.';
+					echo 'Mailer Error: ' . $mail->ErrorInfo;
+				} 
+				else {
+					echo 'Message has been sent';
+					echo"<script>alert('Registration Success!!!');document.location.href='../senarai_sa.php?jabatan=$jabatan';</script>";
+				}
+				
 
-			
+		}else{
+			 echo ("<script LANGUAGE='JavaScript'>
+					window.alert('tambah sub admin tidak berjaya. Nombor kad pengenalan sudah wujud di dalam sistem.');
+					window.location.href='../index.php';
+					</script>");
+		}
 			// Database::disconnect();
 			// header("location: ../senarai_sa.php?jabatan=$jabatan");	
 			//header("location: ../index.php");	

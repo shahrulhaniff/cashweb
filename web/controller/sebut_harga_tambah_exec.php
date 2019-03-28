@@ -3,7 +3,9 @@
     require '../../server.php';
    // $jabatan = $_GET['jabatan'];
 	
-	
+	date_default_timezone_set("Asia/Kuala_Lumpur");
+	$date = new DateTime();
+	$current_date=$date->format('Y-m-d h:i:s');
         
         // keep track post values
         $kod_pengguna = $_POST['kod_pengguna'];
@@ -16,7 +18,7 @@
         $id_jenistransaksi = $_POST['id_jenistransaksi'];
         $kelas = $_POST['kelas'];
         $keyin_by = $_POST['keyin_by'];
-        $tarikh_keyin = $_POST['tarikh_keyin'];
+       // $tarikh_keyin = $_POST['tarikh_keyin'];
          
        
         // insert data
@@ -26,7 +28,7 @@
 			$id_kodtransaksi=mysql_fetch_object($result1)->id_kodtransaksi; 
 			$id_kodtransaksi1=$id_kodtransaksi+1;
 			$sql="INSERT INTO kod_transaksi (id_kodtransaksi,kod_pengguna,no_sb,description,tarikhbuka,tarikhtutup,jam,harga,id_jenistransaksi,kelas,keyin_by,tarikh_keyin) 
-					values('$id_kodtransaksi1','$kod_pengguna','$no_sb','$description','$tarikhbuka','$tarikhtutup','$jam','$harga','$id_jenistransaksi','$kelas','$keyin_by','$tarikh_keyin')";
+					values('$id_kodtransaksi1','$kod_pengguna','$no_sb','$description','$tarikhbuka','$tarikhtutup','$jam','$harga','$id_jenistransaksi','$kelas','$keyin_by','$current_date')";
 			$result=mysql_query($sql)or die(mysql_error());
 			
 			
