@@ -1,34 +1,37 @@
 --
 -- Database: cashless
 --
--- DROP DATABASE id9050021_cashless;
--- CREATE DATABASE id9050021_cashless;
-USE id9050021_cashless;
+DROP DATABASE cashless;
+CREATE DATABASE cashless;
+USE cashless;
 -- --------------------------------------------------------
 
 --
 -- Table structure for table user_account
 --
 CREATE TABLE kod_jenispengguna(
-  kod_pengguna varchar(12) NOT NULL,
-  jenis_pengguna varchar(10) NOT NULL,
-  jabatan varchar(40) NULL,
+  kod_pengguna VARCHAR(12) NOT NULL,
+  jenis_pengguna VARCHAR(10) NOT NULL,
+  jabatan VARCHAR(40) NULL,
+  created_date TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (kod_pengguna)
 );
 
 CREATE TABLE maklumat_pengguna (
-  ic_pengguna varchar(12) NOT NULL,
-  nama varchar(100) NOT NULL,
-  email varchar(40) NOT NULL,
-  no_telefon varchar(20),
+  ic_pengguna VARCHAR(12) NOT NULL,
+  nama VARCHAR(100) NOT NULL,
+  email VARCHAR(40) NOT NULL,
+  no_telefon VARCHAR(20),
+  created_date TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (ic_pengguna)
 );
 
 CREATE TABLE akaun_pengguna (
-  ic_pengguna varchar(12) NOT NULL,
-  kod_pengguna varchar(10) NOT NULL,
-  pwd varchar(40) NOT NULL,
-  status_aktif varchar(5),
+  ic_pengguna VARCHAR(12) NOT NULL,
+  kod_pengguna VARCHAR(10) NOT NULL,
+  pwd VARCHAR(40) NOT NULL,
+  status_aktif VARCHAR(5),
+  created_date TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (ic_pengguna,kod_pengguna),
   FOREIGN KEY (kod_pengguna) REFERENCES kod_jenispengguna (kod_pengguna),
   FOREIGN KEY (ic_pengguna) REFERENCES maklumat_pengguna (ic_pengguna)
@@ -59,45 +62,48 @@ INSERT INTO akaun_pengguna (ic_pengguna,kod_pengguna,pwd,status_aktif) VALUES
 --
 
 CREATE TABLE kod_jenistransaksi (
-  id_jenistransaksi varchar(12) NOT NULL,
-  jenistransaksi varchar(100) NOT NULL,
-  jabatan varchar(40) NOT NULL,
+  id_jenistransaksi VARCHAR(12) NOT NULL,
+  jenistransaksi VARCHAR(100) NOT NULL,
+  jabatan VARCHAR(40) NOT NULL,
+  created_date TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id_jenistransaksi)
   );
 
 CREATE TABLE kod_transaksi (
-  id_kodtransaksi int(10) NOT NULL AUTO_INCREMENT,
-  kod_pengguna varchar(10) NOT NULL,
-  no_sb varchar(100) NOT NULL,
-  description varchar(300) NOT NULL,
-  tarikhbuka date NOT NULL,
-  tarikhtutup date NOT NULL,
-  jam time NOT NULL,
-  harga float(10,2) NOT NULL,
-  id_jenistransaksi varchar(12) NOT NULL,
-  kelas varchar(10) NOT NULL,
-  keyin_by varchar(100) NOT NULL,
-  tarikh_keyin datetime NOT NULL,
-  edit_by varchar(100) NULL,
-  tarikh_edit datetime NULL,
+  id_kodtransaksi INT(10) NOT NULL AUTO_INCREMENT,
+  kod_pengguna VARCHAR(10) NOT NULL,
+  no_sb VARCHAR(100) NOT NULL,
+  description VARCHAR(300) NOT NULL,
+  tarikhbuka DATE NOT NULL,
+  tarikhtutup DATE NOT NULL,
+  jam TIME NOT NULL,
+  harga FLOAT(10,2) NOT NULL,
+  id_jenistransaksi VARCHAR(12) NOT NULL,
+  kelas VARCHAR(10) NOT NULL,
+  keyin_by VARCHAR(100) NOT NULL,
+  tarikh_keyin DATETIME NOT NULL,
+  edit_by VARCHAR(100) NULL,
+  tarikh_edit DATETIME NULL,
+  created_date TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id_kodtransaksi),
   FOREIGN KEY (kod_pengguna) REFERENCES kod_jenispengguna (kod_pengguna),
   FOREIGN KEY (id_jenistransaksi) REFERENCES kod_jenistransaksi (id_jenistransaksi)
 );
 
 CREATE TABLE transaksi (
-  id_transaksi int(10) NOT NULL AUTO_INCREMENT,
-  ic_pengguna varchar(12) NOT NULL,
-  id_kodtransaksi int(10) NOT NULL,
-  id_jenistransaksi varchar(10) NOT NULL,
-  tarikh datetime NOT NULL,
-  jumlah float(10,2) NOT NULL,
-  daripada varchar(12) NOT NULL,
-  kepada varchar(12) NOT NULL,
-  statustransaction varchar(50) NOT NULL,
-  status_dokumen varchar(50) NOT NULL,
-  doc_acceptby varchar(50) NULL,
-  doc_giveby varchar(50) NULL,
+  id_transaksi INT(10) NOT NULL AUTO_INCREMENT,
+  ic_pengguna VARCHAR(12) NOT NULL,
+  id_kodtransaksi INT(10) NOT NULL,
+  id_jenistransaksi VARCHAR(10) NOT NULL,
+  tarikh DATETIME NOT NULL,
+  jumlah FLOAT(10,2) NOT NULL,
+  daripada VARCHAR(12) NOT NULL,
+  kepada VARCHAR(12) NOT NULL,
+  statustransaction VARCHAR(50) NOT NULL,
+  status_dokumen VARCHAR(50) NOT NULL,
+  doc_acceptby VARCHAR(50) NULL,
+  doc_giveby VARCHAR(50) NULL,
+  created_date TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id_transaksi),
   FOREIGN KEY (ic_pengguna) REFERENCES akaun_pengguna (ic_pengguna),
   FOREIGN KEY (id_kodtransaksi) REFERENCES kod_transaksi (id_kodtransaksi),

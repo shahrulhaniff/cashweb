@@ -6,14 +6,21 @@ if (empty($_SESSION['user'])) {
 	header('Location:login.php'); }
 
 // baru tambah
+if (empty($_SESSION['id']))  {
 $id = $_POST['id_jenistransaksi'];
 $jabatan = $_POST['jabatan'];
 
-	
-session_regenerate_id();
-		$_SESSION['ID-JENISTRANSAKSI'] =$id;
-		session_write_close();
-		
+//session_regenerate_id();
+//$_SESSION['ID-JENISTRANSAKSI'] =$id;
+//session_write_close();
+
+$_SESSION['id']=$_POST['id_jenistransaksi']; 
+$_SESSION['jabatan']=$_POST['jabatan']; 
+}
+else {
+	$id = $_SESSION['id'];
+	$_POST['jabatan'] = $_SESSION['jabatan']; 
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -62,7 +69,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
                 
                 <div class="modal-body">
                 
-                <form method="post" action="../web/controller/subadmin_tambah_exec.php?jabatan=<?echo $jabatan;?>">     
+                <form method="post" action="../web/controller/subadmin_tambah_exec.php?jabatan=<?echo $_POST['jabatan'];?>">     
                          <div class="form-group" align="left">
                             
 							<label><font color="red">** Maklumat Wajib Diisi.</font></label>
@@ -118,7 +125,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 								<!-- Advanced Tables -->
 								<div class="panel panel-default">
 									<div class="panel-heading">
-										 Senarai Sub-Admin <?echo $jabatan;?>
+										 Senarai Sub-Admin <?echo $_POST['jabatan'];?>
 									</div>
 									<div class="panel-body">
 										<div class="table-responsive">

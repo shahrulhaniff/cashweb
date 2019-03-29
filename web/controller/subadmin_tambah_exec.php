@@ -28,6 +28,7 @@
         $id_jenistransaksi = $_POST['id_jenistransaksi'];
         $nama = $_POST['nama'];
         $ic_pengguna = $_POST['ic_pengguna'];
+        $ic_pengguna2 = md5($_POST['ic_pengguna']);
         $email = $_POST['email'];
         $no_telefon = $_POST['no_telefon'];
          
@@ -104,10 +105,19 @@
 				
 				
 				$sql3="INSERT INTO maklumat_pengguna (ic_pengguna,nama,email,no_telefon) values('$ic_pengguna','$nama','$email','$no_telefon')";
-				$result3=mysql_query($sql3);
+				$result3=mysql_query($sql3) or die(mysql_error());
 				
-				$sql4 = "INSERT INTO akaun_pengguna (ic_pengguna,kod_pengguna,pwd,status_aktif) values('$ic_pengguna','$kod_pengguna','$ic_pengguna','yes')";
-				$result4=mysql_query($sql4);
+?>				
+<script>
+window.onunload = refreshParent;
+function refreshParent() {
+	self.opener.location.reload();
+}
+</script>
+<? 
+			
+				$sql4 = "INSERT INTO akaun_pengguna (ic_pengguna,kod_pengguna,pwd,status_aktif) values('$ic_pengguna','$kod_pengguna','$ic_pengguna2','yes')";
+				$result4=mysql_query($sql4) or die (mysql_error());
 
 				//send email
 				$mail->setFrom('Username', 'Cashless Web');
@@ -130,10 +140,9 @@
 					echo 'Mailer Error: ' . $mail->ErrorInfo;
 				} 
 				else {
-					echo 'Message has been sent';
+					//echo 'Message has been sent';
 					echo"<script>alert('Registration Success!!!');document.location.href='../senarai_sa.php?jabatan=$jabatan';</script>";
 				}
-				
 
 		}else{
 			 echo ("<script LANGUAGE='JavaScript'>

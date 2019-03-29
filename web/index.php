@@ -4,6 +4,10 @@ include "../server.php";
 
 if (empty($_SESSION['user'])) {
 	header('Location:login.php'); }
+	
+unset($_SESSION['id']);
+unset($_SESSION['jabatan']);
+	
 ?>
 <!DOCTYPE html>
 <html>

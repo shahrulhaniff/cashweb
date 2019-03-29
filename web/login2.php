@@ -3,7 +3,7 @@ session_start();
 include "../server.php";
 
 $usr = $_POST['usr'];
-$pwd = $_POST['pwd'];
+$pwd = md5($_POST['pwd']);
 
 $qry="SELECT * FROM akaun_pengguna WHERE ic_pengguna='$usr' and pwd='$pwd'"; 
 $result=mysql_query($qry) or die(mysql_error());
