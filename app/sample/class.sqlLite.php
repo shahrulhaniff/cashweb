@@ -1,19 +1,20 @@
 <?php
-
+session_start();
 class SimpanHash {
-    var $db;
+    //var $db;
 
-    function __construct() {
-        $this->db = new SQLite3('mysqlitedb.db');
-        $this->db->exec('CREATE TABLE IF NOT EXISTS hashTable (id INTEGER PRIMARY KEY, hashing STRING, dt DATE)');
-    }
+    // function __construct() {
+        // $this->db = new SQLite3('mysqlitedb.db');
+        // $this->db->exec('CREATE TABLE IF NOT EXISTS hashTable (id INTEGER PRIMARY KEY, hashing STRING, dt DATE)');
+    // }
     function tambahHash($hash) {
         if ($this->checkHash($hash) == 0) {
-            $this->db->exec("INSERT INTO hashTable (hashing, dt) VALUES ('$hash', date('now'))");    
+            //$this->db->exec("INSERT INTO hashTable (hashing, dt) VALUES ('$hash', date('now'))");  
+			$_SESSION['hashing'] = $hash;
         }
     }
     function checkHash($hash) {
-        $stmt = $this->db->prepare("SELECT hashing,dt FROM hashTable WHERE hashing=:hs");
+        /*$stmt = $this->db->prepare("SELECT hashing,dt FROM hashTable WHERE hashing=:hs");
         $stmt->bindValue(':hs',$hash,SQLITE3_TEXT);
         $result = $stmt->execute();
         // var_dump($result->fetchArray());
@@ -21,23 +22,31 @@ class SimpanHash {
         if (!$data)
             return 0;
         else
-            return count($data);
+			return count($data); */
         // return ($data != '');
+		if (empty($_SESSION['hashing'])) {
+			return 0;
+		}
+		else {
+			return count($_SESSION['hashing']);
+		}
     }
     function viewList() {
-        $stmt = $this->db->prepare("SELECT hashing,dt FROM hashTable");
+        /*$stmt = $this->db->prepare("SELECT hashing,dt FROM hashTable");
         // $stmt->bindValue(':hs',$hash,SQLITE3_TEXT);
         $result = $stmt->execute();
         $data = $result->fetchArray(SQLITE3_ASSOC);
-        print_r($data);
+        print_r($data); */
        /* foreach($data as $val) {
             echo "<pre>";
             print_r($val);
             echo "</pre>";
         }*/
+		echo $_SESSION['hashing'];
     }
     function flush() {
-        $rs = $this->db->exec("DELETE FROM hashTable");
+		unset($_SESSION['hashing']);
+        /*$rs = $this->db->exec("DELETE FROM hashTable");*/
         //echo $rs;
         // $stmt->bindValue(':hs',$hash,SQLITE3_TEXT);
         // $result = $this->db->exec("DELETE FROM hashTable");

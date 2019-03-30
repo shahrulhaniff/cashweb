@@ -1,15 +1,27 @@
 <?php
+session_start();
+if (!empty($_SESSION['USER'])) {
+unset($_SESSION['hashing']);
+unset($_SESSION['USER']);
+unset($_SESSION['IDK']);
+unset($_SESSION['IDJT']);
+unset($_SESSION['PA']);
+}
+
     require("class.vpcGenerateLink.php");
     //$byrn_array = array('0.01','0.10','0.20');
     //$vpc  = new vpcGenerateLink("prod","Payment Sample",'PC KOD SAMPLE','https://epayment.unisza.edu.my/sample/sample_finish.php',$byrn_array);
     // yg ni unkomen $vpc  = new vpcGenerateLink("prod","Payment Sample",'PC KOD SAMPLE','https://epayment.unisza.edu.my/langlit_finish.php',$byrn_array);
-    $vpc  = new vpcGenerateLink("prod","Payment Sample",'PC KOD SAMPLE','https://epayment.unisza.edu.my/sample/sample_finish.php');
+    //$vpc  = new vpcGenerateLink("prod","Payment Sample",'PC KOD SAMPLE','https://epayment.unisza.edu.my/sample/sample_finish.php');
+    $vpc  = new vpcGenerateLink("prod","Payment Sample",'CASHLESS-APP','https://cashless123.000webhostapp.com/app/sample/sample_finish.php');
+    //$vpc  = new vpcGenerateLink("prod","Payment Sample",'CASHLESS-APP','http://localhost/cashweb/app/sample/sample_finish.php');
+    //$vpc  = new vpcGenerateLink("prod","Payment Sample",'PC KOD SAMPLE','http://myraxsoft.com/cashless/app/sample/sample_finish.php');
     $vpc->processSubmit();
 
     // kat kalau boleh page ni simpan user,
     // simpan apa yg disubmit untuk rujukan 
 	
-include "../server.php";
+include "../../server.php";
  
   $cn = $_GET['cn'];
   $ced = $_GET['ced'];
@@ -23,8 +35,15 @@ include "../server.php";
  or die(mysql_error());
  $info = mysql_fetch_array( $data );
  $id_jenistransaksi = $info['id_jenistransaksi'];
- $tarikh =date('Y-m-d h:i:s');
 
+ 
+ $_SESSION['USER']	= $user;
+ $_SESSION['IDK']	= $idk;
+ $_SESSION['IDJT'] 	= $id_jenistransaksi;
+ $_SESSION['PA']	= $pa;
+ $tarikh 			=date('Y-m-d h:i:s');
+ 
+ 
 //--------------------------------------------------------------------------------------------
 //_______________________________[SERVER]_ADD EVENT___________________________________________
 //--------------------------------------------------------------------------------------------

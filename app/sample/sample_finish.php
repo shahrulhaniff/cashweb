@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 //https://epayment.unisza.edu.my/sample/sample_finish.php?Title=Payment+Sample&vpc_3DSECI=02&vpc_3DSXID=aWsZV2oQ%2BQ7Q5ngA5ltGQ1YFlYA%3D&vpc_3DSenrolled=Y&vpc_3DSstatus=Y&vpc_AVSRequestCode=Z&vpc_AVSResultCode=Unsupported&vpc_AcqAVSRespCode=Unsupported&vpc_AcqCSCRespCode=M&vpc_AcqResponseCode=00&vpc_Amount=1&vpc_AuthorizeId=727337&vpc_BatchNo=20190318&vpc_CSCResultCode=M&vpc_Card=MC&vpc_Command=pay&vpc_Currency=MYR&vpc_Locale=en&vpc_MerchTxnRef=PC+KOD+SAMPLE-1234&vpc_Merchant=10701100006&vpc_Message=Approved&vpc_OrderInfo=0&vpc_ReceiptNo=907710370666&vpc_SecureHash=0D2E5C10866166C3D02ECD8C89DC2CB9FACE2CDE6DD251C80E7EC8C2FD54994F&vpc_SecureHashType=SHA256&vpc_TransactionNo=2070000701&vpc_TxnResponseCode=0&vpc_VerSecurityLevel=05&vpc_VerStatus=Y&vpc_VerToken=jDXMJPFbWCuJCBEFkBaIARcAAAA%3D&vpc_VerType=3DS&vpc_Version=1
 
@@ -15,6 +16,7 @@ require_once("class.sqlLite.php");
 // set a flag to indicate if hash has been validated
 $errorExists = false;
 
+$event1 = 'Cashless';
 $ch = new SimpanHash();
 $vpc = new vpcVerifyPayment('prod');
 
@@ -61,7 +63,8 @@ if (strlen($vpc->SECURE_SECRET) > 0 &&
      $orderInfo = $vpc->null2known($_GET["vpc_OrderInfo"]);
      $receiptNo = $vpc->null2known($_GET["vpc_ReceiptNo"]);
      $merchantID = $vpc->null2known($_GET["vpc_Merchant"]);
-     $authorizeID = $vpc->null2known($_GET["vpc_AuthorizeId"]);
+     //$authorizeID = $vpc->null2known($_GET["vpc_AuthorizeId"]);
+     $authorizeID = 'none';
      $merchTxnRef = $vpc->null2known($_GET["vpc_MerchTxnRef"]);
      $transactionNo = $vpc->null2known($_GET["vpc_TransactionNo"]);
      $acqResponseCode = $vpc->null2known($_GET["vpc_AcqResponseCode"]);
@@ -134,7 +137,6 @@ if ($vpc->compareHash() == 1 && !$adaDalamDb && $txnResponseCode==0 && $message=
 
     $refidExt=explode("-",$merchTxnRef);
     $refid=$refidExt[count($refidExt)-1];
-
     ####
     // simpan ke table bayaran -- bayaran diterima + success
 
@@ -185,10 +187,10 @@ if ($vpc->compareHash() == 1 && !$adaDalamDb && $txnResponseCode==0 && $message=
     https://epayment.unisza.edu.my/epayment_finish.php?receiptNo=$receiptNo";
 
     $name = "recepient";
-    if ($debug) {
-        $email = $emel_debug;
-        // send_email($subj,$body,$email, $email);
-    }
+    // if ($debug) {
+        // $email = $emel_debug;
+        // // send_email($subj,$body,$email, $email);
+    // } 
 
     
 }
@@ -199,7 +201,7 @@ $page = array();
 
 $page['title'] = "$title - $errorTxt $event1 E-Payment Response";
 $page['event'] = $event1;
-$page['linkevent'] = "$event.php";
+$page['linkevent'] = "event.php";
 $page['successtitle'] = $title;
 $page['successtitle2'] = $title2;
 $page['success'] = $success;
@@ -237,4 +239,39 @@ $page['authStatus'] = $authStatus;
 echo "<pre>";
 print_r($page);
 echo "</pre>";
+
+echo "<h1>You May Close This Payment Browser and continue to app</h1>";
+
+
+
+
+
+
+//--------------------------------------------------------------------------------------------
+//_______________________________[SERVER]_ADD EVENT___________________________________________
+//--------------------------------------------------------------------------------------------
+
+
+	$user				= $_SESSION['USER'];
+ 	$idk				= $_SESSION['IDK'];
+  	$id_jenistransaksi	= $_SESSION['IDJT'];
+ 	$pa					= $_SESSION['PA'];
+	$tarikh 			= date('Y-m-d h:i:s');
+	
+	echo $message;
+
+//$sqlP="INSERT INTO transaksi (ic_pengguna,id_kodtransaksi,id_jenistransaksi,tarikh,jumlah,daripada,kepada,statustransaction,status_dokumen) VALUES ('$user','$idk','$id_jenistransaksi','$tarikh','$pa','$user','TEST','$message','NO')";
+//$resultP=mysql_query($sqlP)or die(mysql_error());
+
+
+
+
+
+
+
+
+
+
+
+
 ?>

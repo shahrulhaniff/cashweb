@@ -10,7 +10,7 @@
    // Attempt to query database table and retrieve data
    try {
 	  
-      $stmt 	= $pdo->query('SELECT * FROM transaksi WHERE ic_pengguna="'.$id.'" ORDER BY tarikh ASC');
+      $stmt 	= $pdo->query('SELECT * FROM transaksi WHERE ic_pengguna="'.$id.'" AND statustransaction="Approved" ORDER BY tarikh ASC');
       while($row  = $stmt->fetch(PDO::FETCH_OBJ))
       {
          // Assign each row of data to associative array
