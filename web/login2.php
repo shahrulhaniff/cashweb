@@ -5,7 +5,7 @@ include "../server.php";
 $usr = $_POST['usr'];
 $pwd = md5($_POST['pwd']);
 
-$qry="SELECT * FROM akaun_pengguna WHERE ic_pengguna='$usr' and pwd='$pwd'"; 
+$qry="SELECT * FROM akaun_pengguna WHERE ic_pengguna='$usr' and pwd='$pwd' AND kod_pengguna!='1'"; 
 $result=mysql_query($qry) or die(mysql_error());
 	
 if($result) {
@@ -25,9 +25,10 @@ if($result) {
 				$_SESSION['USER_TYPE'] = $row2['jenis_pengguna'];
 				
 					//Go to home page
-					if ($_SESSION['USER_TYPE'] == 'user') {
+					 if ($_SESSION['USER_TYPE'] == 'user') {
 						header("location: logout.php");//echo $position;
-					}
+						//header("location: index_sa.php");
+					 }
 					
 					else if ($_SESSION['USER_TYPE'] == 'admin'){
 						header("location: index.php");
