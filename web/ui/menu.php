@@ -11,15 +11,22 @@
     <div class="w3-col s4">
       <img src="imgs/nopic.png" class="w3-circle w3-margin-right" style="width:46px">
     </div>
+	
+	<?
+	$nokpSession=$_SESSION['user'];
+	$qryNama="SELECT nama FROM maklumat_pengguna WHERE ic_pengguna='$nokpSession'";
+			$resultNama=mysql_query($qryNama) or die(mysql_error());
+			$dataNama = mysql_fetch_assoc($resultNama);
+	?>
     <div class="w3-col s8 w3-bar">
 	<?if ($_SESSION['USER_TYPE']=='admin') {?>  
-      <span>Selamat Datang, <strong>Admin</strong></span><br>
+      <span>Selamat Datang, <strong><?echo $dataNama['nama'];?></strong></span><br>
 	   <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
       <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
       <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
 	  <?}
 	if ($_SESSION['USER_TYPE']=='sub-admin') {?>  
-	<span>Selamat Datang, <strong>Sub Admin</strong></span><br>
+	<span>Selamat Datang, <strong><?echo $dataNama['nama'];?></strong></span><br>
 	<a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
       <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
       <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
