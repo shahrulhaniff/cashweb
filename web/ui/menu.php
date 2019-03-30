@@ -52,9 +52,10 @@
   <?}
 	if ($_SESSION['USER_TYPE']=='sub-admin') {?>  
 	<a href="index_sa.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw active"></i>  Utama</a>
-	<a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Yuran</a>
+	<!--<a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Yuran</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-folder-open fa-fw"></i> Sebut Harga</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Derma</a>
+	-->
 	<?}?>  
 	<a href="logout.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-sign-out fa-fw"></i>  Log Keluar</a><br><br>
   

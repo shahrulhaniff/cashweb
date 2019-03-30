@@ -1,4 +1,7 @@
 <?
+date_default_timezone_set("Asia/Kuala_Lumpur");
+
+
 $sql1="SELECT kod_pengguna FROM akaun_pengguna
 											WHERE ic_pengguna='$pengguna'";
 			$result1=mysql_query($sql1);
@@ -146,6 +149,18 @@ $sql1="SELECT kod_pengguna FROM akaun_pengguna
 						or die(mysql_error());
 						$i=1;
 						while($row = mysql_fetch_array( $data )) {
+							
+$tarikhbuka=$row['tarikhbuka'];
+$tarikhtutup=$row['tarikhtutup'];
+$tarikh_keyin=$row['tarikh_keyin'];
+//$tarikhbuka = substr($tarikhbuka,8,10).'/'.substr($tarikhbuka,5,10).'/'.substr($tarikhbuka,0,4);
+
+$tarikhbuka= DateTime::createFromFormat('Y-m-d', $tarikhbuka)->format('d-m-Y');
+$tarikhtutup= DateTime::createFromFormat('Y-m-d', $tarikhtutup)->format('d-m-Y');
+$tarikh_keyin= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh_keyin)->format('d-m-Y h:i:s');
+
+	//					$tarikhbuka=$row['tarikhbuka']->format('d-m-Y');
+
 							echo "<tr class='gradeA'>";
 							echo '<td>'. $i . '</td>';
 							echo '<td>'. $row['no_sb'] . '</td>';
@@ -302,12 +317,12 @@ $sql1="SELECT kod_pengguna FROM akaun_pengguna
 												
 												<div class="form-group" align="left">
 													<label>Tarikh Buka</label>
-													<span> : <? echo $row['tarikhbuka'];?></span>
+													<span> : <?=$tarikhbuka?></span>
 												</div>
 												
 												<div class="form-group" align="left">
 													<label>Tarikh Tutup</label>
-													<span> : <? echo $row['tarikhtutup'];?></span>
+													<span> : <?=$tarikhtutup?></span>
 												</div>
 												
 												<div class="form-group" align="left">
@@ -337,7 +352,7 @@ $sql1="SELECT kod_pengguna FROM akaun_pengguna
 														
 												<div class="form-group" align="left">
 													<label>Diisi Pada</label>
-													<span> : <? echo $row['tarikh_keyin'];?></span>
+													<span> : <?=$tarikh_keyin?></span>
 												</div>
 												
 												 <div class="modal-footer">
