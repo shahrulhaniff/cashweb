@@ -260,12 +260,18 @@ echo "<h1>You May Close This Payment Browser and continue to app</h1>";
 	
 	echo $message;
 
-//$sqlP="INSERT INTO transaksi (ic_pengguna,id_kodtransaksi,id_jenistransaksi,tarikh,jumlah,daripada,kepada,statustransaction,status_dokumen) VALUES ('$user','$idk','$id_jenistransaksi','$tarikh','$pa','$user','TEST','$message','NO')";
-//$resultP=mysql_query($sqlP)or die(mysql_error());
+include "../../server.php";
+$sqlP="INSERT INTO transaksi (ic_pengguna,id_kodtransaksi,id_jenistransaksi,tarikh,jumlah,daripada,kepada,statustransaction,status_dokumen) VALUES ('$user','$idk','$id_jenistransaksi','$tarikh','$pa','$user','TEST','$message','NO')";
+$resultP=mysql_query($sqlP)or die(mysql_error());
 
 
 
 
+unset($_SESSION['hashing']);
+unset($_SESSION['USER']);
+unset($_SESSION['IDK']);
+unset($_SESSION['IDJT']);
+unset($_SESSION['PA']);
 
 
 

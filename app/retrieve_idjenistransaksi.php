@@ -5,8 +5,7 @@
 
    try {
 	  
-      $stmt 	= $pdo->query('
-	  SELECT * FROM kod_jenistransaksi ORDER BY jenistransaksi ASC');
+      $stmt 	= $pdo->query('SELECT * FROM kod_jenistransaksi ORDER BY jenistransaksi ASC');
 	  
       while($row  = $stmt->fetch(PDO::FETCH_OBJ))
       {

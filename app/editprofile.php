@@ -14,7 +14,7 @@ include "../server.php";
          // Sanitise URL supplied values
          $name 	  = filter_var($obj->name, FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_LOW);
          $email	  = filter_var($obj->email, FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_LOW);
-         $telnum	  = filter_var($obj->telnum, FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_LOW);
+         $telnum = filter_var($obj->telnum, FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_LOW);
          $user	  = filter_var($obj->user, FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_LOW);
 
          // Attempt to run PDO prepared statement
