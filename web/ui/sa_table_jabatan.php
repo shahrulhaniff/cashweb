@@ -22,17 +22,20 @@
                                     <tbody>
 									
 									<tr class='gradeA'>
-									<form method="post" action="../web/controller/jenis_transaksi_add_exec.php">
+									<form method="post" action="../web/controller/sa_jenis_transaksi_add_exec.php">
 									<td><i class="fa fa-user w3-text-blue w3-large"></i></td>
 									<td><input type="text" class="form-control" name="id_jenistransaksi" id="id_jenistransaksi" size="20" required onkeyup=" var start = this.selectionStart;var end = this.selectionEnd; this.value = this.value.toUpperCase();this.setSelectionRange(start, end);"></td>
 									<td><input type="text" class="form-control" name="jenistransaksi" id="jenistransaksi" size="20" required></td>
-									<td><input type="text" class="form-control" name="jabatan" id="jabatan" size="20" required onkeyup=" var start = this.selectionStart;var end = this.selectionEnd; this.value = this.value.toUpperCase();this.setSelectionRange(start, end);"></td>
+									<?
+									 $jabatan2=$_SESSION['JABATAN'];
+									?>
+									<td><input type="text" class="form-control" name="jabatan" id="jabatan" size="20" value="<?echo $jabatan2;?>" readonly></td>
 									<td><!--<input type="text" name="no_telefon" id="no_telefon" size="20">--></td>
 									<td><a><button type="submit" class="btn btn-primary">Tambah</button></a></td>
 									</tr>
 <?php // Connects to your Database 
 
- $data = mysql_query("SELECT * FROM kod_jenistransaksi") 
+ $data = mysql_query("SELECT * FROM kod_jenistransaksi WHERE jabatan='$jabatan2'") 
  or die(mysql_error()); ?>
                                         
 										<?php
@@ -44,8 +47,8 @@
                                             echo "<td>".$info['jenistransaksi'] . " </td>";
                                             echo "<td>".$info['jabatan'] . " </td>";
 ?><td>
-<form action="QRLogo.php" method="POST" target="_blank"><input type="hidden" name="id_jenistransaksi" value="<?=$info['id_jenistransaksi']?>"><input type="submit" value="Jana Kod QR"></form>
-<form action="senarai_sa.php" method="POST"><input type="hidden" name="id_jenistransaksi" value="<?=$info['id_jenistransaksi']?>"><input type="hidden" name="jabatan" value="<?=$info['jabatan']?>"><input type="submit" class="btn btn-warning" value="Senarai Sub-Admin"></form>
+<form action="QRLogo.php" method="POST" target="_blank"><input type="hidden" name="id_jenistransaksi" value="<?echo $info['id_jenistransaksi'];?>"><input type="submit" value="Jana Kod QR"></form>
+<!--<form action="senarai_sa.php" method="POST"><input type="hidden" name="id_jenistransaksi" value="<?=$info['id_jenistransaksi']?>"><input type="hidden" name="jabatan" value="<?=$info['jabatan']?>"><input type="submit" class="btn btn-warning" value="Senarai Sub-Admin"></form>-->
 </td><?
                                             ?>
 											<td>
@@ -54,7 +57,7 @@
 										<a href="../web/controller/jenis_transaksi_delete_exec.php?id_jenistransaksi=<?echo $info['id_jenistransaksi']; ?>"><button type="button" class="btn btn-danger" onclick="return confirm('Anda pasti untuk padam data ini?');">Padam</button></a>
 										 </td>
 										 
-	<!-- Modal -->
+	<!-- Modal Kemaskini-->
 											<div class="modal fade" id="myModal<?php echo $info['id_jenistransaksi']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 											<div class="modal-dialog">
 												
@@ -81,7 +84,7 @@
 												
 												<div class="form-group" align="left">
 													<label>Jabatan</label>
-													<input class="form-control" id="jabatan" name="jabatan" value="<?php echo $info['jabatan']; ?>" required autocomplete="" >
+													<input class="form-control" id="jabatan" name="jabatan" value="<?php echo $info['jabatan']; ?>" readonly >
 												</div>
 												
 											
@@ -96,8 +99,7 @@
 											
 										 <?
 											echo "</tr>";
-										$i++;
-										}
+										$i++;}
 										?>
                                         
                                     </tbody>

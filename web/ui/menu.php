@@ -51,9 +51,10 @@
     <a href="pengurusan_dokumen.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Pengurusan Dokumen</a>
   <?}
 	if ($_SESSION['USER_TYPE']=='sub-admin') {?>  
-	<a href="index_sa.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw active"></i>  Utama</a>
-	<!--<a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Yuran</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-folder-open fa-fw"></i> Sebut Harga</a>
+	<a href="sa_sebut_harga.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Utama</a>
+	<a href="index_sa.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw active"></i>  Sebut Harga</a>
+	
+    <!--<a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-folder-open fa-fw"></i> Sebut Harga</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Derma</a>
 	-->
 	<?}?>  
