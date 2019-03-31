@@ -8,7 +8,7 @@
 		
 		// delete data
 		$sql="DELETE FROM kod_transaksi WHERE id_kodtransaksi = '$id_kodtransaksi'";
-			$result=mysql_query($sql)or die(mysql_error());
+			$result=mysql_query($sql);
 			
 			
 			if($result){
@@ -17,7 +17,7 @@
 			
 			}else {
 				 echo ("<script LANGUAGE='JavaScript'>
-					window.alert('Padam data sebut harga tidak berjaya.');
+					window.alert('Padam data tidak berjaya.');
 					window.location.href='../sebut_harga.php';
 					</script>");
 			}
