@@ -37,7 +37,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-dashboard"></i>Utama</b></h5>
+    <h5><b><i class="fa fa-dashboard"></i>Jenis Bayaran</b></h5>
   </header>
 <?php /*To calculate participant list*/ $datacount4badge = mysql_query("SELECT count(jenistransaksi) as myCount from kod_jenistransaksi;") or die(mysql_error()); $infobadge = mysql_fetch_array( $datacount4badge ); $countptcp = $infobadge['myCount']; ?>
 

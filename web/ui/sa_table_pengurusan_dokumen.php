@@ -14,11 +14,12 @@
                                     <thead>
                                         <tr>
                                             <th>Bil</th>
-                                            <!--<th>Penerima</th>-->
-                                            <th>Tarikh</th>
+											 <th>Jabatan</th>
+                                            <th>Penerima</th>
                                             <th>Harga (RM)</th>
-                                            <th>Status</th>
-                                            <!--<th>Disahkan Oleh</th>-->
+                                            <th>Disahkan Oleh</th>
+											<th>Status</th>
+											<th>Tarikh</th>
 											<th>Tindakan</th>
                                         </tr>
                                     </thead>
@@ -26,7 +27,9 @@
 									
 <?php // Connects to your Database 
 
- $data = mysql_query("SELECT * FROM transaksi") 
+ $data = mysql_query("SELECT t.* FROM transaksi t,kod_transaksi kt,kod_jenispengguna kj
+WHERE t.id_kodtransaksi=kt.id_kodtransaksi AND kt.kod_pengguna=kj.kod_pengguna AND kj.jabatan='".$_SESSION['JABATAN']."'
+") 
  or die(mysql_error()); ?>
                                         
 										<?php
@@ -41,26 +44,57 @@
 											// $info1 = mysql_fetch_array( $data1 );
                                             // echo "<td>".$info1['nama'] . " </td>";
 											
-										   echo "<td>".$info['tarikh'] . " </td>";
-                                            echo "<td>".$info['jumlah'] . " </td>";
-                                            echo "<td>".$info['status_dokumen'] . " </td>";
+										   // echo "<td>".$info['tarikh'] . " </td>";
+                                            // echo "<td>".$info['jumlah'] . " </td>";
+                                            // echo "<td>".$info['status_dokumen'] . " </td>";
 
 											
 											// $data2 = mysql_query("SELECT max(nama) AS nama FROM maklumat_pengguna WHERE ic_pengguna='".$info['doc_giveby']."' ORDER BY ic_pengguna") 
 											// or die(mysql_error());	
 											// $info2 = mysql_fetch_array( $data2 );
                                             // echo "<td>".$info2['nama'] . " </td>";
+											
+											
+											$data3 = mysql_query("SELECT * FROM kod_jenistransaksi WHERE id_jenistransaksi='".$info['id_jenistransaksi']."'") 
+											or die(mysql_error());	
+											$info3 = mysql_fetch_array( $data3 );
+                                            echo "<td>".$info3['jabatan'] . " </td>";
+											
+
+											
+                                            echo "<td>".$info['doc_acceptby_nama'] . " </td>";
+											echo "<td>".$info['jumlah'] . " </td>";
+                                           
+
+											
+											$data2 = mysql_query("SELECT max(nama) AS nama FROM maklumat_pengguna WHERE ic_pengguna='".$info['doc_giveby']."' ORDER BY ic_pengguna") 
+											or die(mysql_error());	
+											$info2 = mysql_fetch_array( $data2 );
+                                            echo "<td>".$info2['nama'] . " </td>";
+
+											
+
+											 echo "<td>".$info['status_dokumen'] . " </td>";
+											 echo "<td>".$info['tarikh'] . " </td>";
 
                                             ?>
 											<td>
 											<button class="btn btn-info" data-toggle="modal" data-target="#myModalInfo<?echo $info['id_jenistransaksi'];?>">Papar</button>
                                 
-										 <!--<a class="edit" title="Edit" data-toggle="tooltip"><button type="button" class="btn btn-info " onClick="updateId('<?php echo $list['id']; ?>')">Kemaskini</button></a>-->
+										 <?
+										 $data4 = mysql_query("SELECT * FROM kod_jenispengguna WHERE jabatan='".$_SESSION['JABATAN']."'") 
+											or die(mysql_error());	
+											$info4 = mysql_fetch_array( $data4 );
+										 
+										$kod_pengguna=$info4['kod_pengguna'];
+										 if($kod_pengguna=="3"){ //3 = JPP
+										 ?>
 										 <button class="btn btn-info" data-toggle="modal" data-target="#myModal<?echo $info['id_jenistransaksi'];?>">Kemaskini</button>
+										<?}?>
 										<!--<a href="../web/controller/jenis_transaksi_delete_exec.php?id_jenistransaksi=<?echo $info['id_jenistransaksi']; ?>"><button type="button" class="btn btn-danger" onclick="return confirm('Anda pasti untuk padam data ini?');">Padam</button></a>-->
 										 </td>
 										 </tr>
-	<!-- Modal -->
+	<!-- Modal Kemaskini-->
 											<div class="modal fade" id="myModal<?php echo $info['id_jenistransaksi']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 											<div class="modal-dialog">
 												
@@ -100,7 +134,7 @@
 												</div>
 												
 												<div class="form-group" align="left">
-												<label for="comment">Jenis Transaksi</label>
+												<label for="comment">Status Dokumen</label>
 															<select required class="form-control" name="status_dokumen" value="" style="width: 270px">
 															<option value="<? echo $info['status_dokumen'];?>"><? echo $info['status_dokumen'];?></option>	
 															<?

@@ -8,7 +8,7 @@
 		
 		// delete data
 		$sql="DELETE FROM kod_transaksi WHERE id_kodtransaksi = '$id_kodtransaksi'";
-			$result=mysql_query($sql);
+			$result=mysql_query($sql);// or die(mysql_error())
 			
 			
 			if($result){

@@ -25,15 +25,21 @@
 									<form method="post" action="../web/controller/jenis_transaksi_add_exec.php">
 									<td><i class="fa fa-user w3-text-blue w3-large"></i></td>
 									<td><input type="text" class="form-control" name="id_jenistransaksi" id="id_jenistransaksi" size="20" required onkeyup=" var start = this.selectionStart;var end = this.selectionEnd; this.value = this.value.toUpperCase();this.setSelectionRange(start, end);"></td>
-									<td><input type="text" class="form-control" name="jenistransaksi" id="jenistransaksi" size="20" required></td>
+									<td><div class="form-group" align="left">
+											<select required class="form-control" name="jenistransaksi" value="" style="width: 270px">
+												<option value="">--Pilih--</option>
+												<option value="Sebut Harga">Sebut Harga</option>
+												<option value="Yuran">Yuran</option>
+												<option value="Derma">Derma</option>
+											</select>
+											</div></td>
 									<td><input type="text" class="form-control" name="jabatan" id="jabatan" size="20" required onkeyup=" var start = this.selectionStart;var end = this.selectionEnd; this.value = this.value.toUpperCase();this.setSelectionRange(start, end);"></td>
 									<td><!--<input type="text" name="no_telefon" id="no_telefon" size="20">--></td>
 									<td><a><button type="submit" class="btn btn-primary">Tambah</button></a></td>
 									</tr>
 <?php // Connects to your Database 
 
- $data = mysql_query("SELECT * FROM kod_jenistransaksi") 
- or die(mysql_error()); ?>
+ $data = mysql_query("SELECT * FROM kod_jenistransaksi"); ?>
                                         
 										<?php
 										$i=1;
@@ -54,7 +60,7 @@
 										<a href="../web/controller/jenis_transaksi_delete_exec.php?id_jenistransaksi=<?echo $info['id_jenistransaksi']; ?>"><button type="button" class="btn btn-danger" onclick="return confirm('Anda pasti untuk padam data ini?');">Padam</button></a>
 										 </td>
 										 
-	<!-- Modal -->
+	<!-- Modal Kemaskini-->
 											<div class="modal fade" id="myModal<?php echo $info['id_jenistransaksi']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 											<div class="modal-dialog">
 												
@@ -75,13 +81,18 @@
 												</div>
 
 												<div class="form-group" align="left">
-													<label>Jenis Transaksi</label>
-													<input class="form-control" id="jenistransaksi" name="jenistransaksi" value="<?php echo $info['jenistransaksi']; ?>" required autocomplete="" >
-												</div>
-												
+												<label>Jenis Transaksi</label>
+											<select required class="form-control" name="jenistransaksi" value="" style="width: 270px">
+												<option value="<?php echo $info['jenistransaksi']; ?>"><?php echo $info['jenistransaksi']; ?></option>
+												<option value="Sebut Harga">Sebut Harga</option>
+												<option value="Yuran">Yuran</option>
+												<option value="Derma">Derma</option>
+											</select>
+											</div>
+											
 												<div class="form-group" align="left">
 													<label>Jabatan</label>
-													<input class="form-control" id="jabatan" name="jabatan" value="<?php echo $info['jabatan']; ?>" required autocomplete="" >
+													<input class="form-control" id="jabatan" name="jabatan" value="<?php echo $info['jabatan']; ?>" required autocomplete=""  onkeyup=" var start = this.selectionStart;var end = this.selectionEnd; this.value = this.value.toUpperCase();this.setSelectionRange(start, end);" >
 												</div>
 												
 											

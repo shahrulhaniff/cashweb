@@ -66,22 +66,6 @@
         // insert data
         if ($valid) {
             
-			// $sql1 = "INSERT INTO maklumat_pengguna (ic_pengguna,nama,email,no_telefon) values('$ic_pengguna','$nama','$email','$no_telefon')";
-			// $q1 = $pdo->prepare($sql1);
-            // $q1->execute(array($ic_pengguna,$nama,$email,$no_telefon));
-			// Database::disconnect();
-			
-			// $pdo = Database::connect();
-            // $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-			// $sql = "INSERT INTO maklumat_pengguna (ic_pengguna,nama,email,no_telefon) values('$ic_pengguna','$nama','$email','$no_telefon')";
-            // $q = $pdo->prepare($sql);
-            // $q->execute(array($ic_pengguna,$nama,$email,$no_telefon));
-			
-			// $pdo = Database::connect();
-            // $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            // $sql = "INSERT INTO akaun_pengguna (ic_pengguna,kod_pengguna,pwd,status_aktif) values('$ic_pengguna','3','$ic_pengguna','yes')";
-            // $q = $pdo->prepare($sql);
-            // $q->execute(array($ic_pengguna,$kod_pengguna,$pwd,$status_aktif));
 			
 			//checking exist user
 			$sql = "SELECT COUNT(ic_pengguna) AS countNokp FROM akaun_pengguna WHERE ic_pengguna='$ic_pengguna'";
@@ -105,7 +89,7 @@
 				
 				
 				$sql3="INSERT INTO maklumat_pengguna (ic_pengguna,nama,email,no_telefon) values('$ic_pengguna','$nama','$email','$no_telefon')";
-				$result3=mysql_query($sql3) or die(mysql_error());
+				$result3=mysql_query($sql3);// or die(mysql_error());
 				
 ?>				
 <script>
@@ -117,7 +101,7 @@ function refreshParent() {
 <? 
 			
 				$sql4 = "INSERT INTO akaun_pengguna (ic_pengguna,kod_pengguna,pwd,status_aktif) values('$ic_pengguna','$kod_pengguna','$ic_pengguna2','yes')";
-				$result4=mysql_query($sql4) or die (mysql_error());
+				$result4=mysql_query($sql4);// or die (mysql_error());
 
 				//send email
 				$mail->setFrom('Username', 'Cashless Web');
@@ -150,9 +134,7 @@ function refreshParent() {
 					window.location.href='../index.php';
 					</script>");
 		}
-			// Database::disconnect();
-			// header("location: ../senarai_sa.php?jabatan=$jabatan");	
-			//header("location: ../index.php");	
+			
         }
     }
 ?>

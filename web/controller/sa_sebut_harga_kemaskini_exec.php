@@ -28,7 +28,7 @@
 					description = '$description',tarikhbuka = '$tarikhbuka', tarikhtutup = '$tarikhtutup', jam = '$jam', harga = '$harga',
 					id_jenistransaksi = '$id_jenistransaksi', kelas = '$kelas', edit_by = '$edit_by', tarikh_edit = '$current_date' 
 					WHERE id_kodtransaksi = '$id_kodtransaksi'";
-			$result=mysql_query($sql)or die(mysql_error());
+			$result=mysql_query($sql);// or die(mysql_error())
 			
 			
 			if($result){

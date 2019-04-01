@@ -20,7 +20,7 @@
 			
 			$sql="UPDATE transaksi  set daripada = '$daripada', doc_acceptby = '$doc_acceptby', doc_acceptby_nama = '$doc_acceptby_nama', status_dokumen = '$status_dokumen' 
 					WHERE id_transaksi = '$id_transaksi'";
-			$result=mysql_query($sql)or die(mysql_error());
+			$result=mysql_query($sql); //or die(mysql_error());
 			
 			
 			if($result){

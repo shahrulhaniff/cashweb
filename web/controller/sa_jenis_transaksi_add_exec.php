@@ -60,7 +60,7 @@
 			
 			$sql5= "SELECT COUNT(jenistransaksi) AS mysemak FROM kod_jenistransaksi WHERE id_jenistransaksi='".$id_jenistransaksi."'";
 			
-			$result5=mysql_query($sql5) or die(mysql_error());
+			$result5=mysql_query($sql5);// or die(mysql_error())
 			$row5 = mysql_fetch_assoc($result5);
 			$mysemak = $row5['mysemak'];
 			
@@ -68,7 +68,7 @@
 					
 			
 					$sql1="INSERT INTO kod_jenistransaksi (id_jenistransaksi,jenistransaksi,jabatan) values('$id_jenistransaksi','$jenistransaksi','$jabatan')";
-					$result=mysql_query($sql1)or die(mysql_error());
+					$result=mysql_query($sql1);// or die(mysql_error())
 			
 			
 				// $sql2 = "SELECT IFNULL(jabatan,0) AS jabatan FROM kod_jenispengguna WHERE jabatan='$jabatan'";
@@ -80,7 +80,7 @@
 				
 			$sql2= "SELECT COUNT(jabatan) AS countJabatan FROM kod_jenispengguna WHERE jabatan='".$jabatan."'";
 			
-			$result2=mysql_query($sql2) or die(mysql_error());
+			$result2=mysql_query($sql2);// or die(mysql_error())
 			$row2 = mysql_fetch_assoc($result2);
 			$countJabatan = $row2['countJabatan'];
 			
@@ -94,7 +94,7 @@
 			
 			
 					$sql3 = "INSERT INTO kod_jenispengguna (kod_pengguna,jenis_pengguna,jabatan) values('$id2','sub-admin','$jabatan')";
-					$result=mysql_query($sql3)or die(mysql_error());
+					$result=mysql_query($sql3);// or die(mysql_error())
 					
 					echo ("<script LANGUAGE='JavaScript'>
 							window.alert('Tambah Jabatan berjaya.');

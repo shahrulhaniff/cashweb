@@ -29,7 +29,7 @@
 			$id_kodtransaksi1=$id_kodtransaksi+1;
 			$sql="INSERT INTO kod_transaksi (id_kodtransaksi,kod_pengguna,no_sb,description,tarikhbuka,tarikhtutup,jam,harga,id_jenistransaksi,kelas,keyin_by,tarikh_keyin) 
 					values('$id_kodtransaksi1','$kod_pengguna','$no_sb','$description','$tarikhbuka','$tarikhtutup','$jam','$harga','$id_jenistransaksi','$kelas','$keyin_by','$current_date')";
-			$result=mysql_query($sql)or die(mysql_error());
+			$result=mysql_query($sql);// or die(mysql_error())
 			
 			
 			if($result){
@@ -42,8 +42,7 @@
 					window.location.href='../index_sa.php';
 					</script>");
 			}
-			// Database::disconnect();
-			// header("location: ../senarai_sa.php?jabatan=$jabatan");	
+			
 			
        
 ?>

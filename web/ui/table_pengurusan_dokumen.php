@@ -16,10 +16,8 @@
                                             <th>Bil</th>
 											 <th>Jabatan</th>
                                             <th>Penerima</th>
-                                            
                                             <th>Harga (RM)</th>
                                             <th>Disahkan Oleh</th>
-                                           
 											<th>Status</th>
 											<th>Tarikh</th>
 											<th>Tindakan</th>
@@ -29,8 +27,7 @@
 									
 <?php // Connects to your Database 
 
- $data = mysql_query("SELECT * FROM transaksi") 
- or die(mysql_error()); ?>
+ $data = mysql_query("SELECT * FROM transaksi"); ?>
                                         
 										<?php
 										$i=1;
@@ -39,8 +36,7 @@
 											echo "<td>".$i." </td>";
 
 											
-											$data3 = mysql_query("SELECT * FROM kod_jenistransaksi WHERE id_jenistransaksi='".$info['id_jenistransaksi']."'") 
-											or die(mysql_error());	
+											$data3 = mysql_query("SELECT * FROM kod_jenistransaksi WHERE id_jenistransaksi='".$info['id_jenistransaksi']."'");	
 											$info3 = mysql_fetch_array( $data3 );
                                             echo "<td>".$info3['jabatan'] . " </td>";
 											
@@ -51,8 +47,7 @@
                                            
 
 											
-											$data2 = mysql_query("SELECT max(nama) AS nama FROM maklumat_pengguna WHERE ic_pengguna='".$info['doc_giveby']."' ORDER BY ic_pengguna") 
-											or die(mysql_error());	
+											$data2 = mysql_query("SELECT max(nama) AS nama FROM maklumat_pengguna WHERE ic_pengguna='".$info['doc_giveby']."' ORDER BY ic_pengguna");	
 											$info2 = mysql_fetch_array( $data2 );
                                             echo "<td>".$info2['nama'] . " </td>";
 
@@ -65,7 +60,7 @@
 											<button class="btn btn-info" data-toggle="modal" data-target="#myModalInfo<?echo $info['id_jenistransaksi'];?>">Papar</button>
                                 
 										 <!--<a class="edit" title="Edit" data-toggle="tooltip"><button type="button" class="btn btn-info " onClick="updateId('<?php echo $list['id']; ?>')">Kemaskini</button></a>-->
-										 <button class="btn btn-info" data-toggle="modal" data-target="#myModal<?echo $info['id_jenistransaksi'];?>">Kemaskini</button>
+										 <!--<button class="btn btn-info" data-toggle="modal" data-target="#myModal<?echo $info['id_jenistransaksi'];?>">Kemaskini</button>
 										<!--<a href="../web/controller/jenis_transaksi_delete_exec.php?id_jenistransaksi=<?echo $info['id_jenistransaksi']; ?>"><button type="button" class="btn btn-danger" onclick="return confirm('Anda pasti untuk padam data ini?');">Padam</button></a>-->
 										 </td>
 										 </tr>
@@ -96,22 +91,20 @@
 												<div class="form-group" align="left">
 													<label>Daripada</label>
 												<?
-													$data1 = mysql_query("SELECT max(nama) AS nama FROM maklumat_pengguna WHERE ic_pengguna='".$info['doc_giveby']."' ORDER BY ic_pengguna") 
-													or die(mysql_error());	
+													$data1 = mysql_query("SELECT max(nama) AS nama FROM maklumat_pengguna WHERE ic_pengguna='".$info['doc_giveby']."' ORDER BY ic_pengguna");	
 													$info1 = mysql_fetch_array( $data1 );
 												?>
-													<span> : <? echo $info1['nama'];?> (<? echo $info['daripada'];?>)</span>
+													<span> : <? echo $info1['nama'];?> (<? echo $info['doc_giveby'];?>)</span>
 												</div>
 
 												<div class="form-group" align="left">
 													<label>Nama Penerima</label>
 													<?										
-													$data1 = mysql_query("SELECT max(nama) AS nama FROM maklumat_pengguna WHERE ic_pengguna='".$info['kepada']."' ORDER BY ic_pengguna") 
-													or die(mysql_error());	
-													$info1 = mysql_fetch_array( $data1 );
+													$datas = mysql_query("SELECT max(nama) AS nama FROM maklumat_pengguna WHERE ic_pengguna='".$info['kepada']."' ORDER BY ic_pengguna");	
+													$infos = mysql_fetch_array( $datas );
 													
 												?>
-													<input class="form-control" id="doc_acceptby_nama" name="doc_acceptby_nama" value="<?=$info1['nama']?>" required >
+													<input class="form-control" id="doc_acceptby_nama" name="doc_acceptby_nama" value="<?=$infos['nama']?>" required >
 												</div>
 												
 												<div class="form-group" align="left">
@@ -121,7 +114,7 @@
 												
 												
 												<div class="form-group" align="left">
-												<label for="comment">Jenis Transaksi</label>
+												<label for="comment">Status Dokumen</label>
 															<select required class="form-control" name="status_dokumen" value="" style="width: 270px">
 															<option value="<? echo $info['status_dokumen'];?>"><? echo $info['status_dokumen'];?></option>	
 															<?
@@ -161,8 +154,7 @@
 												<div class="form-group">
 													<label for="comment">Jenis Transaksi</label>
 													<?
-														$data3 = mysql_query("SELECT jenistransaksi FROM kod_jenistransaksi WHERE id_jenistransaksi='".$info['id_jenistransaksi']."' order by id_jenistransaksi") 
-														or die(mysql_error());	
+														$data3 = mysql_query("SELECT jenistransaksi FROM kod_jenistransaksi WHERE id_jenistransaksi='".$info['id_jenistransaksi']."' order by id_jenistransaksi");	
 														$info3 = mysql_fetch_array( $data3 );
 													?>
 													<span> : <? echo $info3['jenistransaksi'];?></span>
@@ -181,14 +173,13 @@
 												
 												<div class="form-group" align="left">
 													<label>Daripada</label>
-													<span> : <? echo $info1['nama'];?> (<? echo $info['daripada'];?>)</span>
+													<span> : <? echo $info1['nama'];?> (<? echo $info['doc_giveby'];?>)</span>
 												</div>
 												
 												<div class="form-group" align="left">
 													<label>Kepada</label>
 													<?
-														$data2 = mysql_query("SELECT max(nama) AS nama FROM maklumat_pengguna WHERE ic_pengguna='".$info['kepada']."' ORDER BY ic_pengguna") 
-														or die(mysql_error());	
+														$data2 = mysql_query("SELECT max(nama) AS nama FROM maklumat_pengguna WHERE ic_pengguna='".$info['kepada']."' ORDER BY ic_pengguna");	
 														$info2 = mysql_fetch_array( $data2 );
 													?>
 													<span> : <? echo $info2['nama'];?> (<? echo $info['kepada'];?>)</span>
