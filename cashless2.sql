@@ -1,9 +1,9 @@
 --
 -- Database: cashless
 --
-DROP DATABASE cashless;
-CREATE DATABASE cashless;
-USE cashless;
+-- DROP DATABASE cashless;
+-- CREATE DATABASE cashless;
+USE id9050021_cashless;
 -- --------------------------------------------------------
 
 --
@@ -100,6 +100,9 @@ CREATE TABLE transaksi (
   daripada VARCHAR(12) NOT NULL,
   kepada VARCHAR(12) NOT NULL,
   statustransaction VARCHAR(50) NOT NULL,
+  norujukan VARCHAR(50) NULL,
+  merchantid VARCHAR(50) NULL,
+  jeniskad VARCHAR(50)  NULL,
   status_dokumen VARCHAR(50) NOT NULL,
   doc_acceptby VARCHAR(50) NULL,
   doc_acceptby_nama varchar(50) DEFAULT NULL COMMENT 'nama orang yang ambil',
@@ -117,9 +120,7 @@ CREATE TABLE transaksi (
 
 -- INSERT INTO transaksi (jenis_transaksi, tarikh, jumlah, ic_pengguna, daripada, kepada) VALUES ('a2u', '2019-03-21 06:12:16', 17000.55, '941013115435', '941013115436', '941013115435');
 INSERT INTO `kod_jenistransaksi` (`id_jenistransaksi`, `jenistransaksi`, `jabatan`) VALUES
-('DRM', 'Derma', 'Masjid'),
-('SB', 'Sebut Harga', 'JPP'),
-('YR', 'Yuran', 'ASRAMA');
+('SB', 'Sebut Harga', 'JPP');
 
 INSERT INTO `kod_transaksi` (`id_kodtransaksi`, `kod_pengguna`, `no_sb`, `description`, `tarikhbuka`, `tarikhtutup`, `jam`, `harga`, `id_jenistransaksi`, `kelas`, `keyin_by`, `tarikh_keyin`, `edit_by`, `tarikh_edit`) VALUES
 (1, '3', 'IDSB001', 'Contoh butiran sebut harga', '2019-03-01', '2019-03-30', '00:00:00', 17000.39, 'SB', '1', 'IC Pegawai keyin', '2019-03-06 11:27:27', NULL, NULL),

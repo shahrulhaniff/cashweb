@@ -1,6 +1,31 @@
-<?php
-session_start();
+<?php session_start(); include "../../server.php";?>
+<html>
+<head>
+<title>Resit</title>
+<style>
+.button {
+  background-color: #1b1c57;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 100%;
+}
 
+p,table {
+	font-size:30px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+</style>
+</head>
+<body>
+<?php
 //https://epayment.unisza.edu.my/sample/sample_finish.php?Title=Payment+Sample&vpc_3DSECI=02&vpc_3DSXID=aWsZV2oQ%2BQ7Q5ngA5ltGQ1YFlYA%3D&vpc_3DSenrolled=Y&vpc_3DSstatus=Y&vpc_AVSRequestCode=Z&vpc_AVSResultCode=Unsupported&vpc_AcqAVSRespCode=Unsupported&vpc_AcqCSCRespCode=M&vpc_AcqResponseCode=00&vpc_Amount=1&vpc_AuthorizeId=727337&vpc_BatchNo=20190318&vpc_CSCResultCode=M&vpc_Card=MC&vpc_Command=pay&vpc_Currency=MYR&vpc_Locale=en&vpc_MerchTxnRef=PC+KOD+SAMPLE-1234&vpc_Merchant=10701100006&vpc_Message=Approved&vpc_OrderInfo=0&vpc_ReceiptNo=907710370666&vpc_SecureHash=0D2E5C10866166C3D02ECD8C89DC2CB9FACE2CDE6DD251C80E7EC8C2FD54994F&vpc_SecureHashType=SHA256&vpc_TransactionNo=2070000701&vpc_TxnResponseCode=0&vpc_VerSecurityLevel=05&vpc_VerStatus=Y&vpc_VerToken=jDXMJPFbWCuJCBEFkBaIARcAAAA%3D&vpc_VerType=3DS&vpc_Version=1
 
 require_once("class.vpcVerifyPayment.php");
@@ -236,14 +261,9 @@ $page['authStatus'] = $authStatus;
 //     $page['authorizeID'],$page['batchNo'],$page['cardType'],$page['authStatus']);
 
 // $stmt->execute();
-echo "<pre>";
-print_r($page);
-echo "</pre>";
-
-echo "<h1>You May Close This Payment Browser and continue to app</h1>";
-
-
-
+//echo "<pre>";
+//print_r($page);
+//echo "</pre>";
 
 
 
@@ -251,17 +271,32 @@ echo "<h1>You May Close This Payment Browser and continue to app</h1>";
 //_______________________________[SERVER]_ADD EVENT___________________________________________
 //--------------------------------------------------------------------------------------------
 
-
 	$user				= $_SESSION['USER'];
  	$idk				= $_SESSION['IDK'];
   	$id_jenistransaksi	= $_SESSION['IDJT'];
  	$pa					= $_SESSION['PA'];
 	$tarikh 			= date('Y-m-d h:i:s');
 	
-	echo $message;
+	?>
+	<button class="button">Resit Pembayaran Cashless UniSZA</button>
+	<?php
+	
+	if($message=='Approved'){ $color='green'; } else { $color='red'; }
+	
+	echo "<table>";
+	echo "<tr><td>Status</td><td>:</td>				<td><font color='".$color."'>".$message."</b></td></tr>";
+	echo "<tr><td>No. Rujukan</td><td>:</td>		<td>".$transactionNo."</td></tr>";
+	echo "<tr><td>Tarikh Transaksi</td><td>:</td>	<td>".$page['datetime']."</td></tr>";
+	echo "<tr><td>Jumlah</td><td>:</td>				<td>".$pa."</td></tr>";
+	echo "<tr><td>Dibayar oleh</td><td>:</td>		<td>".$user."</td></tr>";
+	echo "<tr><td>ID Merchant</td><td>:</td>		<td>".$merchantID."</td></tr>";
+	echo "<tr><td>Jenis Kad</td><td>:</td>			<td>".$cardType."</td></tr>";
+	echo "</table>";
 
-include "../../server.php";
-$sqlP="INSERT INTO transaksi (ic_pengguna,id_kodtransaksi,id_jenistransaksi,tarikh,jumlah,daripada,kepada,statustransaction,status_dokumen) VALUES ('$user','$idk','$id_jenistransaksi','$tarikh','$pa','$user','TEST','$message','NO')";
+	echo "<p>Catatan: Resit ini dijana oleh komputer tiada tandatangan diperlukan.</p>";
+	
+
+$sqlP="INSERT INTO transaksi (ic_pengguna,id_kodtransaksi,id_jenistransaksi,tarikh,jumlah,daripada,kepada,statustransaction,norujukan,merchantid,jeniskad,status_dokumen) VALUES ('$user','$idk','$id_jenistransaksi','$tarikh','$pa','$user','941013115436','$message','$transactionNo','$merchantID','$cardType','NO')";
 $resultP=mysql_query($sqlP)or die(mysql_error());
 
 
@@ -274,10 +309,10 @@ unset($_SESSION['IDJT']);
 unset($_SESSION['PA']);
 
 
+echo "<br><br><p>Anda Boleh Tutup Pelayar Pembayaran ini untuk kembali ke Aplikasi Cashless UniSZA</p>";
 
-
-
-
-
+echo '<a href="../../extension/html2pdf/cetak.php?message='.$message.'&transactionNo='.$transactionNo.'&page='.$page['datetime'].'&pa='.$pa.'&user='.$user.'&merchantID='.$merchantID.'&cardType='.$cardType.'"><button type="submit" onClick="return checksemua()"><IMG SRC="../../web/imgs/print.gif" WIDTH="18" HEIGHT="18" BORDER="0" ALT=""> CETAK</button></a>';
 
 ?>
+</body>
+</html>
