@@ -102,6 +102,7 @@ CREATE TABLE transaksi (
   statustransaction VARCHAR(50) NOT NULL,
   status_dokumen VARCHAR(50) NOT NULL,
   doc_acceptby VARCHAR(50) NULL,
+  doc_acceptby_nama varchar(50) DEFAULT NULL COMMENT 'nama orang yang ambil',
   doc_giveby VARCHAR(50) NULL,
   created_date TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id_transaksi),
