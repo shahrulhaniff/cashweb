@@ -120,11 +120,11 @@
 															<?
 																if ($info['status_dokumen']=="YES"){
 															?>
-															<option value="YES">NO</option>
+															<option value="NO">NO</option>
 															<?
 																}if ($info['status_dokumen']=="NO"){
 															?>
-															<option value="NO">YES</option>
+															<option value="YES">YES</option>
 															<?}?>
 															
 															</select>

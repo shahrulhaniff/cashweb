@@ -4,7 +4,7 @@
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                             Senarai Sub-Admin mengikut Jenis Jabatan
+                             Senarai Jenis Transaksi
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
@@ -26,7 +26,7 @@
 									<td><i class="fa fa-user w3-text-blue w3-large"></i></td>
 									<td><input type="text" class="form-control" name="id_jenistransaksi" id="id_jenistransaksi" size="20" required onkeyup=" var start = this.selectionStart;var end = this.selectionEnd; this.value = this.value.toUpperCase();this.setSelectionRange(start, end);"></td>
 									<td><div class="form-group" align="left">
-											<select required class="form-control" name="jenistransaksi" value="" style="width: 270px">
+											<select required class="form-control" name="jenistransaksi" value="">
 												<option value="">--Pilih--</option>
 												<option value="Sebut Harga">Sebut Harga</option>
 												<option value="Yuran">Yuran</option>
@@ -82,7 +82,7 @@
 
 												<div class="form-group" align="left">
 												<label>Jenis Transaksi</label>
-											<select required class="form-control" name="jenistransaksi" value="" style="width: 270px">
+											<select required class="form-control" name="jenistransaksi" value="">
 												<option value="<?php echo $info['jenistransaksi']; ?>"><?php echo $info['jenistransaksi']; ?></option>
 												<option value="Sebut Harga">Sebut Harga</option>
 												<option value="Yuran">Yuran</option>

@@ -21,6 +21,7 @@ if($result) {
 					
 					//tetapkan position utk akses sistem
 					$position = $row['kod_pengguna'];
+					$_SESSION['KOD_PENGGUNA'] = $row['kod_pengguna'];
 					
 					
 			$qry2="SELECT jenis_pengguna,jabatan FROM kod_jenispengguna WHERE kod_pengguna='$position'";

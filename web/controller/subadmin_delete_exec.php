@@ -21,7 +21,7 @@
         $q->execute(array($ic_pengguna));
 		
         Database::disconnect();
-        header("Location: ../index.php");
+        header("Location: ../senarai_sa.php");
     }
      
     if ( !empty($_POST)) {

@@ -2,8 +2,8 @@
 date_default_timezone_set("Asia/Kuala_Lumpur");
 
 
-$sql1="SELECT kod_pengguna FROM akaun_pengguna
-											WHERE ic_pengguna='$pengguna'";
+ $sql1="SELECT kod_pengguna FROM akaun_pengguna
+											WHERE ic_pengguna='".$_SESSION['user']."' AND kod_pengguna!='1'";
 			$result1=mysql_query($sql1);
 			$kod_pengguna=mysql_fetch_object($result1)->kod_pengguna; 
 			
@@ -183,7 +183,8 @@ $tarikh_keyin= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh_keyin)->format(
 						echo "</tr>";
 					
 					?>
-                                        <!-- Modal Kemaskini-->
+					
+           <!-- Modal Kemaskini-->
 											<div class="modal fade" id="myModal1<?echo $row['id_kodtransaksi'];?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 											<div class="modal-dialog">
 												
@@ -194,7 +195,7 @@ $tarikh_keyin= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh_keyin)->format(
 												</div>
 												
 											 <div class="modal-body">
-												<form method="post" action="../web/controller/sebut_harga_kemaskini_exec.php">     
+												<form method="post" action="../web/controller/sa_sebut_harga_kemaskini_exec.php">     
 											 <div class="form-group" align="left">
 												
 												<label><font color="red">** Maklumat Wajib Diisi.</font></label>

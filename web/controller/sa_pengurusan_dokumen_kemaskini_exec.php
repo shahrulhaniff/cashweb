@@ -24,13 +24,13 @@
 			
 			
 			if($result){
-				echo"<script>alert('Kemaskini berjaya!');document.location.href='../pengurusan_dokumen.php';</script>";
+				echo"<script>alert('Kemaskini berjaya!');document.location.href='../sa_pengurusan_dokumen.php';</script>";
 				exit();
 			
 			}else {
 				 echo ("<script LANGUAGE='JavaScript'>
 					window.alert('Kemaskini tidak berjaya.');
-					window.location.href='../pengurusan_dokumen.php';
+					window.location.href='../sa_pengurusan_dokumen.php';
 					</script>");
 			}
 		// }else{

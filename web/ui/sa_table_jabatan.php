@@ -11,11 +11,11 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                            <th>Bil</th>
-                                            <th>ID</th>
-                                            <th>Jenis Transaksi</th>
+                                            <th width="4%">Bil</th>
+                                            <th width="30%">ID</th>
+                                            <th width="36%">Jenis Transaksi</th>
                                             <!--<th>Jabatan</th>-->
-                                            <th>Kod-QR</th>
+                                            <th width="30%">Kod-QR</th>
                                             <!--<th>Tindakan</th>-->
                                         </tr>
                                     </thead>

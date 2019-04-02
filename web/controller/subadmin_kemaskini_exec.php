@@ -8,7 +8,7 @@
     }
      
     if ( null==$ic_lama_pengguna ) {
-        header("Location: ../index.php");
+        header("Location: ../senarai_sa.php");
     }
      
     if ( !empty($_POST)) {
@@ -70,7 +70,7 @@
             $q->execute(array($ic_pengguna));
 			
             Database::disconnect();
-			echo"<script>alert('Update Success!');document.location.href='../index.php';</script>";
+			echo"<script>alert('Update Success!');document.location.href='../senarai_sa.php';</script>";
             //header("Location: index.php");
         }
 	}

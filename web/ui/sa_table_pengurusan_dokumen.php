@@ -105,7 +105,7 @@ WHERE t.id_kodtransaksi=kt.id_kodtransaksi AND kt.kod_pengguna=kj.kod_pengguna A
 												</div>
 												
 											 <div class="modal-body">
-												<form method="post" action="../web/controller/pengurusan_dokumen_kemaskini_exec.php?id=<?php echo $info['id_transaksi'];?>" >
+												<form method="post" action="../web/controller/sa_pengurusan_dokumen_kemaskini_exec.php?id=<?php echo $info['id_transaksi'];?>" >
 
 												<div class="form-group">
 													<label for="comment">Tarikh</label>
@@ -121,17 +121,27 @@ WHERE t.id_kodtransaksi=kt.id_kodtransaksi AND kt.kod_pengguna=kj.kod_pengguna A
 												<div class="form-group" align="left">
 													<label>Daripada</label>
 												<?
-													$data1 = mysql_query("SELECT max(nama) AS nama FROM maklumat_pengguna WHERE ic_pengguna='".$info['daripada']."' ORDER BY ic_pengguna") 
-													or die(mysql_error());	
+													$data1 = mysql_query("SELECT max(nama) AS nama FROM maklumat_pengguna WHERE ic_pengguna='".$info['doc_giveby']."' ORDER BY ic_pengguna");	
 													$info1 = mysql_fetch_array( $data1 );
 												?>
-													<span> : <? echo $info1['nama'];?> (<? echo $info['daripada'];?>)</span>
+													<span> : <? echo $info1['nama'];?> (<? echo $info['doc_giveby'];?>)</span>
 												</div>
 
 												<div class="form-group" align="left">
-													<label>Kepada</label>
-													<input class="form-control" id="kepada" name="kepada" value="<?php echo $info['kepada']; ?>" required >
+													<label>Nama Penerima</label>
+													<?										
+													$datas = mysql_query("SELECT max(nama) AS nama FROM maklumat_pengguna WHERE ic_pengguna='".$info['kepada']."' ORDER BY ic_pengguna");	
+													$infos = mysql_fetch_array( $datas );
+													
+												?>
+													<input class="form-control" id="doc_acceptby_nama" name="doc_acceptby_nama" value="<?=$infos['nama']?>" required >
 												</div>
+												
+												<div class="form-group" align="left">
+													<label>Nombor Kad pengenalan Penerima</label>
+													<input class="form-control" id="doc_acceptby" name="doc_acceptby" value="<? echo $info['kepada'];//value ni utk penerima tu sendiri yang datang ambil. data drp attr "kepada" akan di update dalam attr "doc_acceptby"?>" required >
+												</div>
+												
 												
 												<div class="form-group" align="left">
 												<label for="comment">Status Dokumen</label>
@@ -140,11 +150,11 @@ WHERE t.id_kodtransaksi=kt.id_kodtransaksi AND kt.kod_pengguna=kj.kod_pengguna A
 															<?
 																if ($info['status_dokumen']=="YES"){
 															?>
-															<option value="YES">NO</option>
+															<option value="NO">NO</option>
 															<?
 																}if ($info['status_dokumen']=="NO"){
 															?>
-															<option value="NO">YES</option>
+															<option value="YES">YES</option>
 															<?}?>
 															
 															</select>
