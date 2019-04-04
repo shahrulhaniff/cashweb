@@ -21,14 +21,14 @@
     <div class="w3-col s8 w3-bar">
 	<?if ($_SESSION['USER_TYPE']=='admin') {?>  
       <span>Selamat Datang, <strong><?echo $dataNama['nama'];?></strong></span><br>
-	   <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
+	  <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
       <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
       <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
 	  <?}
 	if ($_SESSION['USER_TYPE']=='sub-admin') {?>  
 	<span>Selamat Datang, <strong><?echo $dataNama['nama'];?></strong></span><br>
 	<a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
-      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
+      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-lock"></i></a>
       <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
 	<?}?>
       
@@ -47,15 +47,17 @@
     <!--<a href="index.php" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw active"></i>  Utama</a>-->
     <a href="index.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw active"></i>  Utama</a>
     <!--<a href="index.php" data-toggle="pill"class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>  Utama</a>-->
-    <a href="sebut_harga.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-folder-open fa-fw"></i> Jenis Bayaran</a>
+    <a href="sebut_harga.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-folder-open fa-fw"></i> Sebut Harga</a>
     <a href="pengurusan_dokumen.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Pengurusan Dokumen</a>
+    <a href="change_password.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-lock fa-fw"></i>  Tukar Kata Laluan</a>
   <?}
 	if ($_SESSION['USER_TYPE']=='sub-admin') {?>  
 	<a href="sa_sebut_harga.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Utama</a>
-	<a href="index_sa.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw active"></i>  Jenis Bayaran</a>
+	<a href="index_sa.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw active"></i>  Sebut Harga</a>
+	<a href="sa_change_password.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-lock fa-fw"></i>  Tukar Kata Laluan</a>
 	
-    <a href="sa_pengurusan_dokumen.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-folder-open fa-fw"></i> Pengurusan Dokumen</a>
-    <!--<a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Derma</a>
+    <!--<a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-folder-open fa-fw"></i> Sebut Harga</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Derma</a>
 	-->
 	<?}?>  
 	<a href="logout.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-sign-out fa-fw"></i>  Log Keluar</a><br><br>

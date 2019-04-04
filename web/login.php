@@ -42,14 +42,28 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
       <input id="password" type="password" class="form-control" name="pwd" value="123" placeholder="Kata Laluan" autocomplete="new-password">
     </div>
-    <br>
+	<input type="checkbox" onclick="myFunction()">Show Password
+    <br><br><br>
     <div class="input-group">
       <span class="input-group-addon"></span>
       <input type="submit" name="loginuser" value="Log Masuk"><!-- style="width: 200px; border: 2px solid #f13f12;" -->
     </div>
+	<a href="forgot_password.php" >Lupa Kata Laluan</a>	
   </form>
 	</div>
 </div>
+
+
+<script>
+	function myFunction() {
+	  var x = document.getElementById("password");
+	  if (x.type === "password") {
+		x.type = "text";
+	  } else {
+		x.type = "password";
+	  }
+	}
+</script>
  
 <? //include "ui/footer.php"; ?>
 
