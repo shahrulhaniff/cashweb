@@ -14,7 +14,7 @@
                                             <th>Bil</th>
                                             <th>ID</th>
                                             <th>Jenis Transaksi</th>
-                                            <th>Jabatan</th>
+                                            <th>Pusat Tanggungjawab (PTj)</th>
                                             <th>Kod-QR</th>
                                             <th>Tindakan</th>
                                         </tr>
@@ -91,7 +91,7 @@
 											</div>
 											
 												<div class="form-group" align="left">
-													<label>Jabatan</label>
+													<label>Pusat Tanggungjawab (PTj)</label>
 													<input class="form-control" id="jabatan" name="jabatan" value="<?php echo $info['jabatan']; ?>" required autocomplete=""  onkeyup=" var start = this.selectionStart;var end = this.selectionEnd; this.value = this.value.toUpperCase();this.setSelectionRange(start, end);" >
 												</div>
 												

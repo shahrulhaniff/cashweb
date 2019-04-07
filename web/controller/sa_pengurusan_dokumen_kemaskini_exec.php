@@ -3,9 +3,10 @@
     require '../../server.php';
  
     // keep track post values
-        $id_transaksi = $_GET['id'];
+        $id_transaksi = $_GET['id_transaksi'];
         $doc_acceptby_nama = $_POST['doc_acceptby_nama'];
         $doc_acceptby = $_POST['doc_acceptby'];
+        $doc_giveby = $_POST['doc_giveby'];
         $status_dokumen = $_POST['status_dokumen'];
        
          
@@ -18,7 +19,7 @@
 		// if($checkNokp>0){
 		
 			
-			$sql="UPDATE transaksi  set daripada = '$daripada', doc_acceptby = '$doc_acceptby', doc_acceptby_nama = '$doc_acceptby_nama', status_dokumen = '$status_dokumen' 
+			$sql="UPDATE transaksi  set doc_giveby = '$doc_giveby', doc_acceptby = '$doc_acceptby', doc_acceptby_nama = '$doc_acceptby_nama', status_dokumen = '$status_dokumen' 
 					WHERE id_transaksi = '$id_transaksi'";
 			$result=mysql_query($sql); //or die(mysql_error());
 			

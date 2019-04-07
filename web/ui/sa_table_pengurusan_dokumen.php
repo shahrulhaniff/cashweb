@@ -14,7 +14,7 @@
                                     <thead>
                                         <tr>
                                             <th>Bil</th>
-											 <th>Jabatan</th>
+											 <th>Pusat Tanggungjawab (PTj)</th>
                                             <th>Penerima</th>
                                             <th>Harga (RM)</th>
                                             <th>Disahkan Oleh</th>
@@ -79,7 +79,7 @@ WHERE t.id_kodtransaksi=kt.id_kodtransaksi AND kt.kod_pengguna=kj.kod_pengguna A
 
                                             ?>
 											<td>
-											<button class="btn btn-info" data-toggle="modal" data-target="#myModalInfo<?echo $info['id_jenistransaksi'];?>">Papar</button>
+											<button class="btn btn-info" data-toggle="modal" data-target="#myModalInfo<?echo $info['id_transaksi'];?>">Papar</button>
                                 
 										 <?
 										 $data4 = mysql_query("SELECT * FROM kod_jenispengguna WHERE jabatan='".$_SESSION['JABATAN']."'") 
@@ -89,13 +89,13 @@ WHERE t.id_kodtransaksi=kt.id_kodtransaksi AND kt.kod_pengguna=kj.kod_pengguna A
 										$kod_pengguna=$info4['kod_pengguna'];
 										 if($kod_pengguna=="3"){ //3 = JPP
 										 ?>
-										 <button class="btn btn-info" data-toggle="modal" data-target="#myModal<?echo $info['id_jenistransaksi'];?>">Kemaskini</button>
+										 <button class="btn btn-info" data-toggle="modal" data-target="#myModal<?echo $info['id_transaksi'];?>">Kemaskini</button>
 										<?}?>
-										<!--<a href="../web/controller/jenis_transaksi_delete_exec.php?id_jenistransaksi=<?echo $info['id_jenistransaksi']; ?>"><button type="button" class="btn btn-danger" onclick="return confirm('Anda pasti untuk padam data ini?');">Padam</button></a>-->
+										<!--<a href="../web/controller/jenis_transaksi_delete_exec.php?id_jenistransaksi=<?echo $info['id_transaksi']; ?>"><button type="button" class="btn btn-danger" onclick="return confirm('Anda pasti untuk padam data ini?');">Padam</button></a>-->
 										 </td>
 										 </tr>
 	<!-- Modal Kemaskini-->
-											<div class="modal fade" id="myModal<?php echo $info['id_jenistransaksi']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+											<div class="modal fade" id="myModal<?php echo $info['id_transaksi']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 											<div class="modal-dialog">
 												
 											<div class="modal-content">
@@ -105,8 +105,10 @@ WHERE t.id_kodtransaksi=kt.id_kodtransaksi AND kt.kod_pengguna=kj.kod_pengguna A
 												</div>
 												
 											 <div class="modal-body">
-												<form method="post" action="../web/controller/sa_pengurusan_dokumen_kemaskini_exec.php?id=<?php echo $info['id_transaksi'];?>" >
+												<form method="post" action="../web/controller/sa_pengurusan_dokumen_kemaskini_exec.php?id_transaksi=<?php echo $info['id_transaksi'];?>" >
 
+												
+												
 												<div class="form-group">
 													<label for="comment">Tarikh</label>
 													<span> : <? echo $info['tarikh'];?></span>
@@ -121,10 +123,11 @@ WHERE t.id_kodtransaksi=kt.id_kodtransaksi AND kt.kod_pengguna=kj.kod_pengguna A
 												<div class="form-group" align="left">
 													<label>Daripada</label>
 												<?
-													$data1 = mysql_query("SELECT max(nama) AS nama FROM maklumat_pengguna WHERE ic_pengguna='".$info['doc_giveby']."' ORDER BY ic_pengguna");	
+													$data1 = mysql_query("SELECT max(nama) AS nama FROM maklumat_pengguna WHERE ic_pengguna='".$_SESSION['user']."' ORDER BY ic_pengguna");	
 													$info1 = mysql_fetch_array( $data1 );
 												?>
-													<span> : <? echo $info1['nama'];?> (<? echo $info['doc_giveby'];?>)</span>
+												<input type="hidden" class="form-control" id="doc_giveby" name="doc_giveby" value="<?echo $_SESSION['user'];?>" required >
+													<span> : <? echo $info1['nama'];?> (<? echo $_SESSION['user'];?>)</span>
 												</div>
 
 												<div class="form-group" align="left">
@@ -171,7 +174,7 @@ WHERE t.id_kodtransaksi=kt.id_kodtransaksi AND kt.kod_pengguna=kj.kod_pengguna A
 			<!--/tamat modal kemaskini-->
 			
 			<!-- Modal Papar Maklumat-->
-											<div class="modal fade" id="myModalInfo<?echo $info['id_jenistransaksi'];?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+											<div class="modal fade" id="myModalInfo<?echo $info['id_transaksi'];?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 											<div class="modal-dialog">
 												
 											<div class="modal-content">

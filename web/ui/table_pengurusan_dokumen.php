@@ -14,7 +14,7 @@
                                     <thead>
                                         <tr>
                                             <th>Bil</th>
-											 <th>Jabatan</th>
+											 <th>Pusat Tanggungjawab (PTj)</th>
                                             <th>Penerima</th>
                                             <th>Harga (RM)</th>
                                             <th>Disahkan Oleh</th>
