@@ -13,7 +13,7 @@
         $q = $pdo->prepare($sql);
         $q->execute(array($id_jenistransaksi));
         Database::disconnect();
-        header("Location: ../index.php");
+        header("Location: ../senarai_ptj.php");
     }
      
     if ( !empty($_POST)) {

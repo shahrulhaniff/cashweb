@@ -8,7 +8,7 @@
     }
      
     if ( null==$id_jenistransaksi ) {
-        header("Location: ../index.php");
+        header("Location: ../senarai_ptj.php");
     }
      
     if ( !empty($_POST)) {
@@ -50,8 +50,8 @@
             $q = $pdo->prepare($sql);
             $q->execute(array($jenistransaksi,$jabatan,$id_jenistransaksi));
             Database::disconnect();
-			echo"<script>alert('Update Success!');document.location.href='../index.php';</script>";
-            //header("Location: index.php");
+			echo"<script>alert('Kemaskini Berjaya!');document.location.href='../senarai_ptj.php';</script>";
+            //header("Location: senarai_ptj.php");
         }
 	}
     // else {

@@ -37,14 +37,17 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-dashboard"></i>Tukar Kata Laluan</b></h5>
+    <h5><b><i class="fa fa-dashboard"></i>Pengurusan Dokumen</b></h5>
   </header>
+
+
+
 
   <div class="w3-panel">
     <div class="w3-row-padding" style="margin:0 -16px">
 
-   
-<? include "ui/form_change_password.php"; ?>
+ 
+<? include "ui/table_senarai_transaksi.php"; ?>
   </div>
   </div>
   

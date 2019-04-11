@@ -12,13 +12,13 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                            <th>Bil</th>
+                                           <th>Bil</th>
+                                            <th>Nombor Rujukan</th>
 											 <th>Pusat Tanggungjawab (PTj)</th>
                                             <th>Penerima</th>
                                             <th>Harga (RM)</th>
-                                            <th>Disahkan Oleh</th>
 											<th>Status</th>
-											<th>Tarikh</th>
+											<th>Tarikh & Masa</th>
 											<th>Tindakan</th>
                                         </tr>
                                     </thead>
@@ -36,6 +36,7 @@ WHERE t.id_kodtransaksi=kt.id_kodtransaksi AND kt.kod_pengguna=kj.kod_pengguna A
 										while($info = mysql_fetch_array( $data )) {
 											echo "<tr class='gradeA'>";
 											echo "<td>".$i." </td>";
+											echo "<td>".$info['norujukan']." </td>";
 
 
 											// $data1 = mysql_query("SELECT max(nama) AS nama FROM maklumat_pengguna WHERE ic_pengguna='".$info['doc_acceptby']."' ORDER BY ic_pengguna") 
@@ -53,28 +54,15 @@ WHERE t.id_kodtransaksi=kt.id_kodtransaksi AND kt.kod_pengguna=kj.kod_pengguna A
 											// $info2 = mysql_fetch_array( $data2 );
                                             // echo "<td>".$info2['nama'] . " </td>";
 											
-											
 											$data3 = mysql_query("SELECT * FROM kod_jenistransaksi WHERE id_jenistransaksi='".$info['id_jenistransaksi']."'") 
 											or die(mysql_error());	
 											$info3 = mysql_fetch_array( $data3 );
                                             echo "<td>".$info3['jabatan'] . " </td>";
 											
-
-											
                                             echo "<td>".$info['doc_acceptby_nama'] . " </td>";
 											echo "<td>".$info['jumlah'] . " </td>";
-                                           
-
-											
-											$data2 = mysql_query("SELECT max(nama) AS nama FROM maklumat_pengguna WHERE ic_pengguna='".$info['doc_giveby']."' ORDER BY ic_pengguna") 
-											or die(mysql_error());	
-											$info2 = mysql_fetch_array( $data2 );
-                                            echo "<td>".$info2['nama'] . " </td>";
-
-											
-
-											 echo "<td>".$info['status_dokumen'] . " </td>";
-											 echo "<td>".$info['tarikh'] . " </td>";
+											echo "<td>".$info['status_dokumen'] . " </td>";
+											echo "<td>".$info['tarikh'] . " </td>";
 
                                             ?>
 											<td>
@@ -131,17 +119,12 @@ WHERE t.id_kodtransaksi=kt.id_kodtransaksi AND kt.kod_pengguna=kj.kod_pengguna A
 
 												<div class="form-group" align="left">
 													<label>Nama Penerima</label>
-													<?										
-													$datas = mysql_query("SELECT max(nama) AS nama FROM maklumat_pengguna WHERE ic_pengguna='".$info['kepada']."' ORDER BY ic_pengguna");	
-													$infos = mysql_fetch_array( $datas );
-													
-												?>
-													<input class="form-control" id="doc_acceptby_nama" name="doc_acceptby_nama" value="<?=$infos['nama']?>" required >
+													<input class="form-control" id="doc_acceptby_nama" name="doc_acceptby_nama" value="<?=$info['doc_acceptby_nama']?>" required >
 												</div>
 												
 												<div class="form-group" align="left">
 													<label>Nombor Kad pengenalan Penerima</label>
-													<input class="form-control" id="doc_acceptby" name="doc_acceptby" value="<? echo $info['kepada'];//value ni utk penerima tu sendiri yang datang ambil. data drp attr "kepada" akan di update dalam attr "doc_acceptby"?>" required >
+													<input class="form-control" id="doc_acceptby" name="doc_acceptby" value="<? echo $info['doc_acceptby'];?>" required >
 												</div>
 												
 												
@@ -182,7 +165,13 @@ WHERE t.id_kodtransaksi=kt.id_kodtransaksi AND kt.kod_pengguna=kj.kod_pengguna A
 													<h4 class="modal-title" align="left" id="myModalLabel">Paparan Maklumat</h4>
 												</div>
 												
-												<div class="modal-body">												
+												<div class="modal-body">	
+												
+												<div class="form-group">
+													<label for="comment">Nombor Rujukan</label>
+													<span> : <? echo $info['norujukan'];?></span>
+												</div> 
+												
 												<div class="form-group">
 													<label for="comment">Jenis Transaksi</label>
 													<?
@@ -206,17 +195,13 @@ WHERE t.id_kodtransaksi=kt.id_kodtransaksi AND kt.kod_pengguna=kj.kod_pengguna A
 												
 												<div class="form-group" align="left">
 													<label>Daripada</label>
-													<span> : <? echo $info1['nama'];?> (<? echo $info['daripada'];?>)</span>
+													<span> : <? echo $info1['nama'];?> (<? echo $info['doc_giveby'];?>)</span>
 												</div>
 												
 												<div class="form-group" align="left">
 													<label>Kepada</label>
-													<?
-														$data2 = mysql_query("SELECT max(nama) AS nama FROM maklumat_pengguna WHERE ic_pengguna='".$info['kepada']."' ORDER BY ic_pengguna") 
-														or die(mysql_error());	
-														$info2 = mysql_fetch_array( $data2 );
-													?>
-													<span> : <? echo $info2['nama'];?> (<? echo $info['kepada'];?>)</span>
+												
+													<span> : <? echo $info['doc_acceptby_nama'];?> (<? echo $info['doc_acceptby'];?>)</span>
 												</div>
 												
 												<div class="form-group" align="left">

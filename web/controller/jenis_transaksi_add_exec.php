@@ -98,15 +98,18 @@
 					
 					echo ("<script LANGUAGE='JavaScript'>
 							window.alert('Tambah Jabatan berjaya.');
-							window.location.href='../index.php';
+							window.location.href='../senarai_ptj.php';
 							</script>");
 				}else{
-					header("Location: ../index.php");
+					echo ("<script LANGUAGE='JavaScript'>
+							window.alert('Tambah Jabatan berjaya.');
+							window.location.href='../senarai_ptj.php';
+							</script>");
 					}
 		}else{
 			 echo ("<script LANGUAGE='JavaScript'>
 					window.alert('ID sudah wujud. Sila gunakan ID yang lain.');
-					window.location.href='../index.php';
+					window.location.href='../senarai_ptj.php';
 					</script>");
 					//echo $id_jenistransaksi;
 		}

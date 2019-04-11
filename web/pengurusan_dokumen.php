@@ -47,20 +47,6 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <div class="w3-row-padding" style="margin:0 -16px">
 
   
-<?
- // $flag=$_GET['flg'];   
-  // $dateSelection=$_GET['dt'];     
- 
-						// $flag=$_GET['flg'];
-						// include ('global/menu_hari_dokumen.php'); 
-				
-				
-						// $flagScreen=$_GET['flagScreen'];
-						// if($flagScreen==''){
-							// $flagScreen='tab_1';
-							// }
-						// include ('global/menu_status_dokumen.php'); 
-?> 
 <? include "ui/table_pengurusan_dokumen.php"; ?>
   </div>
   </div>

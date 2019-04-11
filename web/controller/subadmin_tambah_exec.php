@@ -35,7 +35,7 @@
         // validate input
         $valid = true;
         if (empty($id_jenistransaksi)) {
-            $id_jenistransaksiError = 'Masukkanr id jenis transaksi';
+            $id_jenistransaksiError = 'Masukkan id jenis transaksi';
             $valid = false;
         }
          
@@ -120,18 +120,19 @@ function refreshParent() {
 				$mail->Body    = $bodyContent;
 
 				if(!$mail->send()) {
-					echo 'Message could not be sent.';
-					echo 'Mailer Error: ' . $mail->ErrorInfo;
+					echo"<script>alert('Daftar Sub Admin berjaya. Email tidak dihantar.');document.location.href='../senarai_sa.php?jabatan=$jabatan';</script>";
+					// echo 'Message could not be sent.';
+					// echo 'Mailer Error: ' . $mail->ErrorInfo;
 				} 
 				else {
 					//echo 'Message has been sent';
-					echo"<script>alert('Registration Success!!!');document.location.href='../senarai_sa.php?jabatan=$jabatan';</script>";
+					echo"<script>alert('Daftar Sub Admin berjaya.');document.location.href='../senarai_sa.php?jabatan=$jabatan';</script>";
 				}
 
 		}else{
 			 echo ("<script LANGUAGE='JavaScript'>
-					window.alert('tambah sub admin tidak berjaya. Nombor kad pengenalan sudah wujud di dalam sistem.');
-					window.location.href='../index.php';
+					window.alert('Daftar sub admin tidak berjaya. Nombor kad pengenalan sudah wujud di dalam sistem.');
+					window.location.href='../senarai_sa.php?jabatan=$jabatan'';
 					</script>");
 		}
 			
