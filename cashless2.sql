@@ -3,7 +3,15 @@
 --
 -- DROP DATABASE cashless;
 -- CREATE DATABASE cashless;
-USE id9050021_cashless;
+-- USE id9050021_cashless;
+USE cashless;
+
+DROP TABLE transaksi;
+DROP TABLE kod_transaksi;
+DROP TABLE kod_jenistransaksi;
+DROP TABLE akaun_pengguna;
+DROP TABLE maklumat_pengguna;
+DROP TABLE kod_jenispengguna;
 -- --------------------------------------------------------
 
 --
@@ -47,12 +55,13 @@ INSERT INTO kod_jenispengguna (kod_pengguna, jenis_pengguna, jabatan) VALUES
 ('3', 'sub-admin', 'JPP');
 
 INSERT INTO maklumat_pengguna (ic_pengguna, nama, email,no_telefon) VALUES
+('941013115434', 'Amir Fitri', 'amir@gmail.com', '0109668468'),
 ('941013115435', 'Shahrul Haniff', 'shahrul@gmail.com', '0109668468'),
 ('941013115436', 'Bendahari UniSZA', 'bendahari@unisza.com', '0109668468');
 
 INSERT INTO akaun_pengguna (ic_pengguna,kod_pengguna,pwd,status_aktif) VALUES
 ('941013115435', '1', '202cb962ac59075b964b07152d234b70','yes'),
-('941013115435', '3', '202cb962ac59075b964b07152d234b70','no'),
+('941013115434', '3', '202cb962ac59075b964b07152d234b70','no'),
 ('941013115436', '2', '202cb962ac59075b964b07152d234b70','yes');
 
 -- --------------------------------------------------------
