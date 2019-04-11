@@ -1,6 +1,12 @@
 
 
 <div class="col-md-12">
+<?
+if (isset($_POST['detail'])) {
+$idd = $_POST['id'];
+include "qr/qr.php";
+}
+?>
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -51,15 +57,23 @@
                                             echo "<td>".$info['jabatan'] . " </td>";
 ?><td>
 <? $idd = $info['id_jenistransaksi']; ?>
-<a href="../extension/html2pdf/cetakQR.php?idd='.$idd.'"><button class="btn btn-info">QR mod</button></a>
+<!-- <a href="../extension/html2pdf/cetakQR.php?idd='.$idd.'"><button class="btn btn-info">QR mod</button></a> -->
 
-<form action="senarai_sa.php" method="POST"><input type="hidden" name="id_jenistransaksi" value="<?=$info['id_jenistransaksi']?>"><input type="hidden" name="jabatan" value="<?=$info['jabatan']?>"><input type="submit" class="btn btn-warning" value="Senarai Sub-Admin"></form>
+<form></form>
+
+<form action="" method="POST">
+<input type='hidden' value='<?=$info['id_jenistransaksi']?>' name='id'>&nbsp;
+<input type="hidden" name="detail">
+<input type="image" src="qr/qrbtn.png" alt="Submit" width="35" height="35" title="Detail">
+</form>
 </td><?
                                             ?>
 											<td>
 										 <!--<a class="edit" title="Edit" data-toggle="tooltip"><button type="button" class="btn btn-info " onClick="updateId('<?php echo $list['id']; ?>')">Kemaskini</button></a>-->
 										 <button class="btn btn-info" data-toggle="modal" data-target="#myModal<?echo $info['id_jenistransaksi'];?>">Kemaskini</button>
 										<a href="../web/controller/jenis_transaksi_delete_exec.php?id_jenistransaksi=<?echo $info['id_jenistransaksi']; ?>"><button type="button" class="btn btn-danger" onclick="return confirm('Anda pasti untuk padam data ini?');">Padam</button></a>
+										
+										<form action="senarai_sa.php" method="POST"><input type="hidden" name="id_jenistransaksi" value="<?=$info['id_jenistransaksi']?>"><input type="hidden" name="jabatan" value="<?=$info['jabatan']?>"><input type="submit" class="btn btn-warning" value="Senarai Sub-Admin"></form>
 										 </td>
 	<!-- Modal Kemaskini-->
 											<div class="modal fade" id="myModal<?php echo $info['id_jenistransaksi']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -136,10 +150,6 @@
                         </div>
                     </div>
                     <!--End Advanced Tables -->
-					<?
-$idd ="abeley";
-include "qr/qr.php";
-?>
                 </div>
 				
 				
