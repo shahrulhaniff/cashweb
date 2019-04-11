@@ -46,6 +46,8 @@
 	<a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
     <!--<a href="index.php" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw active"></i>  Utama</a>-->
     <a href="index.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw active"></i>  Utama</a>
+    <a href="senarai_transaksi.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw active"></i>  Senarai Transaksi</a>
+    <a href="senarai_ptj.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw active"></i>  Senarai PTj</a>
     <!--<a href="index.php" data-toggle="pill"class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>  Utama</a>-->
     <a href="sebut_harga.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-folder-open fa-fw"></i>  Jenis Bayaran</a>
     <a href="pengurusan_dokumen.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Pengurusan Dokumen</a>

@@ -9,14 +9,14 @@
 		// delete data
 		 $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo $sql = "DELETE FROM akaun_pengguna  WHERE ic_pengguna = '$ic_pengguna'";
+        $sql = "DELETE FROM akaun_pengguna  WHERE ic_pengguna = '$ic_pengguna'";
         $q = $pdo->prepare($sql);
         $q->execute(array($ic_pengguna));
 		
 		// delete data
 		 $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo $sql = "DELETE FROM maklumat_pengguna  WHERE ic_pengguna = '$ic_pengguna'";
+        $sql = "DELETE FROM maklumat_pengguna  WHERE ic_pengguna = '$ic_pengguna'";
         $q = $pdo->prepare($sql);
         $q->execute(array($ic_pengguna));
 		

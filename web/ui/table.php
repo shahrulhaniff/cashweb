@@ -29,7 +29,7 @@
 											<select required class="form-control" name="jenistransaksi" value="">
 												<option value="">--Pilih--</option>
 												<option value="Sebut Harga">Sebut Harga</option>
-												<option value="Yuran">Yuran</option>
+												<option value="Seminar">Seminar</option>
 												<option value="Derma">Derma</option>
 											</select>
 											</div></td>
@@ -50,7 +50,9 @@
                                             echo "<td>".$info['jenistransaksi'] . " </td>";
                                             echo "<td>".$info['jabatan'] . " </td>";
 ?><td>
-<form action="QRLogo.php" method="POST" target="_blank"><input type="hidden" name="id_jenistransaksi" value="<?=$info['id_jenistransaksi']?>"><input type="submit" value="Jana Kod QR"></form>
+<? $idd = $info['id_jenistransaksi']; ?>
+<a href="../extension/html2pdf/cetakQR.php?idd='.$idd.'"><button class="btn btn-info">QR mod</button></a>
+
 <form action="senarai_sa.php" method="POST"><input type="hidden" name="id_jenistransaksi" value="<?=$info['id_jenistransaksi']?>"><input type="hidden" name="jabatan" value="<?=$info['jabatan']?>"><input type="submit" class="btn btn-warning" value="Senarai Sub-Admin"></form>
 </td><?
                                             ?>
@@ -59,7 +61,6 @@
 										 <button class="btn btn-info" data-toggle="modal" data-target="#myModal<?echo $info['id_jenistransaksi'];?>">Kemaskini</button>
 										<a href="../web/controller/jenis_transaksi_delete_exec.php?id_jenistransaksi=<?echo $info['id_jenistransaksi']; ?>"><button type="button" class="btn btn-danger" onclick="return confirm('Anda pasti untuk padam data ini?');">Padam</button></a>
 										 </td>
-										 
 	<!-- Modal Kemaskini-->
 											<div class="modal fade" id="myModal<?php echo $info['id_jenistransaksi']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 											<div class="modal-dialog">
@@ -85,11 +86,28 @@
 											<select required class="form-control" name="jenistransaksi" value="">
 												<option value="<?php echo $info['jenistransaksi']; ?>"><?php echo $info['jenistransaksi']; ?></option>
 												<option value="Sebut Harga">Sebut Harga</option>
-												<option value="Yuran">Yuran</option>
+												<option value="Seminar">Seminar</option>
 												<option value="Derma">Derma</option>
 											</select>
 											</div>
-											
+<!--								
+												<div class="form-group" align="left">
+												<label>Jenis Transaksi</label>
+												<?php 
+												$dataJenistransaksi = mysql_query("SELECT DISTINCT(jenistransaksi)AS jenistransaksi FROM kod_jenistransaksi WHERE jenistransaksi != '".$info['jenistransaksi']."'");
+													
+														
+											?>
+											<select required class="form-control" name="jenistransaksi" value="">
+											<option value="<?php echo $info['jenistransaksi']; ?>"><?php echo $info['jenistransaksi']; ?></option>
+												
+											<?while($infoJenistransaksi = mysql_fetch_array( $dataJenistransaksi )) {?>
+												<option value="<?php echo $infoJenistransaksi['jenistransaksi']; ?>"><?php echo $infoJenistransaksi['jenistransaksi']; ?></option>
+												<?}?>
+											</select>
+														
+											</div>
+						-->								
 												<div class="form-group" align="left">
 													<label>Pusat Tanggungjawab (PTj)</label>
 													<input class="form-control" id="jabatan" name="jabatan" value="<?php echo $info['jabatan']; ?>" required autocomplete=""  onkeyup=" var start = this.selectionStart;var end = this.selectionEnd; this.value = this.value.toUpperCase();this.setSelectionRange(start, end);" >
@@ -103,19 +121,25 @@
 											</div><!--modal-body-->
 											</div><!-- /.modal-content -->
 											</div><!-- /.modal-dialog -->
-											</div><!-- /.modal -->
+											</div><!-- /.modal --> 
 											
 										 <?
 											echo "</tr>";
 										$i++;
 										}
 										?>
-                                        
+
                                     </tbody>
                                 </table>
+								
                             </div>
                         </div>
                     </div>
                     <!--End Advanced Tables -->
+					<?
+$idd ="abeley";
+include "qr/qr.php";
+?>
                 </div>
-	
+				
+				

@@ -47,7 +47,8 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <div class="input-group">
       <span class="input-group-addon"></span>
       <input type="submit" name="loginuser" value="Log Masuk"><!-- style="width: 200px; border: 2px solid #f13f12;" -->
-    </div>
+	  
+	</div>
 	<a href="forgot_password.php" >Lupa Kata Laluan</a>	
   </form>
 	</div>

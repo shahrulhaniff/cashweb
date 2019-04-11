@@ -1,4 +1,6 @@
-<?php session_start(); include "../../server.php";?>
+<?php 
+session_start();
+include "../../server.php";?>
 <html>
 <head>
 <title>Resit</title>
@@ -277,6 +279,9 @@ $page['authStatus'] = $authStatus;
  	$pa					= $_SESSION['PA'];
 	$tarikh 			= date('Y-m-d h:i:s');
 	
+	$sql = mysql_query("SELECT description FROM kod_transaksi WHERE id_kodtransaksi='".$idk."';") or die(mysql_error()); 
+	while($info = mysql_fetch_array( $sql )) { $description = $info['description']; }
+	
 	?>
 	<button class="button">Resit Pembayaran Cashless UniSZA</button>
 	<?php
@@ -287,7 +292,13 @@ $page['authStatus'] = $authStatus;
 	echo "<tr><td>Status</td><td>:</td>				<td><font color='".$color."'>".$message."</b></td></tr>";
 	echo "<tr><td>No. Rujukan</td><td>:</td>		<td>".$transactionNo."</td></tr>";
 	echo "<tr><td>Tarikh Transaksi</td><td>:</td>	<td>".$page['datetime']."</td></tr>";
+	echo "<tr><td colspan='3'>&nbsp; </td></tr>";
 	echo "<tr><td>Jumlah</td><td>:</td>				<td>".$pa."</td></tr>";
+	echo "<tr><td colspan='3'>&nbsp; </td></tr>";
+	echo "<tr><td colspan='3'>&nbsp; </td></tr>";
+	echo "<tr><td>Keterangan</td><td>:</td>		<td>".$description."</td></tr>";
+	echo "<tr><td colspan='3'>&nbsp; </td></tr>";
+	echo "<tr><td colspan='3'>&nbsp; </td></tr>";
 	echo "<tr><td>Dibayar oleh</td><td>:</td>		<td>".$user."</td></tr>";
 	echo "<tr><td>ID Merchant</td><td>:</td>		<td>".$merchantID."</td></tr>";
 	echo "<tr><td>Jenis Kad</td><td>:</td>			<td>".$cardType."</td></tr>";

@@ -1,5 +1,7 @@
 <?php 
+if (empty($_SESSION['user'])) {
    header("Access-Control-Allow-Origin: *");
+}
    // Define database connection parameters
    $hn      = 'localhost';
    $un      = 'root';

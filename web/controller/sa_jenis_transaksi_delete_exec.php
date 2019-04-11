@@ -9,7 +9,7 @@
 		// delete data
 		 $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo $sql = "DELETE FROM kod_jenistransaksi  WHERE id_jenistransaksi = '$id_jenistransaksi'";
+        $sql = "DELETE FROM kod_jenistransaksi  WHERE id_jenistransaksi = '$id_jenistransaksi'";
         $q = $pdo->prepare($sql);
         $q->execute(array($id_jenistransaksi));
         Database::disconnect();

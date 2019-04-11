@@ -1,7 +1,6 @@
 <?php
 session_start();
 unset($_SESSION['hashing']);
-	
 include "../../server.php";
  
   $cn = $_GET['cn'];

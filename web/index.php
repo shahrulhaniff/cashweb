@@ -7,6 +7,14 @@ if (empty($_SESSION['user'])) {
 	
 unset($_SESSION['id']);
 unset($_SESSION['jabatan']);
+
+	/*TO CLEAR GENERATED FILE*/
+	$files = glob('qr/temp/*'); // get all file names
+	foreach($files as $file){ // iterate files
+	  if(is_file($file))
+		unlink($file); // delete file
+	}
+	
 	
 ?>
 <!DOCTYPE html>
@@ -99,7 +107,6 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <div class="w3-row-padding" style="margin:0 -16px">
 
    
-<? include "ui/table.php"; ?>
   </div>
   </div>
   
