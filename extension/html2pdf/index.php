@@ -15,9 +15,9 @@ $html2pdf->writeHTML($buffer);
 
 /* ___________________________________________Server save Start */
 //Save temporary at server
-$html2pdf->Output(__DIR__ .'/borang/my.pdf', 'F');
+$html2pdf->Output(__DIR__ .'/pdfile/my.pdf', 'F');
 // The location of the PDF file on the server.
-$filename = "borang/my.pdf";
+$filename = "pdfile/my.pdf";
 // Let the browser know that a PDF file is coming.
 header("Content-type: application/pdf");
 header("Content-Length: " . filesize($filename));
