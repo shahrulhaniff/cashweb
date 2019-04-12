@@ -1,5 +1,81 @@
+<?  
+date_default_timezone_set("Asia/Kuala_lumpur");
+	$date = new DateTime();
+	$current_date=$date->format('Y-m-d');
+    $crt_dt = date_format($date,"D d-F-Y");
+	$month = date_format($date,"F Y");
+    $bulan = date_format($date,"m");
+	$tahun = date_format($date,"Y");
+	
+	 	 
+	$flag=$_GET['flg'];   
+		if($flag==''){
+			$flag='tb_1';
+			}
+			
+	$dateSelection=$_GET['dt'];   
+	if($dateSelection==''){
+			$dateSelection='tiada';
+			}
+	$flagScreen=$_GET['flagScreen'];
+		if($flagScreen==''){
+			$flagScreen='tab_1';
+			}
+			
+	$status=$_GET['status'];			
+		if($status==''){
+			$status='YES';
+			}		
+ 
+?>
 
 <div class="col-md-12">
+				
+<div id='cssmenu'>
+	<ul>
+		<li class="<? echo ($flag=='tb_1'?'active':'') ?>"><a href="sa_pengurusan_dokumen.php?status=<?echo $status;?>&dt=tiada&flg=<? echo tb_1 ;?>&flagScreen=<?echo $flagScreen;?>">Papar Semua</a></li>
+		<? if ($dateSelection=='tiada' || $dateSelection==''){
+			
+			?>
+		<li class="<? echo ($flag=='tb_2'?'active':'') ?>"><a href="sa_pengurusan_dokumen.php?status=<?echo $status;?>&dt=<? echo $current_date; //21-03-2019?>&flg=<? echo tb_2 ;?>&flagScreen=<?echo $flagScreen;?>">Carian Mengikut Tarikh</a></li>
+		<? }else {?>
+		<li class="<? echo ($flag=='tb_2'?'active':'') ?>"><a href="sa_pengurusan_dokumen.php?status=<?echo $status;?>&dt=<? echo $dateSelection; //21-03-2019?>&flg=<? echo tb_2 ;?>&flagScreen=<?echo $flagScreen;?>">Carian Mengikut Tarikh</a></li>
+		<?}?>
+		
+	</ul>
+</div>
+<div id='cssmenu'>
+	<ul>
+	 
+
+		<li class="<? echo ($flagScreen=='tab_1'?'active':'') ?>"><a href="sa_pengurusan_dokumen.php?status=YES&dt=<? echo $dateSelection;?>&flg=<? echo $flag; ?>&flagScreen=tab_1">Dokumen Telah Diserah</a></li>
+		<li class="<? echo ($flagScreen=='tab_2'?'active':'') ?>"><a href="sa_pengurusan_dokumen.php?status=NO&dt=<? echo $dateSelection;?>&flg=<? echo $flag; ?>&flagScreen=tab_2">Dokumen Baru Dibeli</a></li>
+	
+	</ul>
+</div>
+ 
+<!-- carian-->
+<? if ($dateSelection!='tiada'){?>
+<div align="center">
+				<h4>Carian**</h4>
+				<table>
+				<tr><? if ($dateSelection==''){?>
+					<td><input class="form-control" required type="date" placeholder="cari" id="dateSelection" name="dateSelection" value="<?echo $current_date?>"></td>
+					
+				<?}else {?>
+					<td><input class="form-control" required type="date" placeholder="cari" id="dateSelection" name="dateSelection" value="<?echo $dateSelection;?>"></td>
+				<?}?>
+				<td><center> <button onclick="submit_cari()" align="right" class="btn btn-warning">Cari</button></center></td>
+				</tr>
+				
+				</table>
+				<h6>** masukkan tarikh carian anda</h6>
+</div>
+<?}?>
+
+
+
+
 				
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
@@ -25,11 +101,15 @@
                                     <tbody>
 									
 <?php // Connects to your Database 
-
+if($dateSelection=='tiada'){
+  $data = mysql_query("SELECT t.* FROM transaksi t,kod_transaksi kt,kod_jenispengguna kj
+WHERE t.id_kodtransaksi=kt.id_kodtransaksi AND kt.kod_pengguna=kj.kod_pengguna AND kj.jabatan='".$_SESSION['JABATAN']."' AND t.status_dokumen='$status'");
+}else if($dateSelection!='tiada'){
  $data = mysql_query("SELECT t.* FROM transaksi t,kod_transaksi kt,kod_jenispengguna kj
-WHERE t.id_kodtransaksi=kt.id_kodtransaksi AND kt.kod_pengguna=kj.kod_pengguna AND kj.jabatan='".$_SESSION['JABATAN']."'
-") 
- or die(mysql_error()); ?>
+WHERE t.id_kodtransaksi=kt.id_kodtransaksi AND kt.kod_pengguna=kj.kod_pengguna AND  kj.jabatan='".$_SESSION['JABATAN']."' AND DATE_FORMAT(t.tarikh,'%Y-%m-%d')='$dateSelection' AND t.status_dokumen='$status'
+");
+}
+ ?>
                                         
 										<?php
 										$i=1;
@@ -236,4 +316,29 @@ WHERE t.id_kodtransaksi=kt.id_kodtransaksi AND kt.kod_pengguna=kj.kod_pengguna A
                     </div>
                     <!--End Advanced Tables -->
                 </div>
+
+	<script>
+$(document).ready(function() {
+	$('#dataTables-example').DataTable({
+		responsive: true
+	});
 	
+	 //$('[data-toggle="popover"]').popover();  
+});
+
+ function submit_cari(){
+		var dateSelection=$('#dateSelection').val();
+		
+		
+		 var flg = "<? echo $flag; ?>";
+		 var flagScreen = "<?echo $flagScreen;?>";
+		 var status = "<?php echo $status ?>";
+		 if (dateSelection!=''){ 
+			// location.href='pengurusan_dokumen.php?dateSelection='+dateSelection+'&user_id='+user_id+'&groups_id='+groups_id+'&nama_pengawal='+nama_pengawal;
+			location.href='sa_pengurusan_dokumen.php?status='+status+'&dt='+dateSelection+'&flg='+flg+'&flagScreen='+flagScreen;
+		 }else{
+			 alert("Fill the form1!");
+		 }	
+	} 
+
+</script>	
