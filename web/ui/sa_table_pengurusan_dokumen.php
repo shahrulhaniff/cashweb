@@ -93,7 +93,7 @@ date_default_timezone_set("Asia/Kuala_lumpur");
 											 <th>Pusat Tanggungjawab (PTj)</th>
                                             <th>Penerima</th>
                                             <th>Harga (RM)</th>
-											<th>Status</th>
+											<!--<th>Status</th>-->
 											<th>Tarikh & Masa</th>
 											<th>Tindakan</th>
                                         </tr>
@@ -141,7 +141,7 @@ WHERE t.id_kodtransaksi=kt.id_kodtransaksi AND kt.kod_pengguna=kj.kod_pengguna A
 											
                                             echo "<td>".$info['doc_acceptby_nama'] . " </td>";
 											echo "<td>".$info['jumlah'] . " </td>";
-											echo "<td>".$info['status_dokumen'] . " </td>";
+											// echo "<td>".$info['status_dokumen'] . " </td>";
 											echo "<td>".$info['tarikh'] . " </td>";
 
                                             ?>
