@@ -43,16 +43,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <header class="w3-container" style="padding-top:22px">
     <h5><b><i class="fa fa-dashboard"></i> Senarai Pusat Tanggungjawab</b></h5>
   </header>
-<?php 
-/*To calculate participant list*/ $datacount4badge = mysql_query("SELECT count(jenistransaksi) as myCount from kod_jenistransaksi;"); $infobadge = mysql_fetch_array( $datacount4badge ); $countptcp = $infobadge['myCount']; 
 
- /*To calculate participant list*/ $cntuser = mysql_query("SELECT count(ic_pengguna) as myCount from akaun_pengguna;") ; $infoBilUser = mysql_fetch_array( $cntuser ); $cntuser = $infoBilUser['myCount']; 
- 
- /*To calculate participant list*/ $count_document = mysql_query("SELECT count(id_transaksi) as myCount from transaksi;"); $infoBilDoc = mysql_fetch_array( $count_document ); $count_document = $infoBilDoc['myCount']; 
- 
- /*To calculate participant list*/ $count_bayaran = mysql_query("SELECT count(id_kodtransaksi) as myCount from kod_transaksi;"); $infoBilBayaran = mysql_fetch_array( $count_bayaran ); $count_bayaran = $infoBilBayaran['myCount']; 
- ?>
-  
   <div class="w3-panel">
     <div class="w3-row-padding" style="margin:0 -16px">
 

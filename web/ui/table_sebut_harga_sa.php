@@ -3,9 +3,9 @@ date_default_timezone_set("Asia/Kuala_Lumpur");
 
 
  $sql1="SELECT kod_pengguna FROM akaun_pengguna
-											WHERE ic_pengguna='".$_SESSION['user']."' AND kod_pengguna!='1'";
-			$result1=mysql_query($sql1);
-			$kod_pengguna=mysql_fetch_object($result1)->kod_pengguna; 
+		WHERE ic_pengguna='".$_SESSION['user']."' AND kod_pengguna!='1'";
+$result1=mysql_query($sql1);
+$kod_pengguna=mysql_fetch_object($result1)->kod_pengguna; 
 			
 ?>
 							<!-- Modal Add Jenis Bayaran -->

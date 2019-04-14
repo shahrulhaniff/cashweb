@@ -25,7 +25,7 @@
      
     if ( !empty($_POST)) {
         // keep track post values
-        $ic_pengguna = $_POST['ic_pengguna'];
+       // $ic_pengguna = $_POST['ic_pengguna'];
          
        // // delete data
 		 // $pdo = Database::connect();

@@ -134,8 +134,8 @@ WHERE t.id_kodtransaksi=kt.id_kodtransaksi AND kt.kod_pengguna=kj.kod_pengguna A
 											// $info2 = mysql_fetch_array( $data2 );
                                             // echo "<td>".$info2['nama'] . " </td>";
 											
-											$data3 = mysql_query("SELECT * FROM kod_jenistransaksi WHERE id_jenistransaksi='".$info['id_jenistransaksi']."'") 
-											or die(mysql_error());	
+											$data3 = mysql_query("SELECT * FROM kod_jenistransaksi WHERE id_jenistransaksi='".$info['id_jenistransaksi']."'"); 
+											//or die(mysql_error());	
 											$info3 = mysql_fetch_array( $data3 );
                                             echo "<td>".$info3['jabatan'] . " </td>";
 											
@@ -149,8 +149,8 @@ WHERE t.id_kodtransaksi=kt.id_kodtransaksi AND kt.kod_pengguna=kj.kod_pengguna A
 											<button class="btn btn-info" data-toggle="modal" data-target="#myModalInfo<?echo $info['id_transaksi'];?>">Papar</button>
                                 
 										 <?
-										 $data4 = mysql_query("SELECT * FROM kod_jenispengguna WHERE jabatan='".$_SESSION['JABATAN']."'") 
-											or die(mysql_error());	
+										 $data4 = mysql_query("SELECT * FROM kod_jenispengguna WHERE jabatan='".$_SESSION['JABATAN']."'"); 
+											//or die(mysql_error());	
 											$info4 = mysql_fetch_array( $data4 );
 										 
 										$kod_pengguna=$info4['kod_pengguna'];
@@ -255,8 +255,8 @@ WHERE t.id_kodtransaksi=kt.id_kodtransaksi AND kt.kod_pengguna=kj.kod_pengguna A
 												<div class="form-group">
 													<label for="comment">Jenis Transaksi</label>
 													<?
-														$data3 = mysql_query("SELECT jenistransaksi FROM kod_jenistransaksi WHERE id_jenistransaksi='".$info['id_jenistransaksi']."' order by id_jenistransaksi") 
-														or die(mysql_error());	
+														$data3 = mysql_query("SELECT jenistransaksi FROM kod_jenistransaksi WHERE id_jenistransaksi='".$info['id_jenistransaksi']."' order by id_jenistransaksi"); 
+														//or die(mysql_error());	
 														$info3 = mysql_fetch_array( $data3 );
 													?>
 													<span> : <? echo $info3['jenistransaksi'];?></span>

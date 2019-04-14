@@ -48,6 +48,7 @@
         if ($valid) {
 			$pdo = Database::connect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+<<<<<<< HEAD
 			if ($reenter_password_baru == $password_baru) {
 				$sql = "SELECT pwd FROM akaun_pengguna WHERE pwd='$password_lama' and ic_pengguna='$pengguna' and kod_pengguna='$kod_pengguna'";
 				$result=mysql_query($sql) or die(mysql_error());
@@ -62,6 +63,14 @@
 				
 				Database::disconnect();
 				echo"<script>alert('Kemaskini Berjaya!');document.location.href='../index.php';</script>";
+=======
+            $sql = "SELECT pwd FROM akaun_pengguna WHERE pwd='$password_lama' and ic_pengguna='$pengguna' and kod_pengguna='$kod_pengguna'";
+			$result=mysql_query($sql);// or die(mysql_error());
+			if($result){
+				$sql2= "UPDATE akaun_pengguna set pwd = '$password_baru2' WHERE ic_pengguna='$pengguna' and kod_pengguna='$kod_pengguna'";
+				$q = $pdo->prepare($sql2);
+				$q->execute(array($pwd));
+>>>>>>> c18b640c6b0a21187d7effb0ffaf580ce8babdfc
 			}
 			else{
 				echo"<script>alert('Pengesahan Kata Laluan Baru Tidak Sama');document.location.href='../change_password.php';</script>";

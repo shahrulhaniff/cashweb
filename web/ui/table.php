@@ -66,8 +66,7 @@ include "qr/qr.php";
 <input type="hidden" name="detail">
 <input type="image" src="qr/qrbtn.png" alt="Submit" width="35" height="35" title="Detail">
 </form>
-</td><?
-                                            ?>
+</td>
 											<td>
 										 <!--<a class="edit" title="Edit" data-toggle="tooltip"><button type="button" class="btn btn-info " onClick="updateId('<?php echo $list['id']; ?>')">Kemaskini</button></a>-->
 										 <button class="btn btn-info" data-toggle="modal" data-target="#myModal<?echo $info['id_jenistransaksi'];?>">Kemaskini</button>
