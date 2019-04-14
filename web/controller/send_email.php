@@ -25,7 +25,7 @@
 	$mail->SMTPSecure = 'tls';                  // Enable TLS encryption, `ssl` also accepted
 	$mail->Port = 587; 
 
-	$qryAdmin="SELECT * FROM maklumat_pengguna WHERE ic_pengguna='$icNo' and email='$emel'";
+	$qryAdmin="SELECT * FROM maklumat_pengguna WHERE ic_pengguna='$icNo' AND email='$emel'";
 	$resultAdmin=mysql_query($qryAdmin);
 	if($resultAdmin==true){
 			function password_generate($chars){
@@ -41,20 +41,25 @@
 
 				$mail->isHTML(true);  // Set email format to HTML
 
-				$bodyContent = '<p>Your Email : <b>'.$emel.'</b></p>
-								<p>Password : <b>'.$my_passwords.'</b></p>';
+				$bodyContent = '<p>Emel Pengguna : <b>'.$emel.'</b></p>
+								<p>Kata Laluan : <b>'.$my_passwords.'</b></p>';
 
-				$mail->Subject = 'Forgot Password?';
+				$mail->Subject = 'Lupa Kata Laluan?';
 				$mail->Body    = $bodyContent;
 				
 				if(!$mail->send()) {
+<<<<<<< HEAD
+					echo"<script>alert('Mesej Tidak Dihantar!!');document.location.href='../forgot_password.php';</script>";
+					echo 'Mailer Error: ' . $mail->ErrorInfo;
+=======
 					echo"<script>alert('Message not sent!!');document.location.href='../forgot_password.php';</script>";
 					//echo 'Mailer Error: ' . $mail->ErrorInfo;
+>>>>>>> c18b640c6b0a21187d7effb0ffaf580ce8babdfc
 				} 
 				else {
-					echo $SQLstring="UPDATE akaun_pengguna SET pwd='$my_passwords2' WHERE ic_pengguna='$icNo' and kod_pengguna!='1'";
+					$SQLstring="UPDATE akaun_pengguna SET pwd='$my_passwords2' WHERE ic_pengguna='$icNo' and kod_pengguna!='1'";
 					$QueryResult=mysql_query($SQLstring);
-					echo"<script>alert('Message has been sent!!');document.location.href='../login.php';</script>";
+					echo"<script>alert('Mesej Telah Dihantar!!');document.location.href='../login.php';</script>";
 					
 				}
 		
