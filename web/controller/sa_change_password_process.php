@@ -33,7 +33,7 @@
 			$pdo = Database::connect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $sql = "SELECT pwd FROM akaun_pengguna WHERE pwd='$password_lama' and ic_pengguna='$pengguna' and kod_pengguna='$kod_pengguna'";
-			$result=mysql_query($sql) or die(mysql_error());
+			$result=mysql_query($sql);// or die(mysql_error());
 			if($result){
 				echo $sql2= "UPDATE akaun_pengguna set pwd = '$password_baru2' WHERE ic_pengguna='$pengguna' and kod_pengguna='$kod_pengguna'";
 				$q = $pdo->prepare($sql2);

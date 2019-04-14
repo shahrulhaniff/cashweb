@@ -157,10 +157,10 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 								WHERE KJP.jenis_pengguna = 'sub-admin'
 								AND KJ.id_jenistransaksi = '$id'
 								AND AP.kod_pengguna=KJP.kod_pengguna 
-								AND MP.ic_pengguna = AP.ic_pengguna") 
+								AND MP.ic_pengguna = AP.ic_pengguna"); 
 			 
 					
-			 or die(mysql_error()); ?>
+			// or die(mysql_error()); ?>
 													
 													<?php
 													$i= 1;

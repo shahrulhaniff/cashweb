@@ -49,7 +49,7 @@
 				
 				if(!$mail->send()) {
 					echo"<script>alert('Message not sent!!');document.location.href='../forgot_password.php';</script>";
-					echo 'Mailer Error: ' . $mail->ErrorInfo;
+					//echo 'Mailer Error: ' . $mail->ErrorInfo;
 				} 
 				else {
 					echo $SQLstring="UPDATE akaun_pengguna SET pwd='$my_passwords2' WHERE ic_pengguna='$icNo' and kod_pengguna!='1'";

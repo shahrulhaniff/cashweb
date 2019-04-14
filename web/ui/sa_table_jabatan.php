@@ -35,8 +35,8 @@
 									</tr>-->
 <?php // Connects to your Database 
 
- $data = mysql_query("SELECT * FROM kod_jenistransaksi WHERE jabatan='$jabatan2'") 
- or die(mysql_error()); ?>
+ $data = mysql_query("SELECT * FROM kod_jenistransaksi WHERE jabatan='$jabatan2'"); 
+ //or die(mysql_error()); ?>
                                         
 										<?php
 										$i=1;

@@ -8,7 +8,7 @@
     }
      
     if ( null==$id_jenistransaksi ) {
-        header("Location: ../index.php");
+        header("Location: ../sa_sebut_harga.php");
     }
      
     if ( !empty($_POST)) {
