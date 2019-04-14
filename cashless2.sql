@@ -139,3 +139,16 @@ INSERT INTO `kod_transaksi` (`id_kodtransaksi`, `kod_pengguna`, `no_sb`, `descri
 INSERT INTO `transaksi` (`id_transaksi`, `ic_pengguna`, `id_kodtransaksi`, `id_jenistransaksi`, `tarikh`, `jumlah`, `daripada`, `kepada`, `statustransaction`, `status_dokumen`, `doc_acceptby`, `doc_giveby`) VALUES
 (1, '941013115436', 2, 'SB', '2019-03-21 06:12:16', 30.00, '941013115436', '941013115435', 'KOD MIGS', 'YES', '941013115435', '941013115436');
 
+
+CREATE TABLE tracking (
+  id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+  id_jenistransaksi VARCHAR(10) NOT NULL,
+  jabatan VARCHAR(40) NOT NULL,
+  description VARCHAR(300) NULL,
+  tarikhbuka DATE NOT NULL,
+  tarikhtutup DATE NOT NULL,
+  harga FLOAT(10,2) NOT NULL,
+  tindakan VARCHAR(15) NULL,
+  edit_by VARCHAR(100) NULL,
+  created_date TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP
+  );
