@@ -1,6 +1,7 @@
 <?php
      
     require '../../server.php';
+    require '../../credential.php';
     $jabatan = $_GET['jabatan'];
 	
 	require '../PHPMailer/PHPMailerAutoload.php';
@@ -10,8 +11,8 @@
 	$mail->isSMTP();                            // Set mailer to use SMTP
 	$mail->Host = 'smtp.gmail.com';             // Specify main and backup SMTP servers
 	$mail->SMTPAuth = true;                     // Enable SMTP authentication
-	$mail->Username = 'mrtester372@gmail.com';          // SMTP username
-	$mail->Password = 'abcd@1234'; // SMTP password
+	$mail->Username = EMAIL;          // SMTP username
+	$mail->Password = PASS; // SMTP password
 	$mail->SMTPSecure = 'tls';                  // Enable TLS encryption, `ssl` also accepted
 	$mail->Port = 587; 
 	
@@ -35,7 +36,7 @@
         // validate input
         $valid = true;
         if (empty($id_jenistransaksi)) {
-            $id_jenistransaksiError = 'Masukkan id jenis transaksi';
+            $id_jenistransaksiError = 'Masukkanr id jenis transaksi';
             $valid = false;
         }
          
@@ -66,6 +67,22 @@
         // insert data
         if ($valid) {
             
+			// $sql1 = "INSERT INTO maklumat_pengguna (ic_pengguna,nama,email,no_telefon) values('$ic_pengguna','$nama','$email','$no_telefon')";
+			// $q1 = $pdo->prepare($sql1);
+            // $q1->execute(array($ic_pengguna,$nama,$email,$no_telefon));
+			// Database::disconnect();
+			
+			// $pdo = Database::connect();
+            // $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			// $sql = "INSERT INTO maklumat_pengguna (ic_pengguna,nama,email,no_telefon) values('$ic_pengguna','$nama','$email','$no_telefon')";
+            // $q = $pdo->prepare($sql);
+            // $q->execute(array($ic_pengguna,$nama,$email,$no_telefon));
+			
+			// $pdo = Database::connect();
+            // $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            // $sql = "INSERT INTO akaun_pengguna (ic_pengguna,kod_pengguna,pwd,status_aktif) values('$ic_pengguna','3','$ic_pengguna','yes')";
+            // $q = $pdo->prepare($sql);
+            // $q->execute(array($ic_pengguna,$kod_pengguna,$pwd,$status_aktif));
 			
 			//checking exist user
 			$sql = "SELECT COUNT(ic_pengguna) AS countNokp FROM akaun_pengguna WHERE ic_pengguna='$ic_pengguna'";
@@ -88,8 +105,7 @@
 				
 				
 				
-				$sql3="INSERT INTO maklumat_pengguna (ic_pengguna,nama,email,no_telefon) values('$ic_pengguna','$nama','$email','$no_telefon')";
-				$result3=mysql_query($sql3);// or die(mysql_error());
+				
 				
 ?>				
 <script>
@@ -100,42 +116,49 @@ function refreshParent() {
 </script>
 <? 
 			
-				$sql4 = "INSERT INTO akaun_pengguna (ic_pengguna,kod_pengguna,pwd,status_aktif) values('$ic_pengguna','$kod_pengguna','$ic_pengguna2','yes')";
-				$result4=mysql_query($sql4);// or die (mysql_error());
+				
 
 				//send email
-				$mail->setFrom('Username', 'Cashless Web');
+				$mail->setFrom(EMAIL);
 				$mail->addAddress($email);   // Add a recipient
 
 				$mail->isHTML(true);  // Set email format to HTML
 
-				$bodyContent = '<h1>You now can access Cashless Apps</h1>';
-				$bodyContent .= '<p>This is your access data:</p>
-								<p>Username : '.$ic_pengguna.'</p>
-								<p>Password :'.$ic_pengguna.'</p>
+				$bodyContent = '<h1>Anda kini boleh mengakses aplikasi Cashless dan Cashless Web</h1>';
+				$bodyContent .= '<p>Berikut merupakan maklumat anda:</p>
+								<p><b>Emel Pengguna</b> : '.$ic_pengguna.'</p>
+								<p><b>Kata Laluan</b> :'.$ic_pengguna.'</p>
 								<p></p>
-								<p>Your can change password after access Cashless Mobile Apps</p>';
+								<p>Anda boleh mengubah kata laluan selepas mengakses sistem ini.</p>';
 
 				$mail->Subject = '';
 				$mail->Body    = $bodyContent;
 
 				if(!$mail->send()) {
-					echo"<script>alert('Daftar Sub Admin berjaya. Email tidak dihantar.');document.location.href='../senarai_sa.php?jabatan=$jabatan';</script>";
-					// echo 'Message could not be sent.';
-					// echo 'Mailer Error: ' . $mail->ErrorInfo;
+					echo"<script>alert('Pendaftaran Sub-Admin Tidak Berjaya');document.location.href='../senarai_sa.php?jabatan=$jabatan';</script>";
+					//echo 'Message could not be sent.';
+					//echo 'Mailer Error: ' . $mail->ErrorInfo;
 				} 
 				else {
 					//echo 'Message has been sent';
-					echo"<script>alert('Daftar Sub Admin berjaya.');document.location.href='../senarai_sa.php?jabatan=$jabatan';</script>";
+					$sql3="INSERT INTO maklumat_pengguna (ic_pengguna,nama,email,no_telefon) values('$ic_pengguna','$nama','$email','$no_telefon')";
+				    $result3=mysql_query($sql3) or die(mysql_error());
+					
+					$sql4 = "INSERT INTO akaun_pengguna (ic_pengguna,kod_pengguna,pwd,status_aktif) values('$ic_pengguna','$kod_pengguna','$ic_pengguna2','yes')";
+					$result4=mysql_query($sql4) or die (mysql_error());
+					
+					echo"<script>alert('Pendaftaran Sub-Admin Berjaya');document.location.href='../senarai_sa.php?jabatan=$jabatan';</script>";
 				}
 
 		}else{
 			 echo ("<script LANGUAGE='JavaScript'>
-					window.alert('Daftar sub admin tidak berjaya. Nombor kad pengenalan sudah wujud di dalam sistem.');
-					window.location.href='../senarai_sa.php?jabatan=$jabatan'';
+					window.alert('tambah sub admin tidak berjaya. Nombor kad pengenalan sudah wujud di dalam sistem.');
+					window.location.href='../index.php';
 					</script>");
 		}
-			
+			// Database::disconnect();
+			// header("location: ../senarai_sa.php?jabatan=$jabatan");	
+			//header("location: ../index.php");	
         }
     }
 ?>

@@ -12,6 +12,10 @@
 								<td width="350px"><input type="password_baru" name="password_baru" size="40" class="form-control" placeholder="Masukkan Kata Laluan Baru" required></td>
 							</tr>
 							<tr>
+								<td width="150px">Sah Kata Laluan Baru :</td>
+								<td width="350px"><input type="password" name="reenter_password_baru" size="40" class="form-control" placeholder="Masukkan Semula Kata Laluan Baru" required></td>
+							</tr>
+							<tr>
 							<td colspan="2"><br>
 								<input type="submit" class="btn btn-success" name="submit" value="Simpan">&nbsp;
 								<input type="reset" class="btn btn-primary" name="reset" value="Batal">
