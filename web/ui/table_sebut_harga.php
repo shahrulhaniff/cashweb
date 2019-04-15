@@ -1,4 +1,24 @@
+<?
 
+date_default_timezone_set("Asia/Kuala_lumpur");
+	$date = new DateTime();
+	$current_date=$date->format('Y-m-d');
+    $crt_dt = date_format($date,"D d-F-Y");
+	$month = date_format($date,"F Y");
+    $bulan = date_format($date,"m");
+	$tahun = date_format($date,"Y");
+	
+	$status=$_GET['status'];			
+		if($status==''){
+			$status='aktif';
+			}		
+			
+	$flag=$_GET['flg'];   
+		if($flag==''){
+			$flag='tb_1';
+			}
+			
+?>
 
 						<!-- Modal Add Jenis Bayaran -->
 					 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -32,7 +52,7 @@
 															</div>
 															
 												<div class="form-group">
-													<label for="comment">No Jenis Bayaran</label>
+													<label for="comment">Nombor Rujukan</label>
 													<input type="text" class="form-control" name="no_sb" id="no_sb" size="20">
 												</div> 
 												
@@ -50,12 +70,12 @@
 													<label>Tarikh Tutup</label><br>
 													<input name="tarikhtutup" type="datetime-local" class="form-control" required/>
 												</div>
-												
+												<!--
 												<div class="form-group" align="left">
 													<label>Jam</label><br>
 													<input name="jam" type="time" class="form-control" required/>
 												</div>
-												
+												 -->
 												<div class="form-group">
 													<label for="comment">Harga (RM)</label>
 													<input type="number" step="0.01" class="form-control" name="harga" id="harga" size="20">
@@ -109,6 +129,17 @@
 							
 <!---------------------------------------------------------------------------------------->							
 <div class="col-md-12">
+
+<!-- ---- -->
+				
+<div id='cssmenu'>
+	<ul>
+		<li class="<? echo ($flag=='tb_1'?'active':'') ?>"><a href="sebut_harga.php?status=aktif&flg=<? echo tb_1 ;?>">Aktif</a></li>
+		<li class="<? echo ($flag=='tb_2'?'active':'') ?>"><a href="sebut_harga.php?status=tak_aktif&flg=<? echo tb_2 ;?>">Tidak Aktif</a></li>
+		
+	</ul>
+</div>
+<!----------->
 			<!--<div align="right">
 							<button class="btn btn-primary" data-toggle="modal"  data-target="#myModal">Tambah Jenis Bayaran</button></a> <br>
 			</div>-->
@@ -123,15 +154,21 @@
                                     <thead>
                                         <tr>
 											<th width="5%">Bil.</th>
-											<th width="20%">No Jenis Bayaran</th>
+											<th width="20%">Nombor Rujukan</th>
 											<th width="60%">Keterangan</th>
 											<th width="10%">Tarikh Buka</th>
+											<th width="10%">Tarikh Tutup</th>
+											<th width="10%">Harga</th>
 											<th width="10%">Tindakan</th>
 										</tr>
                                     </thead>
                                     <tbody>
 									<?php
-						$data = mysql_query("SELECT * FROM kod_transaksi ORDER BY kod_pengguna DESC");
+					if($status=='aktif'){
+						$data = mysql_query("SELECT * FROM kod_transaksi WHERE DATE_FORMAT(tarikhtutup,'%Y-%m-%d')>='$current_date' ORDER BY tarikhbuka ASC");
+					}else if($status=='tak_aktif'){
+						$data = mysql_query("SELECT * FROM kod_transaksi WHERE DATE_FORMAT(tarikhtutup,'%Y-%m-%d')<='$current_date' ORDER BY tarikhtutup ASC");
+					}
 						$i=1;
 						while($row = mysql_fetch_array( $data )) {
 							echo "<tr class='gradeA'>";
@@ -139,9 +176,12 @@
 							echo '<td>'. $row['no_sb'] . '</td>';
 							echo '<td>'. $row['description'] . '</td>';
 							echo '<td>'. $row['tarikhbuka'] . '</td>';
+							echo '<td>'. $row['tarikhtutup'] . '</td>';
+							echo '<td>'. $row['harga'] . '</td>';
 						    echo '<td>';
                             ?>
 							<button class="btn btn-info" data-toggle="modal" data-target="#myModal<?echo $row['id_kodtransaksi'];?>">Papar</button>
+							<button class="btn btn-info" data-toggle="modal" data-target="#myModal1<?echo $row['id_kodtransaksi'];?>">Kemaskini</button>
 							<?
                                 echo '</td>';
 						
@@ -185,7 +225,7 @@
 												</div>
 															
 												<div class="form-group">
-													<label for="comment">No Jenis Bayaran</label>
+													<label for="comment">Nombor Rujukan</label>
 													<input type="text" class="form-control" name="no_sb" id="no_sb" size="20" value="<? echo $row['no_sb'];?>">
 												</div> 
 												
@@ -203,7 +243,7 @@
 													<label>Tarikh Tutup</label><br>
 													<input name="tarikhtutup" type="date" class="form-control" value="<? echo $row['tarikhtutup'];?>" required/>
 												</div>
-												
+											
 												<div class="form-group" align="left">
 													<label>Jam</label><br>
 													<input name="jam" type="time" class="form-control" value="<? echo $row['jam'];?>" required/>
@@ -245,13 +285,7 @@
 													?>
 													<input type="text" class="form-control" name="edit_by" id="edit_by" size="20" value="<? echo $row2['nama'];?>" readonly>
 												</div>		
-														
-												<!--<div class="form-group" align="left">
-													<label>Diisi Pada</label><br>
-													<input name="tarikh_edit" type="datetime-local" class="form-control" required/>
 													
-												</div>-->
-												
 												 <div class="modal-footer">
 													   <button type="submit" class="btn btn-primary" >Simpan</button>
 													   <button type="reset" class="btn btn-info">Tetapan Semula</button>
@@ -277,7 +311,7 @@
 												
 											 <div class="modal-body">
 												<div class="form-group">
-													<label for="comment">No Jenis Bayaran</label>
+													<label for="comment">Nombor Rujukan</label>
 													<span> : <? echo $row['no_sb'];?></span>
 												</div> 
 												

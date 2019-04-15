@@ -33,6 +33,16 @@
 			
 			
 			if($result){
+				// tracking aktiviti sub admin
+				$sql3="SELECT jabatan FROM kod_jenistransaksi WHERE id_jenistransaksi='$id_jenistransaksi'";
+			$result3=mysql_query($sql3);
+			$jabatan=mysql_fetch_object($result3)->jabatan; 
+			
+			$sqlTracking="INSERT INTO tracking (id_jenistransaksi,jabatan,description,tarikhbuka,tarikhtutup,harga,tindakan,edit_by) 
+					values('$id_jenistransaksi','$jabatan','$id_kodtransaksi','$tarikhbuka','$tarikhtutup','$harga','Tambah','$keyin_by')";
+			$resultTracking=mysql_query($sqlTracking);
+				
+		
 				header("location: ../index_sa.php");	
 				exit();
 			

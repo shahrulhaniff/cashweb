@@ -24,7 +24,7 @@ date_default_timezone_set("Asia/Kuala_lumpur");
 			
 	$status=$_GET['status'];			
 		if($status==''){
-			$status='YES';
+			$status='NO';
 			}		
  
 ?>
@@ -46,11 +46,8 @@ date_default_timezone_set("Asia/Kuala_lumpur");
 </div>
 <div id='cssmenu'>
 	<ul>
-	 
-
-		<li class="<? echo ($flagScreen=='tab_1'?'active':'') ?>"><a href="sa_pengurusan_dokumen.php?status=YES&dt=<? echo $dateSelection;?>&flg=<? echo $flag; ?>&flagScreen=tab_1">Dokumen Telah Diserah</a></li>
-		<li class="<? echo ($flagScreen=='tab_2'?'active':'') ?>"><a href="sa_pengurusan_dokumen.php?status=NO&dt=<? echo $dateSelection;?>&flg=<? echo $flag; ?>&flagScreen=tab_2">Dokumen Baru Dibeli</a></li>
-	
+		<li class="<? echo ($flagScreen=='tab_1'?'active':'') ?>"><a href="sa_pengurusan_dokumen.php?status=NO&dt=<? echo $dateSelection;?>&flg=<? echo $flag; ?>&flagScreen=tab_1">Dokumen Belum Dituntut</a></li>
+		<li class="<? echo ($flagScreen=='tab_2'?'active':'') ?>"><a href="sa_pengurusan_dokumen.php?status=YES&dt=<? echo $dateSelection;?>&flg=<? echo $flag; ?>&flagScreen=tab_2">Dokumen Telah Dituntut</a></li>
 	</ul>
 </div>
  
@@ -177,6 +174,21 @@ WHERE t.id_kodtransaksi=kt.id_kodtransaksi AND kt.kod_pengguna=kj.kod_pengguna A
 												
 												
 												<div class="form-group">
+													<label for="comment">Nombor Rujukan</label>
+													<span> : <? echo $info['norujukan'];?></span>
+												</div> 
+												
+												<div class="form-group">
+													<label for="comment">Jenis Transaksi</label>
+													<?
+														$dataJenistransaksi = mysql_query("SELECT jenistransaksi FROM kod_jenistransaksi WHERE id_jenistransaksi='".$info['id_jenistransaksi']."' order by id_jenistransaksi"); 
+														//or die(mysql_error());	
+														$infoJenistransaksi = mysql_fetch_array( $dataJenistransaksi );
+													?>
+													<span> : <? echo $infoJenistransaksi['jenistransaksi'];?></span>
+												</div>	
+												
+												<div class="form-group">
 													<label for="comment">Tarikh</label>
 													<span> : <? echo $info['tarikh'];?></span>
 												</div> 
@@ -254,12 +266,7 @@ WHERE t.id_kodtransaksi=kt.id_kodtransaksi AND kt.kod_pengguna=kj.kod_pengguna A
 												
 												<div class="form-group">
 													<label for="comment">Jenis Transaksi</label>
-													<?
-														$data3 = mysql_query("SELECT jenistransaksi FROM kod_jenistransaksi WHERE id_jenistransaksi='".$info['id_jenistransaksi']."' order by id_jenistransaksi"); 
-														//or die(mysql_error());	
-														$info3 = mysql_fetch_array( $data3 );
-													?>
-													<span> : <? echo $info3['jenistransaksi'];?></span>
+													<span> : <? echo $infoJenistransaksi['jenistransaksi'];?></span>
 												</div>	
 											
 												<div class="form-group">

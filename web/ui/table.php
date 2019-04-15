@@ -35,6 +35,7 @@ include "qr/qr.php";
 											<select required class="form-control" name="jenistransaksi" value="">
 												<option value="">--Pilih--</option>
 												<option value="Sebut Harga">Sebut Harga</option>
+												<option value="Tender">Tender</option>
 												<option value="Seminar">Seminar</option>
 												<option value="Derma">Derma</option>
 											</select>
@@ -99,6 +100,7 @@ include "qr/qr.php";
 											<select required class="form-control" name="jenistransaksi" value="">
 												<option value="<?php echo $info['jenistransaksi']; ?>"><?php echo $info['jenistransaksi']; ?></option>
 												<option value="Sebut Harga">Sebut Harga</option>
+												<option value="Tender">Tender</option>
 												<option value="Seminar">Seminar</option>
 												<option value="Derma">Derma</option>
 											</select>

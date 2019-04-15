@@ -25,7 +25,7 @@ date_default_timezone_set("Asia/Kuala_lumpur");
 			
 	$status=$_GET['status'];			
 		if($status==''){
-			$status='YES';
+			$status='NO';
 			}		
  
 ?>
@@ -49,8 +49,8 @@ date_default_timezone_set("Asia/Kuala_lumpur");
 	<ul>
 	 
 
-		<li class="<? echo ($flagScreen=='tab_1'?'active':'') ?>"><a href="pengurusan_dokumen.php?status=YES&dt=<? echo $dateSelection;?>&flg=<? echo $flag; ?>&flagScreen=tab_1">Dokumen Telah Diserah</a></li>
-		<li class="<? echo ($flagScreen=='tab_2'?'active':'') ?>"><a href="pengurusan_dokumen.php?status=NO&dt=<? echo $dateSelection;?>&flg=<? echo $flag; ?>&flagScreen=tab_2">Dokumen Baru Dibeli</a></li>
+		<li class="<? echo ($flagScreen=='tab_1'?'active':'') ?>"><a href="pengurusan_dokumen.php?status=NO&dt=<? echo $dateSelection;?>&flg=<? echo $flag; ?>&flagScreen=tab_1">Dokumen Belum Dituntut</a></li>
+		<li class="<? echo ($flagScreen=='tab_2'?'active':'') ?>"><a href="pengurusan_dokumen.php?status=YES&dt=<? echo $dateSelection;?>&flg=<? echo $flag; ?>&flagScreen=tab_2">Dokumen Telah Dituntut</a></li>
 	
 	</ul>
 </div>

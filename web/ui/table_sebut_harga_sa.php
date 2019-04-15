@@ -1,6 +1,23 @@
 <?
-date_default_timezone_set("Asia/Kuala_Lumpur");
+date_default_timezone_set("Asia/Kuala_lumpur");
+	$date = new DateTime();
+	$current_date=$date->format('Y-m-d');
+    $crt_dt = date_format($date,"D d-F-Y");
+	$month = date_format($date,"F Y");
+    $bulan = date_format($date,"m");
+	$tahun = date_format($date,"Y");
 
+$status=$_GET['status'];			
+		if($status==''){
+			$status='1';
+			// status 1 = aktif  
+			// status 0 = tidak aktif
+			}		
+			
+	$flag=$_GET['flg'];   
+		if($flag==''){
+			$flag='tb_1';
+			}
 
  $sql1="SELECT kod_pengguna FROM akaun_pengguna
 		WHERE ic_pengguna='".$_SESSION['user']."' AND kod_pengguna!='1'";
@@ -43,7 +60,7 @@ $kod_pengguna=mysql_fetch_object($result1)->kod_pengguna;
 												</div>												
 												
 												<div class="form-group">
-													<label for="comment">No Jenis Bayaran</label>
+													<label for="comment">Nombor Rujukan</label>
 													<input type="text" class="form-control" name="no_sb" id="no_sb" size="20">
 												</div> 
 												
@@ -54,19 +71,19 @@ $kod_pengguna=mysql_fetch_object($result1)->kod_pengguna;
 												
 												<div class="form-group" align="left">
 													<label>Tarikh Buka</label><br>
-													<input name="tarikhbuka" type="datetime-local" class="form-control" required/>
+													<input name="tarikhbuka" type="date" class="form-control" required/>
 												</div>
 												
 												<div class="form-group" align="left">
 													<label>Tarikh Tutup</label><br>
-													<input name="tarikhtutup" type="datetime-local" class="form-control" required/>
+													<input name="tarikhtutup" type="date" class="form-control" required/>
 												</div>
 												
 												<div class="form-group" align="left">
 													<label>Jam</label><br>
 													<input name="jam" type="time" class="form-control" required/>
 												</div>
-												
+											
 												<div class="form-group">
 													<label for="comment">Harga (RM)</label>
 													<input type="Number" class="form-control" name="harga" step="0.01" id="harga" size="20">
@@ -99,12 +116,7 @@ $kod_pengguna=mysql_fetch_object($result1)->kod_pengguna;
 													<input type="text" class="form-control" name="keyin_by" id="keyin_by" size="20" value="<? echo $row2['nama'];?>" readonly>
 													<!--<span> : <? echo $row2['nama'];?></span>-->
 												</div>		
-														
-												<!--<div class="form-group" align="left">
-													<label>Diisi Pada</label><br>
-													<input name="tarikh_keyin" type="datetime-local" class="form-control" value="<? echo $row['tarikh_keyin'];?>" readonly >
-												</div>
-												-->
+												
 												 <div class="modal-footer">
 													   <button type="submit" class="btn btn-primary" >Simpan</button>
 													   <button type="reset" class="btn btn-info">Tetapan Semula</button>
@@ -121,9 +133,22 @@ $kod_pengguna=mysql_fetch_object($result1)->kod_pengguna;
 						
 <!---------------------------------------------------------------------------------------->							
 <div class="col-md-12">
-				<div align="right">
+	<div align="right">
 							<button class="btn btn-primary" data-toggle="modal"  data-target="#myModal">Tambah Jenis Bayaran</button></a> <br>
 			</div>
+			
+<!-- ---- -->
+				
+<div id='cssmenu'>
+	<ul>
+		<li class="<? echo ($flag=='tb_1'?'active':'') ?>"><a href="index_sa.php?status=1&flg=<? echo tb_1 ;?>">Aktif</a></li>
+		<li class="<? echo ($flag=='tb_2'?'active':'') ?>"><a href="index_sa.php?status=0&flg=<? echo tb_2 ;?>">Tidak Aktif</a></li>
+		
+	</ul>
+</div>
+<!----------->
+
+			
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -135,18 +160,23 @@ $kod_pengguna=mysql_fetch_object($result1)->kod_pengguna;
                                     <thead>
                                         <tr>
 											<th>Bil.</th>
-											<th>No Jenis Bayaran</th>
+											<th>Nombor Rujukan</th>
 											<th>Keterangan</th>
 											<th>Tarikh Buka</th>
+											<th>Tarikh Tutup</th>
+											<th>Harga</th>
 											<th>Tindakan</th>
 										</tr>
                                     </thead>
                                     <tbody>
 									<?php
 									
-			
-						$data = mysql_query("SELECT * FROM kod_transaksi WHERE kod_pengguna='$kod_pengguna'");
-						// or die(mysql_error());
+			if($status=='1'){
+						$data = mysql_query("SELECT * FROM kod_transaksi WHERE kod_pengguna='$kod_pengguna' AND DATE_FORMAT(tarikhtutup,'%Y-%m-%d')>='$current_date' ORDER BY tarikhbuka ASC");
+			}else if($status=='0'){
+						$data = mysql_query("SELECT * FROM kod_transaksi WHERE kod_pengguna='$kod_pengguna' AND DATE_FORMAT(tarikhtutup,'%Y-%m-%d')<='$current_date' ORDER BY tarikhtutup ASC");
+			}
+						
 						$i=1;
 						while($row = mysql_fetch_array( $data )) {
 							
@@ -166,7 +196,9 @@ $tarikh_keyin= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh_keyin)->format(
 							echo '<td>'. $row['no_sb'] . '</td>';
 							echo '<td>'. $row['description'] . '</td>';
 							echo '<td>'. $row['tarikhbuka'] . '</td>';
-						    echo '<td width=250>';
+							echo '<td>'. $row['tarikhtutup'] . '</td>';
+							echo '<td>'. $row['harga'] . '</td>';
+						    echo '<td>';
                             ?>
 							<button class="btn btn-info" data-toggle="modal" data-target="#myModal<?echo $row['id_kodtransaksi'];?>">Papar</button>
 							<?
@@ -176,7 +208,7 @@ $tarikh_keyin= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh_keyin)->format(
 								<?
                                 echo '  ';
 								?>
-								<a href="../web/controller/sa_sebut_harga_delete_exec.php?id=<? echo $row['id_kodtransaksi']; ?>"><button class="btn btn-danger" type="button" onclick="return confirm('Adakah anda pasti untuk padam rekod ini?');">Padam</button></a>
+								<a href="../web/controller/sa_sebut_harga_delete_exec.php?id=<? echo $row['id_kodtransaksi']; ?>&id_jenistransaksi=<?echo $row['id_jenistransaksi'];?>&desc=<?echo $row['description'];?>&tarikhbuka=<?echo $row['tarikhbuka'];?>&tarikhtutup=<?echo $row['tarikhtutup'];?>&harga=<?echo $row['harga'];?>&delete_by=<? echo $row2['nama'];?>"><button class="btn btn-danger" type="button" onclick="return confirm('Adakah anda pasti untuk padam rekod ini?');">Padam</button></a>
 								<?
                                 //echo '<a class="btn btn-danger" href="../web/controller/sebut_harga_delete_exec.php?id='.$row['id_kodtransaksi'].'">Padam</a>';
                                 echo '</td>';
@@ -200,8 +232,11 @@ $tarikh_keyin= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh_keyin)->format(
 												
 												<label><font color="red">** Maklumat Wajib Diisi.</font></label>
 												<br>
-													 
-													 <input type="hidden" name="id_kodtransaksi" id="id_kodtransaksi" class="form-control" value="<?echo $row['id_kodtransaksi'];?>" readonly />
+													 <!--hidden-->
+													<input type="hidden" name="id_kodtransaksi" id="id_kodtransaksi" class="form-control" value="<?echo $row['id_kodtransaksi'];?>" readonly />
+													<input type="hidden" class="form-control" name="keyin_by" id="keyin_by" size="20" value="<? echo $row['keyin_by'];?>" readonly>
+													
+												
 												
 												 <div class="form-group" align="left">
 												<label for="comment">Kod Pengguna</label>
@@ -213,7 +248,7 @@ $tarikh_keyin= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh_keyin)->format(
 												</div>
 															
 												<div class="form-group">
-													<label for="comment">No Jenis Bayaran</label>
+													<label for="comment">Nombor Rujukan</label>
 													<input type="text" class="form-control" name="no_sb" id="no_sb" size="20" value="<? echo $row['no_sb'];?>">
 												</div> 
 												
@@ -231,12 +266,12 @@ $tarikh_keyin= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh_keyin)->format(
 													<label>Tarikh Tutup</label><br>
 													<input name="tarikhtutup" type="date" class="form-control" value="<? echo $row['tarikhtutup'];?>" required/>
 												</div>
-												
+										
 												<div class="form-group" align="left">
 													<label>Jam</label><br>
 													<input name="jam" type="time" class="form-control" value="<? echo $row['jam'];?>" required/>
 												</div>
-												
+											
 												<div class="form-group">
 													<label for="comment">Harga (RM)</label>
 													<input type="Number" class="form-control" step="0.01" name="harga" id="harga" size="20" value="<? echo $row['harga'];?>">
@@ -268,19 +303,9 @@ $tarikh_keyin= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh_keyin)->format(
 															
 												<div class="form-group">
 													<label for="comment">Dikemaskini Oleh</label>
-													<? $ic_pengguna=$_SESSION['user'];
-													$data2 = mysql_query("SELECT * FROM maklumat_pengguna WHERE ic_pengguna = '$ic_pengguna'");// or die(mysql_error());
-													$row2 = mysql_fetch_array( $data2 );
-													?>
 													<input type="text" class="form-control" name="edit_by" id="edit_by" size="20" value="<? echo $row2['nama'];?>" readonly>
 												</div>		
 														
-												<!--<div class="form-group" align="left">
-													<label>Diisi Pada</label><br>
-													<input name="tarikh_edit" type="datetime-local" class="form-control" required/>
-													
-												</div>-->
-												
 												 <div class="modal-footer">
 													   <button type="submit" class="btn btn-primary" >Simpan</button>
 													   <button type="reset" class="btn btn-info">Tetapan Semula</button>
@@ -306,7 +331,7 @@ $tarikh_keyin= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh_keyin)->format(
 												
 											 <div class="modal-body">
 												<div class="form-group">
-													<label for="comment">No Jenis Bayaran</label>
+													<label for="comment">Nombor Rujukan</label>
 													<span> : <? echo $row['no_sb'];?></span>
 												</div> 
 												
@@ -325,12 +350,12 @@ $tarikh_keyin= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh_keyin)->format(
 													<label>Tarikh Tutup</label>
 													<span> : <?=$tarikhtutup?></span>
 												</div>
-												
+										
 												<div class="form-group" align="left">
 													<label>Jam</label>
 													<span> : <? echo $row['jam'];?></span>
 												</div>
-												
+											
 												<div class="form-group">
 													<label for="comment">Harga</label>
 													<span> : RM <? echo $row['harga'];?></span>
