@@ -134,8 +134,8 @@ date_default_timezone_set("Asia/Kuala_lumpur");
 				
 <div id='cssmenu'>
 	<ul>
-		<li class="<? echo ($flag=='tb_1'?'active':'') ?>"><a href="sebut_harga.php?status=aktif&flg=<? echo tb_1 ;?>">Aktif</a></li>
-		<li class="<? echo ($flag=='tb_2'?'active':'') ?>"><a href="sebut_harga.php?status=tak_aktif&flg=<? echo tb_2 ;?>">Tidak Aktif</a></li>
+		<li class="<? echo ($flag=='tb_1'?'active':'') ?>"><a href="sebut_harga.php?status=aktif&flg=tb_1">Aktif</a></li>
+		<li class="<? echo ($flag=='tb_2'?'active':'') ?>"><a href="sebut_harga.php?status=tak_aktif&flg=tb_2">Tidak Aktif</a></li>
 		
 	</ul>
 </div>
@@ -154,10 +154,10 @@ date_default_timezone_set("Asia/Kuala_lumpur");
                                     <thead>
                                         <tr>
 											<th width="5%">Bil.</th>
-											<th width="20%">Nombor Rujukan</th>
-											<th width="60%">Keterangan</th>
-											<th width="10%">Tarikh Buka</th>
-											<th width="10%">Tarikh Tutup</th>
+											<th width="15%">Nombor Rujukan</th>
+											<th width="30%">Keterangan</th>
+											<th width="15%">Tarikh Buka</th>
+											<th width="15%">Tarikh Tutup</th>
 											<th width="10%">Harga</th>
 											<th width="10%">Tindakan</th>
 										</tr>

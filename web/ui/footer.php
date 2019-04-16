@@ -38,3 +38,39 @@ function w3_close() {
   overlayBg.style.display = "none";
 }
 </script>
+
+<!-- skrip untuk check all box borang masa print-->
+<script language="JavaScript">
+// Listen for click on toggle checkbox
+$('#select-all').click(function(event) {   
+    if(this.checked) {
+        // Iterate each checkbox
+        $(':checkbox').each(function() {
+            this.checked = true;                        
+        });
+    } else {
+        $(':checkbox').each(function() {
+            this.checked = false;                       
+        });
+    }
+});
+</script>
+
+<!-- Skrip untuk validation sila pilih salah satu checkbox untuk button cetak semua-->
+<script type="text/javascript">
+function checksemua() {
+var checked=false;
+	var elements = document.getElementsByName("invite[]");
+	for(var i=0; i < elements.length; i++){
+		if(elements[i].checked) {
+			checked = true;
+		}
+	}
+	if (!checked) {
+		alert('Sila Pilih Salah Satu untuk Cetakan');
+		return false;
+	}
+	else { return true; }
+	//return checked;
+}
+</script>

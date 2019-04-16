@@ -18,10 +18,7 @@
 	if($dateSelection==''){
 			$dateSelection='tiada';
 			}
-	$flagScreen=$_GET['flagScreen'];
-		if($flagScreen==''){
-			$flagScreen='tab_1';
-			}
+
  
 ?>
 
@@ -29,13 +26,13 @@
 				
 <div id='cssmenu'>
 	<ul>
-		<li class="<? echo ($flag=='tb_1'?'active':'') ?>"><a href="senarai_transaksi.php?dt=tiada&flg=<? echo tb_1 ;?>">Papar Semua</a></li>
+		<li class="<? echo ($flag=='tb_1'?'active':'') ?>"><a href="senarai_transaksi.php?dt=tiada&flg=tb_1">Papar Semua</a></li>
 		<? if ($dateSelection=='tiada' || $dateSelection==''){
 			
 			?>
-		<li class="<? echo ($flag=='tb_2'?'active':'') ?>"><a href="senarai_transaksi.php?dt=<? echo $current_date; //21-03-2019?>&flg=<? echo tb_2 ;?>">Carian Mengikut Tarikh</a></li>
+		<li class="<? echo ($flag=='tb_2'?'active':'') ?>"><a href="senarai_transaksi.php?dt=<? echo $current_date; //21-03-2019?>&flg=tb_2">Carian Mengikut Tarikh</a></li>
 		<? }else {?>
-		<li class="<? echo ($flag=='tb_2'?'active':'') ?>"><a href="senarai_transaksi.php?dt=<? echo $dateSelection; //21-03-2019?>&flg=<? echo tb_2 ;?>">Carian Mengikut Tarikh</a></li>
+		<li class="<? echo ($flag=='tb_2'?'active':'') ?>"><a href="senarai_transaksi.php?dt=<? echo $dateSelection; //21-03-2019?>&flg=tb_2">Carian Mengikut Tarikh</a></li>
 		<?}?>
 		
 	</ul>

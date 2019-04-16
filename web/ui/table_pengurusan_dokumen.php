@@ -34,13 +34,13 @@ date_default_timezone_set("Asia/Kuala_lumpur");
 				
 <div id='cssmenu'>
 	<ul>
-		<li class="<? echo ($flag=='tb_1'?'active':'') ?>"><a href="pengurusan_dokumen.php?status=<?echo $status;?>&dt=tiada&flg=<? echo tb_1 ;?>&flagScreen=<?echo $flagScreen;?>">Papar Semua</a></li>
+		<li class="<? echo ($flag=='tb_1'?'active':'') ?>"><a href="pengurusan_dokumen.php?status=<?echo $status;?>&dt=tiada&flg=tb_1&flagScreen=<?echo $flagScreen;?>">Papar Semua</a></li>
 		<? if ($dateSelection=='tiada' || $dateSelection==''){
 			
 			?>
-		<li class="<? echo ($flag=='tb_2'?'active':'') ?>"><a href="pengurusan_dokumen.php?status=<?echo $status;?>&dt=<? echo $current_date; //21-03-2019?>&flg=<? echo tb_2 ;?>&flagScreen=<?echo $flagScreen;?>">Carian Mengikut Tarikh</a></li>
+		<li class="<? echo ($flag=='tb_2'?'active':'') ?>"><a href="pengurusan_dokumen.php?status=<?echo $status;?>&dt=<? echo $current_date;?>&flg=tb_2&flagScreen=<?echo $flagScreen;?>">Carian Mengikut Tarikh</a></li>
 		<? }else {?>
-		<li class="<? echo ($flag=='tb_2'?'active':'') ?>"><a href="pengurusan_dokumen.php?status=<?echo $status;?>&dt=<? echo $dateSelection; //21-03-2019?>&flg=<? echo tb_2 ;?>&flagScreen=<?echo $flagScreen;?>">Carian Mengikut Tarikh</a></li>
+		<li class="<? echo ($flag=='tb_2'?'active':'') ?>"><a href="pengurusan_dokumen.php?status=<?echo $status;?>&dt=<? echo $dateSelection;?>&flg=tb_2&flagScreen=<?echo $flagScreen;?>">Carian Mengikut Tarikh</a></li>
 		<?}?>
 		
 	</ul>

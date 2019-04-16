@@ -1,17 +1,18 @@
 --
 -- Database: cashless
 --
--- DROP DATABASE cashless;
--- CREATE DATABASE cashless;
+ DROP DATABASE cashless;
+ CREATE DATABASE cashless;
 -- USE id9050021_cashless;
 USE cashless;
 
+/*
 DROP TABLE transaksi;
 DROP TABLE kod_transaksi;
 DROP TABLE kod_jenistransaksi;
 DROP TABLE akaun_pengguna;
 DROP TABLE maklumat_pengguna;
-DROP TABLE kod_jenispengguna;
+DROP TABLE kod_jenispengguna; */
 -- --------------------------------------------------------
 
 --
@@ -78,6 +79,8 @@ CREATE TABLE kod_jenistransaksi (
   PRIMARY KEY (id_jenistransaksi)
   );
 
+  
+-- COPY YANG NI JE LAIN UPDATE
 CREATE TABLE kod_transaksi (
   id_kodtransaksi INT(10) NOT NULL AUTO_INCREMENT,
   kod_pengguna VARCHAR(10) NOT NULL,
@@ -93,6 +96,8 @@ CREATE TABLE kod_transaksi (
   tarikh_keyin DATETIME NOT NULL,
   edit_by VARCHAR(100) NULL,
   tarikh_edit DATETIME NULL,
+  dttaklimat DATETIME NULL,
+  tempatlwtntapak VARCHAR(100) NULL,
   created_date TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id_kodtransaksi),
   FOREIGN KEY (kod_pengguna) REFERENCES kod_jenispengguna (kod_pengguna),

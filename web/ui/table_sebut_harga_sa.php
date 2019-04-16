@@ -141,8 +141,8 @@ $kod_pengguna=mysql_fetch_object($result1)->kod_pengguna;
 				
 <div id='cssmenu'>
 	<ul>
-		<li class="<? echo ($flag=='tb_1'?'active':'') ?>"><a href="index_sa.php?status=1&flg=<? echo tb_1 ;?>">Aktif</a></li>
-		<li class="<? echo ($flag=='tb_2'?'active':'') ?>"><a href="index_sa.php?status=0&flg=<? echo tb_2 ;?>">Tidak Aktif</a></li>
+		<li class="<? echo ($flag=='tb_1'?'active':'') ?>"><a href="index_sa.php?status=1&flg=tb_1">Aktif</a></li>
+		<li class="<? echo ($flag=='tb_2'?'active':'') ?>"><a href="index_sa.php?status=0&flg=tb_2">Tidak Aktif</a></li>
 		
 	</ul>
 </div>
