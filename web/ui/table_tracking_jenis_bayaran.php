@@ -20,7 +20,7 @@
                                             <th>Tarikh Tutup</th>
 											<th>Harga</th>
 											<th>Tindakan</th>
-											<th>Orang Terlibat</th>
+											<th>Pegawai</th>
 											<th>Tarikh Tindakan</th>
                                         </tr>
                                     </thead>
