@@ -11,7 +11,7 @@
    try {
 	  
       $stmt 	= $pdo->query('
-	  SELECT * FROM kod_transaksi WHERE id_jenistransaksi="'.$id.'" ORDER BY tarikhtutup ASC');
+	  SELECT * FROM kod_transaksi WHERE id_jenistransaksi="'.$id.'" AND tarikhtutup >= CURDATE() ORDER BY tarikhtutup ASC');
 	  
       while($row  = $stmt->fetch(PDO::FETCH_OBJ))
       {

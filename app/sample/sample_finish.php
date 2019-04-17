@@ -1,6 +1,4 @@
-<?php 
-session_start();
-include "../../server.php";?>
+<?php session_start(); include "../../server.php";?>
 <html>
 <head>
 <title>Resit</title>
@@ -304,8 +302,7 @@ $page['authStatus'] = $authStatus;
 	echo "<tr><td>Jenis Kad</td><td>:</td>			<td>".$cardType."</td></tr>";
 	echo "</table>";
 
-    echo "<p>Catatan: Resit ini dijana oleh komputer tiada tandatangan diperlukan.</p>";
-    echo "vpc_MerchTxnRef -> ". $merchTxnRef;
+	echo "<p>Catatan: Resit ini dijana oleh komputer tiada tandatangan diperlukan.</p>";
 	
 
 $sqlP="INSERT INTO transaksi (ic_pengguna,id_kodtransaksi,id_jenistransaksi,tarikh,jumlah,daripada,kepada,statustransaction,norujukan,merchantid,jeniskad,status_dokumen) VALUES ('$user','$idk','$id_jenistransaksi','$tarikh','$pa','$user','941013115436','$message','$transactionNo','$merchantID','$cardType','NO')";
@@ -322,7 +319,7 @@ unset($_SESSION['PA']);
 
 
 echo "<br><br><p>Anda Boleh Tutup Pelayar Pembayaran ini untuk kembali ke Aplikasi Cashless UniSZA</p>";
-
+echo "vpc_MerchTxnRef -> ". $merchTxnRef;
 echo '<a href="../../extension/html2pdf/cetak.php?message='.$message.'&transactionNo='.$transactionNo.'&page='.$page['datetime'].'&pa='.$pa.'&user='.$user.'&merchantID='.$merchantID.'&cardType='.$cardType.'"><button type="submit" onClick="return checksemua()"><IMG SRC="../../web/imgs/print.gif" WIDTH="18" HEIGHT="18" BORDER="0" ALT=""> CETAK</button></a>';
 
 ?>

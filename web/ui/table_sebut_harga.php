@@ -172,7 +172,13 @@ date_default_timezone_set("Asia/Kuala_lumpur");
 						$i=1;
 						while($row = mysql_fetch_array( $data )) {
 							echo "<tr class='gradeA'>";
-							echo '<td>'. $i . '</td>';
+							
+							//echo '<td>'. $i . '</td>';
+							?><td>
+							<table><tr><td width="40px"><input id="<?=$id?>" value="<?=$id?>"  name="invite[]" type="checkbox"></td><td width="40px"><?=$i;?>.</td></tr></table>
+							</td>
+							<?
+							
 							echo '<td>'. $row['no_sb'] . '</td>';
 							echo '<td>'. $row['description'] . '</td>';
 							echo '<td>'. $row['tarikhbuka'] . '</td>';
@@ -375,6 +381,15 @@ date_default_timezone_set("Asia/Kuala_lumpur");
 									<?$i++;}?>
                                     </tbody>
                                 </table>
+								
+								<form action="../extension/html2pdf/cetakP004.php" method="GET" target="_blank">
+									
+									<span class="label label-danger">shahrul tgh try cuba buat listener utk cetak tanpa guna form yang kacau form lain.</span><br> <span class="label label-danger">setakat ni buat form dummy gini dulu </span><br>
+									<input type="text" value="2" size="3" name="idk"><br>
+									<button class="btn btn-default" type="submit" onClick="return checksemua()"><img src="imgs/print.gif" width="18" height="18" border="0" alt=""> CETAK</button>
+									Pilih Semua<input type="checkbox" name="select-all" id="select-all"/>
+									</form>
+								
                             </div>
                         </div>
                     </div>

@@ -97,6 +97,9 @@ $content .= '
 
 </table>
 
+<BR><BR>
+<font color="red">QR CODE TGH IMPLEMENT LG</font>
+
 
 </page>
 ';

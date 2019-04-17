@@ -75,14 +75,14 @@ class vpcGenerateLink {
 			$email = trim($_POST['email']);
 			$registerid = trim($_POST['registerid']);
 			$registername = trim($_POST['registername']);
-			$contactno = trim($_POST['contactno']);
+			$contactno = '0199941900'; //trim($_POST['contactno']);
 			
 			unset($_POST);
 			
 			$_POST['vpc_Version']	= '1';
 			$_POST['vpc_Command']	= 'pay';
 			$_POST['vpc_AccessCode']	= $this->accessCode;
-			$_POST['vpc_MerchTxnRef']	= $this->payPreMerchTxnRef."-$registerid"."-SBcontoh"; //control type ref disini
+			$_POST['vpc_MerchTxnRef']	= $this->payPreMerchTxnRef."-$registerid"."RAXSOFTTEST";
 			$_POST['vpc_Merchant'] 	= $this->merchantId;
 			$_POST['vpc_OrderInfo']	= "$type";
 			$_POST['vpc_TicketNo']	= "";
