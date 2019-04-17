@@ -82,7 +82,7 @@ class vpcGenerateLink {
 			$_POST['vpc_Version']	= '1';
 			$_POST['vpc_Command']	= 'pay';
 			$_POST['vpc_AccessCode']	= $this->accessCode;
-			$_POST['vpc_MerchTxnRef']	= $this->payPreMerchTxnRef."-$registerid";
+			$_POST['vpc_MerchTxnRef']	= $this->payPreMerchTxnRef."-$registerid"."-SBcontoh"; //control type ref disini
 			$_POST['vpc_Merchant'] 	= $this->merchantId;
 			$_POST['vpc_OrderInfo']	= "$type";
 			$_POST['vpc_TicketNo']	= "";

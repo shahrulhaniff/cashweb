@@ -304,7 +304,8 @@ $page['authStatus'] = $authStatus;
 	echo "<tr><td>Jenis Kad</td><td>:</td>			<td>".$cardType."</td></tr>";
 	echo "</table>";
 
-	echo "<p>Catatan: Resit ini dijana oleh komputer tiada tandatangan diperlukan.</p>";
+    echo "<p>Catatan: Resit ini dijana oleh komputer tiada tandatangan diperlukan.</p>";
+    echo "vpc_MerchTxnRef -> ". $merchTxnRef;
 	
 
 $sqlP="INSERT INTO transaksi (ic_pengguna,id_kodtransaksi,id_jenistransaksi,tarikh,jumlah,daripada,kepada,statustransaction,norujukan,merchantid,jeniskad,status_dokumen) VALUES ('$user','$idk','$id_jenistransaksi','$tarikh','$pa','$user','941013115436','$message','$transactionNo','$merchantID','$cardType','NO')";
