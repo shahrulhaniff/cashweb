@@ -87,8 +87,9 @@ include "../extension/qr/qr.php";
 												
 											 <div class="modal-body">
 												<form method="post" action="../web/controller/jenis_transaksi_kemaskini_exec.php?id_jenistransaksi=<?php echo $info['id_jenistransaksi'];?>" >
-
 											
+											<!-- type hidden -->
+											<input class="form-control" type="hidden" id="current_jabatan" name="current_jabatan" value="<?php echo $info['jabatan']; ?>" readonly >
 													
 												<div class="form-group" align="left">
 													<label>ID</label>

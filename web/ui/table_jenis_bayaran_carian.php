@@ -143,17 +143,9 @@ date_default_timezone_set("Asia/Kuala_lumpur");
 
 <? include ('global/menu_jenis_bayaran_carian.php'); ?>
 <? include ('global/menu_jenis_bayaran_carian_status.php'); ?>
-	<!-- ---- 			
-<div id='cssmenu'>
-	<ul>
-		<li class="<? echo ($flagScreen=='tab_1'?'active':'') ?>"><a href="sebut_harga.php?status=aktif&jbt=<? echo $jabatan;?>&flg=<? echo $flag; ?>&flagScreen=tab_1">Aktif</a></li>
-		<li class="<? echo ($flagScreen=='tab_2'?'active':'') ?>"><a href="sebut_harga.php?status=tak_aktif&jbt=<? echo $jabatan;?>&flg=<? echo $flag; ?>&flagScreen=tab_2">Tidak Aktif</a></li>
-		
-	</ul>
-</div>
--->
-<!-- carian-->
+				
 
+<!-- carian-->
 <div align="center">
 				<h4>Carian**</h4>
 				<table>
