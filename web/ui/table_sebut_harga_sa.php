@@ -164,7 +164,7 @@ $kod_pengguna=mysql_fetch_object($result1)->kod_pengguna;
 											<th>Keterangan</th>
 											<th>Tarikh Buka</th>
 											<th>Tarikh Tutup</th>
-											<th>Harga</th>
+											<th>Harga (RM)</th>
 											<th>Tindakan</th>
 										</tr>
                                     </thead>
@@ -185,9 +185,9 @@ $tarikhtutup=$row['tarikhtutup'];
 $tarikh_keyin=$row['tarikh_keyin'];
 //$tarikhbuka = substr($tarikhbuka,8,10).'/'.substr($tarikhbuka,5,10).'/'.substr($tarikhbuka,0,4);
 
-$tarikhbuka= DateTime::createFromFormat('Y-m-d', $tarikhbuka)->format('d-m-Y');
-$tarikhtutup= DateTime::createFromFormat('Y-m-d', $tarikhtutup)->format('d-m-Y');
-$tarikh_keyin= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh_keyin)->format('d-m-Y h:i:s');
+$tarikhbuka= DateTime::createFromFormat('Y-m-d', $tarikhbuka)->format('d/m/Y');
+$tarikhtutup= DateTime::createFromFormat('Y-m-d', $tarikhtutup)->format('d/m/Y');
+$tarikh_keyin= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh_keyin)->format('d/m/Y g:i a');
 
 	//					$tarikhbuka=$row['tarikhbuka']->format('d-m-Y');
 
@@ -195,8 +195,8 @@ $tarikh_keyin= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh_keyin)->format(
 							echo '<td>'. $i . '</td>';
 							echo '<td>'. $row['no_sb'] . '</td>';
 							echo '<td>'. $row['description'] . '</td>';
-							echo '<td>'. $row['tarikhbuka'] . '</td>';
-							echo '<td>'. $row['tarikhtutup'] . '</td>';
+							echo '<td>'. $tarikhbuka . '</td>';
+							echo '<td>'. $tarikhtutup . '</td>';
 							echo '<td>'. $row['harga'] . '</td>';
 						    echo '<td>';
                             ?>

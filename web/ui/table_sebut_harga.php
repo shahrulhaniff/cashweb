@@ -196,7 +196,7 @@ date_default_timezone_set("Asia/Kuala_lumpur");
 											<th width="30%">Keterangan</th>
 											<th width="15%">Tarikh Buka</th>
 											<th width="15%">Tarikh Tutup</th>
-											<th width="10%">Harga</th>
+											<th width="10%">Harga (RM)</th>
 											<th width="10%">Tindakan</th>
 										</tr>
                                     </thead>
@@ -211,16 +211,19 @@ date_default_timezone_set("Asia/Kuala_lumpur");
 								$data = mysql_query("SELECT * FROM kod_transaksi WHERE DATE_FORMAT(tarikhtutup,'%Y-%m-%d')<='$current_date' ORDER BY tarikhtutup ASC");
 							}
 			
-						// else if($jabatan!='tiada'){
-							// if($status=='aktif'){
-								// $data = mysql_query("SELECT * FROM kod_transaksi WHERE DATE_FORMAT(tarikhtutup,'%Y-%m-%d')>='$current_date' AND id_jenistransaksi='$id_jenistransaksi' ORDER BY tarikhbuka ASC");
-							// }else if($status=='tak_aktif'){
-								// $data = mysql_query("SELECT * FROM kod_transaksi WHERE DATE_FORMAT(tarikhtutup,'%Y-%m-%d')<='$current_date' AND id_jenistransaksi='$id_jenistransaksi' ORDER BY tarikhtutup ASC");
-							// }
-							
-						// }
+						
 						$i=1;
 						while($row = mysql_fetch_array( $data )) {
+							
+							
+$tarikhbuka=$row['tarikhbuka'];
+$tarikhtutup=$row['tarikhtutup'];
+$tarikh_keyin=$row['tarikh_keyin'];
+//$tarikhbuka = substr($tarikhbuka,8,10).'/'.substr($tarikhbuka,5,10).'/'.substr($tarikhbuka,0,4);
+
+$tarikhbuka= DateTime::createFromFormat('Y-m-d', $tarikhbuka)->format('d/m/Y');
+$tarikhtutup= DateTime::createFromFormat('Y-m-d', $tarikhtutup)->format('d/m/Y');
+$tarikh_keyin= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh_keyin)->format('d/m/Y g:i a');
 							echo "<tr class='gradeA'>";
 							
 							//echo '<td>'. $i . '</td>';
@@ -231,8 +234,8 @@ date_default_timezone_set("Asia/Kuala_lumpur");
 							
 							echo '<td>'. $row['no_sb'] . '</td>';
 							echo '<td>'. $row['description'] . '</td>';
-							echo '<td>'. $row['tarikhbuka'] . '</td>';
-							echo '<td>'. $row['tarikhtutup'] . '</td>';
+							echo '<td>'. $tarikhbuka . '</td>';
+							echo '<td>'. $tarikhtutup . '</td>';
 							echo '<td>'. $row['harga'] . '</td>';
 						    echo '<td>';
                             ?>
@@ -379,12 +382,12 @@ date_default_timezone_set("Asia/Kuala_lumpur");
 												
 												<div class="form-group" align="left">
 													<label>Tarikh Buka</label>
-													<span> : <? echo $row['tarikhbuka'];?></span>
+													<span> : <? echo $tarikhbuka;?></span>
 												</div>
 												
 												<div class="form-group" align="left">
 													<label>Tarikh Tutup</label>
-													<span> : <? echo $row['tarikhtutup'];?></span>
+													<span> : <? echo $tarikhtutup;?></span>
 												</div>
 												
 												<div class="form-group" align="left">
@@ -414,7 +417,7 @@ date_default_timezone_set("Asia/Kuala_lumpur");
 														
 												<div class="form-group" align="left">
 													<label>Diisi Pada</label>
-													<span> : <? echo $row['tarikh_keyin'];?></span>
+													<span> : <? echo $tarikh_keyin;?></span>
 												</div>
 												
 												 <div class="modal-footer">

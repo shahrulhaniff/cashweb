@@ -112,6 +112,12 @@ if($dateSelection=='tiada'){
 										<?php
 										$i=1;
 										while($info = mysql_fetch_array( $data )) {
+											
+$tarikh=$info['tarikh'];
+//$tarikhbuka = substr($tarikhbuka,8,10).'/'.substr($tarikhbuka,5,10).'/'.substr($tarikhbuka,0,4);
+$tarikh= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh)->format('d/m/Y g:i a');
+
+
 											echo "<tr class='gradeA'>";
 											echo "<td>".$i." </td>";
 											echo "<td>".$info['norujukan']." </td>";
@@ -123,7 +129,7 @@ if($dateSelection=='tiada'){
                                             echo "<td>".$info['doc_acceptby_nama'] . " </td>";
 											echo "<td>".$info['jumlah'] . " </td>";
 											// echo "<td>".$info['status_dokumen'] . " </td>";
-											 echo "<td>".$info['tarikh'] . " </td>";
+											 echo "<td>".$tarikh . " </td>";
                                             ?>
 											<td>
 											<button class="btn btn-info" data-toggle="modal" data-target="#myModalInfo<?echo $info['id_transaksi'];?>">Papar</button>
@@ -148,7 +154,7 @@ if($dateSelection=='tiada'){
 
 												<div class="form-group">
 													<label for="comment">Tarikh</label>
-													<span> : <? echo $info['tarikh'];?></span>
+													<span> : <? echo $tarikh;?></span>
 												</div> 
 												
 												<div class="form-group">
@@ -237,7 +243,7 @@ if($dateSelection=='tiada'){
 											
 												<div class="form-group">
 													<label for="comment">Tarikh</label>
-													<span> : <? echo $info['tarikh'];?></span>
+													<span> : <? echo $tarikh;?></span>
 												</div> 
 												
 												<div class="form-group">

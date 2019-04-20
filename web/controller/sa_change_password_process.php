@@ -14,53 +14,42 @@
         $password_baru2= md5($_POST['password_baru']);
      
   
-			$pdo = Database::connect();
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-		if ($reenter_password_baru == $password_baru) {
-				$sql = "SELECT pwd FROM akaun_pengguna WHERE pwd='$password_lama' and ic_pengguna='$pengguna' and kod_pengguna='$kod_pengguna'";
-				$result=mysql_query($sql);
-				if($result){
-					$sql2= "UPDATE akaun_pengguna set pwd = '$password_baru2' WHERE ic_pengguna='$pengguna' and kod_pengguna='$kod_pengguna'";
-					$q = $pdo->prepare($sql2);
-					$q->execute(array($pwd));
-				}
-				else{
-					echo"<script>alert('Invalid Data!');document.location.href='../sa_change_password.php';</script>";
-				}
+		$sql1 = "SELECT pwd FROM akaun_pengguna WHERE ic_pengguna='$pengguna' and kod_pengguna='$kod_pengguna'";
+			$result1=mysql_query($sql1);
+			$pwdlama=mysql_fetch_object($result1)->pwd;
+		
+		if ($password_lama == $pwdlama) {
 				
-				Database::disconnect();
-				echo"<script>alert('Kemaskini Berjaya!');document.location.href='../sa_sebut_harga.php';</script>";
-
-            $sql = "SELECT pwd FROM akaun_pengguna WHERE pwd='$password_lama' and ic_pengguna='$pengguna' and kod_pengguna='$kod_pengguna'";
-			$result=mysql_query($sql);
-			if($result){
-				$sql2= "UPDATE akaun_pengguna set pwd = '$password_baru2' WHERE ic_pengguna='$pengguna' and kod_pengguna='$kod_pengguna'";
-				$q = $pdo->prepare($sql2);
-				$q->execute(array($pwd));
-
-			}
-			else{
-				echo"<script>alert('Pengesahan Kata Laluan Baru Tidak Sama');document.location.href='../sa_change_password.php';</script>";
-			}
-        }else {
+				
+			if ($reenter_password_baru == $password_baru) {
+				
+				
+					$sql2= "UPDATE akaun_pengguna set pwd = '$password_baru2' WHERE ic_pengguna='$pengguna' and kod_pengguna='$kod_pengguna'";
+					$result2=mysql_query($sql2);
+					if($result2){
+					
+						 echo ("<script LANGUAGE='JavaScript'>
+						window.alert('Kemaskini kata laluan berjaya.');
+						window.location.href='../sa_change_password.php';
+						</script>");
+					
+					}else {
+						 echo ("<script LANGUAGE='JavaScript'>
+							window.alert('Kemaskini kata laluan tidak berjaya.');
+							window.location.href='../sa_change_password.php';
+							</script>");
+					}
+			}else {
+					 echo ("<script LANGUAGE='JavaScript'>
+						window.alert('Kata Laluan Baru tidak sama dengan Sah Kata Laluan Baru.');
+						window.location.href='../sa_change_password.php';
+						</script>");
+				}
+		}else {
 				 echo ("<script LANGUAGE='JavaScript'>
-					window.alert('Sah Kata Laluan Baru tidak sama dengan Kata Laluan Baru.');
+					window.alert('Salah kata laluan semasa.');
 					window.location.href='../sa_change_password.php';
 					</script>");
-		}
-	
-    // else {
-        // $pdo = Database::connect();
-        // $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        // $sql = "SELECT * FROM kod_transaksi where id_kodtransaksi = ?";
-        // $q = $pdo->prepare($sql);
-        // $q->execute(array($id));
-        // $data = $q->fetch(PDO::FETCH_ASSOC);
-        // $no_sb = $data['no_sb'];
-        // $description = $data['description'];
-        // $tarikhbuka = $data['tarikhbuka'];
-        // Database::disconnect();
-    // }
+			}
 ?>
 			

@@ -60,12 +60,9 @@ $harga 		  = "30.00";
 $lokasi 	  = "Kaunter JPP (KGB)";
 $jam 		  = "12:00 Tengahari";
 
-
+$content .= '<page backtop="15mm" backbottom="15mm" backleft="20mm" backright="20mm">';
+include "header.php";
 $content .= '
-<page backtop="15mm" backbottom="15mm" backleft="20mm" backright="20mm">
-<table>
-<tr>
-<td><img src="../../web/imgs/logo.png" alt="logo" style="height: 23px; "></td><td ><font style="font-size:10px;"><i>Cetakan Dokumen Aplikasi Cashless UniSZA</i></font></td></tr></table>
 
 <p style="text-align: justify; font-size:12px;">Tawaran adalah dipelawa daripada <b>Kontraktor Bumiputera</b> yang mempunyai Sijil Perolehan Kerja Kerajaan berdaftar dengan Lembaga Pembangunan Industri Pembinaan Malaysia (LPIPM (CIDB) dalam Gred Kategori & pengkhususan yang berkaitan dan Kementerian Kewangan dan yang masih dibenarkan membuat tawaran buat masa ini bagi kerja berikut:</p>
 

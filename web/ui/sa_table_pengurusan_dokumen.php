@@ -111,6 +111,13 @@ WHERE t.id_kodtransaksi=kt.id_kodtransaksi AND kt.kod_pengguna=kj.kod_pengguna A
 										<?php
 										$i=1;
 										while($info = mysql_fetch_array( $data )) {
+											
+$tarikh=$info['tarikh'];
+//$tarikhbuka = substr($tarikhbuka,8,10).'/'.substr($tarikhbuka,5,10).'/'.substr($tarikhbuka,0,4);
+$tarikh= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh)->format('d/m/Y g:i a');
+
+
+
 											echo "<tr class='gradeA'>";
 											echo "<td>".$i." </td>";
 											echo "<td>".$info['norujukan']." </td>";
@@ -139,7 +146,7 @@ WHERE t.id_kodtransaksi=kt.id_kodtransaksi AND kt.kod_pengguna=kj.kod_pengguna A
                                             echo "<td>".$info['doc_acceptby_nama'] . " </td>";
 											echo "<td>".$info['jumlah'] . " </td>";
 											// echo "<td>".$info['status_dokumen'] . " </td>";
-											echo "<td>".$info['tarikh'] . " </td>";
+											echo "<td>".$tarikh . " </td>";
 
                                             ?>
 											<td>
@@ -166,12 +173,11 @@ WHERE t.id_kodtransaksi=kt.id_kodtransaksi AND kt.kod_pengguna=kj.kod_pengguna A
 												<div class="modal-header">
 													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 													<h4 class="modal-title" align="left" id="myModalLabel">Kemaskini</h4>
+													<font color="red">***Sila semak dan maklumat dokumen yang diterima dengan sistem ini sebelum kemaskini</font>
 												</div>
 												
 											 <div class="modal-body">
 												<form method="post" action="../web/controller/sa_pengurusan_dokumen_kemaskini_exec.php?id_transaksi=<?php echo $info['id_transaksi'];?>" >
-
-												
 												
 												<div class="form-group">
 													<label for="comment">Nombor Rujukan</label>
@@ -190,7 +196,7 @@ WHERE t.id_kodtransaksi=kt.id_kodtransaksi AND kt.kod_pengguna=kj.kod_pengguna A
 												
 												<div class="form-group">
 													<label for="comment">Tarikh</label>
-													<span> : <? echo $info['tarikh'];?></span>
+													<span> : <? echo $tarikh;?></span>
 												</div> 
 												
 												<div class="form-group">
@@ -271,7 +277,7 @@ WHERE t.id_kodtransaksi=kt.id_kodtransaksi AND kt.kod_pengguna=kj.kod_pengguna A
 											
 												<div class="form-group">
 													<label for="comment">Tarikh</label>
-													<span> : <? echo $info['tarikh'];?></span>
+													<span> : <? echo $tarikh;?></span>
 												</div> 
 												
 												<div class="form-group">

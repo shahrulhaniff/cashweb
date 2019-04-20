@@ -1,12 +1,7 @@
 
 
 <div class="col-md-12">
-<?
-if (isset($_POST['detail'])) {
-$idd = $_POST['id'];
-include "../extension/qr/qr.php";
-}
-?>
+
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -62,9 +57,8 @@ include "../extension/qr/qr.php";
 
 <form></form>
 
-<form action="" method="POST">
-<input type='hidden' value='<?=$info['id_jenistransaksi']?>' name='id'>&nbsp;
-<input type="hidden" name="detail">
+<form action="../extension/html2pdf/cetakP003.php" method="GET" target="_blank">
+<input type='hidden' value='<?=$info['id_jenistransaksi']?>' name='id'>
 <input type="image" src="../extension/qr/qrbtn.png" alt="Submit" width="35" height="35" title="Detail">
 </form>
 </td>
