@@ -4,7 +4,7 @@
 <?
 if (isset($_POST['detail'])) {
 $idd = $_POST['id'];
-include "qr/qr.php";
+include "../extension/qr/qr.php";
 }
 ?>
                     <!-- Advanced Tables -->
@@ -65,7 +65,7 @@ include "qr/qr.php";
 <form action="" method="POST">
 <input type='hidden' value='<?=$info['id_jenistransaksi']?>' name='id'>&nbsp;
 <input type="hidden" name="detail">
-<input type="image" src="qr/qrbtn.png" alt="Submit" width="35" height="35" title="Detail">
+<input type="image" src="../extension/qr/qrbtn.png" alt="Submit" width="35" height="35" title="Detail">
 </form>
 </td>
 											<td>

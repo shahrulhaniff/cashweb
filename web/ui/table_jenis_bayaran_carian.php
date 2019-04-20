@@ -23,7 +23,11 @@ date_default_timezone_set("Asia/Kuala_lumpur");
 			$flagScreen='tab_1';
 			}
 			
-				
+	//$jabatan='JPP';   
+	$jabatan=$_GET['jbt'];   
+	if($jabatan==''){
+			$jabatan='tiada';
+			}				
 ?>
 
 						<!-- Modal Add Jenis Bayaran -->
@@ -135,25 +139,11 @@ date_default_timezone_set("Asia/Kuala_lumpur");
 							
 <!---------------------------------------------------------------------------------------->							
 <div class="col-md-12">
+
+
 <? include ('global/menu_jenis_bayaran_carian.php'); ?>
-<? include ('global/menu_jenis_bayaran_status.php'); ?>
-<!-- ----
-<div id='cssmenu'>
-	<ul>
-		<li class="<? echo ($flag=='tb_1'?'active':'') ?>"><a href="sebut_harga.php?status=<?echo $status;?>&jbt=tiada&flg=tb_1&flagScreen=<?echo $flagScreen;?>">Papar Semua</a></li>
-		
-		 <?//$sqlJabatan="SELECT MAX(jabatan) AS jabatan FROM kod_jenistransaksi";
-					// $resultJabatan=mysql_query($sqlJabatan);
-					// $rowJabatan = mysql_fetch_array( $resultJabatan );
-					// $jabatan=$rowJabatan['no_sb'];
-					?>
-		
-		<li class="<? echo ($flag=='tb_2'?'active':'') ?>"><a href="sebut_harga.php?status=<?echo $status;?>&jbt=JPP<?// echo $jabatan;?>&flg=tb_2&flagScreen=<?echo $flagScreen;?>">Carian Mengikut Jabatan</a></li>
-		
-		
-	</ul>
-</div>
-				
+<? include ('global/menu_jenis_bayaran_carian_status.php'); ?>
+	<!-- ---- 			
 <div id='cssmenu'>
 	<ul>
 		<li class="<? echo ($flagScreen=='tab_1'?'active':'') ?>"><a href="sebut_harga.php?status=aktif&jbt=<? echo $jabatan;?>&flg=<? echo $flag; ?>&flagScreen=tab_1">Aktif</a></li>
@@ -161,22 +151,42 @@ date_default_timezone_set("Asia/Kuala_lumpur");
 		
 	</ul>
 </div>
- -->
-<!-- carian
-<? if ($jabatan!='tiada'){?>
+-->
+<!-- carian-->
+
 <div align="center">
 				<h4>Carian**</h4>
 				<table>
 				<tr>
-					<td><input class="form-control" required type="text" placeholder="cari" id="jabatan" name="jabatan" value="MASJID"></td>
+				<td>
+				<select required class="form-control" name="jabatan" id="jabatan" value="">
+				<?if ($jabatan==''){?>
+				<option value="">--Pilih--</option>
+				<?}else{?>
+				<option value="<? echo $jabatan;?>"><? echo $jabatan;?></option>
+				<?}?>
+				
+								<? if ($jabatan==''){
+									$dataJabatan = mysql_query("SELECT DISTINCT(jabatan) AS jabatan FROM kod_jenistransaksi");
+								}else if ($jabatan!=''){
+									$dataJabatan = mysql_query("SELECT DISTINCT(jabatan) AS jabatan FROM kod_jenistransaksi WHERE jabatan!='$jabatan'");
+								}
+									while ($rowJabatan = mysql_fetch_assoc( $dataJabatan )){ ?>					
+												<option value="<? echo $rowJabatan['jabatan'];?>"><? echo $rowJabatan['jabatan'];?></option>
+												
+									<?}?>
+											</select>
+													
+				</td>
+					
 				
 				<td><center> <button onclick="submit_cari()" align="right" class="btn btn-warning">Cari</button></center></td>
 				</tr>
 				
 				</table>
-				<h6>** masukkan tarikh carian anda</h6>
+				<h6>** masukkan jabatan carian anda</h6>
 </div>
-<?}?>-->
+
 <!----------->
 			<!--<div align="right">
 							<button class="btn btn-primary" data-toggle="modal"  data-target="#myModal">Tambah Jenis Bayaran</button></a> <br>
@@ -203,22 +213,21 @@ date_default_timezone_set("Asia/Kuala_lumpur");
                                     <tbody>
 									<?php
 									
-					
-				
-							if($status=='aktif'){
-								$data = mysql_query("SELECT * FROM kod_transaksi WHERE DATE_FORMAT(tarikhtutup,'%Y-%m-%d')>='$current_date' ORDER BY tarikhbuka ASC");
-							}else if($status=='tak_aktif'){
-								$data = mysql_query("SELECT * FROM kod_transaksi WHERE DATE_FORMAT(tarikhtutup,'%Y-%m-%d')<='$current_date' ORDER BY tarikhtutup ASC");
-							}
+					$sql1="SELECT id_jenistransaksi FROM kod_jenistransaksi WHERE jabatan='$jabatan'";
+					$result1=mysql_query($sql1);
+						while($row1 = mysql_fetch_array( $result1 )) {
 			
-						// else if($jabatan!='tiada'){
-							// if($status=='aktif'){
-								// $data = mysql_query("SELECT * FROM kod_transaksi WHERE DATE_FORMAT(tarikhtutup,'%Y-%m-%d')>='$current_date' AND id_jenistransaksi='$id_jenistransaksi' ORDER BY tarikhbuka ASC");
-							// }else if($status=='tak_aktif'){
-								// $data = mysql_query("SELECT * FROM kod_transaksi WHERE DATE_FORMAT(tarikhtutup,'%Y-%m-%d')<='$current_date' AND id_jenistransaksi='$id_jenistransaksi' ORDER BY tarikhtutup ASC");
-							// }
+							$id_jenistransaksi=$row1['id_jenistransaksi'];
 							
-						// }
+						
+						
+							if($status=='aktif'){
+								$data = mysql_query("SELECT * FROM kod_transaksi WHERE DATE_FORMAT(tarikhtutup,'%Y-%m-%d')>='$current_date' AND id_jenistransaksi='$id_jenistransaksi' ORDER BY tarikhbuka ASC");
+							}else if($status=='tak_aktif'){
+								$data = mysql_query("SELECT * FROM kod_transaksi WHERE DATE_FORMAT(tarikhtutup,'%Y-%m-%d')<='$current_date' AND id_jenistransaksi='$id_jenistransaksi' ORDER BY tarikhtutup ASC");
+							}
+							
+					
 						$i=1;
 						while($row = mysql_fetch_array( $data )) {
 							echo "<tr class='gradeA'>";
@@ -428,7 +437,8 @@ date_default_timezone_set("Asia/Kuala_lumpur");
 											</div><!-- /.modal -->
 										
 								
-									<?$i++;}?>
+									<?$i++;}
+										}?>
                                     </tbody>
                                 </table>
 								
@@ -445,4 +455,21 @@ date_default_timezone_set("Asia/Kuala_lumpur");
                     </div>
                     <!--End Advanced Tables -->
                 </div>
+											
+<script>
+ function submit_cari(){
+		var jabatan=$('#jabatan').val();
 		
+		
+		 var flg = "<? echo $flag; ?>";
+		 var flagScreen = "<?echo $flagScreen;?>";
+		 var status = "<?php echo $status ?>";
+		 if (jabatan!=''){ 
+			// location.href='pengurusan_dokumen.php?dateSelection='+dateSelection+'&user_id='+user_id+'&groups_id='+groups_id+'&nama_pengawal='+nama_pengawal;
+			location.href='jenis_bayaran_carian.php?status='+status+'&jbt='+jabatan+'&flg='+flg+'&flagScreen='+flagScreen;
+		 }else{
+			 alert("Pilih Jabatan");
+		 }	
+	} 
+
+</script>								

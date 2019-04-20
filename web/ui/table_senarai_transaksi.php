@@ -66,7 +66,7 @@
                     <div class="panel panel-default">
 					
                         <div class="panel-heading">
-                             Senarai Dokumen
+                             Senarai Transaksi
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
@@ -78,7 +78,6 @@
 											 <th>Pusat Tanggungjawab (PTj)</th>
                                             <th>Penerima</th>
                                             <th>Harga (RM)</th>
-											<th>Status</th>
 											<th>Tarikh & Masa</th>
 											<th>Tindakan</th>
                                         </tr>
@@ -106,7 +105,6 @@ if($dateSelection=='tiada'){
 											
                                             echo "<td>".$info['doc_acceptby_nama'] . " </td>";
 											echo "<td>".$info['jumlah'] . " </td>";
-											echo "<td>".$info['status_dokumen'] . " </td>";
 											echo "<td>".$info['tarikh'] . " </td>";
                                             ?>
 											<td>

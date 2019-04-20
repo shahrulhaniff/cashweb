@@ -6,7 +6,7 @@
     $PNG_WEB_DIR = 'temp/';
 
     //include "qrlib.php";  $idd = '6';  
-	include "qr/qrlib.php";    
+	include "../extension/qr/qrlib.php";    
     
     //ofcourse we need rights to create temp dir
     if (!file_exists($PNG_TEMP_DIR))
@@ -48,7 +48,7 @@
     }    
     echo "<center>";
     
-    echo '<img src="qr/'.$PNG_WEB_DIR.basename($filename).'" /><br>'; 
+    echo '<img src="../extension/qr/'.$PNG_WEB_DIR.basename($filename).'" /><br>'; 
 	
 	echo (isset($_REQUEST['data'])?htmlspecialchars($_REQUEST['data']):''.$idd.'');
 	echo "</center>";

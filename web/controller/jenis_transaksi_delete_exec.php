@@ -3,31 +3,30 @@
     $id_jenistransaksi = 0;
      
     if ( !empty($_GET['id_jenistransaksi'])) {
-        // $id_jenistransaksi = $_REQUEST['id_jenistransaksi'];
+       
         $id_jenistransaksi = $_GET['id_jenistransaksi'];
+	
 		
 		// delete data
-		 $pdo = Database::connect();
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "DELETE FROM kod_jenistransaksi  WHERE id_jenistransaksi = '$id_jenistransaksi'";
-        $q = $pdo->prepare($sql);
-        $q->execute(array($id_jenistransaksi));
-        Database::disconnect();
-        header("Location: ../senarai_ptj.php");
-    }
-     
-    if ( !empty($_POST)) {
-        // keep track post values
-        $id_jenistransaksi = $_POST['id_jenistransaksi'];
-         
-       // // delete data
-		 // $pdo = Database::connect();
-        // $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        // echo $sql = "DELETE FROM kod_jenistransaksi  WHERE id_jenistransaksi = '$id_jenistransaksi'";
-        // $q = $pdo->prepare($sql);
-        // $q->execute(array($id_jenistransaksi));
-        // Database::disconnect();
-        // header("Location: ../index.php");
-         
-    }
+		$sql="DELETE FROM kod_jenistransaksi  WHERE id_jenistransaksi = '$id_jenistransaksi'";
+			$result=mysql_query($sql);
+		if($result){
+				echo ("<script LANGUAGE='JavaScript'>
+					window.alert('Padam data berjaya.');
+					window.location.href='../senarai_ptj.php';
+					</script>");
+			
+			}else {
+				 echo ("<script LANGUAGE='JavaScript'>
+					window.alert('Padam data tidak berjaya.');
+					window.location.href='../senarai_ptj.php';
+					</script>");
+			}
+    }else {
+			 echo ("<script LANGUAGE='JavaScript'>
+				window.alert('Padam data tidak berjaya.');
+				window.location.href='../senarai_ptj.php';
+				</script>");
+			}
+	
 ?>

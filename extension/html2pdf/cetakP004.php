@@ -22,7 +22,7 @@ $content = '
 }
 
 p,table {
-	font-size:14px;
+	font-size:13px;
 	font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -63,13 +63,12 @@ $jam 		  = "12:00 Tengahari";
 
 $content .= '
 <page backtop="15mm" backbottom="15mm" backleft="20mm" backright="20mm">
-
 <table>
 <tr>
 <td><img src="../../web/imgs/logo.png" alt="logo" style="height: 23px; "></td><td ><font style="font-size:10px;"><i>Cetakan Dokumen Aplikasi Cashless UniSZA</i></font></td></tr></table>
 
-<br>
-<br>
+<p style="text-align: justify; font-size:12px;">Tawaran adalah dipelawa daripada <b>Kontraktor Bumiputera</b> yang mempunyai Sijil Perolehan Kerja Kerajaan berdaftar dengan Lembaga Pembangunan Industri Pembinaan Malaysia (LPIPM (CIDB) dalam Gred Kategori & pengkhususan yang berkaitan dan Kementerian Kewangan dan yang masih dibenarkan membuat tawaran buat masa ini bagi kerja berikut:</p>
+
 <table style="width:100%; border-collapse: collapse;" border="1">
 <tr>
 <th style="width:30%;" align="center"> NOMBOR DAN BUTIRAN TAWARAN 								 </th>
@@ -97,12 +96,35 @@ $content .= '
 
 </table>
 
-<BR><BR>
-<font color="red">QR CODE TGH IMPLEMENT LG</font>
 
 
-</page>
+<table style="width:100%; border-collapse: collapse;" border="0"><tr><td style="width:100%; padding: 0px;">
+
+	<p style="text-align: justify; font-size:12px;">
+	2.Lawatan tapak adalah diwajibkan. Hanya penama di dalam Sijil Perolehan Kerja Kerajaan berdaftar dengan Lembaga Pembangunan Industri Pembinaan Malaysia (LPIPM (CIDB)) dalam Gred Kategori & pengkhususan yang berkaitan dan Kementerian Kewangan dengan membawa salinan sijil ASAL dibenarkan menghadiri lawatan tapak dan membeli/mengambil Dokumen Sebutharga
+	<br><br>
+	3.Dokumen Sebut Harga boleh diperolehi pada waktu pejabat di <b>Kaunter Jabatan Pengurusan Pembangunan, Universiti Sultan Zainal Abidin (UniSZA), Kampus Gong Badak, 21300 Kuala Nerus</b> dengan menunjukkan Sijil Pendaftaran(CIDB), Sijil Perolehan Kerja Kerajaan berdaftar dengan Lembaga Pembangunan Industri Pembinaan Malaysia (LPIPM(CIDB)) dan SIJIL TARAF BUMIPUTERA. Satu salinan (fotostat) sijil-sijil berkenaan hendaklah diserahkan semasa mendapatkan Dokumen Sebut Harga. Bayaran Pembelian dokumen sebut harga dibuat dalam bentuk <b>kiriman wang, wang pos</b> ataupun <b>bank draf</b> atas nama <b>"Bendahari Universiti Sultan Zainal Abidin" Slip pembayaran perlu dikemukakan semasa mengambil dokumen sebutharga. Wang ini tidak akan dikembalikan.</b>
+	<br><br>
+	4.UniSZA tidak tertakluk menerima mana-mana tawaran terendah atau sebarang tawaran. UniSZA berhak untuk membatalkan atau menunda atau menggantung tawaran di atas secara keseluruhan atau sebahagian sebelum atau selepas tarikh dan masa tutup tawaran tanpa menyatakan sebab di atas keputusan tersebut dan wang bayaran dokumen tidak akan dikembalikan.
+	<br><br>
+	5.Dokumen Sebutharga yang lengkap diisi hendaklah dihantar dalam sampul surat dan ditulis dengan tajuk dan no. sebutharga berkenaan dan hendaklah dimasukkan ke dalam peti tender di <b>Kaunter Jabatan Pengurusan Pembangunan, Universiti Sultan Zainal Abidin (UniSZA), Kampus Gong Badak, 21300 Kuala Nerus Terengganu Darul Iman</b> pada atau sebelum <b>jam 12.00 tengah hari</b> pada hari tersebut.
+	<br><br>
+	6.Universiti tidak terikat untuk menerima tawaran ataupun mana-mana tawaran.
+	<br><br>
+	7.Kontraktor yang berjaya tetapi enggan menjalankan kerja-kerja ini selepas tawaran dibuat atau menarik balik tawaran tersebut sebelum tempoh sahlaku tender tamat akan diambil tindakan ke atas pendaftarannya dan juga akan menanggung segala kos perbezaan.
+	<br><br>
+	Kenyataan Sebutharga ini juga dipamerkan di laman web kami: <b>www.jpp.unisza.edu.my(e-sebutharga)</b>
+	</p>
+	
+	
+	
+</td></tr></table>
 ';
+
+$idd = $no_sb;
+include "../qr/qr4html2pdf.php";
+
+$content .='</page>';
 
 //HTML2PDF JOB START
 $html2pdf = new Html2Pdf('P', 'A4', 'fr', true, 'UTF-8', 0); //$html2pdf = new Html2Pdf();

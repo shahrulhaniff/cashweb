@@ -319,7 +319,7 @@ $tarikh_keyin= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh_keyin)->format(
 											</div><!-- /.modal -->
 											
 		
-								<!-- Modal Papar Maklumat-->
+						<!-- Modal Papar Maklumat-->
 											<div class="modal fade" id="myModal<?echo $row['id_kodtransaksi'];?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 											<div class="modal-dialog">
 												

@@ -7,53 +7,41 @@
         $id_jenistransaksi = $_REQUEST['id_jenistransaksi'];
     }
      
-    if ( null==$id_jenistransaksi ) {
-        header("Location: ../sa_sebut_harga.php");
-    }
-     
-    if ( !empty($_POST)) {
-        // keep track validation errors
-        $jenistransaksiError = null;
-        $jabatanError = null;
-       
-         
+  
         // keep track post values
         $jenistransaksi = $_POST['jenistransaksi'];
         $jabatan = $_POST['jabatan'];
        
          
-        // validate input
-        $valid = true;
-        if (empty($jenistransaksi)) {
-            $jenistransaksiError = 'Masukkan jenis transaksi';
-            $valid = false;
-        }
+		$sql="UPDATE kod_jenistransaksi set jenistransaksi = '$jenistransaksi', jabatan = '$jabatan' 
+				WHERE id_jenistransaksi = '$id_jenistransaksi'";
+		$result=mysql_query($sql);
+		
+			
+			if($result){
+				echo"<script>alert('Kemaskini berjaya!');document.location.href='../sa_sebut_harga.php';</script>";
+				exit();
+			
+			}else {
+				 echo ("<script LANGUAGE='JavaScript'>
+					window.alert('Kemaskini tidak berjaya.');
+					window.location.href='../sa_sebut_harga.php';
+					</script>");
+			}
+      
          
-        // if (empty($description)) {
-            // $descriptionError = 'Please enter description Address';
-            // $valid = false;
-        // } else if ( !filter_var($description,FILTER_VALIDATE_description) ) {
-            // $descriptionError = 'Please enter a valid description Address';
-            // $valid = false;
+        // // update data
+        // if ($valid) {
+            // $pdo = Database::connect();
+            // $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            // $sql = "UPDATE kod_jenistransaksi  set jenistransaksi = '$jenistransaksi', jabatan = '$jabatan' WHERE id_jenistransaksi = '$id_jenistransaksi'";
+            // $q = $pdo->prepare($sql);
+            // $q->execute(array($jenistransaksi,$jabatan,$id_jenistransaksi));
+            // Database::disconnect();
+			// echo"<script>alert('Update Success!');document.location.href='../sa_sebut_harga.php';</script>";
+            // //header("Location: index.php");
         // }
-         
-        if (empty($jabatan)) {
-            $jabatanError = 'Masukkan jabatan';
-            $valid = false;
-        }
-         
-        // update data
-        if ($valid) {
-            $pdo = Database::connect();
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "UPDATE kod_jenistransaksi  set jenistransaksi = '$jenistransaksi', jabatan = '$jabatan' WHERE id_jenistransaksi = '$id_jenistransaksi'";
-            $q = $pdo->prepare($sql);
-            $q->execute(array($jenistransaksi,$jabatan,$id_jenistransaksi));
-            Database::disconnect();
-			echo"<script>alert('Update Success!');document.location.href='../sa_sebut_harga.php';</script>";
-            //header("Location: index.php");
-        }
-	}
+
     // else {
         // $pdo = Database::connect();
         // $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

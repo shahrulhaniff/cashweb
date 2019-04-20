@@ -5,15 +5,15 @@
 						<table align="center" width="500px" cellspacing="10px">
 							<tr>
 								<td width="150px">Kata Laluan Semasa :</td>
-								<td width="350px"><input type="password_lama" name="password_lama" size="40" class="form-control" placeholder="Masukkan Kata Laluan Semasa" required></td> 
+								<td width="350px"><input type="password" name="password_lama" size="40" class="form-control" placeholder="Masukkan Kata Laluan Semasa" required></td> 
 							</tr>
 							<tr>
 								<td width="150px">Kata Laluan Baru :</td>
-								<td width="350px"><input type="password_baru" name="password_baru" size="40" class="form-control" placeholder="Masukkan Kata Laluan Baru" required></td>
+								<td width="350px"><input type="password" name="password_baru"  minlength="6" class="form-control" placeholder="Masukkan Kata Laluan Baru" required></td>
 							</tr>
 							<tr>
 								<td width="150px">Sah Kata Laluan Baru :</td>
-								<td width="350px"><input type="password" name="reenter_password_baru" size="40" class="form-control" placeholder="Masukkan Semula Kata Laluan Baru" required></td>
+								<td width="350px"><input type="password" name="reenter_password_baru"  minlength="6" class="form-control" placeholder="Masukkan Semula Kata Laluan Baru" required></td>
 							</tr>
 							<tr>
 							<td colspan="2"><br>

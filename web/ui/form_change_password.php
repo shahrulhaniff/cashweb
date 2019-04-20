@@ -9,11 +9,11 @@
 							</tr></br>
 							<tr>
 								<td width="150px">Kata Laluan Baru :</td>
-								<td width="350px"><input type="password" name="password_baru" size="40" class="form-control" placeholder="Masukkan Kata Laluan Baru" required></td>
+								<td width="350px"><input type="password" name="password_baru" minlength="6" class="form-control" placeholder="Masukkan Kata Laluan Baru" required></td>
 							</tr>
 							<tr>
 								<td width="150px">Sah Kata Laluan Baru :</td>
-								<td width="350px"><input type="password" name="reenter_password_baru" size="40" class="form-control" placeholder="Masukkan Semula Kata Laluan Baru" required></td>
+								<td width="350px"><input type="password" name="reenter_password_baru" minlength="6" class="form-control" placeholder="Masukkan Semula Kata Laluan Baru" required></td>
 							</tr>
 							<tr>
 							<td colspan="2"><br>

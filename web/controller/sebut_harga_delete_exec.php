@@ -12,8 +12,10 @@
 			
 			
 			if($result){
-				header("location: ../sebut_harga.php");	
-				exit();
+				 echo ("<script LANGUAGE='JavaScript'>
+					window.alert('Padam data berjaya.');
+					window.location.href='../sebut_harga.php';
+					</script>");
 			
 			}else {
 				 echo ("<script LANGUAGE='JavaScript'>
@@ -21,20 +23,12 @@
 					window.location.href='../sebut_harga.php';
 					</script>");
 			}
-    }
+    }else {
+				 echo ("<script LANGUAGE='JavaScript'>
+					window.alert('Padam data tidak berjaya.');
+					window.location.href='../sebut_harga.php';
+					</script>");
+			}
      
-    if ( !empty($_POST)) {
-        // keep track post values
-       // $ic_pengguna = $_POST['ic_pengguna'];
-         
-       // // delete data
-		 // $pdo = Database::connect();
-        // $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        // echo $sql = "DELETE FROM kod_jenistransaksi  WHERE id_jenistransaksi = '$id_jenistransaksi'";
-        // $q = $pdo->prepare($sql);
-        // $q->execute(array($id_jenistransaksi));
-        // Database::disconnect();
-        // header("Location: ../index.php");
-         
-    }
+   
 ?>

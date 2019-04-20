@@ -64,7 +64,7 @@
     
         //default data
         echo 'You can provide data in GET parameter: <a href="?data=like_that">like that</a><hr/>';    
-        QRcode::png('PHP QR Codeng :)', $filename, $errorCorrectionLevel, $matrixPointSize, 2);    
+        QRcode::png('PHP QR Code :)', $filename, $errorCorrectionLevel, $matrixPointSize, 2);    
         
     }    
         
