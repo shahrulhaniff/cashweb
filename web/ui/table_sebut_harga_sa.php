@@ -1,5 +1,9 @@
 <?
 date_default_timezone_set("Asia/Kuala_lumpur");
+
+
+					$KOD_PENGGUNA = $_SESSION['KOD_PENGGUNA'] ;
+
 	$date = new DateTime();
 	$current_date=$date->format('Y-m-d');
     $crt_dt = date_format($date,"D d-F-Y");
@@ -106,6 +110,15 @@ $kod_pengguna=mysql_fetch_object($result1)->kod_pengguna;
 													<label for="comment">Kelas</label>
 													<input type="text" class="form-control" name="kelas" id="kelas" size="20">
 												</div>		
+												
+												<!-- 3 = JPP -->
+												<? if($KOD_PENGGUNA=="3"){  ?>
+												<div class="form-group">
+													<label for="comment">Status Sulit</label><br>
+													<input type="radio" name="sulit" value="Y"> Ya<br>
+													<input type="radio" name="sulit" value="T" checked> Tidak<br>
+												</div>
+												<? } ?>
 															
 												<div class="form-group">
 													<label for="comment">Diisi Oleh</label>

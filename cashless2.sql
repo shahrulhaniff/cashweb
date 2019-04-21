@@ -1,12 +1,12 @@
 --
 -- Database: cashless
 --
-/* * / DROP DATABASE cashless;
+/* */ DROP DATABASE cashless;
  CREATE DATABASE cashless; /* */
 -- USE id9050021_cashless;
 USE cashless;
 
-/* */ DROP TABLE transaksi; 
+/* * / DROP TABLE transaksi; 
 DROP TABLE kod_transaksi; 
 DROP TABLE kod_jenistransaksi; 
 DROP TABLE akaun_pengguna; 
@@ -96,11 +96,14 @@ CREATE TABLE kod_transaksi (
   tarikh_edit DATETIME NULL,
   dttaklimat DATETIME NULL,
   tempatlwtntapak VARCHAR(100) NULL,
+  sulit VARCHAR(1) DEFAULT 'T', 
   created_date TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id_kodtransaksi),
   FOREIGN KEY (kod_pengguna) REFERENCES kod_jenispengguna (kod_pengguna),
   FOREIGN KEY (id_jenistransaksi) REFERENCES kod_jenistransaksi (id_jenistransaksi)
 );
+
+
 
 CREATE TABLE transaksi (
   id_transaksi INT(10) NOT NULL AUTO_INCREMENT,
@@ -117,7 +120,7 @@ CREATE TABLE transaksi (
   jeniskad VARCHAR(50)  NULL,
   status_dokumen VARCHAR(50) NOT NULL,
   doc_acceptby VARCHAR(50) NULL,
-  doc_acceptby_nama varchar(50) DEFAULT NULL COMMENT 'nama orang yang ambil',
+  doc_acceptby_nama VARCHAR(50) DEFAULT NULL COMMENT 'nama orang yang ambil',
   doc_giveby VARCHAR(50) NULL,
   created_date TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id_transaksi),
@@ -142,6 +145,12 @@ INSERT INTO `kod_transaksi` (`id_kodtransaksi`, `kod_pengguna`, `no_sb`, `descri
 INSERT INTO `transaksi` (`id_transaksi`, `ic_pengguna`, `id_kodtransaksi`, `id_jenistransaksi`, `tarikh`, `jumlah`, `daripada`, `kepada`, `statustransaction`, `status_dokumen`, `doc_acceptby`, `doc_giveby`) VALUES
 (1, '941013115436', 2, 'SB', '2019-03-21 06:12:16', 30.00, '941013115436', '941013115435', 'KOD MIGS', 'YES', '941013115435', '941013115436');
 
+CREATE TABLE site_visit (
+  ic_pengguna VARCHAR(12) NOT NULL,
+  id_kodtransaksi INT(10) NOT NULL,
+  created_date TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (ic_pengguna,id_kodtransaksi),
+  );
 
 CREATE TABLE tracking (
   id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY ,
