@@ -5,8 +5,17 @@ include "../server.php";
 $usr = $_POST['usr'];
 $pwd = md5($_POST['pwd']);
 
-$qry="SELECT * FROM akaun_pengguna WHERE ic_pengguna='$usr' and pwd='$pwd' AND kod_pengguna!='1'"; 
-$result=mysql_query($qry);// or die(mysql_error());
+$qry="
+SELECT * FROM akaun_pengguna A, maklumat_pengguna M 
+WHERE (M.ic_pengguna='$usr' OR M.email='$usr' OR M.nama='$usr')
+AND A.ic_pengguna=M.ic_pengguna
+AND A.pwd='$pwd'
+AND A.kod_pengguna!='1'
+"; 
+
+// $qry="SELECT * FROM akaun_pengguna WHERE ic_pengguna='$usr' and pwd='$pwd' AND kod_pengguna!='1'"; 
+
+$result=mysql_query($qry) or die(mysql_error());
 	
 if($result) {
 		    if(mysql_num_rows($result) > 0) {
@@ -58,4 +67,4 @@ if($result) {
 	else {
 		die("Query failed");
 	}
-?>
+?> 
