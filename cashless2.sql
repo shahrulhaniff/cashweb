@@ -149,8 +149,7 @@ CREATE TABLE site_visit (
   ic_pengguna VARCHAR(12) NOT NULL,
   id_kodtransaksi INT(10) NOT NULL,
   created_date TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (ic_pengguna,id_kodtransaksi),
-  );
+  PRIMARY KEY (ic_pengguna,id_kodtransaksi));
 
 CREATE TABLE tracking (
   id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY ,

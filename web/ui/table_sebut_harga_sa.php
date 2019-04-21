@@ -1,15 +1,16 @@
 <?
+unset($_SESSION['id']);
+
 date_default_timezone_set("Asia/Kuala_lumpur");
-
-
-					$KOD_PENGGUNA = $_SESSION['KOD_PENGGUNA'] ;
-
 	$date = new DateTime();
 	$current_date=$date->format('Y-m-d');
     $crt_dt = date_format($date,"D d-F-Y");
 	$month = date_format($date,"F Y");
     $bulan = date_format($date,"m");
 	$tahun = date_format($date,"Y");
+	
+	
+$KOD_PENGGUNA = $_SESSION['KOD_PENGGUNA'] ;
 
 $status=$_GET['status'];			
 		if($status==''){
@@ -222,7 +223,11 @@ $tarikh_keyin= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh_keyin)->format(
                                 echo '  ';
 								?>
 								<a href="../web/controller/sa_sebut_harga_delete_exec.php?id=<? echo $row['id_kodtransaksi']; ?>&id_jenistransaksi=<?echo $row['id_jenistransaksi'];?>&desc=<?echo $row['description'];?>&tarikhbuka=<?echo $row['tarikhbuka'];?>&tarikhtutup=<?echo $row['tarikhtutup'];?>&harga=<?echo $row['harga'];?>&delete_by=<? echo $row2['nama'];?>"><button class="btn btn-danger" type="button" onclick="return confirm('Adakah anda pasti untuk padam rekod ini?');">Padam</button></a>
-								<?
+								
+								<?if($row['sulit']=='Y'){
+									?>
+								<form action="sa_lawat_tapak.php?status=<?=$status?>" method="POST"><input type="hidden" name="id_kodtransaksi" value="<?=$row['id_kodtransaksi']?>"><!--<input type="hidden" name="jabatan" value="<?=$row['jabatan']?>">--><input type="submit" class="btn btn-warning" value="Lawatan Tapak"></form>
+								<?}
                                 //echo '<a class="btn btn-danger" href="../web/controller/sebut_harga_delete_exec.php?id='.$row['id_kodtransaksi'].'">Padam</a>';
                                 echo '</td>';
 						echo "</tr>";

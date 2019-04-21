@@ -17,6 +17,7 @@
 		$harga = $_POST['harga'];
         $id_jenistransaksi = $_POST['id_jenistransaksi'];
         $kelas = $_POST['kelas'];
+        $sulit = $_POST['sulit'];
         $keyin_by = $_POST['keyin_by'];
        // $tarikh_keyin = $_POST['tarikh_keyin'];
          
@@ -27,8 +28,8 @@
 			$result1=mysql_query($sql1);
 			$id_kodtransaksi=mysql_fetch_object($result1)->id_kodtransaksi; 
 			$id_kodtransaksi1=$id_kodtransaksi+1;
-			$sql="INSERT INTO kod_transaksi (id_kodtransaksi,kod_pengguna,no_sb,description,tarikhbuka,tarikhtutup,jam,harga,id_jenistransaksi,kelas,keyin_by,tarikh_keyin) 
-					values('$id_kodtransaksi1','$kod_pengguna','$no_sb','$description','$tarikhbuka','$tarikhtutup','$jam','$harga','$id_jenistransaksi','$kelas','$keyin_by','$current_date')";
+			$sql="INSERT INTO kod_transaksi (id_kodtransaksi,kod_pengguna,no_sb,description,tarikhbuka,tarikhtutup,jam,harga,id_jenistransaksi,kelas,keyin_by,sulit,tarikh_keyin) 
+					values('$id_kodtransaksi1','$kod_pengguna','$no_sb','$description','$tarikhbuka','$tarikhtutup','$jam','$harga','$id_jenistransaksi','$kelas','$keyin_by','$sulit','$current_date')";
 			$result=mysql_query($sql);// or die(mysql_error())
 			
 			
