@@ -56,7 +56,7 @@ $('#select-all').click(function(event) {
 });
 </script>
 
-<!-- Skrip untuk validation sila pilih salah satu checkbox untuk button cetak semua-->
+<!-- Skrip untuk validation sila pilih salah satu checkbox untuk button cetak semua
 <script type="text/javascript">
 function checksemua() {
 var checked=false;
@@ -73,4 +73,31 @@ var checked=false;
 	else { return true; }
 	//return checked;
 }
+</script>-->
+
+<? if(empty($kodcetak)){ $kodcetak = "P000"; } ?>
+<script>
+$(document).ready(function(){
+    $('#getValue').on('click', function(){
+        // Declare a checkbox array
+        var chkArray = [];
+		
+        // Look for all checkboxes that have a specific class and was checked
+        $(".chk:checked").each(function() {
+            chkArray.push($(this).val());
+        });
+        
+        // Join the array separated by the comma
+        var selected;
+        selected = chkArray.join('&idk%5B%5D=') ;
+
+        // Check if there are selected checkboxes
+        if(selected.length > 0){
+            //alert("Selected checkboxes value: " + selected);
+			window.open("../extension/html2pdf/cetak<?=$kodcetak?>.php?idk%5B%5D="+selected , '_blank');
+        }else{
+            alert("Sila Pilih Salah Satu untuk Cetakan.");
+        }
+    });
+});
 </script>

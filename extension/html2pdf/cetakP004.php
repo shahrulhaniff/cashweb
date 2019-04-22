@@ -22,7 +22,7 @@ $content = '
 }
 
 p,table {
-	font-size:13px;
+	font-size:12px;
 	font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -40,10 +40,23 @@ th, td {
 ';
 
 include("../../server.php");
-//$message= $_GET['message'];
-$idk= $_GET['idk'];
 
-	$data = mysql_query("SELECT * FROM kod_transaksi WHERE id_kodtransaksi='".$idk."'");
+
+
+//$message= $_GET['message'];
+$stop = "y";
+$content .= '<page backtop="15mm" backbottom="15mm" backleft="20mm" backright="20mm">';
+include "header.php";
+$count=true;
+
+ if(isset($_GET['idk'])){
+  if (is_array($_GET['idk'])) {
+	foreach($_GET['idk'] as $idkv){
+		
+	$sizee = sizeof($_GET['idk']);
+	if ($sizee == '1'){ $stop = "n"; }
+	
+	$data = mysql_query("SELECT * FROM kod_transaksi WHERE id_kodtransaksi='".$idkv."'");
 	$row = mysql_fetch_array( $data );
 	$no_sb = $row['no_sb'];
 	$description = $row['description'];
@@ -56,12 +69,15 @@ $tar=date("Y-m-d");
 
 $tarikh_mula  = substr($tarikh_mula,8,2).'/'.substr($tarikh_mula,5,2).'/'.substr($tarikh_mula,0,4);
 $tarikh_akhir = substr($tarikh_akhir,8,2).'/'.substr($tarikh_akhir,5,2).'/'.substr($tarikh_akhir,0,4);
-$harga 		  = "30.00";
+$harga 		  = $row['harga'];
 $lokasi 	  = "Kaunter JPP (KGB)";
 $jam 		  = "12:00 Tengahari";
 
-$content .= '<page backtop="15mm" backbottom="15mm" backleft="20mm" backright="20mm">';
-include "header.php";
+
+$idd = $no_sb;
+include "../qr/qr4html2pdf.php";
+
+
 $content .= '
 
 <p style="text-align: justify; font-size:12px;">Tawaran adalah dipelawa daripada <b>Kontraktor Bumiputera</b> yang mempunyai Sijil Perolehan Kerja Kerajaan berdaftar dengan Lembaga Pembangunan Industri Pembinaan Malaysia (LPIPM (CIDB) dalam Gred Kategori & pengkhususan yang berkaitan dan Kementerian Kewangan dan yang masih dibenarkan membuat tawaran buat masa ini bagi kerja berikut:</p>
@@ -112,15 +128,20 @@ $content .= '
 	<br><br>
 	Kenyataan Sebutharga ini juga dipamerkan di laman web kami: <b>www.jpp.unisza.edu.my(e-sebutharga)</b>
 	</p>
-	
-	
-	
 </td></tr></table>
 ';
 
-$idd = $no_sb;
-include "../qr/qr4html2pdf.php";
-
+if ($stop=="y"){
+$content .= '<div style="page-break-after:always"></div>';
+include "header.php"; 
+$stop="n";
+}
+	}
+	}
+	else {
+	$content .='Sesuatu tidak kena';
+ }
+ } //close LOOP array
 $content .='</page>';
 
 //HTML2PDF JOB START

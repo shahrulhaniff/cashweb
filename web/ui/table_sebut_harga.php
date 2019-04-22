@@ -1,5 +1,5 @@
 <?
-
+$kodcetak = "P004";
 date_default_timezone_set("Asia/Kuala_lumpur");
 	$date = new DateTime();
 	$current_date=$date->format('Y-m-d');
@@ -213,6 +213,7 @@ date_default_timezone_set("Asia/Kuala_lumpur");
 			
 						
 						$i=1;
+						$idka = array();
 						while($row = mysql_fetch_array( $data )) {
 							
 							
@@ -226,9 +227,13 @@ $tarikhtutup= DateTime::createFromFormat('Y-m-d', $tarikhtutup)->format('d/m/Y')
 $tarikh_keyin= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh_keyin)->format('d/m/Y g:i a');
 							echo "<tr class='gradeA'>";
 							
+							$idk = $row['id_kodtransaksi'];
+							array_push($idka,$idk);
+							//echo $idka[$loop];
+							//print_r($idka);
 							//echo '<td>'. $i . '</td>';
 							?><td>
-							<table><tr><td width="40px"><input id="<?=$id?>" value="<?=$id?>"  name="invite[]" type="checkbox"></td><td width="40px"><?=$i;?>.</td></tr></table>
+							<table><tr><td width="40px"><input id="<?=$idk?>" value="<?=$idk?>"  name="invite[]" type="checkbox" class="chk"></td><td width="40px"><?=$i;?>.</td></tr></table>
 							</td>
 							<?
 							
@@ -423,8 +428,8 @@ $tarikh_keyin= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh_keyin)->format(
 												 <div class="modal-footer">
 													  <button type="button" class="btn btn-success" data-dismiss="modal">Kembali</button>
 												 </div>
-											
-							 
+
+
 											</div><!--modal-body-->
 											</div><!-- /.modal-content -->
 											</div><!-- /.modal-dialog -->
@@ -435,13 +440,10 @@ $tarikh_keyin= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh_keyin)->format(
                                     </tbody>
                                 </table>
 								
-								<form action="../extension/html2pdf/cetakP004.php" method="GET" target="_blank">
 									
-									<span class="label label-danger">shahrul tgh try cuba buat listener utk cetak tanpa guna form yang kacau form lain.</span><br> <span class="label label-danger">setakat ni buat form dummy gini dulu </span><br>
-									<input type="text" value="2" size="3" name="idk"><br>
-									<button class="btn btn-default" type="submit" onClick="return checksemua()"><img src="imgs/print.gif" width="18" height="18" border="0" alt=""> CETAK</button>
+									<button target="_blank" class="btn btn-default" type="button" id="getValue"><img src="imgs/print.gif" width="18" height="18" border="0" alt=""> CETAK</button>
 									Pilih Semua<input type="checkbox" name="select-all" id="select-all"/>
-									</form>
+									
 								
                             </div>
                         </div>
