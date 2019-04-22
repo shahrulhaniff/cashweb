@@ -4,7 +4,7 @@
 /* */ DROP DATABASE cashless;
  CREATE DATABASE cashless; /* */
 -- USE id9050021_cashless;
- USE cashless;
+USE cashless;
 
 /* * / DROP TABLE transaksi; 
 DROP TABLE kod_transaksi; 
@@ -56,9 +56,9 @@ INSERT INTO kod_jenispengguna (kod_pengguna, jenis_pengguna, jabatan) VALUES
 ('3', 'sub-admin', 'JPP');
 
 INSERT INTO maklumat_pengguna (ic_pengguna, nama, email,no_telefon) VALUES
-('941013115434', 'Amir Fitri', 'jpp@unisza.edu.my', 'jpp'),
+('941013115434', 'Amir Fitri', 'amir@gmail.com', '0109668468'),
 ('941013115435', 'Shahrul Haniff', 'shahrul@gmail.com', '0109668468'),
-('941013115436', 'Bendahari UniSZA', 'bendahari@unisza.edu.my', 'admin');
+('941013115436', 'Bendahari UniSZA', 'bendahari@unisza.com', '0109668468');
 
 INSERT INTO akaun_pengguna (ic_pengguna,kod_pengguna,pwd,status_aktif) VALUES
 ('941013115435', '1', '202cb962ac59075b964b07152d234b70','yes'),
@@ -72,7 +72,7 @@ INSERT INTO akaun_pengguna (ic_pengguna,kod_pengguna,pwd,status_aktif) VALUES
 --
 
 CREATE TABLE kod_jenistransaksi (
-  id_jenistransaksi VARCHAR(12) NOT NULL,
+  id_jenistransaksi VARCHAR(16) NOT NULL,
   jenistransaksi VARCHAR(100) NOT NULL,
   jabatan VARCHAR(40) NOT NULL,
   created_date TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
@@ -88,7 +88,7 @@ CREATE TABLE kod_transaksi (
   tarikhtutup DATE NOT NULL,
   jam TIME NOT NULL,
   harga FLOAT(10,2) NOT NULL,
-  id_jenistransaksi VARCHAR(12) NOT NULL,
+  id_jenistransaksi VARCHAR(16) NOT NULL,
   kelas VARCHAR(10) NOT NULL,
   keyin_by VARCHAR(100) NOT NULL,
   tarikh_keyin DATETIME NOT NULL,
@@ -109,7 +109,7 @@ CREATE TABLE transaksi (
   id_transaksi INT(10) NOT NULL AUTO_INCREMENT,
   ic_pengguna VARCHAR(12) NOT NULL,
   id_kodtransaksi INT(10) NOT NULL,
-  id_jenistransaksi VARCHAR(10) NOT NULL,
+  id_jenistransaksi VARCHAR(16) NOT NULL,
   tarikh DATETIME NOT NULL,
   jumlah FLOAT(10,2) NOT NULL,
   daripada VARCHAR(12) NOT NULL,
@@ -153,7 +153,7 @@ CREATE TABLE site_visit (
 
 CREATE TABLE tracking (
   id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY ,
-  id_jenistransaksi VARCHAR(10) NOT NULL,
+  id_jenistransaksi VARCHAR(16) NOT NULL,
   jabatan VARCHAR(40) NOT NULL,
   description VARCHAR(300) NULL,
   tarikhbuka DATE NOT NULL,

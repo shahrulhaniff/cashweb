@@ -124,14 +124,6 @@ else {
 												
 			<?php // Connects to your Database 
 			 
-			 // $data = mysql_query("SELECT * FROM akaun_pengguna AP, maklumat_pengguna MP, kod_jenistransaksi KJ, kod_jenispengguna KJP WHERE KJ.id_jenistransaksi ='".$id."' AND KJP.jabatan = KJ.jabatan AND AP.kod_pengguna=KJP.kod_pengguna AND MP.ic_pengguna = AP.ic_pengguna") 
-			 // $data = mysql_query("SELECT * FROM akaun_pengguna AP, maklumat_pengguna MP, kod_jenistransaksi KJ, kod_jenispengguna KJP 
-									// WHERE KJ.id_jenistransaksi ='$id'
-									// AND KJP.jenis_pengguna = 'sub-admin'
-									// AND KJP.jabatan = KJ.jabatan
-									// AND AP.kod_pengguna=KJP.kod_pengguna 
-									// AND MP.ic_pengguna = AP.ic_pengguna") 
-			 
 			$data = mysql_query("SELECT * FROM akaun_pengguna AP, maklumat_pengguna MP, kod_jenispengguna KJP 
 								LEFT JOIN  kod_jenistransaksi KJ ON KJP.jabatan=KJ.jabatan
 								WHERE KJP.jenis_pengguna = 'sub-admin'
@@ -139,10 +131,7 @@ else {
 								AND AP.kod_pengguna=KJP.kod_pengguna 
 								AND MP.ic_pengguna = AP.ic_pengguna"); 
 			 
-					
-			// or die(mysql_error()); ?>
-													
-													<?php
+		
 													$i= 1;
 													while($info = mysql_fetch_array( $data )) {
 														echo "<tr class='gradeA'>";

@@ -33,7 +33,7 @@ date_default_timezone_set("Asia/Kuala_lumpur");
 				
 <div id='cssmenu'>
 	<ul>
-		<li class="<? echo ($flag=='tb_1'?'active':'') ?>"><a href="sa_pengurusan_dokumen.php?status=<?echo $status;?>&dt=tiada&flg=echo tb_1&flagScreen=<?echo $flagScreen;?>">Papar Semua</a></li>
+		<li class="<? echo ($flag=='tb_1'?'active':'') ?>"><a href="sa_pengurusan_dokumen.php?status=<?echo $status;?>&dt=tiada&flg=tb_1&flagScreen=<?echo $flagScreen;?>">Papar Semua</a></li>
 		<? if ($dateSelection=='tiada' || $dateSelection==''){
 			
 			?>
@@ -121,22 +121,6 @@ $tarikh= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh)->format('d/m/Y g:i a
 											echo "<tr class='gradeA'>";
 											echo "<td>".$i." </td>";
 											echo "<td>".$info['norujukan']." </td>";
-
-
-											// $data1 = mysql_query("SELECT max(nama) AS nama FROM maklumat_pengguna WHERE ic_pengguna='".$info['doc_acceptby']."' ORDER BY ic_pengguna") 
-											// or die(mysql_error());	
-											// $info1 = mysql_fetch_array( $data1 );
-                                            // echo "<td>".$info1['nama'] . " </td>";
-											
-										   // echo "<td>".$info['tarikh'] . " </td>";
-                                            // echo "<td>".$info['jumlah'] . " </td>";
-                                            // echo "<td>".$info['status_dokumen'] . " </td>";
-
-											
-											// $data2 = mysql_query("SELECT max(nama) AS nama FROM maklumat_pengguna WHERE ic_pengguna='".$info['doc_giveby']."' ORDER BY ic_pengguna") 
-											// or die(mysql_error());	
-											// $info2 = mysql_fetch_array( $data2 );
-                                            // echo "<td>".$info2['nama'] . " </td>";
 											
 											$data3 = mysql_query("SELECT * FROM kod_jenistransaksi WHERE id_jenistransaksi='".$info['id_jenistransaksi']."'"); 
 											//or die(mysql_error());	

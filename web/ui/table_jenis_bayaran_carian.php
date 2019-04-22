@@ -30,113 +30,6 @@ date_default_timezone_set("Asia/Kuala_lumpur");
 			}				
 ?>
 
-						<!-- Modal Add Jenis Bayaran -->
-					 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-									<div class="modal-dialog">
-									
-									<div class="modal-content">
-										<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-										<h4 class="modal-title" align="left" id="myModalLabel">Tambah Jenis Bayaran</h4>
-										</div>
-									
-									<div class="modal-body">
-									
-									<form method="post" action="../web/controller/sebut_harga_tambah_exec.php">     
-											 <div class="form-group" align="left">
-												
-												<label><font color="red">** Maklumat Wajib Diisi.</font></label>
-												<br>
-													 
-													<!-- <input type="hidden" name="id_kodtransaksi" id="id_kodtransaksi" class="form-control" value="<? echo $id;?>" readonly />-->
-												
-												 <div class="form-group" align="left">
-												<label for="comment">Kod Pengguna</label>
-															<select required class="form-control" name="kod_pengguna" value="" style="width: 270px">
-															<? 
-															$data = mysql_query("SELECT * FROM kod_jenispengguna");
-															while ($row = mysql_fetch_assoc( $data )){ ?>
-																<option value="<? echo $row['kod_pengguna'];?>"><? echo $row['kod_pengguna'];?> ( <? echo $row['jenis_pengguna'];?> - <? echo $row['jabatan'];?> )</option>
-															<?}?>
-															</select>
-															</div>
-															
-												<div class="form-group">
-													<label for="comment">Nombor Rujukan</label>
-													<input type="text" class="form-control" name="no_sb" id="no_sb" size="20">
-												</div> 
-												
-												<div class="form-group">
-													<label for="comment">Keterangan</label>
-													<textarea class="form-control" rows="5" name="description" id="description"></textarea>
-												</div>
-												
-												<div class="form-group" align="left">
-													<label>Tarikh Buka</label><br>
-													<input name="tarikhbuka" type="datetime-local" class="form-control" required/>
-												</div>
-												
-												<div class="form-group" align="left">
-													<label>Tarikh Tutup</label><br>
-													<input name="tarikhtutup" type="datetime-local" class="form-control" required/>
-												</div>
-												<!--
-												<div class="form-group" align="left">
-													<label>Jam</label><br>
-													<input name="jam" type="time" class="form-control" required/>
-												</div>
-												 -->
-												<div class="form-group">
-													<label for="comment">Harga (RM)</label>
-													<input type="number" step="0.01" class="form-control" name="harga" id="harga" size="20">
-												</div> 
-												
-												<div class="form-group" align="left">
-												<label for="comment">Jenis Transaksi</label>
-															<select required class="form-control" name="id_jenistransaksi" value="" style="width: 270px">
-																														<? 
-															$data1 = mysql_query("SELECT * FROM kod_jenistransaksi");
-															while ($row1 = mysql_fetch_assoc( $data1 )){ ?>
-																<option value="<? echo $row1['id_jenistransaksi'];?>"><? echo $row1['jenistransaksi'];?> - <? echo $row1['jabatan'];?></option>
-															<?}?>
-															
-															</select>
-															</div>
-															
-												<div class="form-group">
-													<label for="comment">Kelas</label>
-													<input type="text" class="form-control" name="kelas" id="kelas" size="20">
-												</div>		
-															
-												<div class="form-group">
-													<label for="comment">Diisi Oleh</label>
-													<? $ic_pengguna=$_SESSION['user'];
-													$data2 = mysql_query("SELECT * FROM maklumat_pengguna WHERE ic_pengguna = '$ic_pengguna'");
-													$row2 = mysql_fetch_array( $data2 );
-													?>
-													<input type="text" class="form-control" name="keyin_by" id="keyin_by" size="20" value="<? echo $row2['nama'];?>" readonly>
-													<!--<span> : <? echo $row2['nama'];?></span>-->
-												</div>		
-														
-												<!--<div class="form-group" align="left">
-													<label>Diisi Pada</label><br>
-													<input name="tarikh_keyin" type="datetime-local" class="form-control" value="<? echo $row['tarikh_keyin'];?>" readonly >
-												</div>
-												-->
-												 <div class="modal-footer">
-													   <button type="submit" class="btn btn-primary" >Simpan</button>
-													   <button type="reset" class="btn btn-info">Tetapan Semula</button>
-												 </div>
-							 
-							 </form>
-									</div><!--modal-body-->
-							
-									</div>
-							<!-- /.modal-content -->
-							</div><!-- /.modal-dialog -->
-							</div>
-							</div><!-- /.modal -->
-							
 <!---------------------------------------------------------------------------------------->							
 <div class="col-md-12">
 
@@ -179,10 +72,7 @@ date_default_timezone_set("Asia/Kuala_lumpur");
 				<h6>** masukkan jabatan carian anda</h6>
 </div>
 
-<!----------->
-			<!--<div align="right">
-							<button class="btn btn-primary" data-toggle="modal"  data-target="#myModal">Tambah Jenis Bayaran</button></a> <br>
-			</div>-->
+
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -251,8 +141,6 @@ $tarikh_keyin= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh_keyin)->format(
 							<button class="btn btn-info" data-toggle="modal" data-target="#myModal1<?echo $row['id_kodtransaksi'];?>">Kemaskini</button>
 							<?
                                 echo '</td>';
-						
-					
 					?>
                                         <!-- Modal Kemaskini-->
 											<div class="modal fade" id="myModal1<?echo $row['id_kodtransaksi'];?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

@@ -15,7 +15,7 @@ AND A.kod_pengguna!='1'
 
 // $qry="SELECT * FROM akaun_pengguna WHERE ic_pengguna='$usr' and pwd='$pwd' AND kod_pengguna!='1'"; 
 
-$result=mysql_query($qry) or die(mysql_error());
+$result=mysql_query($qry);
 	
 if($result) {
 		    if(mysql_num_rows($result) > 0) {

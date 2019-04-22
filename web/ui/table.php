@@ -13,7 +13,6 @@
                                     <thead>
                                         <tr>
                                             <th>Bil</th>
-                                            <th>ID</th>
                                             <th>Jenis Transaksi</th>
                                             <th>Pusat Tanggungjawab (PTj)</th>
                                             <th>Kod-QR</th>
@@ -25,7 +24,6 @@
 									<tr class='gradeA'>
 									<form method="post" action="../web/controller/jenis_transaksi_add_exec.php">
 									<td><i class="fa fa-user w3-text-blue w3-large"></i></td>
-									<td><input type="text" class="form-control" name="id_jenistransaksi" id="id_jenistransaksi" size="20" required onkeyup=" var start = this.selectionStart;var end = this.selectionEnd; this.value = this.value.toUpperCase();this.setSelectionRange(start, end);"></td>
 									<td><div class="form-group" align="left">
 											<select required class="form-control" name="jenistransaksi" value="">
 												<option value="">--Pilih--</option>
@@ -48,7 +46,7 @@
 										while($info = mysql_fetch_array( $data )) {
 											echo "<tr class='gradeA'>";
 											echo "<td>".$i." </td>";
-                                            echo "<td>".$info['id_jenistransaksi'] . " </td>";
+                                           // echo "<td>".$info['id_jenistransaksi'] . " </td>";
                                             echo "<td>".$info['jenistransaksi'] . " </td>";
                                             echo "<td>".$info['jabatan'] . " </td>";
 ?><td>
@@ -63,7 +61,7 @@
 </form>
 </td>
 											<td>
-										 <!--<a class="edit" title="Edit" data-toggle="tooltip"><button type="button" class="btn btn-info " onClick="updateId('<?php echo $list['id']; ?>')">Kemaskini</button></a>-->
+										
 										 <button class="btn btn-info" data-toggle="modal" data-target="#myModal<?echo $info['id_jenistransaksi'];?>">Kemaskini</button>
 										<a href="../web/controller/jenis_transaksi_delete_exec.php?id_jenistransaksi=<?echo $info['id_jenistransaksi']; ?>"><button type="button" class="btn btn-danger" onclick="return confirm('Anda pasti untuk padam data ini?');">Padam</button></a>
 										
