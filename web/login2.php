@@ -7,7 +7,7 @@ $pwd = md5($_POST['pwd']);
 
 $qry="
 SELECT * FROM akaun_pengguna A, maklumat_pengguna M 
-WHERE (M.ic_pengguna='$usr' OR M.email='$usr' OR M.nama='$usr')
+WHERE (M.ic_pengguna='$usr' OR M.email='$usr' OR M.nama='$usr' OR M.no_telefon='$usr')
 AND A.ic_pengguna=M.ic_pengguna
 AND A.pwd='$pwd'
 AND A.kod_pengguna!='1'

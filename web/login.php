@@ -22,7 +22,7 @@
  <form action="login2.php" method="POST">
     <div class="input-group">
       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-      <input id="email" type="text" class="form-control" name="usr" value="941013115436" placeholder="Kad Pengenalan" autocomplete="off">
+      <input id="email" type="text" class="form-control" name="usr" value="bendahari@unisza.edu.my" placeholder="Kad Pengenalan" autocomplete="off">
     </div>
     <br>
     <div class="input-group">
