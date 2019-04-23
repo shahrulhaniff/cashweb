@@ -2,7 +2,11 @@
      
     require '../../server.php';
  
-    
+    date_default_timezone_set("Asia/Kuala_lumpur");
+	$date = new DateTime();
+	$current_date=$date->format('YmdHis');
+	
+	
         // keep track post values
         $id_jenistransaksi = $_POST['id_jenistransaksi'];
         $jenistransaksi = $_POST['jenistransaksi'];
@@ -19,7 +23,7 @@
 			if ($mysemak==0){
 					
 			
-					$sql1="INSERT INTO kod_jenistransaksi (id_jenistransaksi,jenistransaksi,jabatan) values(concat('$jenistransaksi','$jabatan'),'$jenistransaksi','$jabatan')";
+					$sql1="INSERT INTO kod_jenistransaksi (id_jenistransaksi,jenistransaksi,jabatan) values(concat('JT','$current_date'),'$jenistransaksi','$jabatan')";
 					$result=mysql_query($sql1);// or die(mysql_error())
 			
 			

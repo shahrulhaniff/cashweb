@@ -228,7 +228,7 @@ $tarikh_keyin= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh_keyin)->format(
 									?>
 								<form action="sa_lawat_tapak.php?status=<?=$status?>" method="POST"><input type="hidden" name="id_kodtransaksi" value="<?=$row['id_kodtransaksi']?>"><!--<input type="hidden" name="jabatan" value="<?=$row['jabatan']?>">--><input type="submit" class="btn btn-warning" value="Lawatan Tapak"></form>
 								<?}
-                                //echo '<a class="btn btn-danger" href="../web/controller/sebut_harga_delete_exec.php?id='.$row['id_kodtransaksi'].'">Padam</a>';
+                               
                                 echo '</td>';
 						echo "</tr>";
 					

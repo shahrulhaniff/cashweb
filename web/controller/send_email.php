@@ -48,13 +48,13 @@
 				$mail->Body    = $bodyContent;
 				
 				if(!$mail->send()) {
-<<<<<<< HEAD
+
 					echo"<script>alert('Mesej Tidak Dihantar!!');document.location.href='../forgot_password.php';</script>";
 					echo 'Mailer Error: ' . $mail->ErrorInfo;
-=======
+
 					echo"<script>alert('Message not sent!!');document.location.href='../forgot_password.php';</script>";
 					//echo 'Mailer Error: ' . $mail->ErrorInfo;
->>>>>>> c18b640c6b0a21187d7effb0ffaf580ce8babdfc
+
 				} 
 				else {
 					$SQLstring="UPDATE akaun_pengguna SET pwd='$my_passwords2' WHERE ic_pengguna='$icNo' and kod_pengguna!='1'";

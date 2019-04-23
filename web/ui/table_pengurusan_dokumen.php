@@ -134,87 +134,8 @@ $tarikh= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh)->format('d/m/Y g:i a
 											<td>
 											<button class="btn btn-info" data-toggle="modal" data-target="#myModalInfo<?echo $info['id_transaksi'];?>">Papar</button>
                                 
-										 <!--<a class="edit" title="Edit" data-toggle="tooltip"><button type="button" class="btn btn-info " onClick="updateId('<?php echo $list['id']; ?>')">Kemaskini</button></a>-->
-										 <!--<button class="btn btn-info" data-toggle="modal" data-target="#myModal<?echo $info['id_jenistransaksi'];?>">Kemaskini</button>
-										<!--<a href="../web/controller/jenis_transaksi_delete_exec.php?id_jenistransaksi=<?echo $info['id_jenistransaksi']; ?>"><button type="button" class="btn btn-danger" onclick="return confirm('Anda pasti untuk padam data ini?');">Padam</button></a>-->
 										 </td>
 										 </tr>
-	<!-- Modal Kemaskini
-											<div class="modal fade" id="myModal<?php echo $info['id_jenistransaksi']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-											<div class="modal-dialog">
-												
-											<div class="modal-content">
-												<div class="modal-header">
-													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-													<h4 class="modal-title" align="left" id="myModalLabel">Kemaskini</h4>
-												</div>
-												
-											 <div class="modal-body">
-												<form method="post" action="../web/controller/pengurusan_dokumen_kemaskini_exec.php?id=<?php echo $info['id_transaksi'];?>" >
-
-												<div class="form-group">
-													<label for="comment">Tarikh</label>
-													<span> : <? echo $tarikh;?></span>
-												</div> 
-												
-												<div class="form-group">
-													<label for="comment">Harga</label>
-													<span> : RM <? echo $info['jumlah'];?></span>
-													
-												</div>
-													
-												<div class="form-group" align="left">
-													<label>Daripada</label>
-												<?
-													$data1 = mysql_query("SELECT max(nama) AS nama FROM maklumat_pengguna WHERE ic_pengguna='".$info['doc_giveby']."' ORDER BY ic_pengguna");	
-													$info1 = mysql_fetch_array( $data1 );
-												?>
-													<span> : <? echo $info1['nama'];?> (<? echo $info['doc_giveby'];?>)</span>
-												</div>
-
-												<div class="form-group" align="left">
-													<label>Nama Penerima</label>
-													<?										
-													$datas = mysql_query("SELECT max(nama) AS nama FROM maklumat_pengguna WHERE ic_pengguna='".$info['kepada']."' ORDER BY ic_pengguna");	
-													$infos = mysql_fetch_array( $datas );
-													
-												?>
-													<input class="form-control" id="doc_acceptby_nama" name="doc_acceptby_nama" value="<?=$infos['nama']?>" required >
-												</div>
-												
-												<div class="form-group" align="left">
-													<label>Nombor Kad pengenalan Penerima</label>
-													<input class="form-control" id="doc_acceptby" name="doc_acceptby" value="<? echo $info['kepada'];//value ni utk penerima tu sendiri yang datang ambil. data drp attr "kepada" akan di update dalam attr "doc_acceptby"?>" required >
-												</div>
-												
-												
-												<div class="form-group" align="left">
-												<label for="comment">Status Dokumen</label>
-															<select required class="form-control" name="status_dokumen" value="" style="width: 270px">
-															<option value="<? echo $info['status_dokumen'];?>"><? echo $info['status_dokumen'];?></option>	
-															<?
-																if ($info['status_dokumen']=="YES"){
-															?>
-															<option value="NO">NO</option>
-															<?
-																}if ($info['status_dokumen']=="NO"){
-															?>
-															<option value="YES">YES</option>
-															<?}?>
-															
-															</select>
-															</div>
-											
-												<div class="modal-footer">
-													<button type="submit" class="btn btn-primary">Kemaskini Maklumat</button></a>
-												</div>  
-												</form>
-											</div>
-											</div>
-											</div>
-											</div><!-- /.modal -->
-			<!--/tamat modal kemaskini-->
-			
 			<!-- Modal Papar Maklumat-->
 											<div class="modal fade" id="myModalInfo<?echo $info['id_transaksi'];?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 											<div class="modal-dialog">
@@ -254,6 +175,10 @@ $tarikh= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh)->format('d/m/Y g:i a
 												
 												<div class="form-group" align="left">
 													<label>Daripada</label>
+													<?
+													$data1 = mysql_query("SELECT max(nama) AS nama FROM maklumat_pengguna WHERE ic_pengguna='".$info['doc_giveby']."' ORDER BY ic_pengguna");	
+													$info1 = mysql_fetch_array( $data1 );
+												?>
 													<span> : <? echo $info1['nama'];?> (<? echo $info['doc_giveby'];?>)</span>
 												</div>
 												

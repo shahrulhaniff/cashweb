@@ -89,10 +89,10 @@ function refreshParent() {
 				else {
 					//echo 'Message has been sent';
 					$sql3="INSERT INTO maklumat_pengguna (ic_pengguna,nama,email,no_telefon) values('$ic_pengguna','$nama','$email','$no_telefon')";
-				    $result3=mysql_query($sql3) or die(mysql_error());
+				    $result3=mysql_query($sql3);
 					
 					$sql4 = "INSERT INTO akaun_pengguna (ic_pengguna,kod_pengguna,pwd,status_aktif) values('$ic_pengguna','$kod_pengguna','$ic_pengguna2','yes')";
-					$result4=mysql_query($sql4) or die (mysql_error());
+					$result4=mysql_query($sql4);
 					
 					echo"<script>alert('Pendaftaran Sub-Admin Berjaya');document.location.href='../senarai_sa.php?jabatan=$jabatan';</script>";
 				}

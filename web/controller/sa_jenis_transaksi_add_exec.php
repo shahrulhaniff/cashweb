@@ -19,7 +19,7 @@
 			if ($mysemak==0){
 					
 			
-					$sql1="INSERT INTO kod_jenistransaksi (id_jenistransaksi,jenistransaksi,jabatan) values('$id_jenistransaksi','$jenistransaksi','$jabatan')";
+					$sql1="INSERT INTO kod_jenistransaksi (id_jenistransaksi,jenistransaksi,jabatan) values(concat('JT','$current_date'),'$jenistransaksi','$jabatan')";
 					$result=mysql_query($sql1);// or die(mysql_error())
 			
 			
