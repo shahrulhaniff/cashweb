@@ -46,6 +46,7 @@ include("../../server.php");
 //$message= $_GET['message'];
 $stop = "y";
 $content .= '<page backtop="15mm" backbottom="15mm" backleft="20mm" backright="20mm">';
+$dokumen="Dokumen";
 include "header.php";
 $count=true;
 
@@ -58,20 +59,22 @@ $count=true;
 	
 	$data = mysql_query("SELECT * FROM kod_transaksi WHERE id_kodtransaksi='".$idkv."'");
 	$row = mysql_fetch_array( $data );
-	$no_sb = $row['no_sb'];
+	$no_sb 		 = $row['no_sb'];
 	$description = $row['description'];
 	$tarikh_mula = $row['tarikhbuka'];
 	$tarikh_akhir= $row['tarikhtutup'];
 	$kelas 		 = $row['kelas'];
+	$lokasi 	 = $row['tempatlwtntapak'];
+	$lokasi2 	 ="Kaunter JPP (KGB)";
+	$tarikh_mula = substr($tarikh_mula,8,2).'/'.substr($tarikh_mula,5,2).'/'.substr($tarikh_mula,0,4);
+	$tarikh_akhir= substr($tarikh_akhir,8,2).'/'.substr($tarikh_akhir,5,2).'/'.substr($tarikh_akhir,0,4);
+	$harga 		 = $row['harga'];
+	$jam 		 = $row['jam'];
+	$dttaklimat  = $row['dttaklimat'];
 
 
-$tar=date("Y-m-d");
+//$tar=date("Y-m-d");
 
-$tarikh_mula  = substr($tarikh_mula,8,2).'/'.substr($tarikh_mula,5,2).'/'.substr($tarikh_mula,0,4);
-$tarikh_akhir = substr($tarikh_akhir,8,2).'/'.substr($tarikh_akhir,5,2).'/'.substr($tarikh_akhir,0,4);
-$harga 		  = $row['harga'];
-$lokasi 	  = "Kaunter JPP (KGB)";
-$jam 		  = "12:00 Tengahari";
 
 
 $idd = $no_sb;
@@ -93,16 +96,16 @@ $content .= '
 <tr>
 <td style="width:30%; padding: 10px;"><b><u>'.$no_sb.'</u></b> <br><br>'.$description.' </td>
 <td style="width:20%;" align="center">'.$kelas.'</td>
-<td style="width:25%;" align="center">3</td>
+<td style="width:25%;" align="center">'.$dttaklimat.'<br><br>'.$lokasi.'</td>
 <td style="width:25%;" align="center">
-	<table>
+	<table style="width:100%;">
 	
-	<tr><td class="firstLine"><b>Tarikh:</b><br>'.$tarikh_mula.' - '.$tarikh_akhir.'<br><br></td></tr>
+	<tr><td style="width:100%;" class="firstLine"><b>Tarikh:</b><br>'.$tarikh_mula.' - '.$tarikh_akhir.'<br><br></td></tr>
 	
-	<tr><td class="firstLine"><b>Harga Dokumen:</b><br>RM'.$harga.'<br><br></td></tr>
+	<tr><td style="width:100%;" class="firstLine"><b>Harga Dokumen:</b><br>RM'.$harga.'<br><br></td></tr>
 	
-	<tr><td class="firstLine"><b>Tempat:</b><br>'.$lokasi.'<br><br></td></tr>
-	<tr><td><b>Tarikh Tutup:</b><br>'.$tarikh_akhir.'<br><br>'.$jam.'</td></tr>
+	<tr><td style="width:100%;" class="firstLine"><b>Tempat:</b><br>'.$lokasi2.'<br><br></td></tr>
+	<tr><td style="width:100%;"><b>Tarikh Tutup:</b><br>'.$tarikh_akhir.'<br><br>'.$jam.'</td></tr>
 	</table>
 </td>
 </tr>

@@ -114,7 +114,12 @@ $tarikh= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh)->format('d/m/Y g:i a
                                             ?>
 											<td>
 											<button class="btn btn-info" data-toggle="modal" data-target="#myModalInfo<?echo $info['id_transaksi'];?>">Papar</button>
-                                
+
+										
+									<A HREF='../extension/html2pdf/cetakResit.php?idt=<?=$info['id_transaksi'];?>' target='_blank'><IMG SRC='imgs/print.gif' WIDTH='16' HEIGHT='16' BORDER='0' ALT='cetak' TITLE='Cetak'></A>
+									
+									
+									
 										
 										<!--<a href="../web/controller/jenis_transaksi_delete_exec.php?id_jenistransaksi=<?echo $info['id_jenistransaksi']; ?>"><button type="button" class="btn btn-danger" onclick="return confirm('Anda pasti untuk padam data ini?');">Padam</button></a>-->
 										 </td>
