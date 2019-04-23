@@ -266,7 +266,6 @@ $page['authStatus'] = $authStatus;
 //echo "</pre>";
 
 
-
 //--------------------------------------------------------------------------------------------
 //_______________________________[SERVER]_ADD EVENT___________________________________________
 //--------------------------------------------------------------------------------------------
@@ -320,7 +319,7 @@ unset($_SESSION['PA']);
 
 echo "<br><br><p>Anda Boleh Tutup Pelayar Pembayaran ini untuk kembali ke Aplikasi Cashless UniSZA</p>";
 echo "vpc_MerchTxnRef -> ". $merchTxnRef;
-echo '<a href="../../extension/html2pdf/cetak.php?message='.$message.'&transactionNo='.$transactionNo.'&page='.$page['datetime'].'&pa='.$pa.'&user='.$user.'&merchantID='.$merchantID.'&cardType='.$cardType.'"><button type="submit" onClick="return checksemua()"><IMG SRC="../../web/imgs/print.gif" WIDTH="18" HEIGHT="18" BORDER="0" ALT=""> CETAK</button></a>';
+echo '<a href="../../extension/html2pdf/cetakResit.php?message='.$message.'&transactionNo='.$transactionNo.'&page='.$page['datetime'].'&pa='.$pa.'&user='.$user.'&merchantID='.$merchantID.'&cardType='.$cardType.'"><button type="submit" onClick="return checksemua()"><IMG SRC="../../web/imgs/print.gif" WIDTH="18" HEIGHT="18" BORDER="0" ALT=""> CETAK</button></a>';
 
 ?>
 </body>
