@@ -43,13 +43,13 @@
 			$resultTracking=mysql_query($sqlTracking);
 			
 			
-				echo"<script>alert('Kemaskini berjaya.');document.location.href='../index_sa.php';</script>";
+				echo"<script>alert('Kemaskini berjaya.');document.location.href='../index_sa.php?status=&flg=';</script>";
 				exit();
 			
 			}else {
 				 echo ("<script LANGUAGE='JavaScript'>
 					window.alert('Kemaskini sebut harga tidak berjaya.');
-					window.location.href='../index_sa.php';
+					window.location.href='../index_sa.php?status=&flg=';
 					</script>");
 			}
 			 
@@ -57,7 +57,7 @@
 			 
 			  echo ("<script LANGUAGE='JavaScript'>
 				window.alert('Kemaskini sebut harga tidak berjaya.');
-				window.location.href='../index_sa.php';
+				window.location.href='../index_sa.php?status=&flg=';
 				</script>");
 		}
 		
