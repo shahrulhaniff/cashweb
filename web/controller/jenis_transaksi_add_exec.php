@@ -8,19 +8,19 @@
 	
 	
         // keep track post values
-        $id_jenistransaksi = $_POST['id_jenistransaksi'];
+        //$id_jenistransaksi = $_POST['id_jenistransaksi'];
         $jenistransaksi = $_POST['jenistransaksi'];
         $jabatan = $_POST['jabatan'];
          
        
             
-			$sql5= "SELECT COUNT(jenistransaksi) AS mysemak FROM kod_jenistransaksi WHERE id_jenistransaksi='".$id_jenistransaksi."'";
+			//$sql5= "SELECT COUNT(jenistransaksi) AS mysemak FROM kod_jenistransaksi WHERE id_jenistransaksi='".$id_jenistransaksi."'";
 			
-			$result5=mysql_query($sql5);// or die(mysql_error())
-			$row5 = mysql_fetch_assoc($result5);
-			$mysemak = $row5['mysemak'];
+			// $result5=mysql_query($sql5);// or die(mysql_error())
+			// $row5 = mysql_fetch_assoc($result5);
+			// $mysemak = $row5['mysemak'];
 			
-			if ($mysemak==0){
+			// if ($mysemak==0){
 					
 			
 					$sql1="INSERT INTO kod_jenistransaksi (id_jenistransaksi,jenistransaksi,jabatan) values(concat('JT','$current_date'),'$jenistransaksi','$jabatan')";
@@ -62,13 +62,13 @@
 							window.location.href='../senarai_ptj.php';
 							</script>");
 					}
-		}else{
-			 echo ("<script LANGUAGE='JavaScript'>
-					window.alert('ID sudah wujud. Sila gunakan ID yang lain.');
-					window.location.href='../senarai_ptj.php';
-					</script>");
-					//echo $id_jenistransaksi;
-		}
+		// }else{
+			 // echo ("<script LANGUAGE='JavaScript'>
+					// window.alert('ID sudah wujud. Sila gunakan ID yang lain.');
+					// window.location.href='../senarai_ptj.php';
+					// </script>");
+					// //echo $id_jenistransaksi;
+		// }
 			
     
 ?>

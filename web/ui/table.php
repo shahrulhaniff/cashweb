@@ -36,6 +36,7 @@
 									<td><input type="text" class="form-control" name="jabatan" id="jabatan" size="20" required onkeyup=" var start = this.selectionStart;var end = this.selectionEnd; this.value = this.value.toUpperCase();this.setSelectionRange(start, end);"></td>
 									<td><!--<input type="text" name="no_telefon" id="no_telefon" size="20">--></td>
 									<td><a><button type="submit" class="btn btn-primary">Tambah</button></a></td>
+									</form>
 									</tr>
 <?php // Connects to your Database 
 
@@ -53,7 +54,6 @@
 <? $idd = $info['id_jenistransaksi']; ?>
 <!-- <a href="../extension/html2pdf/cetakQR.php?idd='.$idd.'"><button class="btn btn-info">QR mod</button></a> -->
 
-<form></form>
 
 <form action="../extension/html2pdf/cetakP003.php" method="GET" target="_blank">
 <input type='hidden' value='<?=$info['id_jenistransaksi']?>' name='id'>

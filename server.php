@@ -5,7 +5,7 @@ if (empty($_SESSION['user'])) {
    // Define database connection parameters
    $hn      = 'localhost';
    $un      = 'root';
-   $pwd     = 'abcde123'; /* kena buat skali lg kat bawah sebab class xdpt baca global, kena tanya siapa power java */
+   $pwd     = ''; /* kena buat skali lg kat bawah sebab class xdpt baca global, kena tanya siapa power java */
    $db      = 'cashless';
    $cs      = 'utf8';
 
@@ -31,7 +31,7 @@ if (empty($_SESSION['user'])) {
 	private static $dbName = 'cashless';
     private static $dbHost = 'localhost' ;
     private static $dbUsername = 'root';
-    private static $dbUserPassword = 'abcde123';
+    private static $dbUserPassword = '';
      
     private static $cont  = null;
      
