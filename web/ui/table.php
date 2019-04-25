@@ -33,7 +33,17 @@
 												<option value="Derma">Derma</option>
 											</select>
 											</div></td>
-									<td><input type="text" class="form-control" name="jabatan" id="jabatan" size="20" required onkeyup=" var start = this.selectionStart;var end = this.selectionEnd; this.value = this.value.toUpperCase();this.setSelectionRange(start, end);"></td>
+									<td>
+									<div class="form-group" align="left">
+											<select required class="form-control" name="jabatan" value="">
+												<option value="">--Pilih--</option>
+												<option value="JPP">JPP</option>
+												<option value="MASJID">MASJID</option>
+												<option value="PERPUSTAKAAN">PERPUSTAKAAN</option>
+												<option value="PUSAT TEKNOLOGI MAKLUMAT">PUSAT TEKNOLOGI MAKLUMAT</option>
+											</select>
+											</div>
+											</td>
 									<td><!--<input type="text" name="no_telefon" id="no_telefon" size="20">--></td>
 									<td><a><button type="submit" class="btn btn-primary">Tambah</button></a></td>
 									</form>
@@ -82,11 +92,8 @@
 											
 											<!-- type hidden -->
 											<input class="form-control" type="hidden" id="current_jabatan" name="current_jabatan" value="<?php echo $info['jabatan']; ?>" readonly >
-													
-												<div class="form-group" align="left">
-													<label>ID</label>
-													<input class="form-control" id="id_jenistransaksi" name="id_jenistransaksi" value="<?php echo $info['id_jenistransaksi']; ?>" readonly >
-												</div>
+											<input class="form-control" type="hidden" id="id_jenistransaksi" name="id_jenistransaksi" value="<?php echo $info['id_jenistransaksi']; ?>" readonly >
+											
 
 												<div class="form-group" align="left">
 												<label>Jenis Transaksi</label>
@@ -115,13 +122,25 @@
 											</select>
 														
 											</div>
-						-->								
+						-->					
+										<div class="form-group" align="left">
+										<label>Pusat Tanggungjawab (PTj)</label>
+											<select required class="form-control" name="jabatan" value="">
+												<option value="<?php echo $info['jabatan']; ?>"><?php echo $info['jabatan']; ?></option>
+												<option value="JPP">JPP</option>
+												<option value="MASJID">MASJID</option>
+												<option value="PERPUSTAKAAN">PERPUSTAKAAN</option>
+												<option value="PUSAT TEKNOLOGI MAKLUMAT">PUSAT TEKNOLOGI MAKLUMAT</option>
+											</select>
+											</div>
+
+											<!--						
 												<div class="form-group" align="left">
 													<label>Pusat Tanggungjawab (PTj)</label>
 													<input class="form-control" id="jabatan" name="jabatan" value="<?php echo $info['jabatan']; ?>" required autocomplete=""  onkeyup=" var start = this.selectionStart;var end = this.selectionEnd; this.value = this.value.toUpperCase();this.setSelectionRange(start, end);" >
 												</div>
 												
-											
+											-->
 												<div class="modal-footer">
 													<button type="submit" class="btn btn-primary">Kemaskini Maklumat</button></a>
 												</div>  
