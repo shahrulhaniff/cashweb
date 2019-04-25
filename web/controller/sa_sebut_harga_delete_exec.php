@@ -35,13 +35,13 @@
 			}else {
 				 echo ("<script LANGUAGE='JavaScript'>
 					window.alert('Padam data tidak berjaya.');
-					window.location.href='../index_sa.php';
+					window.location.href='../index_sa.php?status=&flg=';
 					</script>");
 			}
     }else {
 				 echo ("<script LANGUAGE='JavaScript'>
 					window.alert('Padam data tidak berjaya.');
-					window.location.href='../index_sa.php';
+					window.location.href='../index_sa.php?status=&flg=';
 					</script>");
 			}
 ?>

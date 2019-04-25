@@ -44,13 +44,13 @@
 			$resultTracking=mysql_query($sqlTracking);
 				
 		
-				header("location: ../index_sa.php");	
+				header("location: ../index_sa.php?status=&flg=");	
 				exit();
 			
 			}else {
 				 echo ("<script LANGUAGE='JavaScript'>
 					window.alert('Tambah sebut harga tidak berjaya.');
-					window.location.href='../index_sa.php';
+					window.location.href='../index_sa.php?status=&flg=';
 					</script>");
 			}
 			
