@@ -131,10 +131,12 @@ $content .= '
 	<br><br>
 	Kenyataan Sebutharga ini juga dipamerkan di laman web kami: <b>www.jpp.unisza.edu.my(e-sebutharga)</b>
 	</p>
-</td></tr></table>
+</td></tr></table> <br>
 ';
 
 if ($stop=="y"){
+	
+include "footer.php";
 $content .= '<div style="page-break-after:always"></div>';
 include "header.php"; 
 $stop="n";
@@ -145,6 +147,8 @@ $stop="n";
 	$content .='Sesuatu tidak kena';
  }
  } //close LOOP array
+ 
+include "footer.php";
 $content .='</page>';
 
 //HTML2PDF JOB START

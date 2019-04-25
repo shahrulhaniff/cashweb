@@ -126,8 +126,11 @@ $content .= '
 </tr>
 </table>
 <br><br><br><br>
-Catatan: Resit ini dijana oleh komputer dan tiada tandatangan diperlukan.
+Catatan: Resit ini dijana oleh komputer dan tiada tandatangan diperlukan. <br><br><br><br>
+';
 
+include 'footer.php';
+$content .= '
 </page>
 ';
 
