@@ -17,7 +17,7 @@
 		
 		// delete data
 		$sql="DELETE FROM kod_transaksi WHERE id_kodtransaksi = '$id_kodtransaksi'";
-			$result=mysql_query($sql);
+		$result=mysql_query($sql);
 			
 			
 			if($result){
@@ -30,7 +30,7 @@
 					values('$id_jenistransaksi','$jabatan','$description','$tarikhbuka','$tarikhtutup','$harga','Padam','$delete_by')";
 			$resultTracking=mysql_query($sqlTracking);
 			
-			if($status=='1'){
+				if($status=='1'){
 					echo"<script>alert('Padam berjaya.');document.location.href='../index_sa.php?status=1&flg=tb_1';</script>";
 					exit();
 				}else if($status=='0'){
@@ -63,9 +63,21 @@
 				 
 			}
     }else {
-				 echo ("<script LANGUAGE='JavaScript'>
+				if($status=='1'){
+					echo ("<script LANGUAGE='JavaScript'>
+					window.alert('Padam data tidak berjaya.');
+					window.location.href='../index_sa.php?status=1&flg=tb_1';
+					</script>");
+				}else if($status=='0'){
+					echo ("<script LANGUAGE='JavaScript'>
+					window.alert('Padam data tidak berjaya.');
+					window.location.href='../index_sa.php?status=0&flg=tb_2';
+					</script>");
+				}else{
+					echo ("<script LANGUAGE='JavaScript'>
 					window.alert('Padam data tidak berjaya.');
 					window.location.href='../index_sa.php?status=&flg=';
 					</script>");
+				}
 			}
 ?>
