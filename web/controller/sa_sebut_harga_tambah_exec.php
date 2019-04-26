@@ -43,14 +43,16 @@
 					values('$id_jenistransaksi','$jabatan','$description','$tarikhbuka','$tarikhtutup','$harga','Tambah','$keyin_by')";
 			$resultTracking=mysql_query($sqlTracking);
 				
-		
-				header("location: ../index_sa.php?status=&flg=");	
-				exit();
+			echo ("<script LANGUAGE='JavaScript'>
+					window.alert('Tambah Jenis Bayaran berjaya.');
+					window.location.href='../index_sa.php?status=1&flg=tb_1';
+					</script>");
+				
 			
 			}else {
 				 echo ("<script LANGUAGE='JavaScript'>
-					window.alert('Tambah sebut harga tidak berjaya.');
-					window.location.href='../index_sa.php?status=&flg=';
+					window.alert('Tambah tidak berjaya.');
+					window.location.href='../index_sa.php?status=1&flg=tb_1';
 					</script>");
 			}
 			

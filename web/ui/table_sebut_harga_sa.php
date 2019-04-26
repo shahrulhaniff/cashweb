@@ -45,8 +45,8 @@ $kod_pengguna=mysql_fetch_object($result1)->kod_pengguna;
 									<form method="post" action="../web/controller/sa_sebut_harga_tambah_exec.php">     
 											 <div class="form-group" align="left">
 												
-												<label><font color="red">** Maklumat Wajib Diisi.</font></label>
-												<br>
+												<!-- <label><font color="red">** Maklumat Wajib Diisi.</font></label>
+												<br>-->
 													 
 													<!-- <input type="hidden" name="id_kodtransaksi" id="id_kodtransaksi" class="form-control" value="<? echo $id;?>" readonly />-->
 												
@@ -222,7 +222,7 @@ $tarikh_keyin= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh_keyin)->format(
 								<?
                                 echo '  ';
 								?>
-								<a href="../web/controller/sa_sebut_harga_delete_exec.php?id=<? echo $row['id_kodtransaksi']; ?>&id_jenistransaksi=<?echo $row['id_jenistransaksi'];?>&desc=<?echo $row['description'];?>&tarikhbuka=<?echo $row['tarikhbuka'];?>&tarikhtutup=<?echo $row['tarikhtutup'];?>&harga=<?echo $row['harga'];?>&delete_by=<? echo $row2['nama'];?>"><button class="btn btn-danger" type="button" onclick="return confirm('Adakah anda pasti untuk padam rekod ini?');">Padam</button></a>
+								<a href="../web/controller/sa_sebut_harga_delete_exec.php?id=<? echo $row['id_kodtransaksi']; ?>&id_jenistransaksi=<?echo $row['id_jenistransaksi'];?>&desc=<?echo $row['description'];?>&tarikhbuka=<?echo $row['tarikhbuka'];?>&tarikhtutup=<?echo $row['tarikhtutup'];?>&harga=<?echo $row['harga'];?>&delete_by=<? echo $row2['nama'];?>&status=<? echo $status;?>"><button class="btn btn-danger" type="button" onclick="return confirm('Adakah anda pasti untuk padam rekod ini?');">Padam</button></a>
 								
 								<?if($row['sulit']=='Y'){
 									?>
@@ -248,12 +248,12 @@ $tarikh_keyin= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh_keyin)->format(
 												<form method="post" action="../web/controller/sa_sebut_harga_kemaskini_exec.php">     
 											 <div class="form-group" align="left">
 												
-												<label><font color="red">** Maklumat Wajib Diisi.</font></label>
-												<br>
+											<!--	<label><font color="red">** Maklumat Wajib Diisi.</font></label>
+												<br>-->
 													 <!--hidden-->
 													<input type="hidden" name="id_kodtransaksi" id="id_kodtransaksi" class="form-control" value="<?echo $row['id_kodtransaksi'];?>" readonly />
 													<input type="hidden" class="form-control" name="keyin_by" id="keyin_by" size="20" value="<? echo $row['keyin_by'];?>" readonly>
-													
+													<input type="hidden" name="status" id="status" class="form-control" value="<?echo $status;?>">
 												
 												
 												 <div class="form-group" align="left">

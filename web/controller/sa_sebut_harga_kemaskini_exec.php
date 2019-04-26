@@ -8,6 +8,7 @@
     
         // keep track post values
         $id_kodtransaksi = $_POST['id_kodtransaksi'];
+        $status = $_POST['status'];
         $kod_pengguna = $_POST['kod_pengguna'];
         $no_sb = $_POST['no_sb'];
         $description = $_POST['description'];
@@ -42,23 +43,55 @@
 					values('$id_jenistransaksi','$jabatan','$description','$tarikhbuka','$tarikhtutup','$harga','Kemaskini','$edit_by')";
 			$resultTracking=mysql_query($sqlTracking);
 			
-			
-				echo"<script>alert('Kemaskini berjaya.');document.location.href='../index_sa.php?status=&flg=';</script>";
-				exit();
+				if($status=='1'){
+					echo"<script>alert('Kemaskini berjaya.');document.location.href='../index_sa.php?status=1&flg=tb_1';</script>";
+					exit();
+				}else if($status=='0'){
+					echo"<script>alert('Kemaskini berjaya.');document.location.href='../index_sa.php?status=0&flg=tb_2';</script>";
+					exit();
+				}else{
+					echo"<script>alert('Kemaskini berjaya.');document.location.href='../index_sa.php?status=&flg=';</script>";
+					exit();
+				}
+				
 			
 			}else {
-				 echo ("<script LANGUAGE='JavaScript'>
-					window.alert('Kemaskini sebut harga tidak berjaya.');
+				if($status=='1'){
+					echo ("<script LANGUAGE='JavaScript'>
+					window.alert('Kemaskini tidak berjaya.');
+					window.location.href='../index_sa.php?status=1&flg=tb_1';
+					</script>");
+				}else if($status=='0'){
+					echo ("<script LANGUAGE='JavaScript'>
+					window.alert('Kemaskini tidak berjaya.');
+					window.location.href='../index_sa.php?status=0&flg=tb_2';
+					</script>");
+				}else{
+					echo ("<script LANGUAGE='JavaScript'>
+					window.alert('Kemaskini tidak berjaya.');
 					window.location.href='../index_sa.php?status=&flg=';
 					</script>");
+				}
 			}
 			 
 		}else{
-			 
-			  echo ("<script LANGUAGE='JavaScript'>
-				window.alert('Kemaskini sebut harga tidak berjaya.');
-				window.location.href='../index_sa.php?status=&flg=';
-				</script>");
+			 if($status=='1'){
+					echo ("<script LANGUAGE='JavaScript'>
+					window.alert('Pengguna lain tidak dibenarkan mengemaskini maklumat ini.');
+					window.location.href='../index_sa.php?status=1&flg=tb_1';
+					</script>");
+				}else if($status=='0'){
+					echo ("<script LANGUAGE='JavaScript'>
+					window.alert('Pengguna lain tidak dibenarkan mengemaskini maklumat ini.');
+					window.location.href='../index_sa.php?status=0&flg=tb_2';
+					</script>");
+				}else{
+					echo ("<script LANGUAGE='JavaScript'>
+					window.alert('Pengguna lain tidak dibenarkan mengemaskini maklumat ini.');
+					window.location.href='../index_sa.php?status=&flg=';
+					</script>");
+				}
+			
 		}
 		
 

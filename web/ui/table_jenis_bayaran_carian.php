@@ -156,15 +156,17 @@ $tarikh_keyin= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh_keyin)->format(
 												</div>
 												
 											 <div class="modal-body">
-												<form method="post" action="../web/controller/sebut_harga_kemaskini_exec.php">     
+												<form method="post" action="../web/controller/jenis_bayaran_kemaskini_exec.php">     
 											 <div class="form-group" align="left">
 												
-												<label><font color="red">** Maklumat Wajib Diisi.</font></label>
-												<br>
-													 
-													 <input type="hidden" name="id_kodtransaksi" id="id_kodtransaksi" class="form-control" value="<?echo $row['id_kodtransaksi'];?>" readonly />
+												<!--<label><font color="red">** Maklumat Wajib Diisi.</font></label>
+												<br>-->
 												
-												 <div class="form-group" align="left">
+												<!--hidden-->													
+												<input type="hidden" name="id_kodtransaksi" id="id_kodtransaksi" class="form-control" value="<?echo $row['id_kodtransaksi'];?>" readonly />
+												<input type="hidden" name="status" id="status" class="form-control" value="<?echo $status;?>" readonly />
+												 
+												<div class="form-group" align="left">
 												<label for="comment">Kod Pengguna</label>
 															<select required class="form-control" name="kod_pengguna" value="" style="width: 270px">
 															
@@ -175,7 +177,7 @@ $tarikh_keyin= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh_keyin)->format(
 															<option value="<? echo $row_pengguna['kod_pengguna'];?>"><? echo $row_pengguna['kod_pengguna'];?> ( <? echo $row_pengguna['jenis_pengguna'];?> - <? echo $row_pengguna['jabatan'];?> )</option>
 															
 															<? }
-															$datas = mysql_query("SELECT * FROM kod_jenispengguna WHERE kod_pengguna!='$kod_pengguna1'");
+															$datas = mysql_query("SELECT * FROM kod_jenispengguna WHERE kod_pengguna!='$kod_pengguna1' AND kod_pengguna!='1' AND kod_pengguna!='2'");
 															while ($rows = mysql_fetch_assoc( $datas )){ ?>
 																<option value="<? echo $rows['kod_pengguna'];?>"><? echo $rows['kod_pengguna'];?> ( <? echo $rows['jenis_pengguna'];?> - <? echo $rows['jabatan'];?> )</option>
 															<?}?>
