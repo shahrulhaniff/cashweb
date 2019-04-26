@@ -45,14 +45,15 @@
 	if ($_SESSION['USER_TYPE']=='admin') {?>  
 	<a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
     <!--<a href="index.php" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw active"></i>  Utama</a>-->
-    <a href="index.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw active"></i>  Utama</a>
-    <a href="senarai_ptj.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw active"></i>  P003 - Senarai PTj</a>
+    <a href="index.php" class="w3-bar-item w3-button w3-padding <?php if($pagenow=="P001"){echo "w3-blue";} ?>"><i class="fa fa-users fa-fw active"></i>  Utama</a>
+    <a href="senarai_ptj.php" class="w3-bar-item w3-button w3-padding <?php if($pagenow=="P003"){echo "w3-blue";} ?>"><i class="fa fa-users fa-fw active"></i>  P003 - Senarai PTj</a>
     <!--<a href="index.php" data-toggle="pill"class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>  Utama</a>-->
-    <a href="sebut_harga.php?status=aktif&jbt=&flg=tb_1&flagScreen=tab_1" class="w3-bar-item w3-button w3-padding"><i class="fa fa-folder-open fa-fw"></i>  P004 - Jenis Bayaran<span class="label label-success">cetakan</span></a>
-    <a href="pengurusan_dokumen.php?status=NO&dt=tiada&flg=tb_1&flagScreen=tab_1" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  P005 - Pengurusan Dokumen</a>
-	<a href="senarai_transaksi.php?dt=tiada&flg=tb_1" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw active"></i> P006 - Senarai Transaksi<span class="label label-success">cetakan</span></a>
-	<a href="tracking_jenis_bayaran.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-folder-open fa-fw"></i>  P007 - Trek Jenis Bayaran</a>
+    <a href="sebut_harga.php?status=aktif&jbt=&flg=tb_1&flagScreen=tab_1" class="w3-bar-item w3-button w3-padding <?php if($pagenow=="P004"){echo "w3-blue";} ?>"><i class="fa fa-folder-open fa-fw"></i>  P004 - Jenis Bayaran<span class="label label-success">cetakan</span></a>
+    <a href="pengurusan_dokumen.php?status=NO&dt=tiada&flg=tb_1&flagScreen=tab_1" class="w3-bar-item w3-button w3-padding <?php if($pagenow=="P005"){echo "w3-blue";} ?>"><i class="fa fa-users fa-fw"></i>  P005 - Pengurusan Dokumen</a>
+	<a href="senarai_transaksi.php?dt=tiada&flg=tb_1" class="w3-bar-item w3-button w3-padding <?php if($pagenow=="P006"){echo "w3-blue";} ?>"><i class="fa fa-users fa-fw active"></i> P006 - Senarai Transaksi<span class="label label-success">cetakan</span></a>
+	<a href="tracking_jenis_bayaran.php" class="w3-bar-item w3-button w3-padding  <?php if($pagenow=="P007"){echo "w3-blue";} ?>"><i class="fa fa-folder-open fa-fw"></i>  P007 - Trek Jenis Bayaran</a>
     <!--<a href="change_password.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-lock fa-fw"></i>  Tukar Kata Laluan</a>-->
+  
   <?}
 	if ($_SESSION['USER_TYPE']=='sub-admin') {?>  
 	<a href="sa_sebut_harga.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Utama</a>
