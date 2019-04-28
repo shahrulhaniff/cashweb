@@ -44,6 +44,7 @@ include("../../server.php");
 
 
 //$message= $_GET['message'];
+$dokumen="Dokumen";
 $stop = "y";
 $content .= '<page backtop="15mm" backbottom="15mm" backleft="20mm" backright="20mm">';
 include "header.php";

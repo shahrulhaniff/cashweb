@@ -8,14 +8,14 @@ use Spipu\Html2Pdf\Html2Pdf;
 $content = '
 <style type="text/css">
 .button {
-  background-color: #1b1c57;
+  background-color: #000000;
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 5px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 30px;
+  font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
   width: 100%;
@@ -52,21 +52,20 @@ $id= $_GET['id'];
 
 
 
-
+$dokumen="Kod QR";
 $content .= '<page backtop="15mm" backbottom="15mm" backleft="20mm" backright="20mm">';
 include "header.php";
+
+$content .='<table style="width:100%; border-collapse: collapse;" border="0"><tr><td style="width:100%; padding: 1px;" align="center"><img src="../../web/imgs/unisza.png" alt="logo" style="height: 150px; "></td></tr></table><br>';
+
 $content .= '
-<p style="text-align: justify; font-size:12px;">Kod QR Pusat Tanggungjawab (PTj) bagi bahagian:</p>
+<div class="button">Kod QR Pusat Tanggungjawab: '.$jabatan.'</div>
 
-
-	<table>
 	
-	<tr><td class="firstLine"><b>ID:</b><br>'.$id_jenistransaksi.'<br><br></td></tr>
-	
-	<tr><td class="firstLine"><b>Jenis transaksi:</b><br>'.$jenistransaksi.'<br><br></td></tr>
-	
-	<tr><td class="firstLine"><b>Jabatan:</b><br>'.$jabatan.'<br><br></td></tr>
-	</table>
+<br>
+<table>
+<tr><td><b>Jenis transaksi</b></td><td>:</td>	<td>'.$jenistransaksi.'</td></tr>
+</table>
 
 
 

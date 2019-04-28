@@ -116,7 +116,7 @@ $tarikh= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh)->format('d/m/Y g:i a
 											<button class="btn btn-info" data-toggle="modal" data-target="#myModalInfo<?echo $info['id_transaksi'];?>">Papar</button>
 
 										
-									<A HREF='../extension/html2pdf/cetakResit.php?idt=<?=$info['id_transaksi'];?>' target='_blank'><IMG SRC='imgs/print.gif' WIDTH='16' HEIGHT='16' BORDER='0' ALT='cetak' TITLE='Cetak'></A>
+									<A HREF='../extension/html2pdf/cetakP006_Resit.php?idt=<?=$info['id_transaksi'];?>' target='_blank'><IMG SRC='imgs/print.gif' WIDTH='16' HEIGHT='16' BORDER='0' ALT='cetak' TITLE='Cetak'></A>
 									
 									
 									
