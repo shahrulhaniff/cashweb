@@ -12,11 +12,11 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                            <th>Bil</th>
-                                            <th>Jenis Transaksi</th>
-                                            <th>Pusat Tanggungjawab (PTj)</th>
-                                            <th>Kod-QR</th>
-                                            <th>Tindakan</th>
+                                            <th style="width:20px;">Bil</th>
+                                            <th style="width:200px;">Jenis Transaksi</th>
+                                            <th style="width:200px;">Pusat Tanggungjawab (PTj)</th>
+                                            <th style="width:300px;">Keterangan</th>
+                                            <th style="width:10px;">Tindakan</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -60,23 +60,32 @@
                                            // echo "<td>".$info['id_jenistransaksi'] . " </td>";
                                             echo "<td>".$info['jenistransaksi'] . " </td>";
                                             echo "<td>".$info['jabatan'] . " </td>";
-?><td>
+?>
+<td><?=$info['jabatan']?></td>
+<td>
+
+
+<table border="0"><tr>
+<td>
+<input type="image" src="../web/imgs/edit2.png" height="20" title="Kemaskini" data-toggle="modal" data-target="#myModal<?echo $info['id_jenistransaksi'];?>">
+</td><td>
+<a href="../web/controller/jenis_transaksi_delete_exec.php?id_jenistransaksi=<?echo $info['id_jenistransaksi']; ?>"><button type="button" style="padding:1px 10px; border: none;background: none;" onclick="return confirm('Anda pasti untuk padam data ini?');"><img src="imgs/del.png" height="20" border="0" title="Hapus Data"></button></a>
+</td><td>
+<form action="senarai_sa.php" method="POST"><input type="hidden" name="id_jenistransaksi" value="<?=$info['id_jenistransaksi']?>"><input type="hidden" name="jabatan" value="<?=$info['jabatan']?>">
+<input type="image" src="../web/imgs/keys.png" alt="Submit" height="20" title="Senarai Sub-Admin">
+</form>
+</td><td width="10px">&nbsp;</td><td>
 <? $idd = $info['id_jenistransaksi']; ?>
 <!-- <a href="../extension/html2pdf/cetakQR.php?idd='.$idd.'"><button class="btn btn-info">QR mod</button></a> -->
-
-
 <form action="../extension/html2pdf/cetakP003.php" method="GET" target="_blank">
 <input type='hidden' value='<?=$info['id_jenistransaksi']?>' name='id'>
-<input type="image" src="../extension/qr/qrbtn.png" alt="Submit" width="35" height="35" title="Detail">
+<input type="image" src="../web/imgs/print.gif" alt="Submit" height="20" title="Cetak">
 </form>
 </td>
-											<td>
-										
-										 <button class="btn btn-info" data-toggle="modal" data-target="#myModal<?echo $info['id_jenistransaksi'];?>">Kemaskini</button>
-										<a href="../web/controller/jenis_transaksi_delete_exec.php?id_jenistransaksi=<?echo $info['id_jenistransaksi']; ?>"><button type="button" class="btn btn-danger" onclick="return confirm('Anda pasti untuk padam data ini?');">Padam</button></a>
-										
-										<form action="senarai_sa.php" method="POST"><input type="hidden" name="id_jenistransaksi" value="<?=$info['id_jenistransaksi']?>"><input type="hidden" name="jabatan" value="<?=$info['jabatan']?>"><input type="submit" class="btn btn-warning" value="Senarai Sub-Admin"></form>
-										 </td>
+</tr></table>
+
+
+</td>
 	<!-- Modal Kemaskini-->
 											<div class="modal fade" id="myModal<?php echo $info['id_jenistransaksi']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 											<div class="modal-dialog">

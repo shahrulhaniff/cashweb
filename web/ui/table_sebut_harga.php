@@ -94,8 +94,9 @@ $tarikh_keyin= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh_keyin)->format(
 							echo '<td>'. $row['harga'] . '</td>';
 						    echo '<td>';
                             ?>
-							<button class="btn btn-info" data-toggle="modal" data-target="#myModal<?echo $row['id_kodtransaksi'];?>">Papar</button>
-							<button class="btn btn-info" data-toggle="modal" data-target="#myModal1<?echo $row['id_kodtransaksi'];?>">Kemaskini</button>
+							<table><tr><td>
+							<button class="btn btn-info" style="padding:1px 10px;" data-toggle="modal" data-target="#myModal<?echo $row['id_kodtransaksi'];?>"><img src="imgs/papar.png" height="20" border="0" title="Papar">Papar</button></td><td>
+							<button class="btn btn-primary" style="padding:1px 10px;" data-toggle="modal" data-target="#myModal1<?echo $row['id_kodtransaksi'];?>"><img src="imgs/edit2.png" height="20" border="0" title="Kemaskini">Kemaskini</button></td></tr></table>
 							<?
                                 echo '</td>';
 						

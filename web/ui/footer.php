@@ -1,5 +1,5 @@
-<hr>
-  <br> <!-- Footer -->
+<hr><!-- Footer -->
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   <footer class="w3-container w3-dark-grey w3-padding-32">
     <div class="w3-row">
       <div class="w3-container w3-third">
