@@ -19,3 +19,4 @@
 html,body,h1,h2,h3,h4,h5 {font-family: Arial, Helvetica, sans-serif;}
 </style>
 <body class="w3-light-grey">
+<?php include "functions.php"; ?>

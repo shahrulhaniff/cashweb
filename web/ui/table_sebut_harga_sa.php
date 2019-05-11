@@ -120,7 +120,8 @@ $kod_pengguna=mysql_fetch_object($result1)->kod_pengguna;
 													<input type="radio" name="sulit" value="Y"> Ya<br>
 													<input type="radio" name="sulit" value="T" checked> Tidak<br>
 												</div>
-												<? } ?>
+												<? } else { ?><input type="hidden" name="sulit" value="T"><? }
+												?>
 															
 												<div class="form-group">
 													<label for="comment">Diisi Oleh</label>

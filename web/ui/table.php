@@ -27,10 +27,9 @@
 									<td><div class="form-group" align="left">
 											<select required class="form-control" name="jenistransaksi" value="">
 												<option value="">--Pilih--</option>
-												<option value="Sebut Harga">Sebut Harga</option>
-												<option value="Tender">Tender</option>
-												<option value="Seminar">Seminar</option>
-												<option value="Derma">Derma</option>
+												<option value="SBT">Sebut Harga/Tender</option>
+												<option value="SYD">Seminar/Yuran/Denda</option>
+												<option value="D">Derma</option>
 											</select>
 											</div></td>
 									<td>
