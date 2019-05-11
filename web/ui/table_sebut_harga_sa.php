@@ -1,6 +1,7 @@
 <?
 unset($_SESSION['id']);
 
+$kodcetak = "P004";
 date_default_timezone_set("Asia/Kuala_lumpur");
 	$date = new DateTime();
 	$current_date=$date->format('Y-m-d');
@@ -192,6 +193,7 @@ $kod_pengguna=mysql_fetch_object($result1)->kod_pengguna;
 			}
 						
 						$i=1;
+						$idka = array();
 						while($row = mysql_fetch_array( $data )) {
 							
 $tarikhbuka=$row['tarikhbuka'];
@@ -206,7 +208,13 @@ $tarikh_keyin= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh_keyin)->format(
 	//					$tarikhbuka=$row['tarikhbuka']->format('d-m-Y');
 
 							echo "<tr class='gradeA'>";
-							echo '<td>'. $i . '</td>';
+							$idk = $row['id_kodtransaksi'];
+							array_push($idka,$idk);
+							//echo '<td>'. $i . '</td>';
+							?><td>
+							<table><tr><td width="40px"><input id="<?=$idk?>" value="<?=$idk?>"  name="invite[]" type="checkbox" class="chk"></td><td width="40px"><?=$i;?>.</td></tr></table>
+							</td>
+							<?
 							echo '<td>'. $row['no_sb'] . '</td>';
 							echo '<td>'. $row['description'] . '</td>';
 							echo '<td>'. $tarikhbuka . '</td>';
@@ -214,15 +222,14 @@ $tarikh_keyin= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh_keyin)->format(
 							echo '<td>'. $row['harga'] . '</td>';
 						    echo '<td>';
                             ?>
-							<button class="btn btn-info" data-toggle="modal" data-target="#myModal<?echo $row['id_kodtransaksi'];?>">Papar</button>
-							<?
-							echo '  ';
-								?>
-								<button class="btn btn-info" data-toggle="modal" data-target="#myModal1<?echo $row['id_kodtransaksi'];?>">Kemaskini</button>
-								<?
-                                echo '  ';
-								?>
-								<a href="../web/controller/sa_sebut_harga_delete_exec.php?id=<? echo $row['id_kodtransaksi']; ?>&id_jenistransaksi=<?echo $row['id_jenistransaksi'];?>&desc=<?echo $row['description'];?>&tarikhbuka=<?echo $row['tarikhbuka'];?>&tarikhtutup=<?echo $row['tarikhtutup'];?>&harga=<?echo $row['harga'];?>&delete_by=<? echo $row2['nama'];?>&status=<? echo $status;?>"><button class="btn btn-danger" type="button" onclick="return confirm('Adakah anda pasti untuk padam rekod ini?');">Padam</button></a>
+							
+							<table><tr><td>
+							<button class="btn btn-info" style="padding:1px 10px;" data-toggle="modal" data-target="#myModal<?echo $row['id_kodtransaksi'];?>"><img src="imgs/papar.png" height="20" border="0" title="Papar">Papar</button></td><td>
+							<button class="btn btn-primary" style="padding:1px 10px;" data-toggle="modal" data-target="#myModal1<?echo $row['id_kodtransaksi'];?>"><img src="imgs/edit2.png" height="20" border="0" title="Kemaskini">Kemaskini</button></td>
+							<td>
+								<a href="../web/controller/sa_sebut_harga_delete_exec.php?id=<? echo $row['id_kodtransaksi']; ?>&id_jenistransaksi=<?echo $row['id_jenistransaksi'];?>&desc=<?echo $row['description'];?>&tarikhbuka=<?echo $row['tarikhbuka'];?>&tarikhtutup=<?echo $row['tarikhtutup'];?>&harga=<?echo $row['harga'];?>&delete_by=<? echo $row2['nama'];?>&status=<? echo $status;?>"><button class="btn btn-danger" type="button" style="padding:1px 10px;" onclick="return confirm('Adakah anda pasti untuk padam rekod ini?');"><img src="imgs/del.png" height="20" border="0" title="Padam">Padam</button></a>
+								
+								</td></tr></table>
 								
 								<?if($row['sulit']=='Y'){
 									?>
@@ -413,6 +420,8 @@ $tarikh_keyin= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh_keyin)->format(
 									<?$i++;}?>
                                     </tbody>
                                 </table>
+								<button target="_blank" class="btn btn-default" type="button" id="getValue"><img src="imgs/print.gif" width="18" height="18" border="0" alt=""> CETAK</button>
+									Pilih Semua<input type="checkbox" name="select-all" id="select-all"/>
                             </div>
                         </div>
                     </div>

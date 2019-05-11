@@ -1,6 +1,7 @@
 <?
 session_start();
 include "../server.php";
+$pagenow="P005";
 
 if (empty($_SESSION['user'])) {
 	header('Location:login.php'); }

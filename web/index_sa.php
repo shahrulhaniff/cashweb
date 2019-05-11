@@ -1,9 +1,18 @@
 <?
 session_start();
 include "../server.php";
+$pagenow="P004";
 $pengguna=$_SESSION['user'];
 if (empty($_SESSION['user'])) {
 	header('Location:login.php'); }
+	
+	/*TO CLEAR GENERATED FILE*/
+	$files = glob('../extension/qr/temp/*'); // get all file names
+	foreach($files as $file){ // iterate files
+	  if(is_file($file))
+		unlink($file); // delete file
+	}
+	
 ?>
 <? include "ui/header.php"; ?>
 <? include "ui/menu.php"; ?>

@@ -22,7 +22,7 @@
         $keyin_by = $_POST['keyin_by'];
 		
 		
-		//Orang yang add Jenis Bayaran ni sahaja boleh edit..
+		//Orang yang add Jenis Bayaran ni sahaja boleh edit.. ER195E
 		if ($edit_by==$keyin_by){
 			
 				$sql="UPDATE kod_transaksi  set id_kodtransaksi = '$id_kodtransaksi', kod_pengguna = '$kod_pengguna', no_sb = '$no_sb', 
@@ -77,17 +77,17 @@
 		}else{
 			 if($status=='1'){
 					echo ("<script LANGUAGE='JavaScript'>
-					window.alert('Pengguna lain tidak dibenarkan mengemaskini maklumat ini.');
+					window.alert('Pengguna lain tidak dibenarkan mengemaskini maklumat ini. ER195E');
 					window.location.href='../index_sa.php?status=1&flg=tb_1';
 					</script>");
 				}else if($status=='0'){
 					echo ("<script LANGUAGE='JavaScript'>
-					window.alert('Pengguna lain tidak dibenarkan mengemaskini maklumat ini.');
+					window.alert('Pengguna lain tidak dibenarkan mengemaskini maklumat ini. ER195E');
 					window.location.href='../index_sa.php?status=0&flg=tb_2';
 					</script>");
 				}else{
 					echo ("<script LANGUAGE='JavaScript'>
-					window.alert('Pengguna lain tidak dibenarkan mengemaskini maklumat ini.');
+					window.alert('Pengguna lain tidak dibenarkan mengemaskini maklumat ini. ER195E');
 					window.location.href='../index_sa.php?status=&flg=';
 					</script>");
 				}

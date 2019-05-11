@@ -56,9 +56,9 @@
   
   <?}
 	if ($_SESSION['USER_TYPE']=='sub-admin') {?>  
-	<a href="sa_sebut_harga.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Utama</a>
-	<a href="index_sa.php?status=1&flg=tb_1" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw active"></i> P004 - Jenis Bayaran</a>
-	<a href="sa_pengurusan_dokumen.php?status=NO&dt=tiada&flg=tb_1&flagScreen=tab_1" class="w3-bar-item w3-button w3-padding"><i class="fa fa-folder-open fa-fw"></i> P005 - Pengurusan Dokumen</a>
+	<a href="sa_sebut_harga.php" class="w3-bar-item w3-button w3-padding <?php if($pagenow=="P001"){echo "w3-blue";} ?>"><i class="fa fa-users fa-fw"></i>  Utama</a>
+	<a href="index_sa.php?status=1&flg=tb_1" class="w3-bar-item w3-button w3-padding <?php if($pagenow=="P004"){echo "w3-blue";} ?>"><i class="fa fa-users fa-fw active"></i> P004 - Jenis Bayaran</a>
+	<a href="sa_pengurusan_dokumen.php?status=NO&dt=tiada&flg=tb_1&flagScreen=tab_1" class="w3-bar-item w3-button w3-padding <?php if($pagenow=="P005"){echo "w3-blue";} ?>"><i class="fa fa-folder-open fa-fw"></i> P005 - Pengurusan Dokumen</a>
 	
 	 <!--<a href="sa_change_password.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-lock fa-fw"></i>  Tukar Kata Laluan</a>
 	
