@@ -40,6 +40,7 @@ th, td {
 ';
 
 include("../../server.php");
+include("../../web/functions.php");
 
 
 
@@ -54,6 +55,11 @@ $count=true;
   if (is_array($_GET['idk'])) {
 	foreach($_GET['idk'] as $idkv){
 		
+		
+	//PERBEZAAN CETAK BY JABATAN DISINI
+	$jab = getJabatanByIDK($idkv);
+	//$content .= 'TEST OUTPUT : '.$jab.'';
+	
 	$sizee = sizeof($_GET['idk']);
 	if ($sizee == '1'){ $stop = "n"; }
 	
@@ -78,7 +84,7 @@ $jam 		  = "12:00 Tengahari";
 $idd = $no_sb;
 include "../qr/qr4html2pdf.php";
 
-
+if($jab == "JPP"){ //open if
 $content .= '
 
 <p style="text-align: justify; font-size:12px;">Tawaran adalah dipelawa daripada <b>Kontraktor Bumiputera</b> yang mempunyai Sijil Perolehan Kerja Kerajaan berdaftar dengan Lembaga Pembangunan Industri Pembinaan Malaysia (LPIPM (CIDB) dalam Gred Kategori & pengkhususan yang berkaitan dan Kementerian Kewangan dan yang masih dibenarkan membuat tawaran buat masa ini bagi kerja berikut:</p>
@@ -131,6 +137,8 @@ $content .= '
 	</p>
 </td></tr></table> <br>
 ';
+
+} //close if jabatan JPP
 
 if ($stop=="y"){
 	

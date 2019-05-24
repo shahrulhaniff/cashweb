@@ -1,5 +1,6 @@
 <?php
- include "../server.php";
+   include "../server.php";
+   
 
    // Retrieve the posted data
    $json    =  file_get_contents('php://input');
@@ -7,8 +8,8 @@
    // Sanitise URL supplied values
    $usr   = filter_var($obj->usr, FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_LOW);
    $pwd	  = filter_var($obj->pwd, FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_LOW);
-//$usr = '941013115436';
-//$pwd = '123';
+//$usr = 'shahrul@unisza.edu.my';
+//$pwd = '202cb962ac59075b964b07152d234b70';
 
    // Attempt to query database table and retrieve data
    try {
@@ -34,10 +35,19 @@
 				
 				if($cek_jum_akaun>1){ $auth ='Granted2'; }
 				
-				else
-				{$auth ='Granted'; }
+				else { $auth ='Granted'; }
+				
+				
+					//Update IP and Last login --> $time=NOW();
+					$ipaddress = $_SERVER['REMOTE_ADDR'];
+					$qry2="UPDATE akaun_pengguna SET lastlogin= NOW() , ipaddress ='$ipaddress'
+					WHERE ic_pengguna='$usrdb' LIMIT 1";
+					$result2=mysql_query($qry2);
+				
 				
 			}
+			
+			//else { $auth ='Denied'; }
 			
 				
 		}

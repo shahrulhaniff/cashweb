@@ -1,7 +1,11 @@
 <?
 unset($_SESSION['id']);
 
+/*ejas dekat cetakP004.php xperlu buat mcm ni dah*/
+//$jab=getJabatan($_SESSION['user']); if($jab=="JPP"){ $kodcetak = "P004"; } else { $kodcetak = "P004v2";  } echo $kodcetak;
 $kodcetak = "P004";
+
+
 date_default_timezone_set("Asia/Kuala_lumpur");
 	$date = new DateTime();
 	$current_date=$date->format('Y-m-d');

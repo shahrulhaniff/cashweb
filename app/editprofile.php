@@ -26,9 +26,7 @@ include "../server.php";
             $stmt->bindParam(':telnum', $telnum, PDO::PARAM_STR);
             $stmt->bindParam(':user', $user, PDO::PARAM_STR);
             $stmt->execute();
-
             //echo json_encode(array('message' => 'Congratulations the record ' . $name . ' was added to the database'));
-			
 			
          }
          // Catch any errors in running the prepared statement
