@@ -14,6 +14,20 @@
          
        
             
+			$sql5= "
+			SELECT * FROM kod_jenistransaksi 
+			WHERE jenistransaksi='".$jenistransaksi."'
+			AND   jabatan='".$jabatan."'
+			";
+			
+			$result5=mysql_query($sql5);// or die(mysql_error())
+			$row5 = mysql_fetch_assoc($result5);
+			//$mysemak = $row5['mysemak'];
+			
+			if ($row5!=0){ echo ("<script LANGUAGE='JavaScript'>window.alert('Jenis transaksi bagi jabatan ini telah wujud.');window.location.href='../P003.php';</script>"); }
+
+			else {
+				
 			//$sql5= "SELECT COUNT(jenistransaksi) AS mysemak FROM kod_jenistransaksi WHERE id_jenistransaksi='".$id_jenistransaksi."'";
 			
 			// $result5=mysql_query($sql5);// or die(mysql_error())
@@ -69,6 +83,7 @@
 					// </script>");
 					// //echo $id_jenistransaksi;
 		// }
-			
+		
+			}//close fix redundant entry
     
 ?>
