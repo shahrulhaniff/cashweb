@@ -44,13 +44,13 @@
 			$resultTracking=mysql_query($sqlTracking);
 			
 				if($status=='1'){
-					echo"<script>alert('Kemaskini berjaya.');document.location.href='../index_sa.php?status=1&flg=tb_1';</script>";
+					echo"<script>alert('Kemaskini berjaya.');document.location.href='../SA_P004.php?status=1&flg=tb_1';</script>";
 					exit();
 				}else if($status=='0'){
-					echo"<script>alert('Kemaskini berjaya.');document.location.href='../index_sa.php?status=0&flg=tb_2';</script>";
+					echo"<script>alert('Kemaskini berjaya.');document.location.href='../SA_P004.php?status=0&flg=tb_2';</script>";
 					exit();
 				}else{
-					echo"<script>alert('Kemaskini berjaya.');document.location.href='../index_sa.php?status=&flg=';</script>";
+					echo"<script>alert('Kemaskini berjaya.');document.location.href='../SA_P004.php?status=&flg=';</script>";
 					exit();
 				}
 				
@@ -59,17 +59,17 @@
 				if($status=='1'){
 					echo ("<script LANGUAGE='JavaScript'>
 					window.alert('Kemaskini tidak berjaya.');
-					window.location.href='../index_sa.php?status=1&flg=tb_1';
+					window.location.href='../SA_P004.php?status=1&flg=tb_1';
 					</script>");
 				}else if($status=='0'){
 					echo ("<script LANGUAGE='JavaScript'>
 					window.alert('Kemaskini tidak berjaya.');
-					window.location.href='../index_sa.php?status=0&flg=tb_2';
+					window.location.href='../SA_P004.php?status=0&flg=tb_2';
 					</script>");
 				}else{
 					echo ("<script LANGUAGE='JavaScript'>
 					window.alert('Kemaskini tidak berjaya.');
-					window.location.href='../index_sa.php?status=&flg=';
+					window.location.href='../SA_P004.php?status=&flg=';
 					</script>");
 				}
 			}
@@ -78,17 +78,17 @@
 			 if($status=='1'){
 					echo ("<script LANGUAGE='JavaScript'>
 					window.alert('Pengguna lain tidak dibenarkan mengemaskini maklumat ini. ER195E');
-					window.location.href='../index_sa.php?status=1&flg=tb_1';
+					window.location.href='../SA_P004.php?status=1&flg=tb_1';
 					</script>");
 				}else if($status=='0'){
 					echo ("<script LANGUAGE='JavaScript'>
 					window.alert('Pengguna lain tidak dibenarkan mengemaskini maklumat ini. ER195E');
-					window.location.href='../index_sa.php?status=0&flg=tb_2';
+					window.location.href='../SA_P004.php?status=0&flg=tb_2';
 					</script>");
 				}else{
 					echo ("<script LANGUAGE='JavaScript'>
 					window.alert('Pengguna lain tidak dibenarkan mengemaskini maklumat ini. ER195E');
-					window.location.href='../index_sa.php?status=&flg=';
+					window.location.href='../SA_P004.php?status=&flg=';
 					</script>");
 				}
 			

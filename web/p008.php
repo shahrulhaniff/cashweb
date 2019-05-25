@@ -19,6 +19,8 @@ if (empty($_SESSION['user'])) {
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
     <h5><b><i class="fa fa-dashboard"></i> Senarai Transaksi</b></h5>
+	
+	DALAM PEMBANGUNAN. KENA BAIKI DEKAT APP DULU UNTUK JENIS USER PELAJAR DAN BUKAN PELAJAR
   </header>
 
 
@@ -45,6 +47,9 @@ if (empty($_SESSION['user'])) {
     <script src="assets/js/custom.js"></script>
 	
 <!-- End page content -->
+  <!-- last skali paste preloader js punya sebelum tutup body -->
+  <script src="pre/jquery.magnific-popup.min.min.js"></script>
+  <script src="pre/main.js"></script>
 </div>
 </body>
 </html>

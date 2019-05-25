@@ -4,7 +4,8 @@
 
 
 <!-- Overlay effect when opening sidebar on small screens -->
-<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay">
+</div>
 
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:300px;margin-top:43px;">
@@ -55,7 +56,13 @@
  
 <? //include "ui/footer.php"; ?>
 
-  <!-- End page content -->
-</div>
+  </div>
+</div><!-- End page content -->
+
+
+    <script src="assets/js/jquery-1.10.2.js"></script>
+   <!--last skali paste preloader js punya sebelum tutup body -->
+  <script src="pre/jquery.magnific-popup.min.min.js"></script>
+  <script src="pre/main.js"></script>
 </body>
 </html>

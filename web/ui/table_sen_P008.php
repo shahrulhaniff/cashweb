@@ -26,13 +26,13 @@
 				
 <div id='cssmenu'>
 	<ul>
-		<li class="<? echo ($flag=='tb_1'?'active':'') ?>"><a href="p008.php?dt=tiada&flg=tb_1">Papar Semua</a></li>
+		<li class="<? echo ($flag=='tb_1'?'active':'') ?>"><a href="P008.php?dt=tiada&flg=tb_1">Papar Semua</a></li>
 		<? if ($dateSelection=='tiada' || $dateSelection==''){
 			
 			?>
-		<li class="<? echo ($flag=='tb_2'?'active':'') ?>"><a href="p008.php?dt=<? echo $current_date; //21-03-2019?>&flg=tb_2">Carian Mengikut Tarikh</a></li>
+		<li class="<? echo ($flag=='tb_2'?'active':'') ?>"><a href="P008.php?dt=<? echo $current_date; //21-03-2019?>&flg=tb_2">Carian Mengikut Tarikh</a></li>
 		<? }else {?>
-		<li class="<? echo ($flag=='tb_2'?'active':'') ?>"><a href="p008.php?dt=<? echo $dateSelection; //21-03-2019?>&flg=tb_2">Carian Mengikut Tarikh</a></li>
+		<li class="<? echo ($flag=='tb_2'?'active':'') ?>"><a href="P008.php?dt=<? echo $dateSelection; //21-03-2019?>&flg=tb_2">Carian Mengikut Tarikh</a></li>
 		<?}?>
 		
 	</ul>
@@ -224,8 +224,8 @@ $(document).ready(function() {
 		
 		 var flg = "<? echo $flag; ?>";
 		 if (dateSelection!=''){ 
-			// location.href='senarai_transaksi.php?dateSelection='+dateSelection+'&user_id='+user_id+'&groups_id='+groups_id+'&nama_pengawal='+nama_pengawal;
-			location.href='senarai_transaksi.php?dt='+dateSelection+'&flg='+flg;
+			// location.href='P006.php?dateSelection='+dateSelection+'&user_id='+user_id+'&groups_id='+groups_id+'&nama_pengawal='+nama_pengawal;
+			location.href='P006.php?dt='+dateSelection+'&flg='+flg;
 		 }else{
 			 alert("Fill the form1!");
 		 }	

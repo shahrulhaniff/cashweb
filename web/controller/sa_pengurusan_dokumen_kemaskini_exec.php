@@ -25,19 +25,19 @@
 			
 			
 			if($result){
-				echo"<script>alert('Kemaskini berjaya!');document.location.href='../sa_pengurusan_dokumen.php';</script>";
+				echo"<script>alert('Kemaskini berjaya!');document.location.href='../SA_P005.php';</script>";
 				exit();
 			
 			}else {
 				 echo ("<script LANGUAGE='JavaScript'>
 					window.alert('Kemaskini tidak berjaya.');
-					window.location.href='../sa_pengurusan_dokumen.php';
+					window.location.href='../SA_P005.php';
 					</script>");
 			}
 		// }else{
 		 // echo ("<script LANGUAGE='JavaScript'>
 				// window.alert('Nombor kad pengenalan tiada dalam sistem');
-				// window.location.href='../pengurusan_dokumen.php';
+				// window.location.href='../P005.php';
 				// </script>");
 		// }	
         

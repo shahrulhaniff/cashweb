@@ -14,19 +14,19 @@
 			if($result){
 				 echo ("<script LANGUAGE='JavaScript'>
 					window.alert('Padam data berjaya.');
-					window.location.href='../sebut_harga.php';
+					window.location.href='../P004.php';
 					</script>");
 			
 			}else {
 				 echo ("<script LANGUAGE='JavaScript'>
 					window.alert('Padam data tidak berjaya.');
-					window.location.href='../sebut_harga.php';
+					window.location.href='../P004.php';
 					</script>");
 			}
     }else {
 				 echo ("<script LANGUAGE='JavaScript'>
 					window.alert('Padam data tidak berjaya.');
-					window.location.href='../sebut_harga.php';
+					window.location.href='../P004.php';
 					</script>");
 			}
      

@@ -38,4 +38,57 @@ function getJabatanByIDK($id_kodtransaksi){
 	}
 }
 
+//----------------------------------------------------------------------------------
+// get nama from idPekerja.
+//----------------------------------------------------------------------------------
+function getNama($idPekerja){
+	$s="SELECT nama from maklumat_pengguna 
+		WHERE ic_pengguna='$idPekerja'
+		";
+	$r=mysql_query($s);
+	$row=mysql_fetch_row($r);
+
+	if ($row[0]!=""){
+		return $row[0];
+	}
+	else{
+		return null;
+	}
+}
+//----------------------------------------------------------------------------------
+// get EMEL from idPekerja.
+//----------------------------------------------------------------------------------
+function getEmel($idPekerja){
+	$s="SELECT email from maklumat_pengguna 
+		WHERE ic_pengguna='$idPekerja'
+		";
+	$r=mysql_query($s);
+	$row=mysql_fetch_row($r);
+
+	if ($row[0]!=""){
+		return $row[0];
+	}
+	else{
+		return null;
+	}
+}
+
+//----------------------------------------------------------------------------------
+// get notelefon from idPekerja.
+//----------------------------------------------------------------------------------
+function getPhone($idPekerja){
+	$s="SELECT no_telefon from maklumat_pengguna 
+		WHERE ic_pengguna='$idPekerja'
+		";
+	$r=mysql_query($s);
+	$row=mysql_fetch_row($r);
+
+	if ($row[0]!=""){
+		return $row[0];
+	}
+	else{
+		return null;
+	}
+}
+
 ?>

@@ -54,18 +54,18 @@
 					
 					echo ("<script LANGUAGE='JavaScript'>
 							window.alert('Tambah Jabatan berjaya.');
-							window.location.href='../senarai_ptj.php';
+							window.location.href='../P003.php';
 							</script>");
 				}else{
 					echo ("<script LANGUAGE='JavaScript'>
 							window.alert('Tambah Jabatan berjaya.');
-							window.location.href='../senarai_ptj.php';
+							window.location.href='../P003.php';
 							</script>");
 					}
 		// }else{
 			 // echo ("<script LANGUAGE='JavaScript'>
 					// window.alert('ID sudah wujud. Sila gunakan ID yang lain.');
-					// window.location.href='../senarai_ptj.php';
+					// window.location.href='../P003.php';
 					// </script>");
 					// //echo $id_jenistransaksi;
 		// }

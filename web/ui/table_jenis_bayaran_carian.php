@@ -355,8 +355,8 @@ Pilih Semua<input type="checkbox" name="select-all" id="select-all"/>
 		 var flagScreen = "<?echo $flagScreen;?>";
 		 var status = "<?php echo $status ?>";
 		 if (jabatan!=''){ 
-			// location.href='pengurusan_dokumen.php?dateSelection='+dateSelection+'&user_id='+user_id+'&groups_id='+groups_id+'&nama_pengawal='+nama_pengawal;
-			location.href='jenis_bayaran_carian.php?status='+status+'&jbt='+jabatan+'&flg='+flg+'&flagScreen='+flagScreen;
+			// location.href='P005.php?dateSelection='+dateSelection+'&user_id='+user_id+'&groups_id='+groups_id+'&nama_pengawal='+nama_pengawal;
+			location.href='P004_carian.php?status='+status+'&jbt='+jabatan+'&flg='+flg+'&flagScreen='+flagScreen;
 		 }else{
 			 alert("Pilih Jabatan");
 		 }	

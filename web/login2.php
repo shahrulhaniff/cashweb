@@ -42,7 +42,7 @@ if($result) {
 					//Go to home page
 					 if ($_SESSION['USER_TYPE'] == 'user') {
 						header("location: logout.php");//echo $position;
-						//header("location: index_sa.php");
+						//header("location: SA_P004.php");
 					 }
 					
 					else if ($_SESSION['USER_TYPE'] == 'admin'){

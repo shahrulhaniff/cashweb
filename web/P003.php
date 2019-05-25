@@ -1,10 +1,15 @@
 <?
 session_start();
 include "../server.php";
-$pagenow="P006";
+$pagenow="P003";
+
 
 if (empty($_SESSION['user'])) {
 	header('Location:login.php'); }
+	
+unset($_SESSION['id']);
+unset($_SESSION['jabatan']);
+	
 ?>
 <? include "ui/header.php"; ?>
 <? include "ui/menu.php"; ?>
@@ -18,17 +23,14 @@ if (empty($_SESSION['user'])) {
 
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-dashboard"></i> Senarai Transaksi</b></h5>
+    <h5><b><i class="fa fa-dashboard"></i> Senarai Pusat Tanggungjawab</b></h5>
   </header>
-
-
-
 
   <div class="w3-panel">
     <div class="w3-row-padding" style="margin:0 -16px">
 
- 
-<? include "ui/table_senarai_transaksi.php"; ?>
+   
+<? include "ui/table.php"; ?>
   </div>
   </div>
   
@@ -45,6 +47,9 @@ if (empty($_SESSION['user'])) {
     <script src="assets/js/custom.js"></script>
 	
 <!-- End page content -->
+  <!-- last skali paste preloader js punya sebelum tutup body -->
+  <script src="pre/jquery.magnific-popup.min.min.js"></script>
+  <script src="pre/main.js"></script>
 </div>
 </body>
 </html>

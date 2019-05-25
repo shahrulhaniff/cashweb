@@ -19,20 +19,20 @@
 					$result2=mysql_query($sql2);
 					if($result2){
 					
-						echo"<script>alert('Kemaskini berjaya!');document.location.href='../senarai_ptj.php';</script>";
+						echo"<script>alert('Kemaskini berjaya!');document.location.href='../P003.php';</script>";
 						exit();
 					
 					}else {
 						 echo ("<script LANGUAGE='JavaScript'>
 							window.alert('Kemaskini tidak berjaya.');
-							window.location.href='../senarai_ptj.php';
+							window.location.href='../P003.php';
 							</script>");
 					}
 						
 			}else {
 				 echo ("<script LANGUAGE='JavaScript'>
 					window.alert('Kemaskini tidak berjaya.');
-					window.location.href='../senarai_ptj.php';
+					window.location.href='../P003.php';
 					</script>");
 			}
 		

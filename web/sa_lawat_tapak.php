@@ -30,7 +30,7 @@ $status=$_GET['status'];
 
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
-    <h5><a href="index_sa.php"><i class="fa fa-dashboard"></i>Jenis Bayaran</a> / <b><i class="fa fa-laptop"></i>Senarai Pelawat Tapak</b></h5>
+    <h5><a href="SA_P004.php"><i class="fa fa-dashboard"></i>Jenis Bayaran</a> / <b><i class="fa fa-laptop"></i>Senarai Pelawat Tapak</b></h5>
   </header>
   
  <div class="w3-panel">
@@ -56,6 +56,9 @@ $status=$_GET['status'];
     <script src="assets/js/custom.js"></script>
 	
 <!-- End page content -->
+  <!-- last skali paste preloader js punya sebelum tutup body -->
+  <script src="pre/jquery.magnific-popup.min.min.js"></script>
+  <script src="pre/main.js"></script>
 </div>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <?
 session_start();
 include "../server.php";
-$pagenow="P005";
+$pagenow="P007";
 
 if (empty($_SESSION['user'])) {
 	header('Location:login.php'); }
@@ -18,14 +18,17 @@ if (empty($_SESSION['user'])) {
 
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-dashboard"></i>Pengurusan Dokumen</b></h5>
+    <h5><b><i class="fa fa-dashboard"></i> Trek Jenis Bayaran</b></h5>
   </header>
+
+
+
 
   <div class="w3-panel">
     <div class="w3-row-padding" style="margin:0 -16px">
 
-   
-<? include "ui/sa_table_pengurusan_dokumen.php"; ?>
+ 
+<? include "ui/table_tracking_jenis_bayaran.php"; ?>
   </div>
   </div>
   
@@ -42,6 +45,9 @@ if (empty($_SESSION['user'])) {
     <script src="assets/js/custom.js"></script>
 	
 <!-- End page content -->
+  <!-- last skali paste preloader js punya sebelum tutup body -->
+  <script src="pre/jquery.magnific-popup.min.min.js"></script>
+  <script src="pre/main.js"></script>
 </div>
 </body>
 </html>

@@ -1,6 +1,7 @@
 <?
 session_start();
 include "../server.php";
+$pagenow="P003";
 
 if (empty($_SESSION['user'])) {
 	header('Location:login.php'); }
@@ -34,7 +35,7 @@ else {
 
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
-    <h5><a href="senarai_ptj.php"><i class="fa fa-dashboard"></i>Senarai Pusat Tanggungjawab</a> / <b><i class="fa fa-laptop"></i>Senarai Sub-Admin</b></h5>
+    <h5><a href="P003.php"><i class="fa fa-dashboard"></i>Senarai Pusat Tanggungjawab</a> / <b><i class="fa fa-laptop"></i>Senarai Sub-Admin</b></h5>
   </header>
 
 <!-- Modal Add Sub-Admin -->
@@ -49,23 +50,21 @@ else {
                 
                 <div class="modal-body">
                 
-                <form method="post" action="../web/controller/subadmin_tambah_exec.php?jabatan=<?echo $_POST['jabatan'];?>">     
-                         <div class="form-group" align="left">
-                            
-							<label><font color="red">** Maklumat Wajib Diisi.</font></label>
-							<br>
-								 
-								 <input type="hidden" name="id_jenistransaksi" id="id_jenistransaksi" class="form-control" value="<? echo $id;?>" readonly />
-							
-							 
-							<div class="form-group">
-								<label for="comment">Nama<font color="red">**</font></label>
-								<input type="text" class="form-control" name="nama" id="nama" size="20" required>
-							</div> 
+                <form method="post" action="../web/controller/subadmin_tambah_exec.php?jabatan=<?echo $_POST['jabatan'];?>">
+
+							<div class="form-group" align="left">
+								<label><font color="red">** Maklumat Wajib Diisi.</font></label>
+								<br><input type="text" name="id_jenistransaksi" id="id_jenistransaksi" class="form-control" value="<? echo $id;?>" readonly />
+							</div>
 							
 							<div class="form-group">
 								<label for="comment">Nombor Kad Pengenalan<font color="red">**</font></label>
 								<input type="text" class="form-control" name="ic_pengguna" id="ic_pengguna" size="20" required>
+							</div>
+							
+							<div class="form-group">
+								<label for="comment">Nama<font color="red">**</font></label>
+								<input type="text" class="form-control" name="nama" id="nama" size="20" required>
 							</div> 
 							
 							<div class="form-group">
@@ -76,9 +75,8 @@ else {
 							<div class="form-group">
 								<label for="comment">Nombor Telefon<font color="red">**</font></label>
 								<input type="text" class="form-control" name="no_telefon" id="no_telefon" size="20"required>
-							</div>		
-									
-                  
+							</div>
+
                              <div class="modal-footer">
                                    <button type="submit" class="btn btn-primary" >Simpan</button>
                                    <button type="reset" class="btn btn-info">Tetapan Semula</button>
@@ -87,10 +85,9 @@ else {
          </form>
                 </div><!--modal-body-->
         
-                </div>
-        <!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-		</div>
+        
+        </div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
 		
 		
@@ -100,7 +97,12 @@ else {
 				 
 			<div class="col-md-12">
 			<div align="right">
-							<button class="btn btn-primary" data-toggle="modal"  data-target="#myModal">Tambah Sub-Admin</button></a> <br>
+							 <button class="btn btn-primary" data-toggle="modal"  data-target="#myModal">Tambah Sub-Admin</button> 
+							<!--
+							<a href="../web/P003A.php?id=<?=$jabatan?>"><button class="btn btn-primary" type="button"><img src="imgs/keys.png" height="20" border="0" title="Tambah Sub-Admin">Tambah Sub-Admin</button></a>
+							-->
+							
+						
 			</div>
 								<!-- Advanced Tables -->
 								<div class="panel panel-default">
@@ -156,24 +158,22 @@ else {
 							
 							<div class="modal-body">
 							
-							<form method="post" action="../web/controller/subadmin_kemaskini_exec.php">     
-									 <div class="form-group" align="left">
-										
-										<label><font color="red">** Maklumat Wajib Diisi.</font></label>
-										<br>
-											 
-											 <input type="hidden" name="ic_lama_pengguna" id="ic_lama_pengguna" class="form-control" value="<? echo $info['ic_pengguna'];?>" readonly />
-										
+							<form method="post" action="../web/controller/subadmin_kemaskini_exec.php"> 
+							
+										<div class="form-group" align="left">
+											<label><font color="red">** Maklumat Wajib Diisi.</font></label>
+											<br><input type="hidden" name="ic_lama_pengguna" id="ic_lama_pengguna" class="form-control" value="<? echo $info['ic_pengguna'];?>" readonly />
+										</div>
 										 
-										<div class="form-group">
-											<label for="comment">Nama<font color="red">**</font></label>
-											<input type="text" class="form-control" name="nama" id="nama" size="20" value="<?php echo $info['nama']; ?>" required>
-										</div> 
-										
 										<div class="form-group">
 											<label for="comment">Nombor Kad Pengenalan</label>
 											<input type="text" class="form-control" name="ic_pengguna" id="ic_pengguna" size="20" value="<?php echo $info['ic_pengguna']; ?>" readonly>
 										</div> 
+										
+										<div class="form-group">
+											<label for="comment">Nama<font color="red">**</font></label>
+											<input type="text" class="form-control" name="nama" id="nama" size="20" value="<?php echo $info['nama']; ?>" required>
+										</div>
 										
 										<div class="form-group">
 											<label for="comment">Emel<font color="red">**</font></label>
@@ -182,14 +182,14 @@ else {
 										
 										<div class="form-group">
 											<label for="comment">Nombor Telefon<font color="red">**</font></label>
-											<input type="text" class="form-control" name="no_telefon" id="no_telefon" size="20" value="<?php echo $info['no_telefon']; ?>" required>
+											<input type="text" class="form       -control" name="no_telefon" id="no_telefon" size="20" value="<?php echo $info['no_telefon']; ?>" required>
 										</div>		
 												
 							  
-										 <div class="modal-footer">
+										<div class="modal-footer">
 											   <button type="submit" class="btn btn-primary" >Simpan</button>
 											   <button type="reset" class="btn btn-info">Tetapan Semula</button>
-										 </div>
+										</div>
 					 
 					 </form>
                 </div><!--modal-body-->
@@ -197,7 +197,6 @@ else {
                 </div>
         <!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
-		</div>
         </div><!-- /.modal -->
 														
 														
@@ -231,6 +230,9 @@ else {
     <script src="assets/js/custom.js"></script>
 	
 <!-- End page content -->
+  <!-- last skali paste preloader js punya sebelum tutup body -->
+  <script src="pre/jquery.magnific-popup.min.min.js"></script>
+  <script src="pre/main.js"></script>
 </div>
 </body>
 </html>

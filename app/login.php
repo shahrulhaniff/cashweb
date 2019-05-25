@@ -35,16 +35,14 @@
 				
 				if($cek_jum_akaun>1){ $auth ='Granted2'; }
 				
-				else { $auth ='Granted'; }
-				
-				
+				else { 
+					$auth ='Granted';
 					//Update IP and Last login --> $time=NOW();
 					$ipaddress = $_SERVER['REMOTE_ADDR'];
 					$qry2="UPDATE akaun_pengguna SET lastlogin= NOW() , ipaddress ='$ipaddress'
 					WHERE ic_pengguna='$usrdb' LIMIT 1";
 					$result2=mysql_query($qry2);
-				
-				
+				}
 			}
 			
 			//else { $auth ='Denied'; }

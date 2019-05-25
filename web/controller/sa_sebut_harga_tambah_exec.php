@@ -45,14 +45,14 @@
 				
 			echo ("<script LANGUAGE='JavaScript'>
 					window.alert('Tambah Jenis Bayaran berjaya.');
-					window.location.href='../index_sa.php?status=1&flg=tb_1';
+					window.location.href='../SA_P004.php?status=1&flg=tb_1';
 					</script>");
 				
 			
 			}else {
 				 echo ("<script LANGUAGE='JavaScript'>
 					window.alert('Tambah tidak berjaya.');
-					window.location.href='../index_sa.php?status=1&flg=tb_1';
+					window.location.href='../SA_P004.php?status=1&flg=tb_1';
 					</script>");
 			}
 			

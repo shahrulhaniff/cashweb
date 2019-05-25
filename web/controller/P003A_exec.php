@@ -2,7 +2,6 @@
      
     require '../../server.php';
     require '../../credential.php';
-    $jabatan = $_GET['jabatan'];
 	
 	require '../PHPMailer/PHPMailerAutoload.php';
 	
@@ -14,11 +13,9 @@
 	$mail->Username = EMAIL;          // SMTP username
 	$mail->Password = PASS; // SMTP password
 	$mail->SMTPSecure = 'tls';                  // Enable TLS encryption, `ssl` also accepted
-	$mail->Port = 587; 
-	
-	
- 
+	$mail->Port = 587;
       
+		$jabatan = $_GET['jabatan'];
         // keep track post values
         $id_jenistransaksi = $_POST['id_jenistransaksi'];
         $nama = $_POST['nama'];
@@ -26,34 +23,8 @@
         $ic_pengguna2 = md5($_POST['ic_pengguna']);
         $email = $_POST['email'];
         $no_telefon = $_POST['no_telefon'];
-     
-		
-	// check email sub admin adalah email unisza
-	if (strpos($email, 'unisza.edu.my') !== false) {
-	
-			//checking exist user
-			$sql = "SELECT COUNT(ic_pengguna) AS countNokp FROM akaun_pengguna WHERE ic_pengguna='$ic_pengguna'";
-			$result=mysql_query($sql);
-			$countNokp=mysql_fetch_object($result) ->countNokp;						 
-						 
-			if($countNokp=='0'){
-			
-				$sql1="SELECT MAX(KJ.jabatan) AS jabatan 
-							FROM kod_jenistransaksi KT 
-							LEFT JOIN kod_jenispengguna KJ ON KT.jabatan = KJ.jabatan 
-							WHERE KJ.jabatan='$jabatan' AND KJ.jenis_pengguna='sub-admin'";
-				$result1=mysql_query($sql1);
-				$jabatan2=mysql_fetch_object($result1)->jabatan; 
-				
-				$sql2="SELECT kod_pengguna FROM kod_jenispengguna
-							WHERE jabatan='$jabatan2' AND jenis_pengguna='sub-admin'";
-				$result2=mysql_query($sql2);
-				$kod_pengguna=mysql_fetch_object($result2)->kod_pengguna; 
-				
-				
-				
-				
-				
+
+
 ?>				
 <script>
 window.onunload = refreshParent;
@@ -62,8 +33,6 @@ function refreshParent() {
 }
 </script>
 <? 
-			
-				
 
 				//send email
 				$mail->setFrom(EMAIL);
@@ -87,23 +56,10 @@ function refreshParent() {
 					//echo 'Mailer Error: ' . $mail->ErrorInfo;
 				} 
 				else {
-					//echo 'Message has been sent';
-					$sql3="INSERT INTO maklumat_pengguna (ic_pengguna,nama,email,no_telefon) values('$ic_pengguna','$nama','$email','$no_telefon')";
-				    $result3=mysql_query($sql3);
 					
 					$sql4 = "INSERT INTO akaun_pengguna (ic_pengguna,kod_pengguna,pwd,status_aktif) values('$ic_pengguna','$kod_pengguna','$ic_pengguna2','yes')";
 					$result4=mysql_query($sql4);
 					
 					echo"<script>alert('Pendaftaran Sub-Admin Berjaya');document.location.href='../senarai_sa.php?jabatan=$jabatan';</script>";
 				}
-
-		}else{
-			 //echo ("<script LANGUAGE='JavaScript'>window.alert('tambah sub admin tidak berjaya. Nombor kad pengenalan sudah wujud di dalam sistem.');window.location.href='../senarai_sa.php';</script>");
-			 echo ("<script LANGUAGE='JavaScript'>window.alert('tambah sub admin tidak berjaya. Nombor kad pengenalan sudah wujud di dalam sistem.');window.location.href='../P003A.php?IC=".$ic_pengguna."';</script>");
-		}
-	}else{
-			 echo ("<script LANGUAGE='JavaScript'>
-					window.alert('tambah sub admin tidak berjaya.Sila guna email UniSZA.');
-					window.location.href='../senarai_sa.php';
-					</script>");
-		}	
+	

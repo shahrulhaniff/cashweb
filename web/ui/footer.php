@@ -14,6 +14,7 @@
 
 
 
+
 <script>
 // Get the Sidebar
 var mySidebar = document.getElementById("mySidebar");

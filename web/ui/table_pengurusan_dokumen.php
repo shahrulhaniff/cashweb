@@ -34,13 +34,13 @@ date_default_timezone_set("Asia/Kuala_lumpur");
 				
 <div id='cssmenu'>
 	<ul>
-		<li class="<? echo ($flag=='tb_1'?'active':'') ?>"><a href="pengurusan_dokumen.php?status=<?echo $status;?>&dt=tiada&flg=tb_1&flagScreen=<?echo $flagScreen;?>">Papar Semua</a></li>
+		<li class="<? echo ($flag=='tb_1'?'active':'') ?>"><a href="P005.php?status=<?echo $status;?>&dt=tiada&flg=tb_1&flagScreen=<?echo $flagScreen;?>">Papar Semua</a></li>
 		<? if ($dateSelection=='tiada' || $dateSelection==''){
 			
 			?>
-		<li class="<? echo ($flag=='tb_2'?'active':'') ?>"><a href="pengurusan_dokumen.php?status=<?echo $status;?>&dt=<? echo $current_date;?>&flg=tb_2&flagScreen=<?echo $flagScreen;?>">Carian Mengikut Tarikh</a></li>
+		<li class="<? echo ($flag=='tb_2'?'active':'') ?>"><a href="P005.php?status=<?echo $status;?>&dt=<? echo $current_date;?>&flg=tb_2&flagScreen=<?echo $flagScreen;?>">Carian Mengikut Tarikh</a></li>
 		<? }else {?>
-		<li class="<? echo ($flag=='tb_2'?'active':'') ?>"><a href="pengurusan_dokumen.php?status=<?echo $status;?>&dt=<? echo $dateSelection;?>&flg=tb_2&flagScreen=<?echo $flagScreen;?>">Carian Mengikut Tarikh</a></li>
+		<li class="<? echo ($flag=='tb_2'?'active':'') ?>"><a href="P005.php?status=<?echo $status;?>&dt=<? echo $dateSelection;?>&flg=tb_2&flagScreen=<?echo $flagScreen;?>">Carian Mengikut Tarikh</a></li>
 		<?}?>
 		
 	</ul>
@@ -49,8 +49,8 @@ date_default_timezone_set("Asia/Kuala_lumpur");
 	<ul>
 	 
 
-		<li class="<? echo ($flagScreen=='tab_1'?'active':'') ?>"><a href="pengurusan_dokumen.php?status=NO&dt=<? echo $dateSelection;?>&flg=<? echo $flag; ?>&flagScreen=tab_1">Dokumen Belum Dituntut</a></li>
-		<li class="<? echo ($flagScreen=='tab_2'?'active':'') ?>"><a href="pengurusan_dokumen.php?status=YES&dt=<? echo $dateSelection;?>&flg=<? echo $flag; ?>&flagScreen=tab_2">Dokumen Telah Dituntut</a></li>
+		<li class="<? echo ($flagScreen=='tab_1'?'active':'') ?>"><a href="P005.php?status=NO&dt=<? echo $dateSelection;?>&flg=<? echo $flag; ?>&flagScreen=tab_1">Dokumen Belum Dituntut</a></li>
+		<li class="<? echo ($flagScreen=='tab_2'?'active':'') ?>"><a href="P005.php?status=YES&dt=<? echo $dateSelection;?>&flg=<? echo $flag; ?>&flagScreen=tab_2">Dokumen Telah Dituntut</a></li>
 	
 	</ul>
 </div>
@@ -237,8 +237,8 @@ $(document).ready(function() {
 		 var flagScreen = "<?echo $flagScreen;?>";
 		 var status = "<?php echo $status ?>";
 		 if (dateSelection!=''){ 
-			// location.href='pengurusan_dokumen.php?dateSelection='+dateSelection+'&user_id='+user_id+'&groups_id='+groups_id+'&nama_pengawal='+nama_pengawal;
-			location.href='pengurusan_dokumen.php?status='+status+'&dt='+dateSelection+'&flg='+flg+'&flagScreen='+flagScreen;
+			// location.href='P005.php?dateSelection='+dateSelection+'&user_id='+user_id+'&groups_id='+groups_id+'&nama_pengawal='+nama_pengawal;
+			location.href='P005.php?status='+status+'&dt='+dateSelection+'&flg='+flg+'&flagScreen='+flagScreen;
 		 }else{
 			 alert("Fill the form1!");
 		 }	
