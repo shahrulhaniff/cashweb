@@ -5,6 +5,8 @@
 	
 	require '../PHPMailer/PHPMailerAutoload.php';
 	
+	include "../functions.php";
+	
 	$mail = new PHPMailer;
 
 	$mail->isSMTP();                            // Set mailer to use SMTP
@@ -16,6 +18,7 @@
 	$mail->Port = 587;
       
 		$jabatan = $_GET['jabatan'];
+		$kod_pengguna = getKodJabatan($jabatan);
         // keep track post values
         $id_jenistransaksi = $_POST['id_jenistransaksi'];
         $nama = $_POST['nama'];

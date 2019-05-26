@@ -11,6 +11,12 @@ $id = $_SESSION['id'];
 $s_jab = $_SESSION['jabatan'];
 ?>
 
+<style>
+.formshahrul{display:block;height:32px;padding:6px 12px;font-size:16px;line-height:1.42857143;color:#0d0040;background-color:#fff;background-image:none;border:1px solid #ccc;border-radius:4px;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075);box-shadow:inset 0 1px 1px rgba(0,0,0,.075);-webkit-transition:border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;-o-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s}
+ 
+.formshahrul:focus{border-color:#ff0000;outline:0;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)}
+
+</style>
 
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
@@ -35,7 +41,7 @@ $s_jab = $_SESSION['jabatan'];
 
 
 
-<div class="w3-third">
+<div class="w3-twothird">
 	  <label><font color="red">
 	  <?
 		$IC = $_GET['IC'];
@@ -54,29 +60,29 @@ $s_jab = $_SESSION['jabatan'];
 	  <label><font color="red">
 	  <br>*Sila sahkan maklumat dibawah jika ingin mendaftar sebagai sub-Admin <?=$s_jab?>.
 	  </font></label>
-      <form method="post" action="../web/controller/P003A_exec.php?jabatan=<?=$JAB?>">     
+      <form method="post" action="../web/controller/P003A_exec.php?jabatan=<?=$s_jab?>">
                          <div class="form-group" align="left">
-                            <input type="HIDDEN" name="id_jenistransaksi" id="id_jenistransaksi" class="form-control" value="<? echo $id;?>" readonly />
+                            <input type="HIDDEN" name="id_jenistransaksi" id="id_jenistransaksi" class="formshahrul" value="<? echo $id;?>" readonly />
 						 </div>
 							 
 							<div class="form-group">
 								<label for="comment">Nama<font color="red">**</font></label>
-								<input type="text" class="form-control" name="nama" id="nama" value="<?=$NAMA?>" size="20" readonly>
+								<input type="text" class="formshahrul" name="nama" id="nama" value="<?=$NAMA?>" size="50" readonly>
 							</div> 
 							
 							<div class="form-group">
 								<label for="comment">Nombor Kad Pengenalan<font color="red">**</font></label>
-								<input type="text" class="form-control" name="ic_pengguna" id="ic_pengguna" value="<?=$IC?>" size="20" readonly>
+								<input type="text" class="formshahrul" name="ic_pengguna" id="ic_pengguna" value="<?=$IC?>" size="20" readonly>
 							</div> 
 							
 							<div class="form-group">
 								<label for="comment">Emel<font color="red">**</font></label>
-								<input type="text" class="form-control" name="email" id="email" value="<?=$EMEL?>" size="20" readonly>
+								<input type="text" class="formshahrul" name="email" id="email" value="<?=$EMEL?>" size="20" readonly>
 							</div> 
 							
 							<div class="form-group">
 								<label for="comment">Nombor Telefon<font color="red">**</font></label>
-								<input type="text" class="form-control" name="no_telefon" value="<?=$PHONE?>" id="no_telefon" size="20" readonly>
+								<input type="text" class="formshahrul" name="no_telefon" value="<?=$PHONE?>" id="no_telefon" size="20" readonly>
 							</div>		
 									
                   
@@ -84,40 +90,34 @@ $s_jab = $_SESSION['jabatan'];
 								   <a href="senarai_sa.php" class="btn btn-danger">Batal</a>
 					</form>
 	  <? } /*close if dah daftar subadmin dalam jabatan sama*/ 
-	  else {?>
+	  else { ?>
 	  <div class="form-group" align="left">
-                            <input type="HIDDEN" name="id_jenistransaksi" id="id_jenistransaksi" class="form-control" value="<? echo $id;?>" readonly />
+                            <input type="HIDDEN" name="id_jenistransaksi" id="id_jenistransaksi" class="formshahrul" value="<? echo $id;?>" readonly />
 						 </div>
 							 
 							<div class="form-group">
 								<label for="comment">Nama<font color="red">**</font></label>
-								<input type="text" class="form-control" name="nama" id="nama" value="<?=$NAMA?>" size="20" readonly>
+								<input type="text" class="formshahrul" name="nama" id="nama" value="<?=$NAMA?>" size="20" readonly>
 							</div> 
 							
 							<div class="form-group">
 								<label for="comment">Nombor Kad Pengenalan<font color="red">**</font></label>
-								<input type="text" class="form-control" name="ic_pengguna" id="ic_pengguna" value="<?=$IC?>" size="20" readonly>
+								<input type="text" class="formshahrul" name="ic_pengguna" id="ic_pengguna" value="<?=$IC?>" size="20" readonly>
 							</div> 
 							
 							<div class="form-group">
 								<label for="comment">Emel<font color="red">**</font></label>
-								<input type="text" class="form-control" name="email" id="email" value="<?=$EMEL?>" size="20" readonly>
+								<input type="text" class="formshahrul" name="email" id="email" value="<?=$EMEL?>" size="20" readonly>
 							</div> 
 							
 							<div class="form-group">
 								<label for="comment">Nombor Telefon<font color="red">**</font></label>
-								<input type="text" class="form-control" name="no_telefon" value="<?=$PHONE?>" id="no_telefon" size="20" readonly>
+								<input type="text" class="formshahrul" name="no_telefon" value="<?=$PHONE?>" id="no_telefon" size="20" readonly>
 							</div>
-	  <a href="senarai_sa.php" class="btn btn-danger">Kembali</a><?}
-	  
-	  ?>
+	  <a href="senarai_sa.php" class="btn btn-danger">Kembali</a>
+	  <? } ?>
 	  
 </div>
-
-
-
-
-
    
   </div>
   </div>

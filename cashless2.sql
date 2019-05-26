@@ -112,7 +112,7 @@ CREATE TABLE transaksi (
   doc_giveby VARCHAR(50) NULL,
   created_date TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id_transaksi),
-  FOREIGN KEY (ic_pengguna) REFERENCES akaun_pengguna (ic_pengguna),
+  -- FOREIGN KEY (ic_pengguna) REFERENCES akaun_pengguna (ic_pengguna),
   FOREIGN KEY (id_kodtransaksi) REFERENCES kod_transaksi (id_kodtransaksi),
   FOREIGN KEY (id_jenistransaksi) REFERENCES kod_jenistransaksi (id_jenistransaksi)
 );
@@ -144,10 +144,7 @@ INSERT INTO `kod_jenispengguna` (`kod_pengguna`, `jenis_pengguna`, `jabatan`, `c
 ('1', 'user', NULL, '2019-04-23 13:40:35'),
 ('2', 'admin', 'Bendahari', '2019-04-23 13:40:35'),
 ('3', 'sub-admin', 'JPP', '2019-04-23 13:40:35'),
-('4', 'sub-admin', 'JPP', '2019-04-25 09:05:51'),
-('5', 'sub-admin', 'FIK', '2019-04-25 09:08:43'),
-('6', 'sub-admin', 'PUSAT TEKNOLOGI MAKLUMAT', '2019-04-29 07:45:28'),
-('7', 'sub-admin', 'PERPUSTAKAAN', '2019-05-11 10:28:46');
+('4', 'sub-admin', 'PERPUSTAKAAN', '2019-05-11 10:28:46');
 
 
 INSERT INTO `maklumat_pengguna` (`ic_pengguna`, `nama`, `email`, `no_telefon`, `matr`, `created_date`) VALUES
@@ -158,7 +155,7 @@ INSERT INTO `maklumat_pengguna` (`ic_pengguna`, `nama`, `email`, `no_telefon`, `
 ('941013115436', 'Bendahari UniSZA', 'bendahari@unisza.edu.my', '0109668468','-', '2019-04-23 13:40:35');
 
 INSERT INTO `akaun_pengguna` (`ic_pengguna`, `kod_pengguna`, `pwd`, `status_aktif`, `created_date`) VALUES
-('12345', '7', '202cb962ac59075b964b07152d234b70', 'yes', '2019-05-11 10:31:50'),
+('12345', '4', '202cb962ac59075b964b07152d234b70', 'yes', '2019-05-11 10:31:50'),
 ('941013112203', '1', '202cb962ac59075b964b07152d234b70', 'yes', '2019-04-23 13:40:36'),
 ('941013115434', '3', '202cb962ac59075b964b07152d234b70', 'no', '2019-04-23 13:40:36'),
 ('941013115435', '1', '202cb962ac59075b964b07152d234b70', 'yes', '2019-04-23 13:40:36'),
@@ -181,7 +178,7 @@ INSERT INTO `kod_jenistransaksi` (`id_jenistransaksi`, `jenistransaksi`, `jabata
 INSERT INTO `kod_transaksi` (`id_kodtransaksi`, `kod_pengguna`, `no_sb`, `description`, `tarikhbuka`, `tarikhtutup`, `jam`, `harga`, `id_jenistransaksi`, `kelas`, `keyin_by`, `tarikh_keyin`, `edit_by`, `tarikh_edit`, `dttaklimat`, `tempatlwtntapak`, `sulit`, `created_date`) VALUES
 (1, '3', 'IDSB001', 'Contoh butiran sebut harga', '2019-06-05', '2019-08-08', '01:00:00', 17000.39, 'SB', 'CIDB Gred G2 Kategori ME Pengkhususan M04', 'IC Pegawai keyin', '2019-03-06 11:27:27', 'Bendahari UniSZA', '2019-04-25 07:53:11', NULL, 'Bangunan JPP Universiti Sultan Zainal Abidin, Kampus Gong Badak, Kuala Nerus', 'T', '2019-04-23 13:40:36'),
 (2, '3', 'PEMB(E)SH/66/2018', 'CADANGAN KERJA-KERJA PEMASANGAN FEEDER PILLAR UTAMA TERMASUK KABEL 3 FASA KE KANDANG KAMBING SERTA KERJA-KERJA BERKAITAN DI LADANG PASIR AKAR UNISZA BESUT, TEENGGANU DARUL IMAN', '2019-03-01', '2019-03-31', '12:00:00', 30.00, 'SB', 'CIDB Gred G2 Kategori ME Pengkhususan M04', 'PENYELARAS', '2019-03-01 13:00:00', NULL, NULL, NULL, 'Bangunan JPP Universiti Sultan Zainal Abidin, Kampus Gong Badak, Kuala Nerus', 'T', '2019-04-23 13:40:36'),
-(3, '7', 'LIBDENDA', 'Denda pelbagai dari perpustakaan', '2019-05-03', '2020-05-04', '01:00:00', 0.00, 'JT20190511183008', '-', 'Admin Library', '2019-05-11 06:38:25', NULL, NULL, NULL, NULL, 'T', '2019-05-11 10:38:25');
+(3, '4', 'LIBDENDA', 'Denda pelbagai dari perpustakaan', '2019-05-03', '2020-05-04', '01:00:00', 0.00, 'JT20190511183008', '-', 'Admin Library', '2019-05-11 06:38:25', NULL, NULL, NULL, NULL, 'T', '2019-05-11 10:38:25');
 
 
 INSERT INTO `transaksi` (`id_transaksi`, `ic_pengguna`, `id_kodtransaksi`, `id_jenistransaksi`, `tarikh`, `jumlah`, `daripada`, `kepada`, `statustransaction`, `norujukan`, `merchantid`, `jeniskad`, `status_dokumen`, `doc_acceptby`, `doc_acceptby_nama`, `doc_giveby`, `created_date`) VALUES

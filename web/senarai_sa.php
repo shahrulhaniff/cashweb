@@ -107,7 +107,11 @@ else {
 								<!-- Advanced Tables -->
 								<div class="panel panel-default">
 									<div class="panel-heading">
-										 Senarai Sub-Admin <?echo $_POST['jabatan'];?>
+									<? 
+										$JAB = $_POST['jabatan'];
+										$KodJabatan = getKodJabatan($JAB);
+									?>
+										 Senarai Sub-Admin <?=$JAB?>
 									</div>
 									<div class="panel-body">
 										<div class="table-responsive">
@@ -143,7 +147,7 @@ else {
 														echo "<td>".$info['no_telefon'] . " </td>";
 														?><td>
 													  <button class="btn btn-info" data-toggle="modal" data-target="#myModal<?echo $i;?>">Kemaskini</button>
-													<a href="../web/controller/subadmin_delete_exec.php?ic_pengguna=<?echo $info['ic_pengguna']; ?>"><button type="button" class="btn btn-danger" onclick="return confirm('Anda pasti untuk padam data ini?');">Padam</button></a>
+													<a href="../web/controller/subadmin_delete_exec.php?ic_pengguna=<?echo $info['ic_pengguna'];?>&KodJabatan=<?=$KodJabatan?>"><button type="button" class="btn btn-danger" onclick="return confirm('Anda pasti untuk padam data ini?');">Padam</button></a>
 													 </td>
 			<!-- Modal update Sub-Admin -->
 			<div class="modal fade" id="myModal<?php echo $i; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

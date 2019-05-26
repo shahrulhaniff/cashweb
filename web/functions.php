@@ -39,6 +39,24 @@ function getJabatanByIDK($id_kodtransaksi){
 }
 
 //----------------------------------------------------------------------------------
+// get id Jabatan from nama jabatan.
+//----------------------------------------------------------------------------------
+function getKodJabatan($jabatan){
+	$s="SELECT kod_pengguna from kod_jenispengguna 
+		WHERE jabatan='$jabatan'
+		";
+	$r=mysql_query($s);
+	$row=mysql_fetch_row($r);
+
+	if ($row[0]!=""){
+		return $row[0];
+	}
+	else{
+		return null;
+	}
+}
+
+//----------------------------------------------------------------------------------
 // get nama from idPekerja.
 //----------------------------------------------------------------------------------
 function getNama($idPekerja){
