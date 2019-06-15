@@ -109,4 +109,68 @@ function getPhone($idPekerja){
 	}
 }
 
+
+//----------------------------------------------------------------------------------
+// array Dapatkan jenis transaksi untuk menu P003
+//----------------------------------------------------------------------------------
+function getJenisTransaksi($jabatan){
+
+$qK="SELECT * FROM kod_jenistransaksi";
+$resK=mysql_query($qK) or die(mysql_error());
+while($fetchK=mysql_fetch_array($resK)){
+	if ($jabatan==$fetchK['jabatan']){ $jenis=$fetchK['jenistransaksi']; }
+}mysql_free_result($resK);
+
+return $jenis;
+}
+
+
+//----------------------------------------------------------------------------------
+// P003 : Dapatkan nama jabatan by kod jabatan $jaba
+//----------------------------------------------------------------------------------
+function getNamaPtj($jaba){
+$nama="";
+$qry2="SELECT * FROM kod_jabatan";
+$res2=mysql_query($qry2) or die(mysql_error());
+while($fetch2=mysql_fetch_array($res2)){
+	if ($jaba==$fetch2['idptj']){ $nama=$fetch2['namaptj']; }
+}mysql_free_result($res2);
+
+
+return $nama;
+}
+
+//----------------------------------------------------------------------------------
+// P003 : Dapatkan nama jabatan by kod jabatan $jaba
+//----------------------------------------------------------------------------------
+function getNamaJenisT($rekod){
+$nama="";
+
+if ($rekod=='SBT'){ $nama="Sebut Harga/Tender"; }
+if ($rekod=='SYD'){ $nama="Seminar/Yuran/Denda"; }
+if ($rekod=='D'){ $nama="Derma"; }
+
+
+return $nama;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ?>

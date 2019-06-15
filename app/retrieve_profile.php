@@ -3,6 +3,7 @@
  
   //try main get dulu sebab nak post vaue select where xjadi lagi
   $id = $_GET['id'];
+  $kodpengguna = $_GET['kodpengguna'];
   $data    = array();
 
       
@@ -10,7 +11,12 @@
    // Attempt to query database table and retrieve data
    try {
 	  
-      $stmt 	= $pdo->query('SELECT * FROM maklumat_pengguna WHERE ic_pengguna="'.$id.'"');
+      $stmt 	= $pdo->query('
+	  SELECT * FROM maklumat_pengguna M, akaun_pengguna A 
+	  WHERE M.ic_pengguna="'.$id.'"
+	  AND A.kod_pengguna="'.$kodpengguna.'"
+	  AND  A.ic_pengguna=M.ic_pengguna
+	  ');
       while($row  = $stmt->fetch(PDO::FETCH_OBJ))
       {
          // Assign each row of data to associative array

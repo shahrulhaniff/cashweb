@@ -75,7 +75,6 @@
                                         <tr>
                                             <th>Bil</th>
                                             <th>Nombor Rujukan</th>
-											 <th>Pusat Tanggungjawab (PTj)</th>
                                             <th>Penerima</th>
                                             <th>Harga (RM)</th>
 											<th>Tarikh & Masa</th>
@@ -87,9 +86,9 @@
 <?php // Connects to your Database 
 
 if($dateSelection=='tiada'){
-	$data = mysql_query("SELECT * FROM transaksi");
+	$data = mysql_query("SELECT * FROM transaksi WHERE id_jenistransaksi='JT20190511183008'"); //DENDA PELAJAR SAHAJA
 }else if($dateSelection!='tiada'){
- $data = mysql_query("SELECT * FROM transaksi WHERE DATE_FORMAT(tarikh,'%Y-%m-%d')='$dateSelection'");
+ $data = mysql_query("SELECT * FROM transaksi WHERE DATE_FORMAT(tarikh,'%Y-%m-%d')='$dateSelection' AND id_jenistransaksi='JT20190511183008'"); //DENDA PELAJAR SAHAJA
 } ?>
                                         
 										<?php
@@ -106,7 +105,6 @@ $tarikh= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh)->format('d/m/Y g:i a
 											
 											$data3 = mysql_query("SELECT * FROM kod_jenistransaksi WHERE id_jenistransaksi='".$info['id_jenistransaksi']."'");	
 											$info3 = mysql_fetch_array( $data3 );
-                                            echo "<td>".$info3['jabatan'] . " </td>";
 											
                                             echo "<td>".$info['doc_acceptby_nama'] . " </td>";
 											echo "<td>".$info['jumlah'] . " </td>";

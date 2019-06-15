@@ -23,7 +23,7 @@
  <form action="login2.php" method="POST">
     <div class="input-group">
       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-      <input id="email" type="text" class="form-control" name="usr" value="bendahari@unisza.edu.my" placeholder="Kad Pengenalan" autocomplete="off">
+      <input id="email" type="text" class="form-control" name="usr" value="bendahari@unisza.edu.my" placeholder="ID Sub-Admin" autocomplete="off">
     </div>
     <br>
     <div class="input-group">
@@ -31,9 +31,9 @@
       <input id="password" type="password" class="form-control" name="pwd" value="123" placeholder="Kata Laluan" autocomplete="new-password">
     </div>
 	<input type="checkbox" onclick="myFunction()">Show Password
-    <br><br><br>
+    <br>
     <div class="input-group">
-      <span class="input-group-addon"></span>
+      <span class="input-group-addon"><i class="glyphicon glyphicon-log-in"></i></span>
       <input type="submit" name="loginuser" value="Log Masuk"><!-- style="width: 200px; border: 2px solid #f13f12;" -->
 	  
 	</div>

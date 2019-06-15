@@ -6,22 +6,7 @@ $pagenow="P003";
 if (empty($_SESSION['user'])) {
 	header('Location:login.php'); }
 
-// baru tambah
-if (empty($_SESSION['id']))  {
-$id = $_POST['id_jenistransaksi'];
-$jabatan = $_POST['jabatan'];
 
-//session_regenerate_id();
-//$_SESSION['ID-JENISTRANSAKSI'] =$id;
-//session_write_close();
-
-$_SESSION['id']=$_POST['id_jenistransaksi']; 
-$_SESSION['jabatan']=$_POST['jabatan']; 
-}
-else {
-	$id = $_SESSION['id'];
-	$_POST['jabatan'] = $_SESSION['jabatan']; 
-}
 ?>
 <? include "ui/header.php"; ?>
 <? include "ui/menu.php"; ?>
@@ -35,47 +20,38 @@ else {
 
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
-    <h5><a href="P003.php"><i class="fa fa-dashboard"></i>Senarai Pusat Tanggungjawab</a> / <b><i class="fa fa-laptop"></i>Senarai Sub-Admin</b></h5>
+    <h5><a href="P003.php"><i class="fa fa-dashboard"></i>Senarai Pusat Tanggungjawab</a> / <b><i class="fa fa-laptop"></i>Kemaskini Senarai</b></h5>
   </header>
 
-<!-- Modal Add Sub-Admin -->
+<!-- Modal Add -->
  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                 
                 <div class="modal-content">
                     <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" align="left" id="myModalLabel">Tambah Sub-Admin</h4>
+                    <h4 class="modal-title" align="left" id="myModalLabel">Tambah Baru</h4>
                     </div>
 
                 <div class="modal-body">
 
-                <form method="post" action="../web/controller/subadmin_tambah_exec.php?jabatan=<?echo $_POST['jabatan'];?>">
+                <form method="post" action="../web/controller/P002_add_exec.php">
 
 							<div class="form-group" align="left">
 								<label><font color="red">** Maklumat Wajib Diisi.</font></label>
-								<br><input type="hidden" name="id_jenistransaksi" id="id_jenistransaksi" class="form-control" value="<? echo $id;?>" readonly />
 							</div>
 							
 							<div class="form-group">
-								<label for="comment">Nombor Kad Pengenalan<font color="red">**</font></label>
-								<input type="text" class="form-control" name="ic_pengguna" id="ic_pengguna" size="20" required>
+								<label for="comment">Singkatan<font color="red">**</font></label>
+								<input type="text" class="form-control" name="singkatan" id="singkatan" size="20" required>
 							</div>
 							
 							<div class="form-group">
-								<label for="comment">Nama<font color="red">**</font></label>
-								<input type="text" class="form-control" name="nama" id="nama" size="20" required>
+								<label for="comment">Nama PTj<font color="red">**</font></label>
+								<input type="text" class="form-control" name="namaptj" id="namaptj" size="20" required>
 							</div> 
 							
-							<div class="form-group">
-								<label for="comment">Emel<font color="red">**</font></label>
-								<input type="text" class="form-control" name="email" id="email" size="20" value="@unisza.edu.my" required>
-							</div> 
 							
-							<div class="form-group">
-								<label for="comment">Nombor Telefon<font color="red">**</font></label>
-								<input type="text" class="form-control" name="no_telefon" id="no_telefon" size="20"required>
-							</div>
 
                              <div class="modal-footer">
                                    <button type="submit" class="btn btn-primary" >Simpan</button>
@@ -97,21 +73,13 @@ else {
 				 
 			<div class="col-md-12">
 			<div align="right">
-							 <button class="btn btn-primary" data-toggle="modal"  data-target="#myModal">Tambah Sub-Admin</button> 
-							<!--
-							<a href="../web/P003A.php?id=<?=$jabatan?>"><button class="btn btn-primary" type="button"><img src="imgs/keys.png" height="20" border="0" title="Tambah Sub-Admin">Tambah Sub-Admin</button></a>
-							-->
+							 <button class="btn btn-primary" data-toggle="modal"  data-target="#myModal">Tambah Baru</button> 
 							
 						
 			</div>
 								<!-- Advanced Tables -->
 								<div class="panel panel-default">
 									<div class="panel-heading">
-									<? 
-										$JAB = $_POST['jabatan'];
-										$KodJabatan = getKodJabatan($JAB);
-									?>
-										 Senarai Sub-Admin <?=$JAB?>
 									</div>
 									<div class="panel-body">
 										<div class="table-responsive">
@@ -119,9 +87,8 @@ else {
 												<thead>
 													<tr>
 														<th>Bil</th>
-														<th>Nama</th>
-														<th>Email</th>
-														<th>Nombor Telefon</th>
+														<th>Singkatan</th>
+														<th>Nama PTj</th>
 														<th>Tindakan</th>
 													</tr>
 												</thead>
@@ -130,24 +97,18 @@ else {
 												
 			<?php // Connects to your Database 
 			 
-			$data = mysql_query("SELECT * FROM akaun_pengguna AP, maklumat_pengguna MP, kod_jenispengguna KJP 
-								LEFT JOIN  kod_jenistransaksi KJ ON KJP.jabatan=KJ.jabatan
-								WHERE KJP.jenis_pengguna = 'sub-admin'
-								AND KJ.id_jenistransaksi = '$id'
-								AND AP.kod_pengguna=KJP.kod_pengguna 
-								AND MP.ic_pengguna = AP.ic_pengguna"); 
+			$data = mysql_query("SELECT * FROM kod_jabatan"); 
 			 
 		
 													$i= 1;
 													while($info = mysql_fetch_array( $data )) {
 														echo "<tr class='gradeA'>";
 														echo "<td>".$i."</td>";
-														echo "<td>".$info['nama'] . " </td>";
-														echo "<td>".$info['email'] . " </td>";
-														echo "<td>".$info['no_telefon'] . " </td>";
+														echo "<td>".$info['singkatan'] . " </td>";
+														echo "<td>".$info['namaptj'] . " </td>";
 														?><td>
 													  <button class="btn btn-info" data-toggle="modal" data-target="#myModal<?echo $i;?>">Kemaskini</button>
-													<a href="../web/controller/subadmin_delete_exec.php?ic_pengguna=<?echo $info['ic_pengguna'];?>&KodJabatan=<?=$KodJabatan?>"><button type="button" class="btn btn-danger" onclick="return confirm('Anda pasti untuk padam data ini?');">Padam</button></a>
+													<a href="../web/controller/P002_delete_exec.php?idptj=<?echo $info['idptj'];?>"><button type="button" class="btn btn-danger" onclick="return confirm('Anda pasti untuk padam data ini?');">Padam</button></a>
 													 </td>
 			<!-- Modal update Sub-Admin -->
 			<div class="modal fade" id="myModal<?php echo $i; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -157,39 +118,29 @@ else {
 							<div class="modal-content">
 								<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-								<h4 class="modal-title" align="left" id="myModalLabel">Kemaskini Maklumat Sub-Admin</h4>
+								<h4 class="modal-title" align="left" id="myModalLabel">Kemaskini Maklumat</h4>
 								</div>
 							
 							<div class="modal-body">
 							
-							<form method="post" action="../web/controller/subadmin_kemaskini_exec.php"> 
+							<form method="post" action="../web/controller/P002_kemaskini_exec.php"> 
 							
 										<div class="form-group" align="left">
 											<label><font color="red">** Maklumat Wajib Diisi.</font></label>
-											<br><input type="hidden" name="ic_lama_pengguna" id="ic_lama_pengguna" class="form-control" value="<? echo $info['ic_pengguna'];?>" readonly />
+											<br><input type="hidden" name="idptj" id="idptj" class="form-control" value="<? echo $info['idptj'];?>" readonly />
 										</div>
 										 
 										<div class="form-group">
-											<label for="comment">Nombor Kad Pengenalan</label>
-											<input type="text" class="form-control" name="ic_pengguna" id="ic_pengguna" size="20" value="<?php echo $info['ic_pengguna']; ?>" readonly>
+											<label for="comment">Singkatan</label>
+											<input type="text" class="form-control" name="singkatan" id="singkatan" size="20" value="<?php echo $info['singkatan']; ?>">
 										</div> 
 										
 										<div class="form-group">
 											<label for="comment">Nama<font color="red">**</font></label>
-											<input type="text" class="form-control" name="nama" id="nama" size="20" value="<?php echo $info['nama']; ?>" required>
+											<input type="text" class="form-control" name="namaptj" id="namaptj" size="20" value="<?php echo $info['namaptj']; ?>" required>
 										</div>
 										
-										<div class="form-group">
-											<label for="comment">Emel<font color="red">**</font></label>
-											<input type="text" class="form-control" name="email" id="email" size="20" value="<?php echo $info['email']; ?>" required>
-										</div> 
 										
-										<div class="form-group">
-											<label for="comment">Nombor Telefon<font color="red">**</font></label>
-											<input type="text" class="form       -control" name="no_telefon" id="no_telefon" size="20" value="<?php echo $info['no_telefon']; ?>" required>
-										</div>		
-												
-							  
 										<div class="modal-footer">
 											   <button type="submit" class="btn btn-primary" >Simpan</button>
 											   <button type="reset" class="btn btn-info">Tetapan Semula</button>

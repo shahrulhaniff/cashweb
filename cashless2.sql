@@ -43,6 +43,7 @@ CREATE TABLE akaun_pengguna (
   ic_pengguna VARCHAR(12) NOT NULL,
   kod_pengguna VARCHAR(10) NOT NULL,
   pwd VARCHAR(40) NOT NULL,
+  jenis_akaun VARCHAR(10) NULL,
   status_aktif VARCHAR(5),
   ipaddress VARCHAR(30),
   lastlogin TIMESTAMP NULL,
@@ -53,6 +54,19 @@ CREATE TABLE akaun_pengguna (
 );
 
 
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table kod ptj
+--
+CREATE TABLE kod_jabatan (
+  idptj VARCHAR(15) NOT NULL,
+  singkatan VARCHAR(20) NOT NULL,
+  namaptj VARCHAR(100) NOT NULL,
+  created_date TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (idptj)
+  );
 -- --------------------------------------------------------
 
 --
@@ -168,8 +182,7 @@ INSERT INTO `akaun_pengguna` (`ic_pengguna`, `kod_pengguna`, `pwd`, `status_akti
 
 INSERT INTO `kod_jenistransaksi` (`id_jenistransaksi`, `jenistransaksi`, `jabatan`, `created_date`) VALUES
 ('JT20190425170551', 'Derma', 'JPP', '2019-04-25 09:05:51'),
-('JT20190425170843', 'Seminar', 'FIK', '2019-04-25 09:08:43'),
-('JT20190425171135', 'Tender', 'MASJID', '2019-04-25 09:11:35'),
+('JT20190425171135', 'Tender', 'PWIU', '2019-04-25 09:11:35'),
 ('JT20190427043445', 'Tender', 'JPP', '2019-04-26 20:34:45'),
 ('JT20190511183008', 'Denda', 'PERPUSTAKAAN', '2019-05-11 10:30:08'),
 ('SB', 'Sebut Harga', 'JPP', '2019-04-23 13:40:36');
@@ -203,3 +216,42 @@ INSERT INTO `tracking` (`id`, `id_jenistransaksi`, `jabatan`, `description`, `ta
 (13, 'JT20190511183008', 'PERPUSTAKAAN', 'Denda pelbagai', '2019-05-01', '2030-01-01', 0.00, 'Tambah', 'Admin Library', '2019-05-11 10:33:41'),
 (14, 'JT20190511183008', 'PERPUSTAKAAN', 'Denda pelbagai', '2019-05-01', '2030-01-01', 0.00, 'Padam', 'Admin Library', '2019-05-11 10:36:56'),
 (15, 'JT20190511183008', 'PERPUSTAKAAN', 'Denda pelbagai dari perpustakaan', '2019-05-03', '2020-05-04', 0.00, 'Tambah', 'Admin Library', '2019-05-11 10:38:25');
+
+
+
+INSERT INTO kod_jabatan (idptj ,singkatan ,namaptj ) VALUES
+('PSPK','PSPK','Perancangan Strategik & Pengurusan Kualiti'),
+('PPP','PPP','Penjanaan Pendapatan & Pengkomersialan'),
+('PTM','PTM','Pusat Teknologi Maklumat'),
+('JPP','JPP','Jabatan Pengurusan Pembangunan'),
+('PERPUSTAKAAN','PERPUSTAKAAN','Perpustakaan UniSZA'),
+('PPPIP','PPPIP','Pusat Pengurusan Penyelidikan, Inovasi & Pengkomersilan'),
+('PKK','PKK','Pusat Komunikasi Korporat'),
+('PA','PA','Pusat Antarabangsa'),
+('PKAE','PKAE','Pusat Kualiti Akademik & e-Pembelajaran'),
+('PPSPK','PPSPK','Pusat Perancangan Strategik & Pengurusan Kualiti'),
+('PPKB','PPKB','Pejabat Pengarah Kampus Besut'),
+('IPPKMI','IPPKMI','Institut Penyelidikan Produk & Ketamadunan Melayu Islam'),
+('IPASPT','IPASPT','Institut Penyelidikan Alam Sekitar Pantai Timur'),
+('IA','IA','Institut Agrobioteknologi'),
+('IPKM','IPKM','Institut Pembangunan (Kesihatan) Masyarakat'),
+('P5','P5','Pusat Pengurusan Penjanaan Pendapatan & Pengkomersialan'),
+('JK','JK','Jabatan Keselamatan'),
+('BPA','BPA','Bahagian Pengurusan Akademik'),
+('PJIM','PJIM','Pusat Jaringan Industri & Masyarakat'),
+('KKU','KKU','Kolej Kediaman UniSZA'),
+('PIU','PIU','Pusat Islam UniSZA'),
+('PKKP','PKKP','Pusat Keusahawanan & Kebolehpasaran Pelajar'),
+('PPHP','PPHP','Pusat Pembangunan Holistik Pelajar'),
+('PSR','PSR','Pusat Sukan & Rekreasi'),
+('PSW','PSW','Pusat Kesenian & Warisan'),
+('PUSPA','PUSPA','Pusat Asasi Sains & Perubatan UniSZA'),
+('UAD','UAD','Unit Audit Dalam'),
+('PKP','PKP','Pusat Kesihatan Pelajar'),
+('PPB','PPB','Pusat Pendidikan Berterusan'),
+('METRO','METRO','Metro UniSZA@KL'),
+('PPHU','PPHU','Pusat Pembangunan Hospital Universiti'),
+('PWIU','PWIU','Pejabat Wakaf dan Infaq UniSZA'),
+('PPL','PPL','Pusat Pengurusan Ladang'),
+('UDH','UDH','UniSZA Digital Hub');
+

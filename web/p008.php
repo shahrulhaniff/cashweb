@@ -19,8 +19,6 @@ if (empty($_SESSION['user'])) {
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
     <h5><b><i class="fa fa-dashboard"></i> Senarai Transaksi</b></h5>
-	
-	DALAM PEMBANGUNAN. KENA BAIKI DEKAT APP DULU UNTUK JENIS USER PELAJAR DAN BUKAN PELAJAR
   </header>
 
 
