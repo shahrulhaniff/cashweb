@@ -13,15 +13,11 @@
 		if($flag==''){
 			$flag='tb_1';
 			}
-			
 	$dateSelection=$_GET['dt']; 
 	if($dateSelection==''){
 			$dateSelection='tiada';
 			}
-
- 
 ?>
-
 <div class="col-md-12">
 				
 <div id='cssmenu'>
@@ -34,11 +30,8 @@
 		<? }else {?>
 		<li class="<? echo ($flag=='tb_2'?'active':'') ?>"><a href="P008.php?dt=<? echo $dateSelection; //21-03-2019?>&flg=tb_2">Carian Mengikut Tarikh</a></li>
 		<?}?>
-		
 	</ul>
 </div>
-
- 
 <!-- carian-->
 <? if ($dateSelection!='tiada'){?>
 <div align="center">

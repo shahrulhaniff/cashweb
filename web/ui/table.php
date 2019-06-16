@@ -20,9 +20,9 @@
 
 									<tr class='gradeA'>
 									<td><i class="fa fa-user w3-text-blue w3-large"></i></td>
-									<td><a href="../web/P002.php"><button class="btn btn-success" style="padding:1px 10px;"><img src="imgs/edit2.png" height="20" border="0" title="Kemaskini senarai">Kemaskini PTj</button></a></td>
+									<td><a href="../web/P002.php"><button class="btn btn-success" style="padding:1px 10px;"><img src="imgs/edit2.png" height="20" border="0" title="Kemaskini senarai"> Senarai PTj</button></a></td>
 
-									<form method="post" action="../web/controller/P002_add_exec.php">
+									<form method="post" action="../web/controller/jenis_transaksi_add_exec.php">
 									<td>
 									<div class="form-group" align="left">
 											<select required class="form-control" name="jabatan" value="">

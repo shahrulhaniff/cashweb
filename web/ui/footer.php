@@ -5,7 +5,7 @@
       <div class="w3-container w3-third">
         <h5 class="w3-bottombar w3-border-yellow">_</h5>
         <p>Universiti Sultan Zainal Abidin</p>
-        <p>Cashless - QR-code Web Administration System</p>
+        <p>epayment@unisza - QR-code Web Administration System</p>
 		<small>&copy; Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
       </div>
     </div>

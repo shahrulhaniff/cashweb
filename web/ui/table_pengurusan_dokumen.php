@@ -133,6 +133,7 @@ $tarikh= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh)->format('d/m/Y g:i a
                                             ?>
 											<td>
 											<button class="btn btn-info" data-toggle="modal" data-target="#myModalInfo<?echo $info['id_transaksi'];?>">Papar</button>
+											<button class="btn btn-primary" data-toggle="modal" data-target="#myModal<?echo $info['id_transaksi'];?>">Kemaskini</button>
                                 
 										 </td>
 										 </tr>
@@ -174,17 +175,21 @@ $tarikh= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh)->format('d/m/Y g:i a
 												</div>
 												
 												<div class="form-group" align="left">
-													<label>Daripada</label>
+													<label>Pegawai yang menyerahkan dokumen</label>
 													<?
 													$data1 = mysql_query("SELECT max(nama) AS nama FROM maklumat_pengguna WHERE ic_pengguna='".$info['doc_giveby']."' ORDER BY ic_pengguna");	
 													$info1 = mysql_fetch_array( $data1 );
 												?>
+												<? if($info1['nama']!=null){ ?>
 													<span> : <? echo $info1['nama'];?> (<? echo $info['doc_giveby'];?>)</span>
+												<? } else {?><span> : Tiada<? } ?>
 												</div>
 												
 												<div class="form-group" align="left">
 													<label>Diambil Oleh</label>
+													<? if($info['doc_acceptby_nama']!=null){ ?>
 													<span> : <? echo $info['doc_acceptby_nama'];?> (<? echo $info['doc_acceptby'];?>)</span>
+													<? } else {?><span> : Belum dituntut<? } ?>
 												</div>
 												
 												<div class="form-group" align="left">
@@ -207,8 +212,91 @@ $tarikh= DateTime::createFromFormat('Y-m-d H:i:s', $tarikh)->format('d/m/Y g:i a
 											</div><!-- /.modal-dialog -->
 											</div><!-- /.modal -->
 											
-										 <?
+					<!-- Modal Kemaskini-->
+											<div class="modal fade" id="myModal<?php echo $info['id_transaksi']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+											<div class="modal-dialog">
+												
+											<div class="modal-content">
+												<div class="modal-header">
+													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+													<h4 class="modal-title" align="left" id="myModalLabel">Kemaskini</h4>
+													<font color="red">***Sila semak dan maklumat dokumen yang diterima dengan sistem ini sebelum kemaskini</font>
+												</div>
+												
+											 <div class="modal-body">
+												<form method="post" action="../web/controller/P005_kemaskini_exec.php?id_transaksi=<?php echo $info['id_transaksi'];?>" >
+												
+												<div class="form-group">
+													<label for="comment">Nombor Rujukan</label>
+													<span> : <? echo $info['norujukan'];?></span>
+												</div> 
+												
+												<div class="form-group">
+													<label for="comment">Jenis Transaksi</label>
+													<?
+														$dataJenistransaksi = mysql_query("SELECT jenistransaksi FROM kod_jenistransaksi WHERE id_jenistransaksi='".$info['id_jenistransaksi']."' order by id_jenistransaksi"); 
+														//or die(mysql_error());	
+														$infoJenistransaksi = mysql_fetch_array( $dataJenistransaksi );
+													?>
+													<span> : <? echo $infoJenistransaksi['jenistransaksi'];?></span>
+												</div>	
+												
+												<div class="form-group">
+													<label for="comment">Tarikh</label>
+													<span> : <? echo $tarikh;?></span>
+												</div> 
+												
+												<div class="form-group">
+													<label for="comment">Harga</label>
+													<span> : RM <? echo $info['jumlah'];?></span>
+													
+												</div>
+													
+												<div class="form-group" align="left">
+													<label>Daripada</label>
+												<?
+													$data1 = mysql_query("SELECT max(nama) AS nama FROM maklumat_pengguna WHERE ic_pengguna='".$_SESSION['user']."' ORDER BY ic_pengguna");	
+													$info1 = mysql_fetch_array( $data1 );
+												?>
+												<input type="hidden" class="form-control" id="doc_giveby" name="doc_giveby" value="<?echo $_SESSION['user'];?>" required >
+													<span> : <? echo $info1['nama'];?> (<? echo $_SESSION['user'];?>)</span>
+												</div>
+
+												<div class="form-group" align="left">
+													<label>Nama Penerima</label>
+													<input class="form-control" id="doc_acceptby_nama" name="doc_acceptby_nama" value="<?=$info['doc_acceptby_nama']?>" required >
+												</div>
+												
+												<div class="form-group" align="left">
+													<label>Nombor Kad pengenalan Penerima</label>
+													<input class="form-control" id="doc_acceptby" name="doc_acceptby" value="<? echo $info['doc_acceptby'];?>" required >
+												</div>
+												<div class="form-group" align="left">
+												<label for="comment">Status Dokumen</label>
+															<select required class="form-control" name="status_dokumen" value="" style="width: 270px">
+															<option value="<? echo $info['status_dokumen'];?>"><? if($info['status_dokumen']=="NO"){ echo "Belum diambil"; } else { echo "Dituntut"; }?></option>	
+															<?
+																if ($info['status_dokumen']=="YES"){
+															?>
+															<option value="NO">Belum diambil</option>
+															<?
+																}if ($info['status_dokumen']=="NO"){
+															?>
+															<option value="YES">Dituntut</option>
+															<?}?>
+															</select>
+															</div>
 											
+												<div class="modal-footer">
+													<button type="submit" class="btn btn-primary">Kemaskini Maklumat</button></a>
+												</div>  
+												</form>
+											</div><!--modal-body-->
+											</div><!-- /.modal-content -->
+											</div><!-- /.modal-dialog -->
+											</div><!-- /.modal -->
+			<!--/tamat modal kemaskini-->
+										 <?
 										$i++;}
 										?>
                                         

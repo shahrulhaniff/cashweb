@@ -25,13 +25,13 @@
 			
 			
 			if($result){
-				echo"<script>alert('Kemaskini berjaya!');document.location.href='../SA_P005.php?status=YES&dt=tiada&flg=tb_1&flagScreen=tab_2';</script>";
+				echo"<script>alert('Kemaskini berjaya!');document.location.href='../P005.php?status=YES&dt=tiada&flg=tb_1&flagScreen=tab_2';</script>";
 				exit();
 			
 			}else {
 				 echo ("<script LANGUAGE='JavaScript'>
 					window.alert('Kemaskini tidak berjaya.');
-					window.location.href='../SA_P005.php?status=YES&dt=tiada&flg=tb_1&flagScreen=tab_1';
+					window.location.href='../P005.php?status=YES&dt=tiada&flg=tb_1&flagScreen=tab_1';
 					</script>");
 			}
 		// }else{
